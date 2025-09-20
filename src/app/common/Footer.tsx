@@ -1,56 +1,238 @@
-// Footer.tsx
-import React from "react";
-import { FaFacebookF, FaYoutube } from "react-icons/fa";
-import { HiLocationMarker, HiPhone } from "react-icons/hi";
+"use client";
 
-type FooterLink = {
-  title: string;
-  links: string[];
-};
-
-const footerData: FooterLink[] = [
-  {
-    title: "PRODUCTS",
-    links: ["GLANZA", "URBAN CRUISER", "HYRDER", "INNOVA CRYSTA", "INNOVA HYCROSS", "HILUX", "FORTUNER", "LEGENDER", "NEW CAMRY HYBRID", "ELECTRIC VEHICLE", "VELLFIRE"],
-  },
-];
+import React, { useState, useEffect } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { address } from "../utils/data";
 
 const Footer = () => {
+  const [mounted, setMounted] = useState(false);
+  const [currentAddressIndex, setCurrentAddressIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Mark client-side hydration complete
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Auto-play carousel only after hydration
+  useEffect(() => {
+    if (!mounted || !isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentAddressIndex(
+        (prev) => (prev + 1) % address.company.addresses.length
+      );
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [mounted, isAutoPlaying]);
+
+  const nextAddress = () => {
+    setCurrentAddressIndex(
+      (prev) => (prev + 1) % address.company.addresses.length
+    );
+    setIsAutoPlaying(false);
+  };
+
+  const prevAddress = () => {
+    setCurrentAddressIndex((prev) =>
+      prev === 0 ? address.company.addresses.length - 1 : prev - 1
+    );
+    setIsAutoPlaying(false);
+  };
+
+  const goToAddress = (index: number) => {
+    setCurrentAddressIndex(index);
+    setIsAutoPlaying(false);
+  };
+
+  // Always render the first address during SSR
+  const currentAddress = mounted
+    ? address.company.addresses[currentAddressIndex]
+    : address.company.addresses[0];
+
   return (
-    <footer className="bg-gray-900 text-gray-200 px-6 py-10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-6 gap-6">
-        {footerData.map((section) => (
-          <div key={section.title}>
-            <h3 className="font-bold mb-3">{section.title}</h3>
-            <ul>
-              {section.links.map((link) => (
-                <li key={link} className="text-sm mb-1 hover:text-white cursor-pointer">
-                  {link}
-                </li>
-              ))}
-            </ul>
+    <footer className="bg-[#333333] text-white">
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Left Section → Takes 2 columns */}
+          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {/* Products Section */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
+                {address.sections.products.title}
+              </h3>
+
+              {/* Split into 2 columns */}
+              <div className="grid grid-cols-2 gap-6">
+                <ul className="space-y-0.5">
+                  {address.sections.products.links
+                    .slice(0, Math.ceil(address.sections.products.links.length / 2))
+                    .map((link, index) => (
+                      <li key={index}>
+                        <a
+                          href={link.link}
+                          className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+                <ul className="space-y-0.5">
+                  {address.sections.products.links
+                    .slice(Math.ceil(address.sections.products.links.length / 2))
+                    .map((link, index) => (
+                      <li key={index}>
+                        <a
+                          href={link.link}
+                          className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
           </div>
-        ))}
 
-        {/* Contact Info */}
-        <div>
-          <h3 className="font-bold mb-3">ESPIRIT TOYOTA</h3>
-          <p className="text-sm mb-2">2514, NH 5, Telengapentha, Cuttack, Cuttack-754001</p>
-          <p className="text-sm mb-2">📞 +91 78730 44152</p>
-          <p className="text-sm mb-2">📞 +91 78730 44885</p>
-          <p className="text-sm mb-2">📞 +91 78730 44445</p>
-          <p className="text-sm mb-2">✉ marketing@fieldtoyota.com</p>
+          {/* Right Section → Carousel */}
+          <div>
+            <div className="relative bg-[#2f2f2f] p-4 rounded-lg shadow max-w-md">
+              {/* Carousel Navigation */}
+              {mounted && (
+                <div className="flex items-center justify-between mb-3">
+                  <button
+                    onClick={prevAddress}
+                    className="p-1 hover:bg-gray-700 rounded transition-colors"
+                    aria-label="Previous address"
+                  >
+                    <ChevronLeft size={16} className="text-gray-400" />
+                  </button>
+                  <div className="text-center">
+                    <h5 className="text-white font-medium text-sm">
+                      {currentAddress.name}
+                    </h5>
+                    <span className="text-gray-400 text-xs">
+                      {currentAddressIndex + 1} of {address.company.addresses.length}
+                    </span>
+                  </div>
+                  <button
+                    onClick={nextAddress}
+                    className="p-1 hover:bg-gray-700 rounded transition-colors"
+                    aria-label="Next address"
+                  >
+                    <ChevronRight size={16} className="text-gray-400" />
+                  </button>
+                </div>
+              )}
 
-          <div className="flex gap-3 mt-3">
-            <FaYoutube size={20} className="hover:text-red-600 cursor-pointer" />
-            <FaFacebookF size={20} className="hover:text-blue-600 cursor-pointer" />
+              {/* Address Content */}
+              <div className="text-gray-300 space-y-3 text-sm min-h-[120px]">
+                <div className="flex items-start gap-2">
+                  <MapPin size={14} className="text-gray-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <div>{currentAddress.location}</div>
+                    <div>{currentAddress.area}</div>
+                    <div>{currentAddress.pincode}</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <Phone size={14} className="text-gray-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    {currentAddress.phone.map((phone, phoneIndex) => (
+                      <div key={phoneIndex}>
+                        <a
+                          href={`tel:${phone}`}
+                          className="hover:text-white transition-colors"
+                        >
+                          {phone}
+                        </a>
+                      </div>
+                    ))}
+                    {currentAddress.additionalPhone && (
+                      <div>
+                        <a
+                          href={`tel:${currentAddress.additionalPhone}`}
+                          className="hover:text-white transition-colors"
+                        >
+                          {currentAddress.additionalPhone}
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail size={14} className="text-gray-400 flex-shrink-0" />
+                  <a
+                    href={`mailto:${currentAddress.email}`}
+                    className="hover:text-white transition-colors"
+                  >
+                    {currentAddress.email}
+                  </a>
+                </div>
+              </div>
+
+              {/* Indicators (only client-side) */}
+              {mounted && (
+                <div className="flex justify-center gap-2 mt-4">
+                  {address.company.addresses.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToAddress(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === currentAddressIndex
+                          ? "bg-red-500 w-6"
+                          : "bg-gray-600 hover:bg-gray-500"
+                      }`}
+                      aria-label={`Go to address ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Social Links */}
+            <div className="p-4">
+              <nav className="flex justify-center gap-6 text-sm">
+                {address.social.map((social, index) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <a
+                      key={index}
+                      href={social.link}
+                      className="hover:text-red-500 transition-colors duration-200"
+                      aria-label={social.label}
+                    >
+                      <IconComponent size={20} />
+                    </a>
+                  );
+                })}
+              </nav>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-gray-700 mt-10 pt-4 text-sm flex flex-col md:flex-row justify-between items-center">
-        <span>© 2025 TKM. All Rights Reserved.</span>
-        <span>Powered By Renaissance Technologies</span>
+      {/* Bottom Copyright */}
+      <div className="bg-black py-4">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <div className="flex items-center gap-4 mb-2 md:mb-0">
+              <span className="font-bold text-white text-lg">TOYOTA</span>
+              <span>{address.copyright}</span>
+            </div>
+            <div>{address.poweredBy}</div>
+          </div>
+        </div>
       </div>
     </footer>
   );

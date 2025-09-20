@@ -10,7 +10,7 @@ export default function Banner() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % bannerSlides.length);
+      nextSlide();
     }, 4000);
     return () => clearInterval(timer);
   }, []);
@@ -24,31 +24,31 @@ export default function Banner() {
   };
 
   return (
-    <div className="relative w-full h-[30vh] sm:h-[50vh] md:h-[60vh] lg:h-[85vh] overflow-hidden">
-      {/* Slides */}
-      {bannerSlides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-700 ${
-            index === current ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            priority={index === 0}
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 100vw"
-          />
-        </div>
-      ))}
+    <div className="relative w-full h-[30vh] sm:h-[50vh] md:h-[60vh] lg:h-[90vh] overflow-hidden">
+      {/* Slide wrapper */}
+      <div
+        className="flex h-full transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {bannerSlides.map((slide, index) => (
+          <div key={index} className="relative w-full h-full flex-shrink-0">
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority={index === 0}
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 100vw"
+            />
+          </div>
+        ))}
+      </div>
 
       {/* Custom Arrows */}
       <button
         title="Previous Slide"
         onClick={prevSlide}
-        className="absolute top-1/2 left-6 -translate-y-1/2 text-white hover:scale-110 transition-transform"
+        className="absolute top-1/2 left-6 -translate-y-1/2 text-white hover:scale-110 transition-transform z-10"
       >
         <ChevronLeft size={80} strokeWidth={0.5} />
       </button>
@@ -56,7 +56,7 @@ export default function Banner() {
       <button
         title="Next Slide"
         onClick={nextSlide}
-        className="absolute top-1/2 right-6 -translate-y-1/2 text-white hover:scale-110 transition-transform"
+        className="absolute top-1/2 right-6 -translate-y-1/2 text-white hover:scale-110 transition-transform z-10"
       >
         <ChevronRight size={80} strokeWidth={0.5} />
       </button>
