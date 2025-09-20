@@ -15,21 +15,19 @@ const Footer = () => {
   const [currentAddressIndex, setCurrentAddressIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Mark client-side hydration complete
+  // Hydration flag
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Auto-play carousel only after hydration
+  // Auto-play carousel
   useEffect(() => {
     if (!mounted || !isAutoPlaying) return;
-
     const interval = setInterval(() => {
       setCurrentAddressIndex(
         (prev) => (prev + 1) % address.company.addresses.length
       );
     }, 4000);
-
     return () => clearInterval(interval);
   }, [mounted, isAutoPlaying]);
 
@@ -52,25 +50,23 @@ const Footer = () => {
     setIsAutoPlaying(false);
   };
 
-  // Always render the first address during SSR
+  // Static SSR fallback
   const currentAddress = mounted
     ? address.company.addresses[currentAddressIndex]
     : address.company.addresses[0];
 
   return (
     <footer className="bg-[#333333] text-white">
-      {/* Main Footer Content */}
+      {/* Main Footer */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Left Section → Takes 2 columns */}
+          {/* Left: Products */}
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {/* Products Section */}
             <div>
               <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
                 {address.sections.products.title}
               </h3>
 
-              {/* Split into 2 columns */}
               <div className="grid grid-cols-2 gap-6">
                 <ul className="space-y-0.5">
                   {address.sections.products.links
@@ -104,41 +100,39 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Right Section → Carousel */}
+          {/* Right: Address Carousel */}
           <div>
             <div className="relative bg-[#2f2f2f] p-4 rounded-lg shadow max-w-md">
-              {/* Carousel Navigation */}
-              {mounted && (
-                <div className="flex items-center justify-between mb-3">
-                  <button
-                    onClick={prevAddress}
-                    className="p-1 hover:bg-gray-700 rounded transition-colors"
-                    aria-label="Previous address"
-                  >
-                    <ChevronLeft size={16} className="text-gray-400" />
-                  </button>
-                  <div className="text-center">
-                    <h5 className="text-white font-medium text-sm">
-                      {currentAddress.name}
-                    </h5>
-                    <span className="text-gray-400 text-xs">
-                      {currentAddressIndex + 1} of {address.company.addresses.length}
-                    </span>
-                  </div>
-                  <button
-                    onClick={nextAddress}
-                    className="p-1 hover:bg-gray-700 rounded transition-colors"
-                    aria-label="Next address"
-                  >
-                    <ChevronRight size={16} className="text-gray-400" />
-                  </button>
+              {/* Nav */}
+              <div className="flex items-center justify-between mb-3">
+                <button
+                  onClick={prevAddress}
+                  className="p-1 hover:bg-gray-700 rounded transition-colors"
+                  aria-label="Previous address"
+                >
+                  <ChevronLeft size={16} className="text-gray-400" />
+                </button>
+                <div className="text-center">
+                  <h5 className="text-white font-medium text-sm">
+                    {currentAddress.name}
+                  </h5>
+                  <span className="text-gray-400 text-xs">
+                    {currentAddressIndex + 1} of {address.company.addresses.length}
+                  </span>
                 </div>
-              )}
+                <button
+                  onClick={nextAddress}
+                  className="p-1 hover:bg-gray-700 rounded transition-colors"
+                  aria-label="Next address"
+                >
+                  <ChevronRight size={16} className="text-gray-400" />
+                </button>
+              </div>
 
-              {/* Address Content */}
+              {/* Address */}
               <div className="text-gray-300 space-y-3 text-sm min-h-[120px]">
                 <div className="flex items-start gap-2">
-                  <MapPin size={14} className="text-gray-400 flex-shrink-0 mt-0.5" />
+                  <MapPin size={14} className="text-gray-400 mt-0.5" />
                   <div>
                     <div>{currentAddress.location}</div>
                     <div>{currentAddress.area}</div>
@@ -146,10 +140,10 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Phone size={14} className="text-gray-400 flex-shrink-0 mt-0.5" />
+                  <Phone size={14} className="text-gray-400 mt-0.5" />
                   <div>
-                    {currentAddress.phone.map((phone, phoneIndex) => (
-                      <div key={phoneIndex}>
+                    {currentAddress.phone.map((phone, idx) => (
+                      <div key={idx}>
                         <a
                           href={`tel:${phone}`}
                           className="hover:text-white transition-colors"
@@ -171,7 +165,7 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Mail size={14} className="text-gray-400 flex-shrink-0" />
+                  <Mail size={14} className="text-gray-400" />
                   <a
                     href={`mailto:${currentAddress.email}`}
                     className="hover:text-white transition-colors"
@@ -181,26 +175,24 @@ const Footer = () => {
                 </div>
               </div>
 
-              {/* Indicators (only client-side) */}
-              {mounted && (
-                <div className="flex justify-center gap-2 mt-4">
-                  {address.company.addresses.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToAddress(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                        index === currentAddressIndex
-                          ? "bg-red-500 w-6"
-                          : "bg-gray-600 hover:bg-gray-500"
-                      }`}
-                      aria-label={`Go to address ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              )}
+              {/* Indicators */}
+              <div className="flex justify-center gap-2 mt-4">
+                {address.company.addresses.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToAddress(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                      index === currentAddressIndex
+                        ? "bg-red-500 w-6"
+                        : "bg-gray-600 hover:bg-gray-500"
+                    }`}
+                    aria-label={`Go to address ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
 
-            {/* Social Links */}
+            {/* Social */}
             <div className="p-4">
               <nav className="flex justify-center gap-6 text-sm">
                 {address.social.map((social, index) => {
@@ -209,6 +201,8 @@ const Footer = () => {
                     <a
                       key={index}
                       href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-red-500 transition-colors duration-200"
                       aria-label={social.label}
                     >
@@ -222,7 +216,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Copyright */}
+      {/* Bottom */}
       <div className="bg-black py-4">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
