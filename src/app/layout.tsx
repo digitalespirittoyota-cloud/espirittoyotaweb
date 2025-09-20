@@ -16,7 +16,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "My Next App",
+  title: "Espirit Toyota | Bhubaneswar Odisha",
   description: "Hydration safe layout with Navbar and Footer",
 };
 
