@@ -32,7 +32,7 @@ const Enquiry: React.FC<EnquiryProps> = ({ id }) => {
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
+  const [loading, setLoading] = useState<boolean>(false);
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -62,13 +62,15 @@ const Enquiry: React.FC<EnquiryProps> = ({ id }) => {
   };
 
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // ✅ Step 1: Validate form
     const validationErrors = validate();
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length > 0) {
-      // Check if any empty fields
+      // अगर empty fields हैं
       const emptyFields = Object.keys(validationErrors).filter(
         (key) => formData[key as keyof typeof formData].trim() === ""
       );
@@ -82,7 +84,7 @@ const Enquiry: React.FC<EnquiryProps> = ({ id }) => {
           },
         });
       } else {
-        // Show specific validation errors
+        // Specific validation errors
         toast.error(Object.values(validationErrors).join(", "), {
           style: {
             background: "#1a1a1a",
@@ -95,19 +97,58 @@ const Enquiry: React.FC<EnquiryProps> = ({ id }) => {
     }
 
     setErrors({});
-    toast.success("Enquiry submitted successfully!", {
-      style: {
-        background: "#1a1a1a",
-        color: "#fff",
-        border: "1px solid #f00",
-      },
-    });
+    setLoading(true);
 
-    console.log("Form submitted:", formData);
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Reset form
-    setFormData({ name: "", phone: "", email: "", model: "" });
+      const result = await response.json();
+
+      if (response.ok) {
+        toast.success("Enquiry submitted successfully!", {
+          style: {
+            background: "#1a1a1a",
+            color: "#fff",
+            border: "1px solid #0f0",
+          },
+        });
+
+        // Reset form
+        setFormData({ name: "", phone: "", email: "", model: "" });
+      } else {
+        toast.error("Failed to send email: " + result.message, {
+          style: {
+            background: "#1a1a1a",
+            color: "#fff",
+            border: "1px solid #f00",
+          },
+        });
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Error sending form:", error.message);
+      } else {
+        console.error("Unexpected error:", error);
+      }
+
+      toast.error("Something went wrong while sending email", {
+        style: {
+          background: "#1a1a1a",
+          color: "#fff",
+          border: "1px solid #f00",
+        },
+      });
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <section
@@ -253,12 +294,47 @@ const Enquiry: React.FC<EnquiryProps> = ({ id }) => {
           </div>
 
           {/* Submit */}
+          {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-all duration-200 flex items-center justify-center gap-2"
+            disabled={loading} // ✅ Disable while sending
+            className={`w-full text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-all duration-200 flex items-center justify-center gap-2
+    ${loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-red-600 hover:bg-red-700"
+              }`}
           >
-            <Send size={18} /> Submit Enquiry
+            {loading ? (
+              <>
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v8H4z"
+                  ></path>
+                </svg>
+                Please wait…
+              </>
+            ) : (
+              <>
+                <Send size={18} /> Submit Enquiry
+              </>
+            )}
           </button>
+
         </form>
       </div>
     </section>
