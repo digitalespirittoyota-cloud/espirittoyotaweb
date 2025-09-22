@@ -3,7 +3,7 @@ import { ModelCardProps } from "../utils/type";
 
 export const ModelCard = ({ name, image, link }: ModelCardProps) => (
     <div className="flex flex-col items-center text-center">
-        <a title={`${name}`} href={link} className="w-48 h-36 relative">
+        <a title={`${name}`} href={link} className="w-36 h-36 relative">
             <Image
                 src={image}
                 alt={name}

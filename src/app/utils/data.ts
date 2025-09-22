@@ -20,27 +20,27 @@ const bannerSlides = [
 const models = [
   {
     name: "Glanza",
-    image: "/models/glanza-maroon.png",
+    image: "/models/glanza.png",
     link: "https://espirittoyota.co.in/showroom/glanza/",
   },
   {
     name: "Urban Cruiser Taisor",
-    image: "/models/KODIAQ1.png",
+    image: "/models/taisor.png",
     link: "https://espirittoyota.co.in/showroom/urbancruiser-taisor/",
   },
   {
     name: "Rumion",
-    image: "/models/Rumino-blue.png",
+    image: "/models/rumion.png",
     link: "https://espirittoyota.co.in/showroom/rumion",
   },
   {
     name: "Urban Cruiser Hyryder",
-    image: "/models/hyryder-blue.png",
+    image: "/models/hyryder.png",
     link: "https://espirittoyota.co.in/showroom/urbancruiser-hyryder",
   },
   {
     name: "Innova Crysta",
-    image: "/models/KODIAQ1.png",
+    image: "/models/innova-crysta.png",
     link: "https://espirittoyota.co.in/showroom/innova",
   },
   {
@@ -50,12 +50,12 @@ const models = [
   },
   {
     name: "Hilux",
-    image: "/models/hylux.png",
+    image: "/models/hilux.png",
     link: "https://espirittoyota.co.in/showroom/hilux",
   },
   {
     name: "Fortuner",
-    image: "/models/KODIAQ1.png",
+    image: "/models/fortuner.png",
     link: "https://espirittoyota.co.in/showroom/fortuner/index-fortuner.html",
   },
   {
@@ -75,7 +75,7 @@ const models = [
   },
   {
     name: "Land Cruiser 300",
-    image: "/models/land-crusire.webp",
+    image: "/models/land-cruiser.png",
     link: "https://espirittoyota.co.in/showroom/lc300",
   },
 ];
