@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { bannerSlides } from "../utils/data";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import styles from './Banner.module.css';
 
 export default function Banner() {
   const [current, setCurrent] = useState(0);
@@ -28,11 +27,11 @@ export default function Banner() {
     <div className="relative w-full h-52 sm:h-60 md:h-[500px] lg:h-[600px] overflow-hidden">
       {/* Slide wrapper */}
       <div
-        className={styles.slideWrapper}
-        style={{ '--translate-x': `-${current * 100}%` } as React.CSSProperties}
+        className="flex h-full transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {bannerSlides.map((slide, index) => (
-          <div key={index} className={styles.slide}>
+          <div key={index} className="relative w-full h-full flex-shrink-0">
             <Image
               src={slide.src}
               alt={slide.alt}
@@ -42,6 +41,7 @@ export default function Banner() {
           </div>
         ))}
       </div>
+
       {/* Custom Arrows */}
       <button
         title="Previous Slide"
