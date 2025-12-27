@@ -8,10 +8,8 @@ export default function WhyEspiritToyota() {
         {/* IMAGE */}
         <div>
           <Image
-            src={whyToyotaImage.src}
+            src={whyToyotaImage}
             alt="Why Choose Espirit Toyota"
-            width={650}
-            height={420}
             className="rounded-2xl shadow-lg w-full object-cover"
           />
         </div>

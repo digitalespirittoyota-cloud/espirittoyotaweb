@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Youtube, X } from "lucide-react";
+import { Facebook, Youtube, X } from "lucide-react";
 
 const bannerSlides = [
   { src: "/banner/banner1.jpg", alt: "banner1" },

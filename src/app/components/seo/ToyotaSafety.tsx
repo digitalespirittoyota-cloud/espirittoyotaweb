@@ -21,7 +21,7 @@ export default function EspiritToyotaSafety() {
 
           <p className="text-gray-700 leading-relaxed mb-4">
             These systems continuously monitor road conditions, provide corrective
-            support, and ensure maximum driver confidence. Whether you're on city
+            support, and ensure maximum driver confidence. Whether you&apos;re on city
             streets, highways, or hilly terrains, Toyota keeps you and your
             family safe every moment.
           </p>

@@ -8,10 +8,8 @@ export default function EspiritToyotaService() {
         {/* IMAGE */}
         <div>
           <Image
-            src={serviceImage.src}
+            src={serviceImage}
             alt="Toyota Service Center Espirit Toyota"
-            width={650}
-            height={420}
             className="rounded-2xl shadow-lg w-full object-cover"
           />
         </div>

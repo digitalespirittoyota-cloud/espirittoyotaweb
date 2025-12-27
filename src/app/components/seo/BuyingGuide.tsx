@@ -1,3 +1,4 @@
+import Image from "next/image";
 import buyingGuideImage from "../../../../public/home/carbuyingguide.jpg";
 export default function BuyingGuide() {
   return (
@@ -5,8 +6,8 @@ export default function BuyingGuide() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* RIGHT SIDE IMAGE */}
         <div className="w-full">
-          <img
-            src={buyingGuideImage.src}
+          <Image
+            src={buyingGuideImage}
             alt="Toyota car buying guide Espirit Toyota"
             className="rounded-xl shadow-md w-full h-auto object-cover"
           />

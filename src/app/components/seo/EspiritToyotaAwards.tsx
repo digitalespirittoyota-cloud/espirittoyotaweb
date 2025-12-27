@@ -1,3 +1,4 @@
+import Image from "next/image";
 import awardsImage from "../../../../public/home/award.jpg";
 export default function EspiritToyotaAwards() {
   return (
@@ -6,8 +7,8 @@ export default function EspiritToyotaAwards() {
 
         {/* Image */}
         <div>
-          <img
-            src={awardsImage.src}
+          <Image
+            src={awardsImage}
             alt="Espirit Toyota Awards"
             className="w-full rounded-lg shadow-lg"
           />

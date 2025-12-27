@@ -1,3 +1,4 @@
+import Image from "next/image";
 import aboutImage from "../../../../public/home/aboutus.jpg";
 export default function AboutEspiritToyota() {
   return (
@@ -6,8 +7,8 @@ export default function AboutEspiritToyota() {
 
         {/* Image */}
         <div>
-          <img
-            src={aboutImage.src}
+          <Image
+            src={aboutImage}
             alt="About Espirit Toyota Showroom"
             className="w-full rounded-lg shadow-lg"
           />

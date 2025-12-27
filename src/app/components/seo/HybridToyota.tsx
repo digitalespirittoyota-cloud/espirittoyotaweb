@@ -37,10 +37,8 @@ export default function HybridEspiritToyota() {
         {/* IMAGE */}
         <div>
           <Image
-            src={hybridImage.src}
+            src={hybridImage}
             alt="Toyota Hybrid Technology"
-            width={650}
-            height={420}
             className="rounded-2xl shadow-lg w-full object-cover"
           />
         </div>

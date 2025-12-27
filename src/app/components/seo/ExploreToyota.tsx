@@ -9,7 +9,7 @@ export default function ExploreEspiritToyota() {
         {/* TEXT */}
         <div>
           <h2 className="text-4xl font-bold mb-5">
-            Explore Espirit Toyota – Reliability, Innovation & Trust
+            Explore Espirit Toyota – Reliability, Innovation &amp; Trust
           </h2>
 
           <p className="text-gray-700 leading-relaxed mb-4">
@@ -21,7 +21,7 @@ export default function ExploreEspiritToyota() {
           </p>
 
           <p className="text-gray-700 leading-relaxed mb-4">
-            Whether you're looking for a compact urban-friendly hatchback,
+            Whether you&apos;re looking for a compact urban-friendly hatchback,
             a family SUV with strong road presence, or a premium hybrid
             engineered for exceptional mileage, Espirit Toyota has a model that
             matches your lifestyle. Explore the legendary Toyota reliability,
