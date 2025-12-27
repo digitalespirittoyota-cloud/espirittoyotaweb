@@ -1,4 +1,4 @@
-import { Facebook, Twitter, Youtube } from "lucide-react";
+import { Facebook, Twitter, Youtube, X } from "lucide-react";
 
 const bannerSlides = [
   { src: "/banner/banner1.jpg", alt: "banner1" },
@@ -91,8 +91,8 @@ const address = {
         location: "Jaydev Vihar - Nandan Kanan Road, Plot No. 370/2119",
         area: "Patia, Khurda Dist,",
         pincode: "Bhubaneshwar-751024",
-        phone: ["+917873044152", "+917873044885"],
-        additionalPhone: "+917873044445",
+        phone: ["07935428989"],
+        // additionalPhone: "+917873044445",
         email: "marketing@fieldtoyota.com",
       },
       {
@@ -101,8 +101,8 @@ const address = {
         location: "Plot No - 225/226 , RMC Road ( NH-6)",
         area: "AT/PO - Bareipali, P.S - Ainthapali,",
         pincode: "Sambalpur-768006",
-        phone: ["+91 97770 14931", "+91 78730 45500", "+91 78730 44665"],
-        additionalPhone: "+91 78730 45500",
+        phone: ["07935428989"],
+        // additionalPhone: "+91 78730 45500",
         email: "marketing@fieldtoyota.com",
       },
       {
@@ -111,8 +111,8 @@ const address = {
         location: "Panchamahalla Chhak",
         area: "Karadagadia",
         pincode: "Angul-759132",
-        phone: ["+91 78730 44152", "+91 78730 44107", "+91 78730 44776"],
-        additionalPhone: "+91 78730 44445",
+        phone: ["07935428989"],
+        // additionalPhone: "+91 78730 44445",
         email: "marketing@fieldtoyota.com",
       },
       {
@@ -121,8 +121,8 @@ const address = {
         location: "2514, NH 5,",
         area: "Telengapentha,",
         pincode: "Cuttack-754001",
-        phone: ["+91 78730 44152", "+91 78730 44885"],
-        additionalPhone: "+91 78730 44445",
+        phone: ["07935428989"],
+        // additionalPhone: "+91 78730 44445",
         email: "marketing@fieldtoyota.com",
       },
       {
@@ -131,8 +131,8 @@ const address = {
         location: "Plot No : B/ 12 & 13",
         area: "Kalunga Industrial Estate, Kalunga,",
         pincode: "Rourkela-770031",
-        phone: ["+91 78730 44660", "+91 78730 44130"],
-        additionalPhone: "+91 78730 44130",
+        phone: ["07935428989"],
+        // additionalPhone: "+91 78730 44130",
         email: "marketing@fieldtoyota.com",
       },
     ],
@@ -150,7 +150,7 @@ const address = {
       label: "Facebook",
     },
     {
-      icon: Twitter,
+      icon: X,
       link: "https://twitter.com/Toyota_India",
       label: "Twitter",
     },

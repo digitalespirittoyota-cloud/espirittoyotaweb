@@ -152,7 +152,7 @@ const Footer = () => {
                         </a>
                       </div>
                     ))}
-                    {currentAddress.additionalPhone && (
+                    {/* {currentAddress.additionalPhone && (
                       <div>
                         <a
                           href={`tel:${currentAddress.additionalPhone}`}
@@ -161,7 +161,7 @@ const Footer = () => {
                           {currentAddress.additionalPhone}
                         </a>
                       </div>
-                    )}
+                    )} */}
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -181,11 +181,10 @@ const Footer = () => {
                   <button
                     key={index}
                     onClick={() => goToAddress(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                      index === currentAddressIndex
-                        ? "bg-red-500 w-6"
-                        : "bg-gray-600 hover:bg-gray-500"
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${index === currentAddressIndex
+                      ? "bg-red-500 w-6"
+                      : "bg-gray-600 hover:bg-gray-500"
+                      }`}
                     aria-label={`Go to address ${index + 1}`}
                   />
                 ))}
