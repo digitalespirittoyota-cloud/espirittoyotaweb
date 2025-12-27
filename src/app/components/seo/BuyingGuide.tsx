@@ -12,7 +12,7 @@ export default function BuyingGuide() {
             className="rounded-xl shadow-md w-full h-auto object-cover"
           />
         </div>
-
+        {/* ------------------------------------ */}
         {/* LEFT CONTENT */}
         <div>
           <h2 className="text-3xl font-bold mb-4">
