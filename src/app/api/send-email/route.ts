@@ -13,8 +13,7 @@ export async function POST(req: Request) {
             );
         }
 
-        console.log("Debug: GMAIL_USER present?", !!process.env.GMAIL_USER);
-        console.log("Debug: GMAIL_PASS present?", !!process.env.GMAIL_PASS);
+
 
         // Configure Nodemailer Transporter
         const transporter = nodemailer.createTransport({
