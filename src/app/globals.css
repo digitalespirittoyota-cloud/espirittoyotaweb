@@ -21,18 +21,36 @@
 
 @font-face {
   font-family: "ToyotaDisplayRegular";
-  src: url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577b0468937689adf9e0.eot"); /* IE9 Compat Modes */
-  src: url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577b0468937689adf9e0.eot?#iefix")
+  src: url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577fb0468937689adfd9.eot"); /* IE9 Compat Modes */
+  src: url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577fb0468937689adfd9.eot?#iefix")
       format("embedded-opentype"),
-    url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577b0468937689adf9e0.woff2")
+    url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577fb0468937689adfd9.woff2")
       format("woff2"),
-    url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577b0468937689adf9e0.woff")
+    url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577fb0468937689adfd9.woff")
       format("woff"),
-    url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577b0468937689adf9e0.ttf")
+    url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577fb0468937689adfd9.ttf")
       format("truetype"),
-    url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577b0468937689adf9e0.svg#ToyotaDisplayRegular")
+    url("/font/Toyota Display Regular/Web Fonts/1ac36e54c1c9577fb0468937689adfd9.svg#ToyotaDisplayRegular")
       format("svg");
   font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ToyotaDisplayBold";
+  src: url("/font/Toyota Display Bold/Web Fonts/46520ab4f9b49d8358ed63f2354664c6.eot"); /* IE9 Compat Modes */
+  src: url("/font/Toyota Display Bold/Web Fonts/46520ab4f9b49d8358ed63f2354664c6.eot?#iefix")
+      format("embedded-opentype"),
+    url("/font/Toyota Display Bold/Web Fonts/46520ab4f9b49d8358ed63f2354664c6.woff2")
+      format("woff2"),
+    url("/font/Toyota Display Bold/Web Fonts/46520ab4f9b49d8358ed63f2354664c6.woff")
+      format("woff"),
+    url("/font/Toyota Display Bold/Web Fonts/46520ab4f9b49d8358ed63f2354664c6.ttf")
+      format("truetype"),
+    url("/font/Toyota Display Bold/Web Fonts/46520ab4f9b49d8358ed63f2354664c6.svg#ToyotaDisplayBold")
+      format("svg");
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
