@@ -262,7 +262,17 @@ const Footer = () => {
               <span className="font-bold text-white text-lg">ESPRITE TOYOTA</span>
               <span>{address.copyright}</span>
             </div>
-            <div>{address.poweredBy}</div>
+            <div>
+              Powered by{" "}
+              <a
+                href="https://jnine.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-500 transition-colors"
+              >
+                J Nine Infotech
+              </a>
+            </div>
           </div>
         </div>
       </div>
