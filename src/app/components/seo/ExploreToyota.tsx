@@ -3,37 +3,42 @@ import exploreToyota from "../../../../public/banner/showroom.jpg";
 
 export default function ExploreEspiritToyota() {
   return (
-    <section className="py-20 bg-white">
+    <section
+      className="py-20 bg-white"
+      aria-labelledby="explore-espirit-toyota"
+    >
       <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
 
-        {/* TEXT */}
+        {/* TEXT CONTENT */}
         <div>
-          <h2 className="text-4xl font-bold mb-5">
-            Explore Espirit Toyota – Reliability, Innovation &amp; Trust
+          <h2
+            id="explore-espirit-toyota"
+            className="text-4xl font-bold mb-5 text-gray-900"
+          >
+            Explore Espirit Toyota – Authorized Toyota Dealer in Odisha
           </h2>
 
           <p className="text-gray-700 leading-relaxed mb-4">
-            Espirit Toyota brings you the complete lineup of Toyota vehicles—
-            engineered with global Japanese reliability, strong build quality,
-            and advanced driving comfort. Each Toyota is crafted to meet Indian
-            roads, Indian weather, and Indian families, making it one of the
-            most trusted automotive brands in the world.
+            Espirit Toyota is an authorized Toyota dealership offering the complete
+            range of Toyota cars in Odisha. Built on Japanese engineering excellence,
+            Toyota vehicles are known for long-term reliability, superior build
+            quality, advanced safety features, and exceptional driving comfort
+            across Indian road conditions.
           </p>
 
           <p className="text-gray-700 leading-relaxed mb-4">
-            Whether you&apos;re looking for a compact urban-friendly hatchback,
-            a family SUV with strong road presence, or a premium hybrid
-            engineered for exceptional mileage, Espirit Toyota has a model that
-            matches your lifestyle. Explore the legendary Toyota reliability,
-            world-class interiors, superior mileage, and low-maintenance
-            ownership experience.
+            Whether you are searching for a fuel-efficient city car, a spacious
+            family SUV, or a modern Toyota hybrid delivering outstanding mileage,
+            Espirit Toyota helps you choose the perfect model that matches your
+            lifestyle, budget, and performance expectations.
           </p>
 
           <p className="text-gray-700 leading-relaxed">
-            Visit Espirit Toyota today to discover offerings, compare models,
-            experience live demos, and enjoy a seamless consultation from our
-            experts. Your Toyota journey starts here — with trust, transparency,
-            and unmatched service.
+            Visit Espirit Toyota showrooms to explore the latest Toyota models,
+            compare variants, book a test drive, and experience transparent pricing,
+            expert consultation, and trusted after-sales service. Begin your Toyota
+            ownership journey with confidence, reliability, and customer-first
+            support.
           </p>
         </div>
 
@@ -41,10 +46,11 @@ export default function ExploreEspiritToyota() {
         <div>
           <Image
             src={exploreToyota}
-            alt="Explore Espirit Toyota Showroom"
+            alt="Espirit Toyota showroom in Odisha displaying latest Toyota cars"
             width={650}
             height={420}
             className="rounded-2xl shadow-lg w-full object-cover"
+            priority={false}
           />
         </div>
 

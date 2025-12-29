@@ -5,7 +5,7 @@ import { ModelCard } from "./ModelCard";
 
 export default function Range() {
     return (
-        <section className="max-w-7xl mx-auto my-10 px-4 sm:px-8">
+        <section id="models" className="max-w-7xl mx-auto my-10 px-4 sm:px-8 scroll-mt-24">
             <h2 className="text-3xl font-bold text-center mb-10 text-black">
                 Discover the Toyota range
             </h2>

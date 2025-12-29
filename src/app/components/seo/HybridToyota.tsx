@@ -1,36 +1,44 @@
 import Image from "next/image";
 import hybridImage from "../../../../public/home/toyotahybridtechnology.jpg";
+
 export default function HybridEspiritToyota() {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section
+      className="py-20 bg-white"
+      aria-labelledby="toyota-hybrid-technology"
+    >
+      <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center px-4">
 
-        {/* TEXT */}
+        {/* TEXT CONTENT */}
         <div>
-          <h2 className="text-4xl font-bold mb-5">
-            Toyota Hybrid – Futuristic, Efficient & Environment Friendly
+          <h2
+            id="toyota-hybrid-technology"
+            className="text-4xl font-bold mb-6 text-gray-900"
+          >
+            Toyota Hybrid Technology – Smart, Efficient & Eco-Friendly
           </h2>
 
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Toyota’s Self-Charging Hybrid Electric Vehicles combine a petrol
-            engine with an electric motor to deliver exceptional fuel efficiency,
-            smoother drives, lower emissions, and long-term savings. They do not
-            require external charging, making them easy to own, practical, and
-            perfect for Indian driving conditions.
+          <p className="text-gray-700 leading-relaxed mb-4 text-lg">
+            Toyota’s <strong>Self-Charging Hybrid Electric Vehicles (HEV)</strong>
+            combine a petrol engine with an electric motor to deliver superior
+            fuel efficiency, smoother acceleration, and reduced emissions.
+            These hybrids do not require external charging, making them ideal
+            for Indian roads and daily driving conditions.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-4">
-            Espirit Toyota offers the latest Toyota Hybrid models that give you
-            outstanding mileage, powerful acceleration, silent operation, and a
-            premium driving feel. With fewer moving parts than traditional
-            engines, Toyota Hybrids also ensure lower maintenance and longer
-            durability.
+          <p className="text-gray-700 leading-relaxed mb-4 text-lg">
+            At <strong>Espirit Toyota</strong>, you can explore the latest Toyota
+            Hybrid models that offer excellent mileage, quiet cabin experience,
+            powerful performance, and a premium driving feel. With fewer moving
+            parts than conventional engines, Toyota hybrids ensure lower
+            maintenance costs and long-term reliability.
           </p>
 
-          <p className="text-gray-700 leading-relaxed">
-            Experience the perfect blend of performance and sustainability with
-            Toyota Hybrid technology — designed to reduce running costs while
-            helping you contribute to a greener future.
+          <p className="text-gray-700 leading-relaxed text-lg">
+            Choose Toyota Hybrid technology to enjoy reduced fuel expenses,
+            enhanced driving comfort, and a cleaner environment. Experience the
+            future of mobility today with Espirit Toyota — where innovation
+            meets sustainability.
           </p>
         </div>
 
@@ -38,8 +46,9 @@ export default function HybridEspiritToyota() {
         <div>
           <Image
             src={hybridImage}
-            alt="Toyota Hybrid Technology"
+            alt="Toyota Self Charging Hybrid Technology at Espirit Toyota"
             className="rounded-2xl shadow-lg w-full object-cover"
+            priority={false}
           />
         </div>
 

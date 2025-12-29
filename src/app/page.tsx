@@ -1,4 +1,5 @@
 // app/page.tsx
+import type { Metadata } from 'next';
 
 import Banner from "./components/Banner";
 import Enquiry from "./components/Enquiry";
@@ -17,11 +18,22 @@ import AboutEspiritToyota from "./components/seo/AboutEspiritToyota";
 import EspiritToyotaLocations from "./components/seo/EspiritToyotaLocations";
 import EspiritToyotaAwards from "./components/seo/EspiritToyotaAwards";
 
-export const metadata = {
+export const metadata: Metadata = {
   title:
-    "Toyota Cars, Hybrid Technology, Service & Showroom – Espirit Toyota Bhubaneswar",
+    'Toyota Cars in Bhubaneswar | Hybrid Models, Service & Test Drive – Espirit Toyota',
   description:
-    "Visit Espirit Toyota Bhubaneswar for Toyota cars, hybrid models, service center, test drive booking, offers, finance & insurance support.",
+    'Espirit Toyota Bhubaneswar is an authorized Toyota dealer offering new cars, hybrid technology, test drive booking, service center, finance and insurance support.',
+  keywords: [
+    'toyota cars',
+    'toyota cars in bhubaneswar',
+    'toyota showroom bhubaneswar',
+    'authorized toyota dealer',
+    'espirit toyota',
+    'toyota hybrid cars',
+    'toyota test drive booking',
+    'toyota service center',
+    'toyota car price bhubaneswar',
+  ],
 };
 
 export default function Home() {
@@ -45,6 +57,17 @@ export default function Home() {
       <Faq />
 
       <Enquiry id="enquiry" />
+
+      {/* SEO-only content (no UI impact) */}
+      <section className="sr-only">
+        <h2>Espirit Toyota Bhubaneswar – Authorized Toyota Dealer</h2>
+        <p>
+          Espirit Toyota Bhubaneswar is an authorized Toyota showroom offering the
+          latest Toyota cars, hybrid models, test drive booking, and certified
+          service center support. Visit our showroom to explore Toyota safety,
+          performance, and hybrid technology with expert assistance.
+        </p>
+      </section>
     </main>
   );
 }

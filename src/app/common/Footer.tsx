@@ -8,6 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import Link from "next/link";
 import { address } from "../utils/data";
 
 const Footer = () => {
@@ -61,35 +62,36 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left: Products */}
-          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div>
+          {/* Left: Products & Services */}
+          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="sm:col-span-2">
               <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
                 {address.sections.products.title}
               </h3>
 
               <div className="grid grid-cols-2 gap-6">
-                <ul className="space-y-0.5">
+                <ul className="space-y-1">
                   {address.sections.products.links
                     .slice(0, Math.ceil(address.sections.products.links.length / 2))
                     .map((link, index) => (
                       <li key={index}>
                         <a
                           href={link.link}
-                          className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                          className="text-gray-300 hover:text-red-500 transition-colors duration-200 text-sm"
                         >
                           {link.name}
                         </a>
                       </li>
                     ))}
                 </ul>
-                <ul className="space-y-0.5">
+                <ul className="space-y-1">
                   {address.sections.products.links
                     .slice(Math.ceil(address.sections.products.links.length / 2))
                     .map((link, index) => (
                       <li key={index}>
                         <a
                           href={link.link}
-                          className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                          className="text-gray-300 hover:text-red-500 transition-colors duration-200 text-sm"
                         >
                           {link.name}
                         </a>
@@ -97,6 +99,43 @@ const Footer = () => {
                     ))}
                 </ul>
               </div>
+            </div>
+
+            {/* Service & Support Links */}
+            <div>
+              <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
+                SERVICE & SUPPORT
+              </h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="/test-drive" className="text-gray-300 hover:text-red-500 transition-colors duration-200 text-sm">
+                    Book a Test Drive
+                  </a>
+                </li>
+                <li>
+                  <a href="/service" className="text-gray-300 hover:text-red-500 transition-colors duration-200 text-sm">
+                    Book a Service
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact-us" className="text-gray-300 hover:text-red-500 transition-colors duration-200 text-sm">
+                    Contact Us
+                  </a>
+                </li>
+                <li>
+                  <Link href="/#enquiry" className="text-gray-300 hover:text-red-500 transition-colors duration-200 text-sm">
+                    Enquiry Form
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="tel:07935428989"
+                    className="text-gray-300 hover:text-red-500 transition-colors duration-200 text-sm"
+                  >
+                    Helpline: 07935428989
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -220,7 +259,7 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <div className="flex items-center gap-4 mb-2 md:mb-0">
-              <span className="font-bold text-white text-lg">TOYOTA</span>
+              <span className="font-bold text-white text-lg">ESPRITE TOYOTA</span>
               <span>{address.copyright}</span>
             </div>
             <div>{address.poweredBy}</div>

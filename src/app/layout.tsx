@@ -1,21 +1,10 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Inter, Roboto_Mono } from "next/font/google";
+// import { Inter, Roboto_Mono } from "next/font/google"; // Removed Google Fonts
 import "./globals.css";
 import Navbar from "./common/Navbar";
 import Footer from "./common/Footer";
-import JsonLd from "./components/seo/JsonLd"; // ⭐ IMPORT JSON-LD
-
-// Load fonts
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const robotoMono = Roboto_Mono({
-  variable: "--font-roboto-mono",
-  subsets: ["latin"],
-});
+import JsonLd from "./components/seo/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.toyota-espirit.in"),
@@ -91,13 +80,13 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`${inter.variable} ${robotoMono.variable} antialiased`}
+        className="antialiased"
       >
         {/* ⭐ SEO JSON-LD STRUCTURED DATA */}
         <JsonLd />
 
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen " >{children}</main>
         <Footer />
       </body>
     </html>

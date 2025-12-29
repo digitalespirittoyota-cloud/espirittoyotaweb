@@ -98,11 +98,11 @@ const address = {
       {
         id: 2,
         name: "Espirit Toyota",
-        location: "Plot No - 225/226 , RMC Road ( NH-6)",
-        area: "AT/PO - Bareipali, P.S - Ainthapali,",
-        pincode: "Sambalpur-768006",
+        location: "2514, NH 5,",
+        area: "Telengapentha,",
+        pincode: "Cuttack-754001",
         phone: ["07935428989"],
-        // additionalPhone: "+91 78730 45500",
+        // additionalPhone: "+91 78730 44445",
         email: "marketing@fieldtoyota.com",
       },
       {
@@ -118,11 +118,11 @@ const address = {
       {
         id: 4,
         name: "Espirit Toyota",
-        location: "2514, NH 5,",
-        area: "Telengapentha,",
-        pincode: "Cuttack-754001",
+        location: "Plot No - 225/226 , RMC Road ( NH-6)",
+        area: "AT/PO - Bareipali, P.S - Ainthapali,",
+        pincode: "Sambalpur-768006",
         phone: ["07935428989"],
-        // additionalPhone: "+91 78730 44445",
+        // additionalPhone: "+91 78730 45500",
         email: "marketing@fieldtoyota.com",
       },
       {
@@ -161,7 +161,7 @@ const address = {
     },
   ],
   copyright: "Copyright © 2025 TKM. All Rights Reserved.",
-  poweredBy: "Developed & Designed By Jnine Infotech",
+  poweredBy: "Developed & Designed By J Nine Infotech",
 };
 
 export { bannerSlides, models, address };

@@ -2,39 +2,39 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-  try {
-    const { name, email, phone, model } = await req.json();
+    try {
+        const { name, phone, email, city, model, date, time } = await req.json();
 
-    // Check for required fields
-    if (!name || !email || !phone || !model) {
-      return NextResponse.json(
-        { message: 'Missing required fields' },
-        { status: 400 }
-      );
-    }
+        // Check for required fields
+        if (!name || !email || !phone || !model || !city || !date || !time) {
+            return NextResponse.json(
+                { message: 'Missing required fields' },
+                { status: 400 }
+            );
+        }
 
-    // Configure Nodemailer Transporter
-    const transporter = nodemailer.createTransport({
-      service: 'gmail', // You can change this to another service logic if needed
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-      },
-    });
+        // Configure Nodemailer Transporter
+        const transporter = nodemailer.createTransport({
+            service: 'gmail', // You can change this to another service logic if needed
+            auth: {
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_PASS,
+            },
+        });
 
-    // 1. Admin Email Options
-    const adminMailOptions = {
-      from: process.env.GMAIL_USER,
-      to: "marketing@fieldtoyota.com", // Admin email
-      subject: `New Car Enquiry: ${model} - ${name}`,
-      html: `
+        // 1. Admin Email Options
+        const adminMailOptions = {
+            from: process.env.GMAIL_USER,
+            to: "marketing@fieldtoyota.com", // Admin email
+            subject: `New Test Drive Request: ${model} - ${name}`,
+            html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #d71920; padding: 20px; text-align: center;">
-            <h2 style="color: #ffffff; margin: 0;">New Enquiry Received</h2>
+            <h2 style="color: #ffffff; margin: 0;">New Test Drive Request</h2>
           </div>
           <div style="padding: 20px; background-color: #f9f9f9;">
             <p style="font-size: 16px; color: #333;"><strong>Hello Team,</strong></p>
-            <p style="font-size: 16px; color: #333;">You have received a new enquiry from the Espirit Toyota website.</p>
+            <p style="font-size: 16px; color: #333;">You have received a new test drive request from the Espirit Toyota website.</p>
             
             <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
               <tr>
@@ -50,8 +50,20 @@ export async function POST(req: Request) {
                 <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #333;">${phone}</td>
               </tr>
               <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold; color: #555;">City:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #333;">${city}</td>
+              </tr>
+              <tr>
                 <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold; color: #555;">Interested Model:</td>
                 <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #333; font-size: 18px; font-weight: bold; color: #d71920;">${model}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold; color: #555;">Preferred Date:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #333;">${date}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold; color: #555;">Preferred Time:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd; color: #333;">${time}</td>
               </tr>
             </table>
 
@@ -66,27 +78,30 @@ export async function POST(req: Request) {
           </div>
         </div>
       `,
-    };
+        };
 
-    // 2. User Confirmation Email Options
-    const userMailOptions = {
-      from: process.env.GMAIL_USER,
-      to: email, // Send to Customer
-      subject: `Thank you for your enquiry - Espirit Toyota`,
-      html: `
+        // 2. User Confirmation Email Options
+        const userMailOptions = {
+            from: process.env.GMAIL_USER,
+            to: email, // Send to Customer
+            subject: `Test Drive Request Confirmation - Espirit Toyota`,
+            html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #d71920; padding: 20px; text-align: center;">
-            <h2 style="color: #ffffff; margin: 0;">Thank You!</h2>
+            <h2 style="color: #ffffff; margin: 0;">Test Drive Requested</h2>
           </div>
           <div style="padding: 20px; background-color: #ffffff;">
             <p style="font-size: 18px; color: #333;"><strong>Dear ${name},</strong></p>
             <p style="font-size: 16px; color: #555; line-height: 1.6;">
-              Thank you for showing interest in the <strong>${model}</strong>. We have received your enquiry and our sales team will contact you shortly.
+              Thank you for requesting a test drive for the <strong>${model}</strong>. We have received your request and our sales team will contact you shortly to confirm the slot.
             </p>
             
             <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #d71920; margin: 20px 0;">
-              <p style="margin: 0; color: #333;"><strong>Your Enquiry Details:</strong></p>
+              <p style="margin: 0; color: #333;"><strong>Your Request Details:</strong></p>
               <p style="margin: 5px 0 0; color: #555;">Ref Code: #${Math.floor(1000 + Math.random() * 9000)}</p>
+              <p style="margin: 5px 0 0; color: #555;">Model: <strong>${model}</strong></p>
+              <p style="margin: 5px 0 0; color: #555;">Preferred Date: ${date}</p>
+              <p style="margin: 5px 0 0; color: #555;">Preferred Time: ${time}</p>
             </div>
 
             <p style="font-size: 16px; color: #555;">
@@ -104,23 +119,23 @@ export async function POST(req: Request) {
           </div>
         </div>
       `,
-    };
+        };
 
-    // Send Both Emails
-    await Promise.all([
-      transporter.sendMail(adminMailOptions),
-      transporter.sendMail(userMailOptions)
-    ]);
+        // Send Both Emails
+        await Promise.all([
+            transporter.sendMail(adminMailOptions),
+            transporter.sendMail(userMailOptions)
+        ]);
 
-    return NextResponse.json(
-      { message: 'Enquiry submitted successfully' },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error('Error sending email:', error);
-    return NextResponse.json(
-      { message: 'Failed to send email' },
-      { status: 500 }
-    );
-  }
+        return NextResponse.json(
+            { message: 'Enquiry submitted successfully' },
+            { status: 200 }
+        );
+    } catch (error) {
+        console.error('Error sending email:', error);
+        return NextResponse.json(
+            { message: 'Failed to send email' },
+            { status: 500 }
+        );
+    }
 }
