@@ -21,7 +21,7 @@ const models = [
   {
     name: "Glanza",
     image: "/models/glanza.png",
-    link: "https://espirittoyota.co.in/showroom/glanza/",
+    link: "/glanza",
   },
   {
     name: "Urban Cruiser Taisor",
@@ -31,22 +31,22 @@ const models = [
   {
     name: "Rumion",
     image: "/models/rumion.png",
-    link: "https://espirittoyota.co.in/showroom/rumion",
+    link: "/rumino",
   },
   {
     name: "Urban Cruiser Hyryder",
     image: "/models/hyryder.png",
-    link: "https://espirittoyota.co.in/showroom/urbancruiser-hyryder",
+    link: "/urbancruiserhyryder",
   },
   {
     name: "Innova Crysta",
     image: "/models/innova-crysta.png",
-    link: "https://espirittoyota.co.in/showroom/innova",
+    link: "/innovacrysta",
   },
   {
     name: "Innova Hycross",
     image: "/models/innova-hycross.png",
-    link: "https://espirittoyota.co.in/showroom/innova-hycross",
+    link: "/innova",
   },
   {
     name: "Hilux",
@@ -66,7 +66,7 @@ const models = [
   {
     name: "Camry",
     image: "/models/camry.png",
-    link: "https://espirittoyota.co.in/showroom/camry",
+    link: "/camry",
   },
   {
     name: "Vellfire",

@@ -1,0 +1,84 @@
+
+
+"use client";
+
+import HyTimeBanner from "../urbancruiserhyryder/HyTimeBanner";
+import ArticlesSection from "./ArticlesSection";
+import CarSpecs from "./CarSpecs";
+import ExteriorOverview from "./ExteriorOverview";
+import HyColors from "./HyColors";
+import HyPerformance from "./HyPerformance";
+import InnovaVideoHero from "./InnovaVideoHero";
+import SafetyFeatures from "./SafetyFeatures";
+export const hyBannerData = {
+  leftImage:
+    "https://static.toyotabharat.com/images/showroom/innova-hycross/hy-concept-img.webp",
+
+  stats: [
+    "The beginning",
+    "of a New HY",
+  ],
+
+  description: [
+    "Now, it's HY time you experienced this legacy in an advanced self-charging hybrid electric SUV.",
+    "The reliability of a petrol engine meets the performance of an electric motor.",
+  ],
+
+  introText: "Toyota Urban Cruiser Hyryder.",
+
+  carImage:
+    "https://static.toyotabharat.com/images/showroom/innova-hycross/hycross-logo.webp",
+};
+const hycrossArticles = [
+  { title: "HyCross first drive review", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/article-hycross-autox.jpg" },
+  { title: "HyCross detailed review", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/article-hycross-evo.jpg" },
+  { title: "Another HyCross article", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/article-hycross-overdrive.jpg" },
+];
+
+const innovaArticles = [
+  { title: "Toyota Innova HyCross Hybrid First Drive | Safe Cover Drive or Over The Stadium?", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/review-hycross-power-drift.jpg" },
+  { title: "Toyota Innova HyCross | First Drive Review | We Talk Style, Features, Driving, Hybrid | PowerDrift", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/review-hycross-zigwheels.jpg" },
+  { title: "Toyota Innova Hycross review - India's favourite MPV reborn | First Drive | Autocar India", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/review-hycross-autocar.jpg" },
+];
+
+export default function Page() {
+  return (
+    <>
+      <HyTimeBanner {...hyBannerData}/>
+      <InnovaVideoHero/>
+      <ExteriorOverview
+        headingTop="MY NEW HY"
+        headingBottom="of SUV styling"
+        primaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/exterior-overview01.webp"
+        secondaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/exterior-overview02.webp"
+        buttonText="Explore Styling"
+        buttonLink="https://www.toyotabharat.com/showroom/innova/features-exterior.html"
+        description="The new Innova HyCross has elevated its design to a new HY. The muscular SUV stance and stature of the new Innova HyCross is accentuated by its glamorous yet tough Front Grille and a raised Bonnet Line heralding a new era. Not only the frontage, the new Innova HyCross is crafted with strong character lines & fender flares to amplify the SUV presence from any angle."
+      />
+      <HyPerformance/>
+      <ExteriorOverview
+        headingTop="MY NEW HY"
+        headingBottom="of Plush Comfort"
+        primaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/comfort-img1.webp"
+        secondaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/comfort-img2.webp"
+        buttonText="Explore Comfort Features"
+        buttonLink="https://www.toyotabharat.com/showroom/innova/features-comfort.html"
+        description="The new Innova HyCross attains a new HY when it comes to comfort. The first-in-segment, Powered Ottoman Seats with Long Slide and Panoramic Sunroof with Mood Lighting and Roof Mounted A/C Vents takes comfort notches higher."
+      />
+
+      <ExteriorOverview
+        headingTop="MY NEW HY"
+        headingBottom="of Enhanced Convenience"
+        primaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/hy-connected-img.jpg"
+        buttonText="Explore Connected Features"
+        buttonLink="https://www.toyotabharat.com/showroom/innova/features-connected-services.html"
+        description="Take convenience to a new HY with advanced connected features like Remote Vehicle Ignition, Smartwatch Connectivity, Stolen Vehicle Tracker, Find My Car, Remote Windows, Trunk Close and the like. Empower yourself to control almost every aspect of the car."
+      />
+      <SafetyFeatures/>
+      <CarSpecs/>
+      <HyColors/>
+       <ArticlesSection data={hycrossArticles} title=" Articles" />
+      <ArticlesSection data={innovaArticles} title="Reviews" />
+    </>
+  );
+}

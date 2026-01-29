@@ -1,0 +1,79 @@
+
+import CarColorSelector from "./CarColorSelector";
+import Ecng from "./Ecng";
+import GlanzaAccessories from "./GlanzaAccessories";
+import GlanzaInstantLoan from "./GlanzaInstantLoan";
+import TechnicalSpecifications from "./TechnicalSpecifications";
+import ToyotaGlanza from "./ToyotaGlanza";
+import ZoomImageFormSection from "./ZoomImageFormSection";
+import { glanzaSections } from "./data/glanzaData";
+
+export default function GlanzaPage() {
+  const lastIndex = glanzaSections.length - 1;
+
+  return (
+    <>
+     <style>{`
+  * {
+    box-sizing: border-box;
+    ,"Ahmednager","Aizawal"
+  }
+
+  
+`}</style>
+      {/* All sections except last */}
+      {glanzaSections.slice(0, lastIndex).map((section, index) => (
+        <ToyotaGlanza
+          key={index}
+          backgroundColor={section.backgroundColor}
+          arrowStripColor={section.arrowStripColor}
+          title={section.title}
+          subtitle={section.subtitle}
+          sectionTitle={section.sectionTitle}
+          description={section.description}
+          images={section.images}
+          reverse={section.reverse}
+        />
+      ))}
+
+      {/* 🔥 ECNG SECTION (before last) */}
+      <Ecng />
+
+      {/* Last ToyotaGlanza section */}
+      <ToyotaGlanza
+        backgroundColor={glanzaSections[lastIndex].backgroundColor}
+        arrowStripColor={glanzaSections[lastIndex].arrowStripColor}
+        title={glanzaSections[lastIndex].title}
+        subtitle={glanzaSections[lastIndex].subtitle}
+        sectionTitle={glanzaSections[lastIndex].sectionTitle}
+        description={glanzaSections[lastIndex].description}
+        images={glanzaSections[lastIndex].images}
+        reverse={glanzaSections[lastIndex].reverse}
+      />
+      <CarColorSelector/>
+      <GlanzaAccessories/>
+      <TechnicalSpecifications/>
+      <ZoomImageFormSection
+        testDriveImage="https://static.toyotabharat.com/images/showroom/glanza/new/img-test-drive.png"
+        emiImage="https://static.toyotabharat.com/images/showroom/glanza/new/img-emi-calculator-new.jpg"
+        emiTitle="EMI CALCULATOR"
+        testDriveFields={[
+          { label: "---*", options: ["Mr","Mrs", "Ms","Dr"] },
+          { label: "Name*" },
+          { label: "Mobile Number*" },
+          { label: "Email*" },
+          { label: "Select City*", options: ["Agartala","Agra","Ahmedabad","Ahmednagar","Aizawal","Ajmer","Alappuzha"] },
+          { label: "Select Dealer*", options: [] },
+        ]}
+        emiFields={[
+          { label: "Select Fuel Type*", options: ["Petrol-Manual","Petrol-Automatic", "CNG-Manual"] },
+          { label: "Select Variant*" },
+          { label: "Select State*", options: ["Andhra Pradesh","Assam","Bihar"] },
+          { label: "Select City*", options: ["New Delhi", "Mumbai", "Bhubaneswar"] },
+        ]}
+      />
+
+      <GlanzaInstantLoan/>
+    </>
+  );
+}
