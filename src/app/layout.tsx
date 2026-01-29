@@ -86,7 +86,7 @@ export default function RootLayout({
         <JsonLd />
 
         <Navbar />
-        <main className="min-h-screen " >{children}</main>
+        <main >{children}</main>
         <Footer />
       </body>
     </html>

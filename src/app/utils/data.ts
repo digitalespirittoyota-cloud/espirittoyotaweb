@@ -61,7 +61,8 @@ const models = [
   {
     name: "Legender",
     image: "/models/legender.png",
-    link: "https://espirittoyota.co.in/showroom/fortuner/index-legender.html",
+    // link: "https://espirittoyota.co.in/showroom/fortuner/index-legender.html",
+    link:"/legender"
   },
   {
     name: "Camry",
