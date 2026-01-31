@@ -5,6 +5,7 @@ import InnovaCrystaDesign from "./InnovaCrystaDesign";
 import Specifications from "./Specifications";
 import InnovaColors from "./InnovaColors";
 import Gallery from "./Gallery";
+import GlanzaHero from "../glanza/GlanzaHero";
 
 const Page: React.FC = () => {
 
@@ -336,6 +337,10 @@ const unmatchedData = {
   };
   return (
     <div style={{ backgroundColor: "#fff" }}>
+      <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/innova-mmc/20-years-ruling-1600x850.jpg"
+      alt="Toyota Glanza"
+    />
       {cars.map((car, index) => (
         <CarShowcase
           key={index}

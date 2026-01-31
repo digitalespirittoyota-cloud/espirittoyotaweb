@@ -2,7 +2,9 @@
 import CarColorSelector from "./CarColorSelector";
 import Ecng from "./Ecng";
 import GlanzaAccessories from "./GlanzaAccessories";
+import GlanzaHero from "./GlanzaHero";
 import GlanzaInstantLoan from "./GlanzaInstantLoan";
+import SideHero from "./SideHero";
 import TechnicalSpecifications from "./TechnicalSpecifications";
 import ToyotaGlanza from "./ToyotaGlanza";
 import ZoomImageFormSection from "./ZoomImageFormSection";
@@ -22,7 +24,28 @@ export default function GlanzaPage() {
   
 `}</style>
       {/* All sections except last */}
+      <GlanzaHero
+      imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/glanza-product-page-banner-1920x807.jpg"
+      alt="Toyota Glanza"
+    />
+    <GlanzaHero
+      imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/img-where-ever-you-are-new.jpg"
+      alt="Toyota Glanza"
+    />
+    <GlanzaHero
+      imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/glanza-your-first-toyota-1920x807.jpg"
+      alt="Toyota Glanza"
+    />
+    <GlanzaHero
+      imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/c-goawesome/01-new.jpg"
+      alt="Toyota Glanza"
+    />
+    <SideHero
+  imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/img-style-statement-new.jpg"
+  alt="Glanza Ebook"
+/>
       {glanzaSections.slice(0, lastIndex).map((section, index) => (
+        
         <ToyotaGlanza
           key={index}
           backgroundColor={section.backgroundColor}
@@ -74,6 +97,10 @@ export default function GlanzaPage() {
       />
 
       <GlanzaInstantLoan/>
+      <SideHero
+  imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/img-ebook-now-new.jpg"
+  alt="Glanza Ebook"
+/>
     </>
   );
 }

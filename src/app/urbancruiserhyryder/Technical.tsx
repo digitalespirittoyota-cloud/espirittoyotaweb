@@ -51,11 +51,17 @@ const specifications: Record<Powertrain, Record<Variant, VariantSpecs>> = {
       ENGINE: {
         title: "ENGINE",
         data: [
-          { label: "Engine Capacity", value: "1490 cm³" },
-          { label: "Max Power", value: "68 kW @ 5500 rpm" },
-          { label: "Max Torque", value: "122 Nm @ 4400 rpm" },
-          { label: "Battery Type", value: "Lithium-ion" },
+          { label: "Engine Capacity - No of cylinders", value: "1490 cm³ / 3" },
+          { label: "Max Power", value: "68 kW (92.45PS) @ 5500 rpm" },
+          { label: "Max Torque", value: "122 Nm @ 4400 - 4800 rpm" },
+          { label: "Total system Max.Power", value: "85 kW (115.56PS)" },
+          { label: "Battery type", value: "Lithium-ion" },
           { label: "Battery Voltage", value: "177.6 V" },
+          { label: "Motor Generator type", value: "AC Synchronous Motor" },
+          { label: "Hybrid System Max. Power", value: "59 kW (80.2 PS) @ 3995 rpm" },
+          { label: "Hybrid System Max. Torque", value: "141 Nm @ 0 - 3995 rpm" },
+          { label: "OBD", value: "OBD2" },
+          { label: "ISG", value: "ISG -" },
         ],
       },
       TRANSMISSION: {
@@ -64,99 +70,19 @@ const specifications: Record<Powertrain, Record<Variant, VariantSpecs>> = {
       },
       DRIVE: {
         title: "DRIVE",
-        data: [{ label: "Drive Type", value: "2WD" }],
+        data: [{ label: "Type", value: "2WD" }],
       },
-    },
-    "HYBRID-G(O)": {
-      ENGINE: {
-        title: "ENGINE",
-        data: [
-          { label: "Engine Capacity", value: "1490 cm³" },
-          { label: "Max Power", value: "68 kW" },
-        ],
-      },
-    },
-    "HYBRID-S": {
-      ENGINE: {
-        title: "ENGINE",
-        data: [{ label: "Engine Capacity", value: "1490 cm³" }],
-      },
-    },
-  },
-
-  NEODRIVE: {
-    "NEODRIVE -E": {
-      ENGINE: {
-        title: "ENGINE",
-        data: [{ label: "Fuel Type", value: "Petrol" }],
-      },
-    },
-    "NEODRIVE-S": {
-      ENGINE: {
-        title: "ENGINE",
-        data: [{ label: "Fuel Type", value: "Petrol" }],
-      },
-    },
-    "NEODRIVE-G(O)": {
-      ENGINE: {
-        title: "ENGINE",
-        data: [{ label: "Fuel Type", value: "Petrol" }],
-      },
-    },
-    "NEODRIVE-V": {
-      ENGINE: {
-        title: "ENGINE",
-        data: [{ label: "Fuel Type", value: "Petrol" }],
-      },
-    },
-  },
-
-  "E-CNG": {
-    "E CNG-S": {
-      ENGINE: {
-        title: "ENGINE (E-CNG)",
-        data: [
-          { label: "Type", value: "Inline 4-cylinder" },
-          { label: "Displacement (cc)", value: "1462" },
-          { label: "Fuel Type", value: "Petrol + CNG" },
-          {
-            label: "Max Power",
-            value:
-              "74 kW (100.6 PS) @ 6000 rpm [Gasoline mode], 64.6 kW (87.8 PS) @ 5500 rpm [CNG mode]",
-          },
-          {
-            label: "Max Torque",
-            value:
-              "136 Nm @ 4400 rpm [Gasoline mode], 121.5 Nm @ 4200 rpm [CNG mode]",
-          },
-          { label: "OBD", value: "OBD2" },
-          { label: "ISG", value: "ISG" },
-        ],
-      },
-      TRANSMISSION: {
-        title: "TRANSMISSION",
-        data: [
-          { label: "Type", value: "5MT" },
-          { label: "Drive Type", value: "2WD" },
-        ],
-      },
-      "DIMENSIONS & WEIGHT": {
+      DIMENSIONS: {
         title: "DIMENSIONS & WEIGHT",
         data: [
-          { label: "Length (mm)", value: "4365" },
-          { label: "Width (mm)", value: "1795" },
-          { label: "Height (mm)", value: "1645" },
-          { label: "Wheelbase (mm)", value: "2600" },
-          { label: "Turning Radius (m)", value: "5.4" },
-          {
-            label: "Fuel Tank Capacity",
-            value:
-              "Gasoline: 0.045 m3 (45 l), CNG: 0.055 m3 (55 l) [Water equivalent]",
-          },
-          { label: "Fuel Efficiency", value: "26.6 km/kg [CNG mode]" },
+          { label: "Length x Width x Height", value: "4365 mm x 1795 mm x 1645 mm" },
+          { label: "Wheelbase", value: "2600 mm" },
+          { label: "Turning radius", value: "5.4 m" },
+          { label: "Fuel Tank capacity", value: "0.045 m³ (45 L)" },
+          { label: "Fuel Efficiency", value: "27.97 kmpl" },
           { label: "Seating Capacity", value: "5" },
-          { label: "Kerb Weight (kg)", value: "1245" },
-          { label: "Gross Vehicle Weight (kg)", value: "1705" },
+          { label: "Kerb weight", value: "1255 - 1285 kg" },
+          { label: "Gross Weight", value: "1755 kg" },
         ],
       },
       SUSPENSION: {
@@ -174,6 +100,1255 @@ const specifications: Record<Powertrain, Record<Variant, VariantSpecs>> = {
           { label: "EPB", value: "-" },
         ],
       },
+      WHEEL_TYRE: {
+        title: "WHEEL & TYRE",
+        data: [
+          { label: "Size", value: "215 / 60 R17 (43.18 cm)" },
+          { label: "Wheel Type", value: "Steel wheel with Full wheel cap" },
+          { label: "Tire repair kit", value: "Included" },
+        ],
+      },
+      EXTERIOR: {
+        title: "EXTERIOR",
+        data: [
+          { label: "Headlamp", value: "Projector Bi-Halogen (w/chrome plating)" },
+          { label: "LED Position lamp", value: "Included" },
+          { label: "Twin LED Day-time running lamp / Side turn lamp", value: "Included" },
+          { label: "Auto Headlight", value: "-" },
+          { label: "Headlight levelling (manual)", value: "Included" },
+          { label: "LED Tail Stop Lamp", value: "Included" },
+          { label: "High mount stop lamp", value: "Included" },
+          { label: "Follow me home headlamp", value: "-" },
+          { label: "ORVM with turn indicator", value: "Included" },
+          { label: "Front Upper Grill", value: "Unique crystal acrylic type" },
+          { label: "Black wheel arch cladding", value: "Front & rear" },
+          { label: "Back door garnish", value: "Chrome" },
+          { label: "Roof Rails", value: "Silver" },
+          { label: "Skid Plate", value: "Front & Rear Silver" },
+          { label: "Front Variable Intermittent wiper", value: "-" },
+          { label: "Rear window wiper & washer", value: "-" },
+          { label: "Green Glass", value: "Front Windshield / Doors / Quarter / Back Door" },
+          { label: "Optional Stylish Dual Tone Exterior", value: "-" },
+          { label: "Roof end spoiler", value: "Included" },
+          { label: "Side under protection garnish", value: "Included" },
+          { label: "Sharkfin Antenna", value: "Included" },
+          { label: "Chrome belt line garnish", value: "-" },
+          { label: "Body color outside door handle", value: "Included" },
+        ],
+      },
+      INTERIOR: {
+        title: "INTERIOR",
+        data: [
+          { label: "Interior color", value: "Dual tone Black x Brown" },
+          { label: "Ambient lighting", value: "-" },
+          { label: "Smart Playcast Touchscreen Audio", value: "7 inch, MP3/AM/FM/Bluetooth/USB/Apple CarPlay/Android Auto" },
+          { label: "Arkamys Sound tuning", value: "-" },
+          { label: "Premium Audio", value: "-" },
+          { label: "Speakers", value: "4 Speakers + 2 Tweeters" },
+          { label: "Information display", value: "TFT Color 7 inch" },
+          { label: "Soft touch IP with premium stitch", value: "-" },
+          { label: "Chrome inside door handle", value: "Included" },
+          { label: "IP Garnish", value: "Gloss Silver" },
+          { label: "Front ventilation knob", value: "Satin chrome" },
+          { label: "Centre ventilation knob & fin", value: "Satin silver" },
+          { label: "Steering Garnish", value: "Satin chrome" },
+          { label: "Shift Garnish", value: "Gloss black paint + Satin silver (Resin)" },
+          { label: "Hazard Garnish (Outer)", value: "Satin silver (Resin)" },
+          { label: "Air conditioner Control Panel", value: "Matte black" },
+          { label: "Rear AC vent Garnish & Knob", value: "Satin chrome (Resin)" },
+          { label: "Front door garnish", value: "Silver" },
+          { label: "Door armrest", value: "Black Fabric" },
+          { label: "Switch bezel", value: "-" },
+          { label: "Artificial Leather seats", value: "Brown fabric with perforations" },
+          { label: "Leather Steering wheel", value: "-" },
+          { label: "Assist Grips", value: "3 Units" },
+          { label: "Luggage Shelf Strings", value: "-" },
+          { label: "Spot map lamp", value: "Roof front" },
+          { label: "Reading Lamp", value: "One on each side of the roof" },
+          { label: "Trunk/Luggage room lamp", value: "Included" },
+          { label: "Glove box light", value: "-" },
+          { label: "Front footwell light", value: "Driver & Co driver side" },
+          { label: "Courtesy lamp", value: "-" },
+        ],
+      },
+      SAFETY: {
+        title: "SAFETY & SECURITY",
+        data: [
+          { label: "Dual Front Airbags", value: "Driver + Co Driver" },
+          { label: "Front Side and Curtain Airbag", value: "Included" },
+          { label: "Surround View Monitor", value: "360 degree camera -" },
+          { label: "Reverse Parking Camera", value: "Included" },
+          { label: "Front seatbelt pre-tension & force limiter", value: "Included" },
+          { label: "Adjustable shoulder anchor", value: "Front seatbelts" },
+          { label: "Rear seats belts type", value: "Side:3 points / Center:3 points" },
+          { label: "Seat belt reminder", value: "Front & Rear Lamp + Buzzer" },
+          { label: "ISOFIX Child Seat Restraint System", value: "Included" },
+          { label: "ABS with EBD", value: "Included" },
+          { label: "Vehicle Stability Control", value: "Included" },
+          { label: "Hill Hold Control", value: "Included" },
+          { label: "Hill descendant", value: "-" },
+          { label: "Tire-pressure monitoring system (TPMS)", value: "Included" },
+          { label: "Immobilizer", value: "Included" },
+          { label: "Advanced Body Structure (TECT Body)", value: "Included" },
+          { label: "Side Impact Protection Beam", value: "Included" },
+          { label: "Pedal release system", value: "Included" },
+          { label: "Rear Parking Sensors", value: "Included" },
+          { label: "Day/night rear view mirror", value: "Manual" },
+          { label: "Child-proof rear door locks", value: "Included" },
+          { label: "Warning Lamp/ Reminder", value: "Low Fuel, Door Ajar, Headlamp On" },
+          { label: "Speed Warning Buzzer", value: "Included" },
+        ],
+      },
+      COMFORT: {
+        title: "COMFORT & CONVENIENCE",
+        data: [
+          { label: "Panoramic Roof", value: "-" },
+          { label: "Head-up Display", value: "-" },
+          { label: "Front Wireless Charger", value: "-" },
+          { label: "Toyota i-Connect", value: "Included" },
+          { label: "Front sliding armrest", value: "With storage" },
+          { label: "USB Ports", value: "Front x1 / Rear x2" },
+          { label: "USB Charger Rear", value: "High speed type 15w Type C x2" },
+          { label: "Adjustable Tilt & Telescopic steering", value: "Included" },
+          { label: "Power Steering (EPS)", value: "Included" },
+          { label: "Cruise Control", value: "Included" },
+          { label: "Steering mounted commands", value: "Audio, BT, Cruise control" },
+          { label: "Paddle Shift", value: "-" },
+          { label: "Auto air conditioner", value: "Included" },
+          { label: "Rear AC vents", value: "Included" },
+          { label: "PM2.5 filter & display", value: "AQI Display in Infotainment DA" },
+          { label: "Ventilated seats (D+P)", value: "-" },
+          { label: "Drive mode switch", value: "THS" },
+          { label: "Driver seat height adjust", value: "Included" },
+          { label: "Seat back pocket", value: "D+P" },
+          { label: "Separately folding rear seat backs & cushions", value: "60/40" },
+          { label: "Reclining rear seats", value: "Included" },
+          { label: "Rear headrest", value: "Removable type (3 Units)" },
+          { label: "Rear center armrest with cupholder", value: "Included" },
+          { label: "Power Seat", value: "-" },
+          { label: "Keyless Entry", value: "Included" },
+          { label: "Push start/stop button", value: "Included" },
+          { label: "Power door locks (Central Locking)", value: "Included" },
+          { label: "Front & rear door pet bottle holder", value: "1000ml" },
+          { label: "Power windows", value: "D-side auto up/down" },
+          { label: "Auto folding outside mirror", value: "-" },
+          { label: "Electric outside mirrors", value: "Electric fold" },
+          { label: "D+P vanity mirror", value: "Included" },
+          { label: "D+P vanity mirror lamp", value: "Included" },
+          { label: "D+P ticket holder", value: "Included" },
+          { label: "Centre console with cupholder", value: "2 cups" },
+          { label: "Accessory socket (Center console)", value: "Included" },
+          { label: "Accessory socket (Luggage room)", value: "Included" },
+          { label: "Gear Shift indicator", value: "-" },
+          { label: "Driver footrest", value: "Included" },
+          { label: "Rear door Sunshade", value: "Included" },
+        ],
+      },
+    },
+    "HYBRID-G(O)": {
+     ENGINE: {
+        title: "ENGINE",
+        data: [
+          { label: "Engine Capacity - No of cylinders", value: "1490 cm³ / 3" },
+          { label: "Max Power", value: "68 kW (92.45PS) @ 5500 rpm" },
+          { label: "Max Torque", value: "122 Nm @ 4400 - 4800 rpm" },
+          { label: "Total system Max.Power", value: "85 kW (115.56PS)" },
+          { label: "Battery type", value: "Lithium-ion" },
+          { label: "Battery Voltage", value: "177.6 V" },
+          { label: "Motor Generator type", value: "AC Synchronous Motor" },
+          { label: "Hybrid System Max. Power", value: "59 kW (80.2 PS) @ 3995 rpm" },
+          { label: "Hybrid System Max. Torque", value: "141 Nm @ 0 - 3995 rpm" },
+          { label: "OBD", value: "OBD2" },
+          { label: "ISG", value: "ISG -" },
+        ],
+      },
+      TRANSMISSION: {
+        title: "TRANSMISSION",
+        data: [{ label: "Type", value: "e-Drive" }],
+      },
+      DRIVE: {
+        title: "DRIVE",
+        data: [{ label: "Type", value: "2WD" }],
+      },
+      DIMENSIONS: {
+        title: "DIMENSIONS & WEIGHT",
+        data: [
+          { label: "Length x Width x Height", value: "4365 mm x 1795 mm x 1645 mm" },
+          { label: "Wheelbase", value: "2600 mm" },
+          { label: "Turning radius", value: "5.4 m" },
+          { label: "Fuel Tank capacity", value: "0.045 m³ (45 L)" },
+          { label: "Fuel Efficiency", value: "27.97 kmpl" },
+          { label: "Seating Capacity", value: "5" },
+          { label: "Kerb weight", value: "1255 - 1285 kg" },
+          { label: "Gross Weight", value: "1755 kg" },
+        ],
+      },
+      SUSPENSION: {
+        title: "SUSPENSION",
+        data: [
+          { label: "Front", value: "MacPherson strut" },
+          { label: "Rear", value: "Torsion beam" },
+        ],
+      },
+      BRAKES: {
+        title: "BRAKES",
+        data: [
+          { label: "Front", value: "Ventilated disc" },
+          { label: "Rear", value: "Solid disc" },
+          { label: "EPB", value: "-" },
+        ],
+      },
+      WHEEL_TYRE: {
+        title: "WHEEL & TYRE",
+        data: [
+          { label: "Size", value: "215 / 60 R17 (43.18 cm)" },
+          { label: "Wheel Type", value: "Steel wheel with Full wheel cap" },
+          { label: "Tire repair kit", value: "Included" },
+        ],
+      },
+      EXTERIOR: {
+        title: "EXTERIOR",
+        data: [
+          { label: "Headlamp", value: "Projector Bi-Halogen (w/chrome plating)" },
+          { label: "LED Position lamp", value: "Included" },
+          { label: "Twin LED Day-time running lamp / Side turn lamp", value: "Included" },
+          { label: "Auto Headlight", value: "-" },
+          { label: "Headlight levelling (manual)", value: "Included" },
+          { label: "LED Tail Stop Lamp", value: "Included" },
+          { label: "High mount stop lamp", value: "Included" },
+          { label: "Follow me home headlamp", value: "-" },
+          { label: "ORVM with turn indicator", value: "Included" },
+          { label: "Front Upper Grill", value: "Unique crystal acrylic type" },
+          { label: "Black wheel arch cladding", value: "Front & rear" },
+          { label: "Back door garnish", value: "Chrome" },
+          { label: "Roof Rails", value: "Silver" },
+          { label: "Skid Plate", value: "Front & Rear Silver" },
+          { label: "Front Variable Intermittent wiper", value: "-" },
+          { label: "Rear window wiper & washer", value: "-" },
+          { label: "Green Glass", value: "Front Windshield / Doors / Quarter / Back Door" },
+          { label: "Optional Stylish Dual Tone Exterior", value: "-" },
+          { label: "Roof end spoiler", value: "Included" },
+          { label: "Side under protection garnish", value: "Included" },
+          { label: "Sharkfin Antenna", value: "Included" },
+          { label: "Chrome belt line garnish", value: "-" },
+          { label: "Body color outside door handle", value: "Included" },
+        ],
+      },
+      INTERIOR: {
+        title: "INTERIOR",
+        data: [
+          { label: "Interior color", value: "Dual tone Black x Brown" },
+          { label: "Ambient lighting", value: "-" },
+          { label: "Smart Playcast Touchscreen Audio", value: "7 inch, MP3/AM/FM/Bluetooth/USB/Apple CarPlay/Android Auto" },
+          { label: "Arkamys Sound tuning", value: "-" },
+          { label: "Premium Audio", value: "-" },
+          { label: "Speakers", value: "4 Speakers + 2 Tweeters" },
+          { label: "Information display", value: "TFT Color 7 inch" },
+          { label: "Soft touch IP with premium stitch", value: "-" },
+          { label: "Chrome inside door handle", value: "Included" },
+          { label: "IP Garnish", value: "Gloss Silver" },
+          { label: "Front ventilation knob", value: "Satin chrome" },
+          { label: "Centre ventilation knob & fin", value: "Satin silver" },
+          { label: "Steering Garnish", value: "Satin chrome" },
+          { label: "Shift Garnish", value: "Gloss black paint + Satin silver (Resin)" },
+          { label: "Hazard Garnish (Outer)", value: "Satin silver (Resin)" },
+          { label: "Air conditioner Control Panel", value: "Matte black" },
+          { label: "Rear AC vent Garnish & Knob", value: "Satin chrome (Resin)" },
+          { label: "Front door garnish", value: "Silver" },
+          { label: "Door armrest", value: "Black Fabric" },
+          { label: "Switch bezel", value: "-" },
+          { label: "Artificial Leather seats", value: "Brown fabric with perforations" },
+          { label: "Leather Steering wheel", value: "-" },
+          { label: "Assist Grips", value: "3 Units" },
+          { label: "Luggage Shelf Strings", value: "-" },
+          { label: "Spot map lamp", value: "Roof front" },
+          { label: "Reading Lamp", value: "One on each side of the roof" },
+          { label: "Trunk/Luggage room lamp", value: "Included" },
+          { label: "Glove box light", value: "-" },
+          { label: "Front footwell light", value: "Driver & Co driver side" },
+          { label: "Courtesy lamp", value: "-" },
+        ],
+      },
+      SAFETY: {
+        title: "SAFETY & SECURITY",
+        data: [
+          { label: "Dual Front Airbags", value: "Driver + Co Driver" },
+          { label: "Front Side and Curtain Airbag", value: "Included" },
+          { label: "Surround View Monitor", value: "360 degree camera -" },
+          { label: "Reverse Parking Camera", value: "Included" },
+          { label: "Front seatbelt pre-tension & force limiter", value: "Included" },
+          { label: "Adjustable shoulder anchor", value: "Front seatbelts" },
+          { label: "Rear seats belts type", value: "Side:3 points / Center:3 points" },
+          { label: "Seat belt reminder", value: "Front & Rear Lamp + Buzzer" },
+          { label: "ISOFIX Child Seat Restraint System", value: "Included" },
+          { label: "ABS with EBD", value: "Included" },
+          { label: "Vehicle Stability Control", value: "Included" },
+          { label: "Hill Hold Control", value: "Included" },
+          { label: "Hill descendant", value: "-" },
+          { label: "Tire-pressure monitoring system (TPMS)", value: "Included" },
+          { label: "Immobilizer", value: "Included" },
+          { label: "Advanced Body Structure (TECT Body)", value: "Included" },
+          { label: "Side Impact Protection Beam", value: "Included" },
+          { label: "Pedal release system", value: "Included" },
+          { label: "Rear Parking Sensors", value: "Included" },
+          { label: "Day/night rear view mirror", value: "Manual" },
+          { label: "Child-proof rear door locks", value: "Included" },
+          { label: "Warning Lamp/ Reminder", value: "Low Fuel, Door Ajar, Headlamp On" },
+          { label: "Speed Warning Buzzer", value: "Included" },
+        ],
+      },
+      COMFORT: {
+        title: "COMFORT & CONVENIENCE",
+        data: [
+          { label: "Panoramic Roof", value: "-" },
+          { label: "Head-up Display", value: "-" },
+          { label: "Front Wireless Charger", value: "-" },
+          { label: "Toyota i-Connect", value: "Included" },
+          { label: "Front sliding armrest", value: "With storage" },
+          { label: "USB Ports", value: "Front x1 / Rear x2" },
+          { label: "USB Charger Rear", value: "High speed type 15w Type C x2" },
+          { label: "Adjustable Tilt & Telescopic steering", value: "Included" },
+          { label: "Power Steering (EPS)", value: "Included" },
+          { label: "Cruise Control", value: "Included" },
+          { label: "Steering mounted commands", value: "Audio, BT, Cruise control" },
+          { label: "Paddle Shift", value: "-" },
+          { label: "Auto air conditioner", value: "Included" },
+          { label: "Rear AC vents", value: "Included" },
+          { label: "PM2.5 filter & display", value: "AQI Display in Infotainment DA" },
+          { label: "Ventilated seats (D+P)", value: "-" },
+          { label: "Drive mode switch", value: "THS" },
+          { label: "Driver seat height adjust", value: "Included" },
+          { label: "Seat back pocket", value: "D+P" },
+          { label: "Separately folding rear seat backs & cushions", value: "60/40" },
+          { label: "Reclining rear seats", value: "Included" },
+          { label: "Rear headrest", value: "Removable type (3 Units)" },
+          { label: "Rear center armrest with cupholder", value: "Included" },
+          { label: "Power Seat", value: "-" },
+          { label: "Keyless Entry", value: "Included" },
+          { label: "Push start/stop button", value: "Included" },
+          { label: "Power door locks (Central Locking)", value: "Included" },
+          { label: "Front & rear door pet bottle holder", value: "1000ml" },
+          { label: "Power windows", value: "D-side auto up/down" },
+          { label: "Auto folding outside mirror", value: "-" },
+          { label: "Electric outside mirrors", value: "Electric fold" },
+          { label: "D+P vanity mirror", value: "Included" },
+          { label: "D+P vanity mirror lamp", value: "Included" },
+          { label: "D+P ticket holder", value: "Included" },
+          { label: "Centre console with cupholder", value: "2 cups" },
+          { label: "Accessory socket (Center console)", value: "Included" },
+          { label: "Accessory socket (Luggage room)", value: "Included" },
+          { label: "Gear Shift indicator", value: "-" },
+          { label: "Driver footrest", value: "Included" },
+          { label: "Rear door Sunshade", value: "Included" },
+        ],
+      },
+    },
+      "HYBRID-S": {
+      ENGINE: {
+        title: "ENGINE",
+        data: [
+          { label: "Engine Capacity - No of cylinders", value: "1490 cm³ / 3" },
+          { label: "Max Power", value: "68 kW (92.45PS) @ 5500 rpm" },
+          { label: "Max Torque", value: "122 Nm @ 4400 - 4800 rpm" },
+          { label: "Total system Max.Power", value: "85 kW (115.56PS)" },
+          { label: "Battery type", value: "Lithium-ion" },
+          { label: "Battery Voltage", value: "177.6 V" },
+          { label: "Motor Generator type", value: "AC Synchronous Motor" },
+          { label: "Hybrid System Max. Power", value: "59 kW (80.2 PS) @ 3995 rpm" },
+          { label: "Hybrid System Max. Torque", value: "141 Nm @ 0 - 3995 rpm" },
+          { label: "OBD", value: "OBD2" },
+          { label: "ISG", value: "ISG -" },
+        ],
+      },
+      TRANSMISSION: {
+        title: "TRANSMISSION",
+        data: [{ label: "Type", value: "e-Drive" }],
+      },
+      DRIVE: {
+        title: "DRIVE",
+        data: [{ label: "Type", value: "2WD" }],
+      },
+      DIMENSIONS: {
+        title: "DIMENSIONS & WEIGHT",
+        data: [
+          { label: "Length x Width x Height", value: "4365 mm x 1795 mm x 1645 mm" },
+          { label: "Wheelbase", value: "2600 mm" },
+          { label: "Turning radius", value: "5.4 m" },
+          { label: "Fuel Tank capacity", value: "0.045 m³ (45 L)" },
+          { label: "Fuel Efficiency", value: "27.97 kmpl" },
+          { label: "Seating Capacity", value: "5" },
+          { label: "Kerb weight", value: "1255 - 1285 kg" },
+          { label: "Gross Weight", value: "1755 kg" },
+        ],
+      },
+      SUSPENSION: {
+        title: "SUSPENSION",
+        data: [
+          { label: "Front", value: "MacPherson strut" },
+          { label: "Rear", value: "Torsion beam" },
+        ],
+      },
+      BRAKES: {
+        title: "BRAKES",
+        data: [
+          { label: "Front", value: "Ventilated disc" },
+          { label: "Rear", value: "Solid disc" },
+          { label: "EPB", value: "-" },
+        ],
+      },
+      WHEEL_TYRE: {
+        title: "WHEEL & TYRE",
+        data: [
+          { label: "Size", value: "215 / 60 R17 (43.18 cm)" },
+          { label: "Wheel Type", value: "Steel wheel with Full wheel cap" },
+          { label: "Tire repair kit", value: "Included" },
+        ],
+      },
+      EXTERIOR: {
+        title: "EXTERIOR",
+        data: [
+          { label: "Headlamp", value: "Projector Bi-Halogen (w/chrome plating)" },
+          { label: "LED Position lamp", value: "Included" },
+          { label: "Twin LED Day-time running lamp / Side turn lamp", value: "Included" },
+          { label: "Auto Headlight", value: "-" },
+          { label: "Headlight levelling (manual)", value: "Included" },
+          { label: "LED Tail Stop Lamp", value: "Included" },
+          { label: "High mount stop lamp", value: "Included" },
+          { label: "Follow me home headlamp", value: "-" },
+          { label: "ORVM with turn indicator", value: "Included" },
+          { label: "Front Upper Grill", value: "Unique crystal acrylic type" },
+          { label: "Black wheel arch cladding", value: "Front & rear" },
+          { label: "Back door garnish", value: "Chrome" },
+          { label: "Roof Rails", value: "Silver" },
+          { label: "Skid Plate", value: "Front & Rear Silver" },
+          { label: "Front Variable Intermittent wiper", value: "-" },
+          { label: "Rear window wiper & washer", value: "-" },
+          { label: "Green Glass", value: "Front Windshield / Doors / Quarter / Back Door" },
+          { label: "Optional Stylish Dual Tone Exterior", value: "-" },
+          { label: "Roof end spoiler", value: "Included" },
+          { label: "Side under protection garnish", value: "Included" },
+          { label: "Sharkfin Antenna", value: "Included" },
+          { label: "Chrome belt line garnish", value: "-" },
+          { label: "Body color outside door handle", value: "Included" },
+        ],
+      },
+      INTERIOR: {
+        title: "INTERIOR",
+        data: [
+          { label: "Interior color", value: "Dual tone Black x Brown" },
+          { label: "Ambient lighting", value: "-" },
+          { label: "Smart Playcast Touchscreen Audio", value: "7 inch, MP3/AM/FM/Bluetooth/USB/Apple CarPlay/Android Auto" },
+          { label: "Arkamys Sound tuning", value: "-" },
+          { label: "Premium Audio", value: "-" },
+          { label: "Speakers", value: "4 Speakers + 2 Tweeters" },
+          { label: "Information display", value: "TFT Color 7 inch" },
+          { label: "Soft touch IP with premium stitch", value: "-" },
+          { label: "Chrome inside door handle", value: "Included" },
+          { label: "IP Garnish", value: "Gloss Silver" },
+          { label: "Front ventilation knob", value: "Satin chrome" },
+          { label: "Centre ventilation knob & fin", value: "Satin silver" },
+          { label: "Steering Garnish", value: "Satin chrome" },
+          { label: "Shift Garnish", value: "Gloss black paint + Satin silver (Resin)" },
+          { label: "Hazard Garnish (Outer)", value: "Satin silver (Resin)" },
+          { label: "Air conditioner Control Panel", value: "Matte black" },
+          { label: "Rear AC vent Garnish & Knob", value: "Satin chrome (Resin)" },
+          { label: "Front door garnish", value: "Silver" },
+          { label: "Door armrest", value: "Black Fabric" },
+          { label: "Switch bezel", value: "-" },
+          { label: "Artificial Leather seats", value: "Brown fabric with perforations" },
+          { label: "Leather Steering wheel", value: "-" },
+          { label: "Assist Grips", value: "3 Units" },
+          { label: "Luggage Shelf Strings", value: "-" },
+          { label: "Spot map lamp", value: "Roof front" },
+          { label: "Reading Lamp", value: "One on each side of the roof" },
+          { label: "Trunk/Luggage room lamp", value: "Included" },
+          { label: "Glove box light", value: "-" },
+          { label: "Front footwell light", value: "Driver & Co driver side" },
+          { label: "Courtesy lamp", value: "-" },
+        ],
+      },
+      SAFETY: {
+        title: "SAFETY & SECURITY",
+        data: [
+          { label: "Dual Front Airbags", value: "Driver + Co Driver" },
+          { label: "Front Side and Curtain Airbag", value: "Included" },
+          { label: "Surround View Monitor", value: "360 degree camera -" },
+          { label: "Reverse Parking Camera", value: "Included" },
+          { label: "Front seatbelt pre-tension & force limiter", value: "Included" },
+          { label: "Adjustable shoulder anchor", value: "Front seatbelts" },
+          { label: "Rear seats belts type", value: "Side:3 points / Center:3 points" },
+          { label: "Seat belt reminder", value: "Front & Rear Lamp + Buzzer" },
+          { label: "ISOFIX Child Seat Restraint System", value: "Included" },
+          { label: "ABS with EBD", value: "Included" },
+          { label: "Vehicle Stability Control", value: "Included" },
+          { label: "Hill Hold Control", value: "Included" },
+          { label: "Hill descendant", value: "-" },
+          { label: "Tire-pressure monitoring system (TPMS)", value: "Included" },
+          { label: "Immobilizer", value: "Included" },
+          { label: "Advanced Body Structure (TECT Body)", value: "Included" },
+          { label: "Side Impact Protection Beam", value: "Included" },
+          { label: "Pedal release system", value: "Included" },
+          { label: "Rear Parking Sensors", value: "Included" },
+          { label: "Day/night rear view mirror", value: "Manual" },
+          { label: "Child-proof rear door locks", value: "Included" },
+          { label: "Warning Lamp/ Reminder", value: "Low Fuel, Door Ajar, Headlamp On" },
+          { label: "Speed Warning Buzzer", value: "Included" },
+        ],
+      },
+      COMFORT: {
+        title: "COMFORT & CONVENIENCE",
+        data: [
+          { label: "Panoramic Roof", value: "-" },
+          { label: "Head-up Display", value: "-" },
+          { label: "Front Wireless Charger", value: "-" },
+          { label: "Toyota i-Connect", value: "Included" },
+          { label: "Front sliding armrest", value: "With storage" },
+          { label: "USB Ports", value: "Front x1 / Rear x2" },
+          { label: "USB Charger Rear", value: "High speed type 15w Type C x2" },
+          { label: "Adjustable Tilt & Telescopic steering", value: "Included" },
+          { label: "Power Steering (EPS)", value: "Included" },
+          { label: "Cruise Control", value: "Included" },
+          { label: "Steering mounted commands", value: "Audio, BT, Cruise control" },
+          { label: "Paddle Shift", value: "-" },
+          { label: "Auto air conditioner", value: "Included" },
+          { label: "Rear AC vents", value: "Included" },
+          { label: "PM2.5 filter & display", value: "AQI Display in Infotainment DA" },
+          { label: "Ventilated seats (D+P)", value: "-" },
+          { label: "Drive mode switch", value: "THS" },
+          { label: "Driver seat height adjust", value: "Included" },
+          { label: "Seat back pocket", value: "D+P" },
+          { label: "Separately folding rear seat backs & cushions", value: "60/40" },
+          { label: "Reclining rear seats", value: "Included" },
+          { label: "Rear headrest", value: "Removable type (3 Units)" },
+          { label: "Rear center armrest with cupholder", value: "Included" },
+          { label: "Power Seat", value: "-" },
+          { label: "Keyless Entry", value: "Included" },
+          { label: "Push start/stop button", value: "Included" },
+          { label: "Power door locks (Central Locking)", value: "Included" },
+          { label: "Front & rear door pet bottle holder", value: "1000ml" },
+          { label: "Power windows", value: "D-side auto up/down" },
+          { label: "Auto folding outside mirror", value: "-" },
+          { label: "Electric outside mirrors", value: "Electric fold" },
+          { label: "D+P vanity mirror", value: "Included" },
+          { label: "D+P vanity mirror lamp", value: "Included" },
+          { label: "D+P ticket holder", value: "Included" },
+          { label: "Centre console with cupholder", value: "2 cups" },
+          { label: "Accessory socket (Center console)", value: "Included" },
+          { label: "Accessory socket (Luggage room)", value: "Included" },
+          { label: "Gear Shift indicator", value: "-" },
+          { label: "Driver footrest", value: "Included" },
+          { label: "Rear door Sunshade", value: "Included" },
+        ],
+      },
+    },
+  
+    },
+
+
+  NEODRIVE: {
+    "NEODRIVE -E": {
+      ENGINE: {
+  title: "ENGINE",
+  data: [
+    { label: "Displacement", value: "1462 cc" },
+    { label: "Fuel Type", value: "Petrol" },
+    { label: "Max Power", value: "75.8 kW (103.06 PS) @ 6000 rpm" },
+    { label: "Max Torque", value: "136.8 Nm @ 4400 rpm" },
+    { label: "OBD", value: "OBD2" },
+    { label: "ISG", value: "12V – 6Ah (Li-ion)" },
+  ],
+},
+TRANSMISSION: {
+  title: "TRANSMISSION & DRIVE",
+  data: [
+    { label: "Transmission Type", value: "5MT" },
+    { label: "Drive Type", value: "2WD" },
+  ],
+},
+DIMENSIONS: {
+  title: "DIMENSIONS & WEIGHT",
+  data: [
+    { label: "Length", value: "4365 mm" },
+    { label: "Width", value: "1795 mm" },
+    { label: "Height", value: "1645 mm" },
+    { label: "Wheelbase", value: "2600 mm" },
+    { label: "Turning Radius", value: "5.4 m" },
+    { label: "Seating Capacity", value: "5" },
+  ],
+},
+FUEL: {
+  title: "FUEL",
+  data: [
+    { label: "Fuel Tank Capacity", value: "45 L" },
+    { label: "Fuel Efficiency", value: "21.11 km/l (2WD 5MT)" },
+  ],
+},
+
+CHASSIS: {
+  title: "SUSPENSION, BRAKES & WHEELS",
+  data: [
+    { label: "Front Suspension", value: "MacPherson Strut" },
+    { label: "Rear Suspension", value: "Torsion Beam" },
+    { label: "Front Brakes", value: "Ventilated Disc" },
+    { label: "Rear Brakes", value: "Solid Disc" },
+    { label: "Wheel & Tyre Size", value: "215 / 60 R17" },
+    { label: "Wheel Type", value: "Steel Wheel with Full Wheel Cap" },
+    { label: "Tyre Repair Kit", value: "✔" },
+    { label: "EPB", value: "-" },
+  ],
+},
+
+EXTERIOR: {
+  title: "EXTERIOR",
+  data: [
+    { label: "Projector Headlamps", value: "Bi-Halogen" },
+    { label: "LED Position Lamp", value: "✔" },
+    { label: "Twin LED DRL / Turn Lamp", value: "✔" },
+    { label: "Auto Headlight", value: "-" },
+    { label: "Headlamp Levelling", value: "Manual" },
+    { label: "LED Tail Stop Lamp", value: "✔" },
+    { label: "High Mount Stop Lamp", value: "✔" },
+    { label: "Follow Me Home Headlamp", value: "-" },
+    { label: "ORVM with Turn Indicator", value: "✔" },
+    { label: "Front Upper Grille (Crystal Acrylic)", value: "-" },
+    { label: "Black Wheel Arch Cladding", value: "✔" },
+    { label: "Back Door Garnish", value: "Silver" },
+    { label: "Roof Rails", value: "-" },
+    { label: "Skid Plate (Front & Rear)", value: "Silver" },
+    { label: "Front Intermittent Wiper", value: "-" },
+    { label: "Rear Wiper & Washer", value: "-" },
+    { label: "Green Tinted Glass", value: "✔" },
+    { label: "Roof End Spoiler", value: "✔" },
+    { label: "Side Under Protection Garnish", value: "✔" },
+    { label: "Sharkfin Antenna", value: "✔" },
+    { label: "Chrome Belt Line Garnish", value: "-" },
+    { label: "Outside Door Handle", value: "Body Colour" },
+  ],
+},
+
+SAFETY: {
+  title: "SAFETY & SECURITY",
+  data: [
+    { label: "Airbags", value: "Dual Front" },
+    { label: "Side & Curtain Airbags", value: "-" },
+    { label: "ABS with EBD", value: "✔" },
+    { label: "Vehicle Stability Control", value: "✔" },
+    { label: "Hill Hold Control", value: "✔" },
+    { label: "Hill Descent Control", value: "-" },
+    { label: "TPMS", value: "-" },
+    { label: "ISOFIX Child Seat Mount", value: "✔" },
+    { label: "Rear Parking Sensors", value: "✔" },
+    { label: "Reverse Parking Camera", value: "-" },
+    { label: "Day / Night IRVM", value: "Manual" },
+    { label: "Immobilizer", value: "✔" },
+    { label: "Speed Warning Buzzer", value: "✔" },
+  ],
+},
+INTERIOR: {
+  title: "INTERIOR",
+  data: [
+    { label: "Interior Theme", value: "Black / Black-Brown" },
+    { label: "Ambient Lighting", value: "-" },
+    { label: "Touchscreen Infotainment", value: "-" },
+    { label: "Speakers", value: "2 (Front)" },
+    { label: "Tweeters", value: "-" },
+    { label: "MID Display", value: "4.2-inch TFT" },
+    { label: "Seat Upholstery", value: "Fabric" },
+    { label: "Leather Steering Wheel", value: "-" },
+    { label: "Rear AC Vent", value: "-" },
+    { label: "Front Footwell Lamp", value: "-" },
+    { label: "Glove Box Lamp", value: "-" },
+    { label: "Luggage Room Lamp", value: "-" },
+  ],
+},
+COMFORT: {
+  title: "COMFORT & CONVENIENCE",
+  data: [
+    { label: "Power Steering", value: "EPS" },
+    { label: "Manual AC", value: "✔" },
+    { label: "Auto AC", value: "✔" },
+    { label: "Steering Adjustment", value: "Tilt & Telescopic" },
+    { label: "Driver Seat Height Adjust", value: "✔" },
+    { label: "Front Armrest", value: "✔" },
+    { label: "Keyless Entry", value: "✔" },
+    { label: "Push Start / Stop", value: "-" },
+    { label: "Power Windows", value: "All" },
+    { label: "Driver Auto Up / Down", value: "✔" },
+    { label: "Electric ORVM", value: "-" },
+    { label: "Cruise Control", value: "-" },
+    { label: "Rear Defogger", value: "✔" },
+    { label: "Rear Fast Charging USB", value: "-" },
+    { label: "Pet Bottle Holders", value: "✔ (1000 ml)" },
+  ],
+},
+
+
+
+},
+    "NEODRIVE-S": {
+      ENGINE: {
+    title: "ENGINE",
+    data: [
+      { label: "Displacement", value: "1462 cm³" },
+      { label: "Fuel Type", value: "Petrol" },
+      { label: "Max Power", value: "75.8 kW (103.06 PS) @ 6000 rpm" },
+      { label: "Max Torque", value: "136.8 Nm @ 4400 rpm" },
+      { label: "OBD", value: "OBD2" },
+      { label: "ISG", value: "ISG (12V – 6Ah Li-ion)" },
+    ],
+  },
+
+  TRANSMISSION: {
+    title: "TRANSMISSION",
+    data: [
+      { label: "Transmission Type", value: "5MT / 6AT" },
+      { label: "Drive Type", value: "2WD" },
+    ],
+  },
+
+  DIMENSIONS_WEIGHT: {
+    title: "DIMENSIONS & WEIGHT",
+    data: [
+      { label: "Length", value: "4365 mm" },
+      { label: "Width", value: "1795 mm" },
+      { label: "Height", value: "1645 mm" },
+      { label: "Wheelbase", value: "2600 mm" },
+      { label: "Turning Radius", value: "5.4 m" },
+      { label: "Fuel Tank Capacity", value: "45 L" },
+      {
+        label: "Fuel Efficiency",
+        value:
+          "2WD 5MT: 21.11 km/l | 2WD 6AT: 20.58 km/l | AWD 6AT: 19.20 km/l",
+      },
+      { label: "Seating Capacity", value: "5" },
+      {
+        label: "Kerb Weight",
+        value:
+          "2WD 5MT: 1145–1190 kg | 2WD 6AT: 1185–1215 kg | AWD 6AT: 1290 kg",
+      },
+      {
+        label: "Gross Vehicle Weight",
+        value:
+          "2WD 5MT: 1650 kg | 2WD 6AT: 1675 kg | AWD 6AT: 1750 kg",
+      },
+    ],
+  },
+
+  SUSPENSION_BRAKES: {
+    title: "SUSPENSION & BRAKES",
+    data: [
+      { label: "Front Suspension", value: "MacPherson strut" },
+      { label: "Rear Suspension", value: "Torsion beam" },
+      { label: "Front Brakes", value: "Ventilated Disc" },
+      { label: "Rear Brakes", value: "Solid Disc" },
+      { label: "EPB", value: "✔ (6AT)" },
+    ],
+  },
+
+  WHEEL_TYRE: {
+    title: "WHEEL & TYRE",
+    data: [
+      { label: "Tyre Size", value: "215 / 60 R17" },
+      { label: "Wheel Type", value: "Steel wheel with full wheel cap" },
+      { label: "Tyre Repair Kit", value: "✔" },
+    ],
+  },
+
+  EXTERIOR: {
+    title: "EXTERIOR",
+    data: [
+      { label: "Projector Headlamps (Bi-Halogen)", value: "✔" },
+      { label: "LED Position Lamp", value: "✔" },
+      { label: "Twin LED DRL / Side Turn Lamp", value: "✔" },
+      { label: "Auto Headlamp", value: "-" },
+      { label: "Headlamp Levelling (Manual)", value: "✔" },
+      { label: "LED Tail Stop Lamp", value: "✔" },
+      { label: "High Mount Stop Lamp", value: "✔" },
+      { label: "Follow Me Home Headlamp", value: "-" },
+      { label: "ORVM with Turn Indicator", value: "✔" },
+      { label: "Front Upper Grille (Crystal Acrylic)", value: "-" },
+      { label: "Black Wheel Arch Cladding", value: "✔" },
+      { label: "Back Door Garnish", value: "Silver" },
+      { label: "Roof Rails", value: "Black" },
+      { label: "Skid Plate (Front & Rear)", value: "Silver" },
+      { label: "Front Variable Intermittent Wiper", value: "-" },
+      { label: "Rear Wiper & Washer", value: "-" },
+      { label: "Green Tinted Glass", value: "✔" },
+      { label: "Dual Tone Exterior Option", value: "-" },
+      { label: "Roof End Spoiler", value: "✔" },
+      { label: "Side Under Protection Garnish", value: "✔" },
+      { label: "Sharkfin Antenna", value: "✔" },
+      { label: "Chrome Belt Line Garnish", value: "-" },
+      { label: "Body Colour Outside Door Handle", value: "✔" },
+    ],
+  },
+
+  SAFETY: {
+    title: "SAFETY & SECURITY",
+    data: [
+      { label: "Dual Front Airbags", value: "✔" },
+      { label: "Front Side & Curtain Airbags", value: "✔" },
+      { label: "360° Camera", value: "-" },
+      { label: "Reverse Parking Camera", value: "✔" },
+      { label: "Seatbelt Pretensioner & Force Limiter", value: "✔" },
+      { label: "Adjustable Shoulder Anchor", value: "✔" },
+      { label: "Rear Seatbelt (All 3-point)", value: "✔" },
+      { label: "Seatbelt Reminder", value: "Lamp + Buzzer" },
+      { label: "ISOFIX", value: "✔" },
+      { label: "ABS with EBD", value: "✔" },
+      { label: "Vehicle Stability Control", value: "✔" },
+      { label: "Hill Hold Control", value: "✔" },
+      { label: "Hill Descent Control", value: "-" },
+      { label: "TPMS", value: "✔" },
+      { label: "Immobilizer", value: "✔" },
+      { label: "TECT Body", value: "✔" },
+      { label: "Rear Parking Sensors", value: "✔" },
+    ],
+  },
+
+  INTERIOR: {
+    title: "INTERIOR",
+    data: [
+      { label: "Black Interior Theme", value: "✔" },
+      { label: "Ambient Lighting", value: "-" },
+      {
+        label: "Touchscreen Audio",
+        value: "17.78 cm Smart Playcast (CarPlay & Android Auto)",
+      },
+      { label: "Speakers", value: "4" },
+      { label: "Tweeters", value: "✔ (2)" },
+      { label: "MID Display", value: "10.16 cm TFT" },
+      { label: "Chrome Inside Door Handle", value: "✔" },
+      { label: "Rear AC Vent", value: "✔" },
+      { label: "Artificial Leather Seats", value: "-" },
+      { label: "Leather Steering Wheel", value: "-" },
+    ],
+  },
+
+  COMFORT: {
+    title: "COMFORT & CONVENIENCE",
+    data: [
+      { label: "Panoramic Roof", value: "-" },
+      { label: "Head-Up Display", value: "-" },
+      { label: "Wireless Charger", value: "-" },
+      { label: "Toyota i-Connect", value: "✔" },
+      { label: "USB Ports", value: "Front x1 / Rear x2" },
+      { label: "Cruise Control", value: "✔" },
+      { label: "Auto AC", value: "✔" },
+      { label: "Rear AC Vents", value: "✔" },
+      { label: "Keyless Entry", value: "✔" },
+      { label: "Push Start/Stop", value: "✔" },
+      { label: "Power Windows", value: "✔" },
+      { label: "Rear Sunshade", value: "-" },
+    ],
+  },
+    },
+    "NEODRIVE-G(O)": {
+      ENGINE: {
+    title: "ENGINE",
+    data: [
+      { label: "Displacement", value: "1462 cm³" },
+      { label: "Fuel Type", value: "Petrol" },
+      { label: "Max Power", value: "75.8 kW (103.06 PS) @ 6000 rpm" },
+      { label: "Max Torque", value: "136.8 Nm @ 4400 rpm" },
+      { label: "OBD", value: "OBD2" },
+      { label: "ISG", value: "ISG (12V – 6Ah Li-ion)" },
+    ],
+  },
+
+  TRANSMISSION: {
+    title: "TRANSMISSION",
+    data: [
+      { label: "Transmission Type", value: "5MT / 6AT" },
+      { label: "Drive Type", value: "2WD" },
+    ],
+  },
+
+  DIMENSIONS_WEIGHT: {
+    title: "DIMENSIONS & WEIGHT",
+    data: [
+      { label: "Length", value: "4365 mm" },
+      { label: "Width", value: "1795 mm" },
+      { label: "Height", value: "1645 mm" },
+      { label: "Wheelbase", value: "2600 mm" },
+      { label: "Turning Radius", value: "5.4 m" },
+      { label: "Fuel Tank Capacity", value: "45 L" },
+      {
+        label: "Fuel Efficiency",
+        value:
+          "2WD 5MT: 21.11 km/l | 2WD 6AT: 20.58 km/l | AWD 6AT: 19.20 km/l",
+      },
+      { label: "Seating Capacity", value: "5" },
+      {
+        label: "Kerb Weight",
+        value:
+          "2WD 5MT: 1145–1190 kg | 2WD 6AT: 1185–1215 kg | AWD 6AT: 1290 kg",
+      },
+      {
+        label: "Gross Vehicle Weight",
+        value:
+          "2WD 5MT: 1650 kg | 2WD 6AT: 1675 kg | AWD 6AT: 1750 kg",
+      },
+    ],
+  },
+
+  SUSPENSION_BRAKES: {
+    title: "SUSPENSION & BRAKES",
+    data: [
+      { label: "Front Suspension", value: "MacPherson Strut" },
+      { label: "Rear Suspension", value: "Torsion Beam" },
+      { label: "Front Brakes", value: "Ventilated Disc" },
+      { label: "Rear Brakes", value: "Solid Disc" },
+      { label: "EPB", value: "✔ (6AT)" },
+    ],
+  },
+
+  WHEEL_TYRE: {
+    title: "WHEEL & TYRE",
+    data: [
+      { label: "Tyre Size", value: "215 / 60 R17 (43.18 cm)" },
+      { label: "Wheel Type", value: "Machined Alloy Wheel" },
+      { label: "Tyre Repair Kit", value: "✔" },
+    ],
+  },
+
+  EXTERIOR: {
+    title: "EXTERIOR",
+    data: [
+      { label: "Projector Headlamps (LED)", value: "✔" },
+      { label: "LED Position Lamp", value: "✔" },
+      { label: "Twin LED DRL / Side Turn Lamp", value: "✔" },
+      { label: "Auto Headlamp", value: "✔" },
+      { label: "Headlamp Levelling (Manual)", value: "✔" },
+      { label: "LED Tail Stop Lamp", value: "✔" },
+      { label: "High Mount Stop Lamp", value: "✔" },
+      { label: "Follow Me Home Headlamp", value: "✔" },
+      { label: "ORVM with Turn Indicator", value: "✔" },
+      { label: "Front Upper Grille (Crystal Acrylic)", value: "-" },
+      { label: "Black Wheel Arch Cladding", value: "✔" },
+      { label: "Back Door Garnish", value: "Silver" },
+      { label: "Roof Rails", value: "Black" },
+      { label: "Skid Plate (Front & Rear)", value: "Silver" },
+      { label: "Front Variable Intermittent Wiper", value: "✔" },
+      { label: "Rear Wiper & Washer", value: "✔" },
+      { label: "Green Tinted Glass", value: "✔" },
+      { label: "Dual Tone Exterior Option", value: "-" },
+      { label: "Roof End Spoiler", value: "✔" },
+      { label: "Side Under Protection Garnish", value: "✔" },
+      { label: "Sharkfin Antenna", value: "✔" },
+      { label: "Chrome Belt Line Garnish", value: "✔" },
+      { label: "Body Colour Outside Door Handle", value: "✔" },
+    ],
+  },
+
+  INTERIOR: {
+    title: "INTERIOR",
+    data: [
+      { label: "Black Interior Theme", value: "✔" },
+      { label: "Ambient Lighting", value: "Door Spot" },
+      {
+        label: "Touchscreen Audio",
+        value: "22.86 cm (9 inch) Smart Playcast",
+      },
+      { label: "Arkamys Sound Tuning", value: "✔" },
+      { label: "Premium Audio", value: "✔" },
+      { label: "Speakers", value: "4 (Premium)" },
+      { label: "Tweeters", value: "2 (Premium)" },
+      { label: "MID Display", value: "17.78 cm (7 inch) TFT" },
+      { label: "Soft Touch IP with Stitching", value: "✔" },
+      { label: "Artificial Leather Seats", value: "✔" },
+      { label: "Leather Steering Wheel", value: "-" },
+    ],
+  },
+
+  COMFORT: {
+    title: "COMFORT & CONVENIENCE",
+    data: [
+      { label: "Panoramic Roof", value: "✔" },
+      { label: "Head-Up Display", value: "-" },
+      { label: "Wireless Charger", value: "✔" },
+      { label: "Toyota i-Connect", value: "✔" },
+      { label: "Front Sliding Armrest", value: "✔" },
+      { label: "USB Ports", value: "Front x1 / Rear x2" },
+      { label: "Rear Fast Charging USB (Type-C)", value: "✔ (15W x2)" },
+      { label: "Cruise Control", value: "-" },
+      { label: "Auto AC", value: "✔" },
+      { label: "Rear AC Vents", value: "✔" },
+      { label: "Ventilated Seats (D+P)", value: "✔" },
+      { label: "Drive Mode Switch", value: "-" },
+      { label: "Keyless Entry", value: "✔" },
+      { label: "Push Start / Stop", value: "✔" },
+      { label: "Auto Folding ORVM", value: "✔" },
+      { label: "Rear Door Sunshade", value: "✔" },
+    ],
+  },
+
+  SAFETY: {
+    title: "SAFETY & SECURITY",
+    data: [
+      { label: "Dual Front Airbags", value: "✔" },
+      { label: "Front Side & Curtain Airbags", value: "✔" },
+      { label: "360° Camera", value: "-" },
+      { label: "Reverse Parking Camera", value: "✔" },
+      { label: "Seatbelt Pretensioner & Force Limiter", value: "✔" },
+      { label: "Adjustable Shoulder Anchor", value: "✔" },
+      { label: "Rear Seatbelt (All 3-Point)", value: "✔" },
+      { label: "Seatbelt Reminder", value: "Lamp + Buzzer" },
+      { label: "ISOFIX", value: "✔" },
+      { label: "ABS with EBD", value: "✔" },
+      { label: "Vehicle Stability Control", value: "✔" },
+      { label: "Hill Hold Control", value: "✔" },
+      { label: "Hill Descent Control", value: "-" },
+      { label: "TPMS", value: "✔" },
+      { label: "Immobilizer", value: "✔" },
+      { label: "TECT Body", value: "✔" },
+      { label: "Side Impact Protection Beam", value: "✔" },
+      { label: "Rear Parking Sensors", value: "✔" },
+      { label: "Day / Night IRVM", value: "Auto" },
+    ],
+  },
+    },
+    "NEODRIVE-V": {
+      ENGINE: {
+    title: "ENGINE",
+    data: [
+      { label: "Displacement", value: "1462 cm³" },
+      { label: "Fuel Type", value: "Petrol" },
+      { label: "Max Power", value: "75.8 kW (103.06 PS) @ 6000 rpm" },
+      { label: "Max Torque", value: "136.8 Nm @ 4400 rpm" },
+      { label: "OBD", value: "OBD2" },
+      { label: "ISG", value: "ISG (12V – 6Ah Li-ion)" },
+    ],
+  },
+
+  TRANSMISSION: {
+    title: "TRANSMISSION",
+    data: [
+      {
+        label: "Transmission Type",
+        value: "5MT (2WD) / 6AT (2WD / 4WD)",
+      },
+      { label: "Drive Type", value: "2WD / 4WD" },
+    ],
+  },
+
+  DIMENSIONS_WEIGHT: {
+    title: "DIMENSIONS & WEIGHT",
+    data: [
+      { label: "Length", value: "4365 mm" },
+      { label: "Width", value: "1795 mm" },
+      { label: "Height", value: "1645 mm" },
+      { label: "Wheelbase", value: "2600 mm" },
+      { label: "Turning Radius", value: "5.4 m" },
+      { label: "Fuel Tank Capacity", value: "45 L" },
+      {
+        label: "Fuel Efficiency",
+        value:
+          "2WD 5MT: 21.11 km/l | 2WD 6AT: 20.58 km/l | AWD 6AT: 19.20 km/l",
+      },
+      { label: "Seating Capacity", value: "5" },
+      {
+        label: "Kerb Weight",
+        value:
+          "2WD 5MT: 1145–1190 kg | 2WD 6AT: 1185–1215 kg | AWD 6AT: 1290 kg",
+      },
+      {
+        label: "Gross Vehicle Weight",
+        value:
+          "2WD 5MT: 1650 kg | 2WD 6AT: 1675 kg | AWD 6AT: 1750 kg",
+      },
+    ],
+  },
+
+  SUSPENSION_BRAKES: {
+    title: "SUSPENSION & BRAKES",
+    data: [
+      { label: "Front Suspension", value: "MacPherson Strut" },
+      { label: "Rear Suspension", value: "Torsion Beam" },
+      { label: "Front Brakes", value: "Ventilated Disc" },
+      { label: "Rear Brakes", value: "Solid Disc" },
+      { label: "EPB", value: "✔ (6AT)" },
+    ],
+  },
+
+  WHEEL_TYRE: {
+    title: "WHEEL & TYRE",
+    data: [
+      { label: "Tyre Size", value: "215 / 60 R17 (43.18 cm)" },
+      { label: "Wheel Type", value: "Machined Alloy Wheel" },
+      { label: "Tyre Repair Kit", value: "✔" },
+    ],
+  },
+
+  EXTERIOR: {
+    title: "EXTERIOR",
+    data: [
+      { label: "LED Projector Headlamps", value: "✔" },
+      { label: "LED Position Lamp", value: "✔" },
+      { label: "Twin LED DRL / Side Turn Lamp", value: "✔" },
+      { label: "Auto Headlamp", value: "✔" },
+      { label: "Headlamp Levelling (Manual)", value: "✔" },
+      { label: "LED Tail Stop Lamp", value: "✔" },
+      { label: "High Mount Stop Lamp", value: "✔" },
+      { label: "Follow Me Home Headlamp", value: "✔" },
+      { label: "ORVM with Turn Indicator", value: "✔" },
+      { label: "Front Upper Grille (Crystal Acrylic)", value: "-" },
+      { label: "Black Wheel Arch Cladding", value: "✔" },
+      { label: "Back Door Garnish", value: "Silver" },
+      { label: "Roof Rails", value: "Black" },
+      { label: "Skid Plate (Front & Rear)", value: "Silver" },
+      { label: "Front Variable Intermittent Wiper", value: "✔" },
+      { label: "Rear Wiper & Washer", value: "✔" },
+      { label: "Green Tinted Glass", value: "✔" },
+      { label: "Dual Tone Exterior Option", value: "✔" },
+      { label: "Roof End Spoiler", value: "✔" },
+      { label: "Side Under Protection Garnish", value: "✔" },
+      { label: "Sharkfin Antenna", value: "✔" },
+      { label: "Chrome Belt Line Garnish", value: "✔" },
+      { label: "Body Colour Outside Door Handle", value: "✔" },
+    ],
+  },
+
+  INTERIOR: {
+    title: "INTERIOR",
+    data: [
+      { label: "Black Interior Theme", value: "✔" },
+      { label: "Ambient Lighting", value: "Door Spot + IP Line" },
+      {
+        label: "Touchscreen Audio",
+        value: "22.86 cm (9 inch) Smart Playcast",
+      },
+      { label: "Arkamys Sound Tuning", value: "✔" },
+      { label: "Premium Audio", value: "✔" },
+      { label: "Speakers", value: "4 (Premium)" },
+      { label: "Tweeters", value: "2 (Premium)" },
+      { label: "MID Display", value: "17.78 cm (7 inch) TFT" },
+      { label: "Soft Touch IP with Stitching", value: "✔" },
+      { label: "Artificial Leather Seats", value: "✔" },
+      { label: "Leather Steering Wheel", value: "✔" },
+    ],
+  },
+
+  COMFORT: {
+    title: "COMFORT & CONVENIENCE",
+    data: [
+      { label: "Panoramic Roof", value: "✔" },
+      { label: "Head-Up Display", value: "✔" },
+      { label: "Wireless Charger", value: "✔" },
+      { label: "Toyota i-Connect", value: "✔" },
+      { label: "Front Sliding Armrest", value: "✔" },
+      { label: "USB Ports", value: "Front x1 / Rear x2" },
+      { label: "Rear Fast Charging USB (Type-C)", value: "✔ (15W x2)" },
+      { label: "Cruise Control", value: "✔" },
+      { label: "Steering Mounted Controls", value: "✔" },
+      { label: "Paddle Shift", value: "✔ (AT only)" },
+      { label: "Auto AC", value: "✔" },
+      { label: "Rear AC Vents", value: "✔" },
+      { label: "PM2.5 Filter", value: "✔" },
+      { label: "Ventilated Seats (D+P)", value: "✔" },
+      { label: "Drive Mode Switch", value: "AWD" },
+      { label: "Keyless Entry", value: "✔" },
+      { label: "Push Start / Stop", value: "✔" },
+      { label: "Auto Folding ORVM", value: "✔" },
+      { label: "Rear Door Sunshade", value: "✔" },
+    ],
+  },
+
+  SAFETY: {
+    title: "SAFETY & SECURITY",
+    data: [
+      { label: "Dual Front Airbags", value: "✔" },
+      { label: "Front Side & Curtain Airbags", value: "✔" },
+      { label: "360° Camera", value: "✔" },
+      { label: "Reverse Parking Camera", value: "-" },
+      { label: "Seatbelt Pretensioner & Force Limiter", value: "✔" },
+      { label: "Adjustable Shoulder Anchor", value: "✔" },
+      { label: "Rear Seatbelt (All 3-Point)", value: "✔" },
+      { label: "Seatbelt Reminder", value: "Lamp + Buzzer" },
+      { label: "ISOFIX", value: "✔" },
+      { label: "ABS with EBD", value: "✔" },
+      { label: "Vehicle Stability Control", value: "✔" },
+      { label: "Hill Hold Control", value: "✔" },
+      { label: "Hill Descent Control", value: "✔ (AWD only)" },
+      { label: "TPMS", value: "✔" },
+      { label: "Immobilizer", value: "✔" },
+      { label: "TECT Body", value: "✔" },
+      { label: "Side Impact Protection Beam", value: "✔" },
+      { label: "Rear Parking Sensors", value: "✔" },
+      { label: "Day / Night IRVM", value: "Auto" },
+    ],
+  },
+    },
+  },
+
+  "E-CNG": {
+    "E CNG-S": {
+     ENGINE: {
+  title: "ENGINE",
+  data: [
+    { label: "Displacement", value: "1462 cc" },
+    { label: "Fuel Type", value: "Petrol + CNG" },
+    { label: "Max Power (Petrol)", value: "74 kW (100.6 PS) @ 6000 rpm" },
+    { label: "Max Power (CNG)", value: "64.6 kW (87.8 PS) @ 5500 rpm" },
+    { label: "Max Torque (Petrol)", value: "136 Nm @ 4400 rpm" },
+    { label: "Max Torque (CNG)", value: "121.5 Nm @ 4200 rpm" },
+    { label: "OBD", value: "OBD2" },
+    { label: "ISG", value: "-" },
+  ],
+},
+
+TRANSMISSION: {
+  title: "TRANSMISSION",
+  data: [
+    { label: "Transmission Type", value: "5MT" },
+    { label: "Drive Type", value: "2WD" },
+  ],
+},
+
+     DIMENSIONS: {
+  title: "DIMENSIONS & WEIGHT",
+  data: [
+    { label: "Length", value: "4365 mm" },
+    { label: "Width", value: "1795 mm" },
+    { label: "Height", value: "1645 mm" },
+    { label: "Wheelbase", value: "2600 mm" },
+    { label: "Turning Radius", value: "5.4 m" },
+    { label: "Seating Capacity", value: "5" },
+    { label: "Kerb Weight", value: "1245 kg" },
+    { label: "Gross Vehicle Weight", value: "1705 kg" },
+  ],
+},
+FUEL: {
+  title: "FUEL & EFFICIENCY",
+  data: [
+    { label: "Fuel Tank (Petrol)", value: "45 L" },
+    { label: "Fuel Tank (CNG)", value: "55 L (Water equivalent)" },
+    { label: "Fuel Efficiency (CNG)", value: "26.6 km/kg" },
+  ],
+},
+
+     CHASSIS: {
+  title: "SUSPENSION, BRAKES & TYRES",
+  data: [
+    { label: "Front Suspension", value: "MacPherson strut" },
+    { label: "Rear Suspension", value: "Torsion beam" },
+    { label: "Front Brake", value: "Ventilated disc" },
+    { label: "Rear Brake", value: "Solid disc" },
+    { label: "EPB", value: "-" },
+    { label: "Wheel & Tyre Size", value: "215 / 60 R17" },
+    { label: "Wheel Type", value: "Steel wheel with full wheel cap" },
+    { label: "Tyre Repair Kit", value: "✔" },
+  ],
+},
+
+      BRAKES: {
+        title: "BRAKES",
+        data: [
+          { label: "Front", value: "Ventilated disc" },
+          { label: "Rear", value: "Solid disc" },
+          { label: "EPB", value: "-" },
+        ],
+      },
       "WHEEL & TYRE SIZE": {
         title: "WHEEL & TYRE SIZE",
         data: [
@@ -182,46 +1357,213 @@ const specifications: Record<Powertrain, Record<Variant, VariantSpecs>> = {
           { label: "Tire repair kit", value: "-" },
         ],
       },
-      FEATURES: {
-        title: "FEATURES",
-        data: [
-          {
-            label: "Exterior",
-            value:
-              "Projector Headlamps Bi-Halogen, LED Position lamp, Twin LED Day-time running lamp / Side turn lamp, Auto Headlight -, Headlight levelling (manual), LED Tail Stop Lamp, High mount stop lamp, Follow me home headlamp -, ORVM with turn indicator, Front Upper Grille - Unique crystal acrylic type -, Black wheel arch cladding (Front & rear), Back door garnish Silver, Roof Rails (Black), Skid Plate (Front & Rear) Silver, Front Variable Intermittent wiper -, Rear window wiper & washer -, Front Windshield / Front Door/ Rear Door/Quarter/ Back Door Green Glass, Optional Stylish Dual Tone Exterior (In Selected Colours) -, Roof end spoiler, Side under protection garnish, Sharkfin Antenna, Chrome belt line garnish -, Body color outside door handle",
-          },
-          {
-            label: "Safety & Security",
-            value:
-              "Dual Front Airbags (Driver + Co Driver), Front Side and Curtain Airbag, Surround View Monitor (360 degree camera) -, Reverse Parking Camera, Front seatbelt pre-tension & force limiter, Adjustable shoulder anchor (front seatbelts), Rear seats belts type Side:3 points / Center:3 points, Seat belt reminder (Front & Rear) Lamp + Buzzer, ISOFIX Child Seat Restraint System, ABS with EBD, Vehicle Stability Control, Hill Hold Control, Hill descendant -, Tire-pressure monitoring system (TPMS), Immobilizer, Advanced Body Structure (TECT Body), Side Impact Protection Beam, Pedal release system, Rear Parking Sensors, Day/night rear view mirror (Manual), Child-proof rear door locks, Warning Lamp/ Reminder for (Low Fuel, Door Ajar, Headlamp On), Speed Warning Buzzer*1",
-          },
-          {
-            label: "Interior",
-            value:
-              "Dual tone Black x Brown interior -, Black interior, Ambient lighting -, New Smart Playcast Touchscreen Audio*2 with MP3/ AM / FM / Bluetooth / USB / Smartphone Connect (Apple CarPlay/ Android Auto) Hey Siri, Okay Google compatible 17.78cm, Arkamys Sound tuning -, Premium Audio -, 4 Speakers, Tweeter (2 Units) -, Information display (TFT Color) 10.16 cm (4.2inch), Soft touch IP with premium stitch -, Chrome inside door handle, IP Garnish (Gloss Silver), Front (side) ventilation knob (Satin chrome), Centre ventilation knob & fin (Satin silver), Steering Garnish (Satin chrome), Shift Garnish (Gloss black paint + Satin silver paint) (Resin), Hazard Garnish (Outer) (Satin silver) (Resin), Air conditioner Control Panel (Matte black), Rear AC vent Garnish & Knob (Satin chrome), Front door garnish (Silver), Door armrest Black Fabric, Switch bezel Resin, Artificial Leather seats with perforations*4 (black fabric), Leather Steering wheel*4 -, Assist Grips (3 Units), Luggage Shelf Strings, Spot map lamp (Roof front), Reading Lamp (one on each side of the roof), Trunk/Luggage room lamp, Glove box light, Front footwell light (Driver & Co driver side), Courtesy lamp -",
-          },
-          {
-            label: "Comfort & Convenience",
-            value:
-              "Panoramic Roof -, Head-up Display -, Front Wireless Charger -, Toyota i-Connect, Front sliding armrest (with storage), USB (Front x1 / Rear x 2), USB Charger Rear (High speed type 15w) Type C×2, Adjustable Tilt & Telescopic steering, Power Steering (EPS), Cruise Control, Steering mounted commands (Audio, BT, Cruise control), Paddle Shift -, Auto air conditioner, Rear AC vents, PM2.5 filter, PM2.5 Display with Color & Numbers(AQI Display in Infotainment DA) -, Ventilated seats (D+P) -, Drive mode switch -, Driver seat height adjust, Seat back pocket (D+P), Separately folding rear seat backs & cushions (60/40), Reclining rear seats, Rear headrest- removable type (3 Units), Rear center armrest with cupholder, Power Seat -, Keyless Entry, Push start/stop button, Power door locks (Central Locking), Fr & rr door pet bottle holder (1000ml), Power windows (D-side auto up/down), Auto folding outside mirror -, Electric outside mirrors (electric fold), D+P vanity mirror, D+P vanity mirror lamp -, D+P ticket holder, Centre console with cupholder (2 cups), Accessory socket (Center console), Accessory socket (Luggage room), Gear Shift indicator -, Driver footrest, Rear door Sunshade -",
-          },
-        ],
-      },
+      EXTERIOR: {
+  title: "EXTERIOR",
+  data: [
+    { label: "Projector Headlamps (Bi-Halogen)", value: "✔" },
+    { label: "LED Position Lamp", value: "✔" },
+    { label: "Twin LED DRL / Side Turn Lamp", value: "✔" },
+    { label: "Auto Headlight", value: "-" },
+    { label: "Manual Headlamp Levelling", value: "✔" },
+    { label: "LED Tail Stop Lamp", value: "✔" },
+    { label: "High Mount Stop Lamp", value: "✔" },
+    { label: "Follow Me Home Headlamp", value: "-" },
+    { label: "ORVM with Turn Indicator", value: "✔" },
+    { label: "Roof Rails (Black)", value: "✔" },
+    { label: "Sharkfin Antenna", value: "✔" },
+    { label: "Skid Plate (Front & Rear)", value: "Silver" },
+    { label: "Rear Wiper & Washer", value: "-" },
+  ],
+},
+SAFETY: {
+  title: "SAFETY & SECURITY",
+  data: [
+    { label: "Dual Front Airbags", value: "✔" },
+    { label: "Front Side & Curtain Airbags", value: "✔" },
+    { label: "360° Camera", value: "-" },
+    { label: "Reverse Parking Camera", value: "✔" },
+    { label: "ABS with EBD", value: "✔" },
+    { label: "Vehicle Stability Control", value: "✔" },
+    { label: "Hill Hold Control", value: "✔" },
+    { label: "Hill Descent Control", value: "-" },
+    { label: "TPMS", value: "✔" },
+    { label: "ISOFIX Child Seat Mount", value: "✔" },
+    { label: "Rear Parking Sensors", value: "✔" },
+  ],
+},
+INTERIOR: {
+  title: "INTERIOR",
+  data: [
+    { label: "Interior Theme", value: "Black" },
+    { label: "Touchscreen Audio System", value: "17.78 cm" },
+    { label: "Android Auto & Apple CarPlay", value: "✔" },
+    { label: "Speakers", value: "4" },
+    { label: "TFT MID Display", value: "10.16 cm" },
+    { label: "Leather Steering Wheel", value: "-" },
+    { label: "Ambient Lighting", value: "-" },
+    { label: "Rear AC Vents", value: "✔" },
+  ],
+},
+COMFORT: {
+  title: "COMFORT & CONVENIENCE",
+  data: [
+    { label: "Panoramic Roof", value: "-" },
+    { label: "Cruise Control", value: "✔" },
+    { label: "Wireless Charger", value: "-" },
+    { label: "USB Ports", value: "Front x1 / Rear x2 (Type-C)" },
+    { label: "Push Start / Stop Button", value: "✔" },
+    { label: "Keyless Entry", value: "✔" },
+    { label: "Power Windows", value: "✔" },
+    { label: "Auto Folding ORVM", value: "-" },
+    { label: "Rear Sunshade", value: "✔" },
+  ],
+},
+
+
     },
     "E CNG-G": {
       ENGINE: {
-        title: "ENGINE (E-CNG)",
-        data: [
-          { label: "Type", value: "Inline 4-cylinder" },
-          { label: "Displacement (cc)", value: "1462" },
-          { label: "Fuel Type", value: "Petrol + CNG" },
-          {
-            label: "Max Power",
-            value:
-              "74 kW (100.6 PS) @ 6000 rpm [Gasoline mode], 64.6 kW (87.8 PS) @ 5500 rpm [CNG mode]",
-          },
-        ],
-      },
+  title: "ENGINE",
+  data: [
+    { label: "Displacement", value: "1462 cc" },
+    { label: "Fuel Type", value: "Petrol + CNG" },
+    { label: "Max Power (Petrol)", value: "74 kW (100.6 PS) @ 6000 rpm" },
+    { label: "Max Power (CNG)", value: "64.6 kW (87.8 PS) @ 5500 rpm" },
+    { label: "Max Torque (Petrol)", value: "136 Nm @ 4400 rpm" },
+    { label: "Max Torque (CNG)", value: "121.5 Nm @ 4200 rpm" },
+    { label: "OBD", value: "OBD2" },
+    { label: "ISG", value: "-" },
+  ],
+},
+TRANSMISSION: {
+  title: "TRANSMISSION & DRIVE",
+  data: [
+    { label: "Transmission Type", value: "5MT" },
+    { label: "Drive Type", value: "2WD" },
+  ],
+},
+DIMENSIONS: {
+  title: "DIMENSIONS & WEIGHT",
+  data: [
+    { label: "Length", value: "4365 mm" },
+    { label: "Width", value: "1795 mm" },
+    { label: "Height", value: "1645 mm" },
+    { label: "Wheelbase", value: "2600 mm" },
+    { label: "Turning Radius", value: "5.4 m" },
+    { label: "Seating Capacity", value: "5" },
+    { label: "Kerb Weight", value: "1245 kg" },
+    { label: "Gross Vehicle Weight", value: "1705 kg" },
+  ],
+},
+FUEL: {
+  title: "FUEL & EFFICIENCY",
+  data: [
+    { label: "Fuel Tank (Petrol)", value: "45 L" },
+    { label: "Fuel Tank (CNG)", value: "55 L (Water Equivalent)" },
+    { label: "Fuel Efficiency (CNG)", value: "26.6 km/kg" },
+  ],
+},
+CHASSIS: {
+  title: "SUSPENSION, BRAKES & TYRES",
+  data: [
+    { label: "Front Suspension", value: "MacPherson strut" },
+    { label: "Rear Suspension", value: "Torsion beam" },
+    { label: "Front Brake", value: "Ventilated disc" },
+    { label: "Rear Brake", value: "Solid disc" },
+    { label: "EPB", value: "-" },
+    { label: "Wheel & Tyre Size", value: "215 / 60 R17" },
+    { label: "Wheel Type", value: "Machined Alloy Wheel" },
+    { label: "Tyre Repair Kit", value: "✔" },
+  ],
+},
+EXTERIOR: {
+  title: "EXTERIOR",
+  data: [
+    { label: "Projector Headlamps (LED)", value: "✔" },
+    { label: "LED Position Lamp", value: "✔" },
+    { label: "Twin LED DRL / Side Turn Lamp", value: "✔" },
+    { label: "Auto Headlight", value: "✔" },
+    { label: "Manual Headlamp Levelling", value: "✔" },
+    { label: "LED Tail Stop Lamp", value: "✔" },
+    { label: "High Mount Stop Lamp", value: "✔" },
+    { label: "Follow Me Home Headlamp", value: "✔" },
+    { label: "ORVM with Turn Indicator", value: "✔" },
+    { label: "Front Upper Grille (Crystal Acrylic)", value: "-" },
+    { label: "Black Wheel Arch Cladding", value: "✔" },
+    { label: "Back Door Garnish", value: "Silver" },
+    { label: "Roof Rails", value: "Black" },
+    { label: "Skid Plate (Front & Rear)", value: "Silver" },
+    { label: "Front Variable Intermittent Wiper", value: "✔" },
+    { label: "Rear Wiper & Washer", value: "✔" },
+    { label: "Green Tinted Glass (All Doors)", value: "✔" },
+    { label: "Optional Dual Tone Exterior", value: "-" },
+    { label: "Roof End Spoiler", value: "✔" },
+    { label: "Side Under Protection Garnish", value: "✔" },
+    { label: "Sharkfin Antenna", value: "✔" },
+    { label: "Chrome Belt Line Garnish", value: "✔" },
+    { label: "Body Coloured Door Handles", value: "✔" },
+  ],
+},
+INTERIOR: {
+  title: "INTERIOR",
+  data: [
+    { label: "Interior Theme", value: "Black / Black-Brown" },
+    { label: "Ambient Lighting", value: "Door Spot" },
+    { label: "Touchscreen Audio", value: "22.86 cm (9 inch)" },
+    { label: "Android Auto & Apple CarPlay", value: "✔" },
+    { label: "Arkamys Sound Tuning", value: "✔" },
+    { label: "Premium Audio", value: "✔" },
+    { label: "Speakers", value: "4 (Premium)" },
+    { label: "Tweeters", value: "2 (Premium)" },
+    { label: "TFT MID Display", value: "10.16 cm (4.2 inch)" },
+    { label: "Soft Touch IP with Stitching", value: "✔" },
+    { label: "Leather Steering Wheel", value: "-" },
+    { label: "Artificial Leather Seats", value: "✔" },
+    { label: "Rear AC Vent", value: "✔" },
+    { label: "LED Reading & Map Lamps", value: "✔" },
+    { label: "Front Footwell Light", value: "✔" },
+  ],
+},
+COMFORT: {
+  title: "COMFORT & CONVENIENCE",
+  data: [
+    { label: "Panoramic Roof", value: "-" },
+    { label: "Head-up Display", value: "-" },
+    { label: "Wireless Charger", value: "✔" },
+    { label: "Toyota i-Connect", value: "✔" },
+    { label: "Front Armrest with Storage", value: "✔" },
+    { label: "USB Ports", value: "Front x1 / Rear x2 (Type-C)" },
+    { label: "Adjustable Steering", value: "Tilt & Telescopic" },
+    { label: "Cruise Control", value: "-" },
+    { label: "Auto Air Conditioner", value: "✔" },
+    { label: "PM2.5 Filter", value: "✔" },
+    { label: "Ventilated Seats", value: "✔" },
+    { label: "Driver Seat Height Adjust", value: "✔" },
+    { label: "60:40 Split Rear Seats", value: "✔" },
+    { label: "Keyless Entry & Push Start", value: "✔" },
+    { label: "Power Windows (All)", value: "✔" },
+    { label: "Auto Folding ORVM", value: "✔" },
+    { label: "Rear Sunshade", value: "✔" },
+  ],
+},
+SAFETY: {
+  title: "SAFETY & SECURITY",
+  data: [
+    { label: "Dual Front Airbags", value: "✔" },
+    { label: "Front Side & Curtain Airbags", value: "✔" },
+    { label: "360° Camera", value: "-" },
+    { label: "Reverse Parking Camera", value: "✔" },
+    { label: "ABS with EBD", value: "✔" },
+    { label: "Vehicle Stability Control", value: "✔" },
+    { label: "Hill Hold Control", value: "✔" },
+    { label: "Hill Descent Control", value: "-" },
+    { label: "TPMS", value: "✔" },
+    { label: "ISOFIX Child Seat Mount", value: "✔" },
+    { label: "Rear Parking Sensors", value: "✔" },
+    { label: "Auto Day/Night IRVM", value: "✔" },
+  ],
+},
+
     },
   },
 };
@@ -318,22 +1660,22 @@ export default function Technical() {
         gap:60px;
       }
 
-      .spec-title{
-        color:red;
-        font-weight:600;
-        border-top:2px solid red;
-        border-right:2px solid red;
-        width:170px;
-        padding:10px;
-        margin-bottom:10px;
-      }
+      .spec-title {
+  color: #e60000;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 22px 0 10px;
+}
 
-      .spec-row{
-        display:flex;
-        justify-content:space-between;
-        padding:6px 0;
-        font-size:14px;
-      }
+
+      .spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
 
       /* VIEW ALL */
       .view-all{
@@ -425,11 +1767,14 @@ export default function Technical() {
         <div key={i}>
           <div className="spec-title">{section.title}</div>
           {section.data.map((row, j) => (
-            <div key={j} className="spec-row">
-              <span>{row.label}</span>
-              <strong>{row.value}</strong>
-            </div>
-          ))}
+  <div className="spec-row" key={j}>
+    <span>{row.label}</span>
+    <span>
+      {row.value === "-" ? "–" : "✔"}
+    </span>
+  </div>
+))}
+
         </div>
       ) : null
     )}
@@ -457,3 +1802,30 @@ export default function Technical() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

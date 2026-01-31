@@ -2,12 +2,14 @@
 
 "use client";
 
+import GlanzaHero from "../glanza/GlanzaHero";
 import HyTimeBanner from "../urbancruiserhyryder/HyTimeBanner";
 import ArticlesSection from "./ArticlesSection";
 import CarSpecs from "./CarSpecs";
 import ExteriorOverview from "./ExteriorOverview";
 import HyColors from "./HyColors";
 import HyPerformance from "./HyPerformance";
+import InnovaHeroImage from "./InnovaHeroImage";
 import InnovaVideoHero from "./InnovaVideoHero";
 import SafetyFeatures from "./SafetyFeatures";
 export const hyBannerData = {
@@ -44,6 +46,10 @@ const innovaArticles = [
 export default function Page() {
   return (
     <>
+      <GlanzaHero
+      imageUrl="https://static3.toyotabharat.com/images/showroom/innova-hycross/innova-hycross-banner-1600x850.jpg"
+      alt="Toyota Glanza"
+    />
       <HyTimeBanner {...hyBannerData}/>
       <InnovaVideoHero/>
       <ExteriorOverview
@@ -74,7 +80,13 @@ export default function Page() {
         buttonLink="https://www.toyotabharat.com/showroom/innova/features-connected-services.html"
         description="Take convenience to a new HY with advanced connected features like Remote Vehicle Ignition, Smartwatch Connectivity, Stolen Vehicle Tracker, Find My Car, Remote Windows, Trunk Close and the like. Empower yourself to control almost every aspect of the car."
       />
+      <InnovaHeroImage 
+      imageUrl="https://static3.toyotabharat.com/images/showroom/innova-hycross/kv-banner02.jpg"
+      alt="Toyota Innova HyCross"/>
       <SafetyFeatures/>
+      <InnovaHeroImage 
+      imageUrl="https://static3.toyotabharat.com/images/showroom/innova-hycross/kv-banner.jpg"
+      alt="Toyota Innova HyCross"/>
       <CarSpecs/>
       <HyColors/>
        <ArticlesSection data={hycrossArticles} title=" Articles" />

@@ -13,10 +13,10 @@ const MONOTONE_COLORS = [
 ];
 
 const DUALTONE_COLORS = [
-  { name: "Cafe White X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/cafe-white.png" },
-  { name: "Sportin Red X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/sporting-red.png" },
-  { name: "Enticing Silver X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/enticing-silver.png" },
-  { name: "Speedy Blue X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/speedy-blue.png" },
+  { name: "Dualtone Cafe White X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/cafe-white.png" },
+  { name: "Dualtone Sportin Red X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/sporting-red.png" },
+  { name: "Dualtone Enticing Silver X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/enticing-silver.png" },
+  { name: "Dualtone Speedy Blue X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/speedy-blue.png" },
 ];
 
 /* ===================== COMPONENT ===================== */

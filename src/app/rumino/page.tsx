@@ -1,13 +1,24 @@
 
 
+import GlanzaHero from "../glanza/GlanzaHero";
+import SideHero from "../glanza/SideHero";
 import AccessoriesSlider from "./AccessoriesSlider";
 import Gallery from "./Gallery";
 import RumionColors from "./RumionColors";
+import TechnicalSpecifications from "./TechnicalSpecifications";
 import TechExactSlider from "./TechSection";
 
 export default function RuminoPage() {
   return (
     <>
+    <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/rumion/home-banner-1920x807.jpg"
+      alt="Toyota Rumion"
+    />
+    <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/rumion/good-wala-vibe.jpg"
+      alt="Toyota Rumion"
+    />
     {/* ================= TECH (SLIDER MODE) ================= */}
       <TechExactSlider
         layout="big-right"
@@ -129,6 +140,11 @@ export default function RuminoPage() {
           },
         ]}
       />
+      
+    <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/rumion/good-wala-vibe02.jpg"
+      alt="Toyota Rumion"
+    />
       <TechExactSlider
         layout="big-left"
         titleMain="GOOD WALA"
@@ -188,9 +204,13 @@ export default function RuminoPage() {
           
         ]}
       />
+      <TechnicalSpecifications/>
       <Gallery/>
       <AccessoriesSlider/>
-      
+      <SideHero
+  imageUrl="https://static.toyotabharat.com/images/showroom/rumion/rumion-e-booking-1366x320.jpg"
+  alt="Rumion E-Booking"
+/>
     </>
   );
 }
