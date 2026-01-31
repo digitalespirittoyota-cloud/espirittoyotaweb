@@ -82,7 +82,11 @@ Stability Control and the like, it safeguards you from eventualities in formidab
                 ebookText="ebook Now"
                 ebookLink="/ebook"
             />
-
+  <Banner
+                desktopImg="/legender/apply-for-loan-banner-legender-1920x807 (1).jpg"
+                mobileImg="/legender/apply-for-loan-banner-legender-1920x807 (1).jpg"
+                height="90vh"
+            />
 
         </>
 
