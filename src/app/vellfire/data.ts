@@ -98,15 +98,16 @@ export const engineeringdata= [
 // galleryData.js
 export const galleryData = {
   heading: "GALLERY",
+   bgImage: "/vellfire/gallery-bg.jpg",
   images: {
     left: {
-      big: "/vellfire/alloys.jpg",
-      small: "/vellfire/alloys.jpg",
+      big: "/vellfire/1 (1).jpg",
+      small: "/vellfire/4 (1).jpg",
     },
     right: {
-      small: "/vellfire/alloys.jpg",
-      big: "/vellfire/alloys.jpg",
+      small: "/vellfire/2 (1).jpg",
+      big: "/vellfire/3 (1).jpg",
     },
-    bottom: "/vellfire/alloys.jpg",
+    bottom: "/vellfire/5 (1).jpg",
   },
 };

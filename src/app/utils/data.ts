@@ -56,7 +56,7 @@ const models = [
   {
     name: "Fortuner",
     image: "/models/fortuner.png",
-    link: "https://espirittoyota.co.in/showroom/fortuner/index-fortuner.html",
+    link: "/fortuner",
   },
   {
     name: "Legender",

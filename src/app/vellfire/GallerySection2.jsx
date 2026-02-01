@@ -1,21 +1,23 @@
 "use client";
 import Image from "next/image";
-// import "./Gallery.css";
+import "./Gallery.css";
 
 export default function GallerySection2({ data }) {
-  const { heading, images } = data;
+  const { heading, images, bgImage } = data;
 
   return (
-    <section className="gallery-wrap">
+    <section
+  className="gallery-wrap"
+  style={{ backgroundImage: `url(${data.bgImage})` }}
+>
+
       {/* Heading */}
       <div className="gallery-heading">
         <h2>{heading}</h2>
-        <span />
       </div>
 
       {/* Top columns */}
       <div className="gallery-columns">
-        {/* LEFT COLUMN */}
         <div className="col">
           <div className="img big">
             <Image src={images.left.big} alt="" fill />
@@ -25,7 +27,6 @@ export default function GallerySection2({ data }) {
           </div>
         </div>
 
-        {/* RIGHT COLUMN */}
         <div className="col">
           <div className="img small">
             <Image src={images.right.small} alt="" fill />
@@ -36,13 +37,13 @@ export default function GallerySection2({ data }) {
         </div>
       </div>
 
-      {/* Bottom full image */}
       <div className="full-img">
         <Image src={images.bottom} alt="" fill />
       </div>
     </section>
   );
 }
+
 
 
 

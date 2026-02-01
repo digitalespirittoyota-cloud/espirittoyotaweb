@@ -4,6 +4,7 @@ import { engineeringdata, galleryData, luxuryData, safetydata, stylingdata } fro
 import LuxurySection from "./LuxurySection";
 import TopHeadingBgSection from "./TopHeadingBgSection";
 import GallerySection2 from "./GallerySection2";
+import InteriorSection from "./InteriorSection";
 
 
 export default function Page() {
@@ -52,7 +53,16 @@ export default function Page() {
                 height="90vh"
             />
             <CarColorShowcase />
-           {/* <GallerySection2 data={galleryData} /> */}
+             <InteriorSection/>
+           <GallerySection2 data={galleryData} />
+          
+
+
+            <Banner
+                desktopImg="/vellfire/loard-of-realms-vellfire-loan-1920x807 (1).jpg"
+                mobileImg="/vellfire/loard-of-realms-vellfire-1920x807.jpg"
+                height="90vh"
+            />
         </>
 
     );
