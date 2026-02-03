@@ -51,7 +51,8 @@ const models = [
   {
     name: "Hilux",
     image: "/models/hilux.png",
-    link: "https://espirittoyota.co.in/showroom/hilux",
+    // link: "https://espirittoyota.co.in/showroom/hilux",
+    link:"/hilux"
   },
   {
     name: "Fortuner",

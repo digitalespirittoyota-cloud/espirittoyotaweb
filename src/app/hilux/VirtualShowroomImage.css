@@ -1,0 +1,42 @@
+.vs-section {
+  width: 100%;
+  min-height: 80vh;
+  overflow: hidden;
+}
+
+.vs-image-wrapper {
+  width: 100%;
+  height: 80vh;
+  cursor: pointer;
+}
+
+.vs-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SLIDE UP */
+.slide-up {
+  animation: slideUp 1.1s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .vs-image-wrapper {
+    height: 80vh;
+  }
+}
+
