@@ -1,8 +1,14 @@
 import Banner from "../commonbanner/Banner";
 import ChiefEngineerSection from "./ChiefEngineerSection";
+import EngineerMessageSection from "./EngineerMessageSection";
+import FeatureCarousel from "./FeatureCarousel";
 import FeatureGallery from "./FeatureGallery";
 import FeatureSection from "./FeatureSection";
+import HiluxLegacyMediaSection from "./HiluxLegacyMediaSection";
+import HiluxLegacySection from "./HiluxLegacySection";
+import InteriorSafetySection from "./InteriorSafetySection";
 import PowerfulPerformance from "./PowerfulPerformance";
+import ToyotaServiceSection from "./ToyotaServiceSection";
 import VirtualShowroomImage from "./VirtualShowroomSection";
 
 
@@ -28,6 +34,7 @@ export default function Page() {
             <ChiefEngineerSection />
 
 
+
             <PowerfulPerformance
                 leftTitleLine1="EXTERIOR FEATURES"
                 leftTitleLine2=""
@@ -40,6 +47,14 @@ Live a fuller life with the Toyota Hilux."
             />
 
             <FeatureGallery/>
+
+            <EngineerMessageSection/>
+
+            <InteriorSafetySection/>
+            <FeatureCarousel/>
+            <HiluxLegacySection/>
+            <HiluxLegacyMediaSection/>
+        <ToyotaServiceSection/>
         </>
 
     );
