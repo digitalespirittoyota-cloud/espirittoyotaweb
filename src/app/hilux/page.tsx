@@ -4,6 +4,8 @@ import EngineerMessageSection from "./EngineerMessageSection";
 import FeatureCarousel from "./FeatureCarousel";
 import FeatureGallery from "./FeatureGallery";
 import FeatureSection from "./FeatureSection";
+import FeatureSectionGallery from "./FeatureSectionGallery";
+import HiluxEbookSection from "./HiluxEbookSection";
 import HiluxLegacyMediaSection from "./HiluxLegacyMediaSection";
 import HiluxLegacySection from "./HiluxLegacySection";
 import InteriorSafetySection from "./InteriorSafetySection";
@@ -55,6 +57,9 @@ Live a fuller life with the Toyota Hilux."
             <HiluxLegacySection/>
             <HiluxLegacyMediaSection/>
         <ToyotaServiceSection/>
+        <FeatureSectionGallery/>
+         <HiluxEbookSection />
+        
         </>
 
     );

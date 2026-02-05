@@ -26,7 +26,8 @@ const models = [
   {
     name: "Urban Cruiser Taisor",
     image: "/models/taisor.png",
-    link: "https://espirittoyota.co.in/showroom/urbancruiser-taisor/",
+    // link: "https://espirittoyota.co.in/showroom/urbancruiser-taisor/",
+    link:"/urbancruiser-taisor",
   },
   {
     name: "Rumion",
