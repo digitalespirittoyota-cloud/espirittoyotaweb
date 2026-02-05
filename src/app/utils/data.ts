@@ -78,6 +78,11 @@ const models = [
     image: "/models/land-cruiser.png",
     link: "https://espirittoyota.co.in/showroom/lc300",
   },
+  {
+    name: "Urban Cruiser Ebella",
+    image: "/models/Urban Crusier Ebella.png",
+    link: "/urbancruiserebella",
+  },
 ];
 
 const address = {

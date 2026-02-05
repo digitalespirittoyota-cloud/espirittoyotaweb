@@ -10,21 +10,17 @@ interface FormField {
 }
 
 interface Props {
-  testDriveImage: string;
   emiImage: string;
   testDriveFields: FormField[];
-  emiFields: FormField[];
-  emiTitle: string;
 }
 
 /* ================= COMPONENT ================= */
 
-export default function ZoomImageFormSection({
-  testDriveImage,
-  emiImage,
+export default function Testdrive({
+//   testDriveImage,
+  
   testDriveFields,
-  emiFields,
-  emiTitle,
+  
 }: Props) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -46,18 +42,17 @@ export default function ZoomImageFormSection({
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ width: "100%", color: "#000" }}>
+    <section ref={sectionRef} style={{ width: "100%", color: "#000", }}>
       {/* ================= TEST DRIVE ================= */}
       <div style={wrapperStyle}>
         <div style={imageStyle(visible)}>
-          <img src={testDriveImage} style={imgStyle} />
+          
         </div>
 
         <div style={formStyle(visible)}>
-          <img
-            src="https://static.toyotabharat.com/images/showroom/glanza/new/txt-testdrive.png"
-            style={{ width: 160, marginBottom: 30 }}
-          />
+          <p style={{ fontSize: 34, fontWeight: 590, marginBottom: 10 ,fontStyle:"italic"}}>
+            TEST DRIVE
+          </p>
 
           <div style={gridStyle}>
             {testDriveFields.map((f, i) =>
@@ -116,7 +111,7 @@ export default function ZoomImageFormSection({
           <button
             style={{
               ...buttonStyle,
-              opacity: consentChecked ? 1 : 0.5,
+              opacity: consentChecked ? 1 : 0.9,
               cursor: consentChecked ? "pointer" : "not-allowed",
             }}
             disabled={!consentChecked}
@@ -127,29 +122,7 @@ export default function ZoomImageFormSection({
       </div>
 
       {/* ================= EMI ================= */}
-      <div style={wrapperStyle}>
-        <div style={imageStyle(visible)}>
-          <img src={emiImage} style={imgStyle} />
-        </div>
-
-        <div style={formStyle(visible)}>
-          <h2 style={emiTitleStyle}>{emiTitle}</h2>
-
-          {emiFields.map((f, i) => (
-            <select
-              key={i}
-              onFocus={() => setActiveIndex(i)}
-              onBlur={() => setActiveIndex(null)}
-              style={inputStyle(activeIndex === i)}
-            >
-              <option>{f.label}</option>
-              {f.options?.map((o, j) => (
-                <option key={j}>{o}</option>
-              ))}
-            </select>
-          ))}
-        </div>
-      </div>
+      
     </section>
   );
 }
@@ -165,10 +138,11 @@ const wrapperStyle: React.CSSProperties = {
 };
 
 const imageStyle = (v: boolean): React.CSSProperties => ({
-  flex: "1 1 60%",
+  flex: "1 1 30%",
   minWidth: 280,
-  transform: v ? "scale(1)" : "scale(1.08)",
-  transition: "1.2s ease",
+  backgroundColor:"#fff",
+//   transform: v ? "scale(1)" : "scale(1.08)",
+//   transition: "1.2s ease",
 });
 
 const formStyle = (v: boolean): React.CSSProperties => ({
@@ -207,8 +181,8 @@ const inputStyle = (a: boolean): React.CSSProperties => ({
 
 const buttonStyle: React.CSSProperties = {
   marginTop: 30,
-  padding: "10px 40px",
-  background: "#63c018",
+  padding: "7px 340px",
+  background: "#e12b1adf",
   border: "none",
   cursor: "pointer",
   color: "#fff",
