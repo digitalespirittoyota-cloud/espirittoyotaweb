@@ -1,10 +1,18 @@
 import Banner from "../commonbanner/Banner";
+import AccessoriesCarousel from "./AccessoriesCarousel";
+import ColorShowcase from "./ColorShowcase";
 import Connection from "./Connection";
 
 
-import { connectionSectionData, styleSectionData, thrillsSectionData } from "./data";
+import { connectionSectionData, exteriorAccessoriesData, items, styleSectionData, taisorData, thrillsSectionData } from "./data";
+import DownloadAccessoryBrochure from "./DownloadAccessoryBrochure";
+import DownloadBrochureSection from "./DownloadBrochureSection";
+import EngineCarouselSection from "./EngineCarouselSection";
+import GallerySection from "./GallerySection";
+import ScrollGrowImage from "./ScrollGrowImage";
 import StyleSection from "./StyleSection";
 import StyleSectionReverse from "./StyleSectionReverse";
+import TaisorStyleCarousel from "./TaisorStyleCarousel";
 
 
 
@@ -36,6 +44,24 @@ export default function Page() {
       rightTopImage={connectionSectionData.rightTopImage}
       rightBottomImage={connectionSectionData.rightBottomImage}
       description={connectionSectionData.description}/>
+
+
+<TaisorStyleCarousel
+        title="Travel the distance in style and with confidence because you make your way."
+        items={taisorData}
+      />
+
+ <EngineCarouselSection  />
+ <ScrollGrowImage/>
+ <ColorShowcase/>
+ <DownloadBrochureSection/>
+ <GallerySection/>
+ <AccessoriesCarousel
+        heading="EXTERIOR ACCESSORIES"
+        items={exteriorAccessoriesData}
+      />
+
+<DownloadAccessoryBrochure/>
         </>
 
     );
