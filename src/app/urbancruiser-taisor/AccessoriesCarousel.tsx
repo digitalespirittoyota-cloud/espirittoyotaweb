@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -22,28 +23,23 @@ export default function AccessoriesCarousel({
 
   if (!items.length) return null;
 
-  const maxIndex = items.length - visibleItems;
+  const maxIndex = Math.max(items.length - visibleItems, 0);
 
-  const prev = () => {
-    setIndex((p) => (p <= 0 ? maxIndex : p - 1));
-  };
-
-  const next = () => {
-    setIndex((p) => (p >= maxIndex ? 0 : p + 1));
-  };
+  const prev = () => setIndex(p => (p <= 0 ? maxIndex : p - 1));
+  const next = () => setIndex(p => (p >= maxIndex ? 0 : p + 1));
 
   return (
-    <section className="w-full py-16">
+    <section className="w-full py-16 bg-white overflow-hidden">
       {/* HEADING */}
-      <h2 className="text-[26px] sm:text-[32px] font-semibold mb-10 px-4">
+      <h2 className="text-[20px] sm:text-[32px] font-semibold mb-10 max-w-[1400px] mx-auto px-4">
         {heading}
       </h2>
 
-      {/* CAROUSEL WRAPPER */}
-      <div className="relative max-w-[1400px] mx-auto px-4 overflow-hidden">
+      {/* VIEWPORT */}
+      <div className="relative max-w-[1400px] mx-auto px-12 overflow-hidden">
         {/* TRACK */}
         <div
-          className="flex gap-4 transition-transform duration-500 ease-in-out"
+          className="flex gap-6 transition-transform duration-500 ease-out group"
           style={{
             transform: `translateX(-${index * 25}%)`,
           }}
@@ -51,19 +47,29 @@ export default function AccessoriesCarousel({
           {items.map((item, i) => (
             <div
               key={i}
-              className="group flex-shrink-0 w-[25%]"
+              className="
+                flex-shrink-0
+                basis-[25%]
+                group-hover:basis-[22%]
+                hover:!basis-[32%]
+                transition-[flex-basis] duration-300 ease-out
+              "
             >
               {/* IMAGE */}
-              <div className="overflow-hidden transition-all duration-300 group-hover:scale-x-105">
+              <div className="overflow-hidden bg-gray-100">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-[260px] sm:h-[300px] object-cover"
+                  className="
+                    w-full h-[260px] sm:h-[300px] object-cover
+                    transition-transform duration-300
+                    hover:scale-105
+                  "
                 />
               </div>
 
               {/* TITLE */}
-              <p className="mt-3 text-sm sm:text-base font-medium">
+              <p className="mt-4 text-sm sm:text-base font-medium text-gray-900">
                 {item.title}
               </p>
             </div>
@@ -73,19 +79,29 @@ export default function AccessoriesCarousel({
         {/* LEFT ARROW */}
         <button
           onClick={prev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2
-                     z-40 bg-white/80 rounded-full p-2 shadow-lg"
+          className="
+            absolute left-0 top-1/2 -translate-y-1/2
+            w-10 h-10 sm:w-12 sm:h-12
+            flex items-center justify-center
+            rounded-full bg-white border shadow
+            hover:bg-gray-100 transition
+          "
         >
-          <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         {/* RIGHT ARROW */}
         <button
           onClick={next}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2
-                     z-40 bg-white/80 rounded-full p-2 shadow-lg"
+          className="
+            absolute right-0 top-1/2 -translate-y-1/2
+            w-10 h-10 sm:w-12 sm:h-12
+            flex items-center justify-center
+            rounded-full bg-white border shadow
+            hover:bg-gray-100 transition
+          "
         >
-          <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       </div>
     </section>

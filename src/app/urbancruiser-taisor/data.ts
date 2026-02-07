@@ -118,19 +118,142 @@ export const exteriorAccessoriesData: AccessoriesItem[] = [
     title: "Body Side Molding",
   },
   {
-    image: "/accessories/front-under-spoiler.jpg",
+    image: "/urbancruiser-taisor/D27-FRONT-UNDER-SPOILER.jpg",
     title: "Front Under Spoiler",
   },
   {
-    image: "/accessories/headlamp-garnish.jpg",
+    image: "/urbancruiser-taisor/D27-HEADLAMPS-GARNISH.jpg",
     title: "Headlamp Garnish",
   },
   {
-    image: "/accessories/rear-bumper-garnish.jpg",
+    image: "/urbancruiser-taisor/D27-REAR-BUMPER-CORNER-GARNISH.jpg",
     title: "Rear Bumper Garnish",
   },
   {
-    image: "/accessories/door-visor.jpg",
-    title: "Door Visor",
+    image: "/urbancruiser-taisor/D27-ORVM-GARNISH.jpg",
+    title: "OVRM Garnish",
   },
+  {
+    image:"/urbancruiser-taisor/D27-DOOR-VISOR.jpg",
+    title:"Door Visor"
+  }
+];
+
+export const InteriorAccessoriesData: AccessoriesItem[] = [
+  {
+    image: "/urbancruiser-taisor/D27-3D-Boot-Mat.jpg",
+    title: "3D Boot Mat",
+  },
+  {
+    image: "/urbancruiser-taisor/D27-Interior-Styling-Kit.jpg",
+    title: "Interior Styling Kit",
+  },
+  {
+    image: "/urbancruiser-taisor/D27-Seat-Cover.jpg",
+    title: "Seat Cover",
+  },
+  {
+    image: "/urbancruiser-taisor/D27-Steering-Wheel-Cover-Leather.jpg",
+    title: "Steering Wheel Cover Leather",
+  },
+  
+];
+
+
+
+export const taisorData2 = [
+  {
+    image: "/urbancruiser-taisor/d27_SMARTWATCH_CONNECTIVITY.webp",
+    caption: [
+      "SMARTWATCH CONNECTIVITY",
+      "",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/d27_REMOTE_VEHICLE_IGNITION.webp",
+    caption: [
+      "REMOTE VEHICLE IGNITION",
+      "",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/d27_SMARTPLAY_CAST_TOUCH_SCREEN_INFOTAIN_ENT_SYSTEM.webp",
+    caption: [
+      "SMARTPLAY CAST TOUCH SCREEN",
+      "INFOTAINMENT SYSTEM",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/d27_HEAD-UP_DISPLAY.webp",
+    caption: [
+      "HEAD-UP DISPLAY",
+      "",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/d27_360_VIEW_CAMERA.webp",
+    caption: [
+      "360 VIEW CAMERA",
+      " ",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/d27_WIRELESS_CHARGER.webp",
+    caption: [
+      "WIRELESS CHARGER",
+      "",
+    ],
+  },
+
+];
+
+
+
+
+
+
+export const taisorData3 = [
+  {
+    image: "/urbancruiser-taisor/D27_COOL_REAR AC_WITH_USB.jpg",
+    caption: [
+      "COOL REAR AC WITH USB",
+      "",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/D27_STEERING_MOUNTED_CONTROLS.webp",
+    caption: [
+      "STEERING MOUNTED CONTROLS",
+      "",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/D27_60-40_SPLIT_REAR_SEAT.jpg",
+    caption: [
+      "60:40 SPLIT REAR SEAT",
+      "",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/D27_PREMIUM SOUND_SYSTEM.jpg",
+    caption: [
+      "PREMIUM SOUND SYSTEM",
+      "",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/D27_COMFORTABLE_DRIVER_ARMREST.jpg",
+    caption: [
+      "COMFORTABLE DRIVER ARMREST",
+      " ",
+    ],
+  },
+  {
+    image: "/urbancruiser-taisor/D27_ENHANCED_BOOT_SPACE.jpg",
+    caption: [
+      "ENHANCED BOOT SPACE",
+      "",
+    ],
+  },
+
 ];

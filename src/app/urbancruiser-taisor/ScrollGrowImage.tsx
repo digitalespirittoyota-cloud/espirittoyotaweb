@@ -35,7 +35,7 @@ export default function ToyotaStyleScrollImage() {
     <>
       {/* <div className="h-[10vh]" /> */}
 
-      <section ref={sectionRef} className="relative h-[120vh]">
+      <section ref={sectionRef} className="relative h-[100vh]">
         <div className="sticky top-0 h-[90vh] flex items-center justify-center overflow-hidden">
 
           <img
