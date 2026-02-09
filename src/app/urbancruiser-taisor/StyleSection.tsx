@@ -1,3 +1,87 @@
+// import React from "react";
+
+// interface StyleSectionProps {
+//   leftImage: string;
+//   rightTopImage: string;
+//   rightBottomImage: string;
+//   description: string;
+// }
+
+// const StyleSection: React.FC<StyleSectionProps> = ({
+//   leftImage,
+//   rightTopImage,
+//   rightBottomImage,
+//   description,
+// }) => {
+//   return (
+//     <section className="w-full h-auto lg:h-[400px] overflow-hidden relative">
+//       <div className="w-full h-full grid grid-cols-1 lg:grid-cols-[60%_40%]">
+
+//         {/* LEFT IMAGE – 60% on desktop, full width on mobile */}
+//         <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-full relative">
+//           <img
+//             src={leftImage}
+//             alt="Car"
+//             className="w-full h-full object-cover"
+//           />
+
+//           {/* MOBILE ONLY: RIGHT TOP IMAGE */}
+//           <div className="lg:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2">
+//             <div
+//               className="h-[100px] w-[200px] sm:h-[120px] sm:w-[250px] bg-no-repeat bg-cover bg-center rounded-lg"
+//               style={{
+//                 backgroundImage: `url(${rightTopImage})`,
+//               }}
+//             />
+//           </div>
+//         </div>
+
+//         {/* RIGHT CONTENT */}
+//         <div className="relative w-full h-auto lg:h-full bg-white flex">
+//           {/* DIAGONAL CUT */}
+//           <div className="hidden lg:block absolute top-0 left-[-90px] h-full w-[180px] bg-white skew-x-[-12deg] z-10" />
+
+//           <div className="relative z-20 w-full h-full px-4 lg:px-0 pt-4 lg:pt-0 pb-8 lg:pb-0">
+//             {/* DESKTOP TOP IMAGE */}
+//             <div
+//               className="hidden lg:block relative w-full h-[190px] bg-no-repeat bg-cover bg-left z-200 position-relative right-18"
+//               style={{ backgroundImage: `url(${rightTopImage})` }}
+//             >
+//               {/* DESKTOP BOTTOM IMAGE */}
+//               <img
+//                 src={rightBottomImage}
+//                 alt="Style Bottom"
+//                 className="hidden lg:block absolute -bottom-20 -left-8 w-[230px] object-contain z-30 position-relative left-9 top-31"
+//               />
+//             </div>
+
+//             {/* MOBILE BOTTOM IMAGE */}
+//             <div className="lg:hidden flex justify-center items-center mt-6 mb-4">
+//               <img
+//                 src={rightBottomImage}
+//                 alt="Style Bottom"
+//                 className="w-[180px] sm:w-[200px] md:w-[220px] object-contain"
+//               />
+//             </div>
+
+//             {/* TEXT */}
+//             <p className="mt-4 lg:mt-19 text-gray-600 text-lg sm:text-xl leading-relaxed max-w-md mx-auto lg:mx-0 text-center lg:text-left">
+//               {description}
+//             </p>
+//           </div>
+//         </div>
+
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default StyleSection;
+
+
+
+
+
 import React from "react";
 
 interface StyleSectionProps {
@@ -14,11 +98,11 @@ const StyleSection: React.FC<StyleSectionProps> = ({
   description,
 }) => {
   return (
-    <section className="w-full h-auto lg:h-[400px] overflow-hidden relative">
-      <div className="w-full h-full grid grid-cols-1 lg:grid-cols-[60%_40%]">
+    <section className="w-full overflow-hidden relative">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-[60%_40%]">
 
-        {/* LEFT IMAGE – 60% on desktop, full width on mobile */}
-        <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-full relative">
+        {/* LEFT IMAGE */}
+        <div className="relative w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[400px]">
           <img
             src={leftImage}
             alt="Car"
@@ -26,32 +110,31 @@ const StyleSection: React.FC<StyleSectionProps> = ({
           />
 
           {/* MOBILE ONLY: RIGHT TOP IMAGE */}
-          <div className="lg:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2">
+          <div className="lg:hidden absolute bottom-4 left-1/2 -translate-x-1/2">
             <div
-              className="h-[100px] w-[200px] sm:h-[120px] sm:w-[250px] bg-no-repeat bg-cover bg-center rounded-lg"
-              style={{
-                backgroundImage: `url(${rightTopImage})`,
-              }}
+              className="h-[90px] w-[180px] sm:h-[110px] sm:w-[240px] bg-no-repeat bg-cover bg-center rounded-lg"
+              style={{ backgroundImage: `url(${rightTopImage})` }}
             />
           </div>
         </div>
 
         {/* RIGHT CONTENT */}
-        <div className="relative w-full h-auto lg:h-full bg-white flex">
-          {/* DIAGONAL CUT */}
-          <div className="hidden lg:block absolute top-0 left-[-90px] h-full w-[180px] bg-white skew-x-[-12deg] z-10" />
+        <div className="relative w-full bg-white flex">
+          {/* DIAGONAL CUT (DESKTOP ONLY) */}
+          <div className="hidden lg:block absolute top-0 -left-[90px] h-full w-[180px] bg-white skew-x-[-12deg] z-10" />
 
-          <div className="relative z-20 w-full h-full px-4 lg:px-0 pt-4 lg:pt-0 pb-8 lg:pb-0">
+          <div className="relative z-20 w-full px-4 lg:px-0 pt-6 lg:pt-0 pb-8 lg:pb-0">
+
             {/* DESKTOP TOP IMAGE */}
             <div
-              className="hidden lg:block relative w-full h-[190px] bg-no-repeat bg-cover bg-left z-200 position-relative right-18"
+              className="hidden lg:block relative w-full h-[190px] bg-no-repeat bg-cover bg-left"
               style={{ backgroundImage: `url(${rightTopImage})` }}
             >
               {/* DESKTOP BOTTOM IMAGE */}
               <img
                 src={rightBottomImage}
                 alt="Style Bottom"
-                className="hidden lg:block absolute -bottom-20 -left-8 w-[230px] object-contain z-30 position-relative left-9 top-31"
+                className="absolute -bottom-20 left-6 w-[230px] object-contain z-30"
               />
             </div>
 
@@ -60,12 +143,12 @@ const StyleSection: React.FC<StyleSectionProps> = ({
               <img
                 src={rightBottomImage}
                 alt="Style Bottom"
-                className="w-[180px] sm:w-[200px] md:w-[220px] object-contain"
+                className="w-[160px] sm:w-[190px] md:w-[220px] object-contain"
               />
             </div>
 
             {/* TEXT */}
-            <p className="mt-4 lg:mt-19 text-gray-600 text-lg sm:text-xl leading-relaxed max-w-md mx-auto lg:mx-0 text-center lg:text-left">
+            <p className="mt-4 lg:mt-16 text-gray-600 text-base sm:text-lg leading-relaxed max-w-md mx-auto lg:mx-0 text-center lg:text-left">
               {description}
             </p>
           </div>

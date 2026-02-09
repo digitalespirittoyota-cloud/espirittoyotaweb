@@ -79,7 +79,7 @@ const models = [
   {
     name: "Land Cruiser 300",
     image: "/models/land-cruiser.png",
-    link: "https://espirittoyota.co.in/showroom/lc300",
+    link: "/lc300",
   },
 ];
 
