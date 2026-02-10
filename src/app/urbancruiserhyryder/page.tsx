@@ -2,6 +2,7 @@ import GlanzaHero from "../glanza/GlanzaHero";
 import SideHero from "../glanza/SideHero";
 import AccessoriesPage from "./AccessoriesPage";
 import CarCustomizer from "./CarCustomizer";
+import EBookBanner from "./EBookbanner";
 import HybridPage from "./HybridPage";
 import HyMilesWinners from "./HyMilesWinners";
 import HyTimeBanner from "./HyTimeBanner";
@@ -521,10 +522,11 @@ export default function hiluxPage() {
       <Technical/>
 
       <HybridPage />
-      <SideHero
+      {/* <SideHero
   imageUrl="https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/uch-ebook.jpg"
   alt="Glanza Ebook"
-/>
+/> */}
+<EBookBanner/>
       </>
     
   );

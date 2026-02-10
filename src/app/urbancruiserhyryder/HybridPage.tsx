@@ -176,7 +176,14 @@ const CarMediaPage: React.FC = () => {
       fontSize: '1.5rem',
       cursor: 'pointer'
     },
-    
+    parallelogram: {
+  clipPath: 'polygon(6% 0%, 100% 0%, 94% 100%, 0% 100%)',
+  overflow: 'hidden'
+},
+tabParallelogram: {
+  clipPath: 'polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%)',
+},
+
     
    
   };
@@ -186,32 +193,41 @@ const CarMediaPage: React.FC = () => {
       
 
       <div style={styles.tabs}>
+       <button
+  style={{
+    ...styles.tabButton,
+    ...styles.tabParallelogram,
+    ...(activeTab === 'videos'
+      ? styles.tabButtonActive
+      : styles.tabButtonInactive),
+  }}
+  onClick={() => setActiveTab('videos')}
+>
+  Videos
+</button>
+
         <button
-          style={{
-            ...styles.tabButton,
-            ...(activeTab === 'videos' ? styles.tabButtonActive : styles.tabButtonInactive)
-          }}
-          onClick={() => setActiveTab('videos')}
-        >
-          Videos
-        </button>
-        <button
-          style={{
-            ...styles.tabButton,
-            ...(activeTab === 'articles' ? styles.tabButtonActive : styles.tabButtonInactive)
-          }}
-          onClick={() => setActiveTab('articles')}
-        >
-          Articles
-        </button>
+  style={{
+    ...styles.tabButton,
+    ...styles.tabParallelogram,
+    ...(activeTab === 'articles'
+      ? styles.tabButtonActive
+      : styles.tabButtonInactive),
+  }}
+  onClick={() => setActiveTab('articles')}
+>
+  Articles
+</button>
+
       </div>
 
       <div style={styles.contentGrid}>
         {activeTab === 'videos' ? (
           videos.map((video) => (
             <div
-              key={video.id}
-              style={styles.videoCard}
+  key={video.id}
+  style={{ ...styles.videoCard, ...styles.parallelogram }}
+
               onClick={() => handleVideoClick(video.videoUrl)}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-5px)';
@@ -235,7 +251,11 @@ const CarMediaPage: React.FC = () => {
           ))
         ) : (
           articles.map((article) => (
-            <div key={article.id} style={styles.articleCard}>
+            <div
+  key={article.id}
+  style={{ ...styles.articleCard, ...styles.parallelogram }}
+>
+
               <img
                 src={article.image}
                 alt={article.title}

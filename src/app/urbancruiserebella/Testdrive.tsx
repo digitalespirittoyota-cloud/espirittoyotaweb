@@ -1,6 +1,6 @@
 
 "use client";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 /* ================= TYPES ================= */
 
@@ -10,86 +10,70 @@ interface FormField {
 }
 
 interface Props {
-  emiImage: string;
   testDriveFields: FormField[];
 }
 
 /* ================= COMPONENT ================= */
 
-export default function Testdrive({
-//   testDriveImage,
-  
-  testDriveFields,
-  
-}: Props) {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-
-  const [visible, setVisible] = useState(false);
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  // ✅ CHECKBOX STATES (INSIDE COMPONENT)
-  const [exchangeChecked, setExchangeChecked] = useState(false);
-  const [consentChecked, setConsentChecked] = useState(false);
+export default function Testdrive({ testDriveFields }: Props) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [consentChecked, setConsentChecked] = useState(true);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setVisible(true),
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ width: "100%", color: "#000", }}>
-      {/* ================= TEST DRIVE ================= */}
-      <div style={wrapperStyle}>
-        <div style={imageStyle(visible)}>
-          
-        </div>
+    <section style={sectionStyle}>
+      <div
+        style={{
+          ...containerStyle,
+          justifyContent: isMobile ? "center" : "flex-end",
+        }}
+      >
+        <div
+          style={{
+            ...formWrapperStyle,
+            width: isMobile ? "100%" : "760px",
+          }}
+        >
+          <h2 style={titleStyle}>TEST DRIVE</h2>
 
-        <div style={formStyle(visible)}>
-          <p style={{ fontSize: 34, fontWeight: 590, marginBottom: 10 ,fontStyle:"italic"}}>
-            TEST DRIVE
-          </p>
-
-          <div style={gridStyle}>
-            {testDriveFields.map((f, i) =>
-              f.options ? (
-                <select
-                  key={i}
-                  onFocus={() => setActiveIndex(i)}
-                  onBlur={() => setActiveIndex(null)}
-                  style={inputStyle(activeIndex === i)}
-                >
-                  <option>{f.label}</option>
-                  {f.options.map((o, j) => (
-                    <option key={j}>{o}</option>
+          {/* FORM GRID */}
+          <div
+            style={{
+              ...gridStyle,
+              gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+            }}
+          >
+            {testDriveFields.map((field, i) =>
+              field.options ? (
+                <select key={i} style={inputStyle}>
+                  <option>{field.label}</option>
+                  {field.options.map((opt, j) => (
+                    <option key={j}>{opt}</option>
                   ))}
                 </select>
               ) : (
                 <input
                   key={i}
-                  placeholder={f.label}
-                  style={inputStyle(false)}
+                  style={inputStyle}
+                  placeholder={field.label}
                 />
               )
             )}
           </div>
 
-          {/* ===== CHECKBOX SECTION ===== */}
-          <div style={{ marginTop: 20 }}>
+          {/* CHECKBOXES */}
+          <div style={checkboxWrapStyle}>
             <label style={checkboxLabelStyle}>
-              <input
-                type="checkbox"
-                checked={exchangeChecked}
-                onChange={(e) => setExchangeChecked(e.target.checked)}
-                style={checkboxStyle}
-              />
+              <input type="checkbox" />
               <span>
                 Would you like to exchange your existing car with
-                <strong> Toyota U Trust</strong>
+                <strong> Toyota U Trust</strong>?
               </span>
             </label>
 
@@ -98,125 +82,103 @@ export default function Testdrive({
                 type="checkbox"
                 checked={consentChecked}
                 onChange={(e) => setConsentChecked(e.target.checked)}
-                style={checkboxStyle}
               />
               <span>
-                I hereby agree to receive emails, calls and SMS related to
-                promotional activities and services, by or on behalf of TKM.
+                I agree to receive emails, calls and SMS related to promotions and
+                services from TKM.
                 <span style={knowMoreStyle}> Know More</span>
               </span>
             </label>
           </div>
 
+          {/* SUBMIT */}
           <button
+            disabled={!consentChecked}
             style={{
-              ...buttonStyle,
-              opacity: consentChecked ? 1 : 0.9,
+              ...submitStyle,
+              opacity: consentChecked ? 1 : 0.6,
               cursor: consentChecked ? "pointer" : "not-allowed",
             }}
-            disabled={!consentChecked}
           >
             SUBMIT
           </button>
         </div>
       </div>
-
-      {/* ================= EMI ================= */}
-      
     </section>
   );
 }
 
 /* ================= STYLES ================= */
 
-const wrapperStyle: React.CSSProperties = {
-  display: "flex",
-  flexWrap: "wrap",
-  minHeight: "720px",
-  justifyContent: "center",
-  alignItems: "stretch",
+const sectionStyle: React.CSSProperties = {
+  width: "100%",
+  background: "#fff",
+  color:"#000",
 };
 
-const imageStyle = (v: boolean): React.CSSProperties => ({
-  flex: "1 1 30%",
-  minWidth: 280,
-  backgroundColor:"#fff",
-//   transform: v ? "scale(1)" : "scale(1.08)",
-//   transition: "1.2s ease",
-});
+const containerStyle: React.CSSProperties = {
+  maxWidth: "1400px",
+  margin: "0 auto",
+  display: "flex",
+  padding: "60px 20px",
+};
 
-const formStyle = (v: boolean): React.CSSProperties => ({
-  flex: "1 1 35%",
-  minWidth: 280,
+const formWrapperStyle: React.CSSProperties = {
   background: "#fff",
-  padding: "50px 30px",
-  transform: v ? "translateY(0)" : "translateY(80px)",
-  opacity: v ? 1 : 0,
-  transition: "1s ease",
-  color: "#000",
-  boxSizing: "border-box",
-});
+};
 
-const imgStyle: React.CSSProperties = {
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
+const titleStyle: React.CSSProperties = {
+  fontSize: "32px",
+  fontStyle: "italic",
+  fontWeight: 500,
+  marginBottom: "28px",
 };
 
 const gridStyle: React.CSSProperties = {
   display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  gap: 16,
+  gap: "18px 24px",
 };
 
-const inputStyle = (a: boolean): React.CSSProperties => ({
+const inputStyle: React.CSSProperties = {
   width: "100%",
-  padding: 14,
-  marginBottom: 18,
-  border: a ? "1px solid #0066ff" : "1.5px solid #000",
-  color: "#000",
-  fontSize: 14,
-  boxSizing: "border-box",
-});
+  height: "46px",
+  border: "1px solid #cfcfcf",
+  padding: "0 14px",
+  fontSize: "14px",
+  outline: "none",
+  background: "#fff",
+  
+};
 
-const buttonStyle: React.CSSProperties = {
-  marginTop: 30,
-  padding: "7px 340px",
-  background: "#e12b1adf",
-  border: "none",
-  cursor: "pointer",
-  color: "#fff",
-  fontWeight: 400,
+const checkboxWrapStyle: React.CSSProperties = {
+  marginTop: "24px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "14px",
 };
 
 const checkboxLabelStyle: React.CSSProperties = {
   display: "flex",
-  alignItems: "flex-start",
-  gap: 10,
-  fontSize: 13,
-  color: "#000",
+  gap: "10px",
+  fontSize: "14px",
   lineHeight: 1.4,
-  marginBottom: 12,
   cursor: "pointer",
-};
-
-const checkboxStyle: React.CSSProperties = {
-  marginTop: 3,
 };
 
 const knowMoreStyle: React.CSSProperties = {
-  color: "#d32f2f",
-  marginLeft: 4,
-  cursor: "pointer",
+  color: "#e11c2a",
   fontWeight: 500,
+  marginLeft: "4px",
+  cursor: "pointer",
 };
 
-const emiTitleStyle: React.CSSProperties = {
-  marginBottom: 30,
-  padding: "14px 18px",
-  borderTop: "2px solid #000",
-  borderRight: "2px solid #000",
-  color: "#000",
-  fontSize: 18,
-  fontWeight: 600,
+const submitStyle: React.CSSProperties = {
+  marginTop: "26px",
+  width: "100%",
+  height: "48px",
+  background: "#d9534f",
+  color: "#fff",
+  border: "none",
+  fontSize: "15px",
+  fontWeight: 500,
 };

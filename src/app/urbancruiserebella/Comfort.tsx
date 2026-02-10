@@ -1,288 +1,3 @@
-// "use client";
-// import React, { useState } from "react";
-
-// const comfortData = [
-//   {
-//     img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort6_800x510.jpg",
-//     text: "10-WAY ADJUSTABLE DRIVER SEAT",
-//   },
-//   {
-//     img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort5_800x510.jpg",
-//     text: "10-WAY ADJUSTABLE DRIVER SEAT",
-//   },
-//   {
-//     img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort4_800x510.jpg",
-//     text: "FRONT SEAT ARM REST",
-//   },
-//   {
-//     img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort3_800x510.jpg",
-//     text: "ELECTRONIC PARKING BRAKE",
-//   },
-//   {
-//     img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort2_800x510.jpg",
-//     text: "AIR VENTS",
-//   },
-//   {
-//     img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort1_800x510.jpg",
-//     text: "",
-//   },
-// ];
-
-// const Comfort = () => {
-//   const [activeIndex, setActiveIndex] = useState(0);
-
-//   const prev = () => activeIndex > 0 && setActiveIndex(activeIndex - 1);
-//   const next = () =>
-//     activeIndex < comfortData.length - 1 &&
-//     setActiveIndex(activeIndex + 1);
-
-//   return (
-//     <section className="comfort-wrapper">
-//       {/* LEFT */}
-//       <div className="comfort-left">
-//         <h2>COMFORT</h2>
-//         <h4>
-//           CALM THAT <br /> MOVES WITH YOU
-//         </h4>
-//         <p>
-//           The All-Electric Urban Cruiser EV offers a contemporary premium cabin
-//           with dual-tone interiors and soft-touch surfaces.
-//         </p>
-
-//         <div className="thumb-slider">
-//           <button onClick={prev} disabled={activeIndex === 0}>
-//             <img
-//               src={
-//                 activeIndex === 0
-//                   ? "https://static.toyotabharat.com/images/showroom/a32/arrow-prev.png"
-//                   : "https://static.toyotabharat.com/images/showroom/a32/left-arrow-37x40.svg"
-//               }
-//             />
-//           </button>
-
-//           <div className="thumb-track">
-//             <div
-//               className="thumb-inner"
-//               style={{ transform: `translateX(-${activeIndex * 140}px)` }}
-//             >
-//               {comfortData.map((item, i) => (
-//                 <div
-//                   key={i}
-//                   className={`thumb ${i === activeIndex ? "active" : ""}`}
-//                   onClick={() => setActiveIndex(i)}
-//                 >
-//                   <img src={item.img} />
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-
-//           <button
-//             onClick={next}
-//             disabled={activeIndex === comfortData.length - 1}
-//           >
-//             <img
-//               src={
-//                 activeIndex === comfortData.length - 1
-//                   ? "https://static.toyotabharat.com/images/showroom/a32/arrow-next.png"
-//                   : "https://static.toyotabharat.com/images/showroom/a32/right-arrow-37x40.svg"
-//               }
-//             />
-//           </button>
-//         </div>
-//       </div>
-
-//       {/* DIAGONAL RED DIVIDER */}
-//       <div className="divider" />
-
-//       {/* RIGHT */}
-//       <div className="comfort-right">
-//         <div key={activeIndex} className="image-wrap fade">
-//           <img src={comfortData[activeIndex].img} />
-//         </div>
-//         {comfortData[activeIndex].text && (
-//           <p className="label">{comfortData[activeIndex].text}</p>
-//         )}
-//       </div>
-
-//       <style jsx>{`
-//         .comfort-wrapper {
-//           display: flex;
-//           padding: 60px;
-//           position: relative;
-//           overflow: hidden;
-//           background:#fff;
-//           color:#000;
-//         }
-
-//         .comfort-left {
-//           width: 35%;
-//           z-index: 2;
-//         }
-
-//         h2 {
-//           color: #e10600;
-//           font-size: 28px;
-//         }
-
-//         h4 {
-//           font-size: 22px;
-//           margin: 10px 0;
-//         }
-
-//         p {
-//           font-size: 14px;
-//           line-height: 1.6;
-//         }
-
-//         /* DIAGONAL RED LINE */
-//         .divider {
-//           position: absolute;
-//           left: 40%;
-//           top: 0;
-//           width: 2px;
-//           height: 120%;
-//           background: linear-gradient(#e10600, transparent);
-//           transform: skewX(-12deg);
-//         }
-
-//         /* THUMB SLIDER */
-//         .thumb-slider {
-//           display: flex;
-//           align-items: center;
-//           margin-top: 40px;
-//         }
-
-//         .thumb-track {
-//           width: 280px; /* ONLY 2 VISIBLE */
-//           overflow: hidden;
-//           margin: 0 12px;
-//         }
-
-//         .thumb-inner {
-//           display: flex;
-//           transition: transform 0.4s ease;
-//         }
-
-//         .thumb {
-//           width: 130px;
-//           height: 90px;
-//           margin-right: 10px;
-//           cursor: pointer;
-//           transform: skewX(-12deg);
-//           overflow: hidden;
-//           border: 2px solid transparent;
-//         }
-
-//         .thumb img {
-//           width: 100%;
-//           height: 100%;
-//           object-fit: cover;
-//           transform: skewX(12deg);
-//         }
-
-//         .thumb.active {
-//           border-color: #e10600;
-//         }
-
-//         button {
-//           background: none;
-//           border: none;
-//           cursor: pointer;
-//         }
-
-//         button:disabled {
-//           opacity: 0.4;
-//           cursor: not-allowed;
-//         }
-
-//         /* RIGHT IMAGE */
-//         .comfort-right {
-//           width: 65%;
-//           position: relative;
-//         }
-
-//         .image-wrap {
-//           width: 100%;
-//           max-height: 520px;
-//           transform: skewX(-12deg);
-//           overflow: hidden;
-//         }
-
-//         .image-wrap img {
-//           width: 100%;
-//           height: 100%;
-//           object-fit: contain;
-//           transform: skewX(12deg);
-//         }
-
-//         /* FADE ANIMATION */
-//         .fade {
-//           animation: fadeIn 0.5s ease;
-//         }
-
-//         @keyframes fadeIn {
-//           from {
-//             opacity: 0;
-//             transform: translateY(10px) skewX(-12deg);
-//           }
-//           to {
-//             opacity: 1;
-//             transform: translateY(0) skewX(-12deg);
-//           }
-//         }
-
-//         .label {
-//           position: absolute;
-//           bottom: 20px;
-//           left: 30px;
-//           background: rgba(0, 0, 0, 0.6);
-//           color: #fff;
-//           padding: 8px 14px;
-//           font-size: 13px;
-//         }
-
-//         /* RESPONSIVE */
-//         @media (max-width: 1024px) {
-//           .comfort-wrapper {
-//             flex-direction: column;
-//           }
-
-//           .divider {
-//             display: none;
-//           }
-
-//           .comfort-left,
-//           .comfort-right {
-//             width: 100%;
-//           }
-//         }
-//       `}</style>
-//     </section>
-//   );
-// };
-
-// export default Comfort;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 "use client";
 import React, { useState } from "react";
@@ -328,7 +43,7 @@ export default function ComfortSection() {
       <div className="content">
         <h1>COMFORT</h1>
         <h2>
-          CALM THAT <span>MOVES</span> WITH YOU
+          CALM THAT <br /> <span>MOVES</span> WITH YOU
         </h2>
         <p>
           The All-Electric Urban Cruiser Ebella features a contemporary, premium
@@ -338,22 +53,29 @@ export default function ComfortSection() {
 
         {/* THUMB CARDS */}
         <div className="thumb-wrap">
-          {[active, (active + 1) % comfortData.length].map((i, idx) => (
-            <div
-              key={idx}
-              className={`thumb ${idx === 0 ? "active" : ""}`}
-            >
-              <img src={comfortData[i].img} />
-            </div>
-          ))}
+  <div
+    className="thumb-track"
+    style={{ transform: `translateX(-${active * 305}px)` }}
+  >
+    {comfortData.map((item, i) => (
+      <div
+        key={i}
+        className={`thumb ${i === active ? "active" : ""}`}
+      >
+        <img src={item.img} />
+      </div>
+    ))}
+  </div>
 
-          <button className="nav left" onClick={prev}>
-            ‹
-          </button>
-          <button className="nav right" onClick={next}>
-            ›
-          </button>
-        </div>
+  <button className="nav left" onClick={prev}>
+    <img src="https://static3.toyotabharat.com/images/showroom/a32/left-black-arrow.svg" />
+  </button>
+
+  <button className="nav right" onClick={next}>
+    <img src="https://static3.toyotabharat.com/images/showroom/a32/right-black-arrow.svg" />
+  </button>
+</div>
+
       </div>
 
       {/* IMAGE PANEL */}
@@ -366,7 +88,8 @@ export default function ComfortSection() {
         .comfort {
           display: flex;
           min-height: 100vh;
-          background: #000;
+          background: #fff;
+          color: #000;
           overflow: hidden;
           position: relative;
         }
@@ -378,6 +101,7 @@ export default function ComfortSection() {
           padding: 90px 70px;
           clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
           z-index: 3;
+          
         }
 
         .content h1 {
@@ -385,12 +109,15 @@ export default function ComfortSection() {
           font-size: 52px;
           font-weight: 600;
           margin-bottom: 12px;
+          font-style:italic;
+
         }
 
         .content h2 {
-          font-size: 28px;
+          font-size: 29px;
           font-weight: 400;
           margin-bottom: 18px;
+          font-style:italic;
         }
 
         .content h2 span {
@@ -408,72 +135,83 @@ export default function ComfortSection() {
         /* THUMBS */
         .thumb-wrap {
           position: relative;
-          display: flex;
-          gap: 22px;
-          margin-top: 55px;
-          align-items: center;
+          // display: flex;
+          // gap: 5px;
+          overflow: hidden;
+  width: 610px;
+  margin-top: 55px;
+          // align-items: center;
+          
         }
-
+        .thumb-track {
+  display: flex;
+  gap: 5px;
+  transition: transform 0.6s ease;
+}
         .thumb {
-          width: 170px;
-          height: 105px;
+          width: 300px;
+          height: 195px;
           border-radius: 10px;
+          flex-shrink: 0;
           overflow: hidden;
           opacity: 0.55;
           backdrop-filter: blur(6px);
-          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
-          transform: translateY(8px);
+          clip-path: polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%);
           
         }
 
         .thumb.active {
-          opacity: 1;
-          border: 3px solid #e60012;
+          opacity: 5;
+          border: 5px solid #e60012;
           transform: translateY(0);
+          clip-path: polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%);
         }
 
         .thumb img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          clip-path: polygon(0% 0%, 94% 0%, 100% 100%, 6% 100%);
         }
 
         /* ARROWS */
         .nav {
-          position: absolute;
-          width: 42px;
-          height: 42px;
-          border-radius: 50%;
-          border: none;
-          background: rgba(0, 0, 0, 0.65);
-          color: #fff;
-          font-size: 26px;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-        .nav.left {
-          left: -18px;
-        }
+.nav.left {
+  left: -10px;
+}
 
-        .nav.right {
-          right: -18px;
-        }
+.nav.right {
+  right: 50px;
+}
+
 
         /* IMAGE */
         .visual {
           width: 56%;
+          height: 90vh;          /* 👈 THIS controls image height */
+  min-height: 520px;     /* optional but recommended */
           position: relative;
+          clip-path: polygon(0% 0%, 79% 0%, 100% 100%, 11% 100%);
+          overflow: hidden;
+          background:green;
         }
-
-        .visual img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
-        }
+       .visual img {
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
@@ -504,3 +242,41 @@ export default function ComfortSection() {
     </section>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

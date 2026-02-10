@@ -7,7 +7,9 @@ import InnovaColors from "./InnovaColors";
 import Gallery from "./Gallery";
 import GlanzaHero from "../glanza/GlanzaHero";
 
+
 const Page: React.FC = () => {
+  
 
   const cars = [
     {
@@ -335,6 +337,10 @@ const unmatchedData = {
       
     ],
   };
+ 
+  
+
+  
   return (
     <div style={{ backgroundColor: "#fff" }}>
       <GlanzaHero
@@ -360,6 +366,9 @@ const unmatchedData = {
       <InnovaCrystaDesign {...upgradesData} />
       <InnovaColors/>
       <Gallery/>
+      
+
+      
     </div>
   );
 };

@@ -36,7 +36,7 @@ export default function HomePage() {
       <FAQ/>
       <Testdrive
               
-              emiImage=""
+              
               testDriveFields={[
                 { label: "SELECT SALUTATION*", options: ["Mr","Mrs", "Ms","Dr"] },
                 { label: "Name*" },

@@ -188,11 +188,11 @@ const InnovaColors: React.FC = () => {
         }
 
         .color-tabs li {
-          width: 18px;
-          height: 18px;
-          border-radius: 50%;
+          width: 120px;
+          height: 38px;
+          // border-radius: 50%;
           cursor: pointer;
-          border: 2px solid transparent;
+          border: 1px solid transparent;
         }
 
         .color-tabs li.active {
