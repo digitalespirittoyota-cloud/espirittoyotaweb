@@ -19,13 +19,13 @@ export default function LegacySection({
         "
       >
         {/* LEFT TITLE */}
-  <h2
+<h2
   className="
     text-4xl sm:text-5xl
-    lg:text-[23px]
-    xl:text-5xl
+    lg:text-[20px]
+    xl:text-4xl
     font-light leading-tight
-    lg:whitespace-nowrap
+    max-w-sm
   "
 >
   {title}

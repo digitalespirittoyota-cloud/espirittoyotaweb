@@ -108,3 +108,44 @@ h6 {
     0% 92%
   );
 }
+
+
+
+
+
+
+
+
+
+/* LEFT DIV
+   - Right Top Cut
+   - Left Bottom Cut
+*/
+.left-double-cut {
+  clip-path: polygon(
+    0 0,
+    92% 0,
+    100% 12%,
+    100% 100%,
+    8% 100%,
+    0 88%
+  );
+}
+
+/* RIGHT DIV
+   - Left Top Cut
+   - Right Bottom Cut
+*/
+.right-top-cut {
+  clip-path: polygon(
+    8% 0,
+    100% 0,
+    100% 88%,
+    92% 100%,
+    0 100%,
+    0 12%
+  );
+}
+
+
+
