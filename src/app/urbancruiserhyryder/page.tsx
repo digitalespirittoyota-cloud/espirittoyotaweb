@@ -1,5 +1,8 @@
+import GlanzaHero from "../glanza/GlanzaHero";
+import SideHero from "../glanza/SideHero";
 import AccessoriesPage from "./AccessoriesPage";
 import CarCustomizer from "./CarCustomizer";
+import EBookBanner from "./EBookbanner";
 import HybridPage from "./HybridPage";
 import HyMilesWinners from "./HyMilesWinners";
 import HyTimeBanner from "./HyTimeBanner";
@@ -396,39 +399,39 @@ const performanceitems: FeatureItem[] = [
 ];
 const saftyitems: FeatureItem[] = [
    {
-    title: "With Best In Class Fuel Efficiency Of 27.97* km/l",
-    subtitle: "HY on performance",
-    bigImage: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/performance-1-new.jpg",
-    thumb: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/performance-1-new.jpg",
+    title: "",
+    subtitle: "HY on safety",
+    bigImage: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/safety-1-new.jpg",
+    thumb: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/safety-1-new.jpg",
     description: "",
   },
   {
-    title: "1.5L TNGA Engine | 1.5L K-series with Neo Drive (ISG)",
-    subtitle: "HY on performance",
-    bigImage: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/1.5L-TNGA-Engine-1.5L-K-series.jpg",
-    thumb: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/1.5L-TNGA-Engine-1.5L-K-series.jpg",
-    description: "Depending on the variant you choose, the HY life is powered by a TNGA or K-series engine, both 1.5L.",
+    title: "6 Units Airbags",
+    subtitle: "HY on safety",
+    bigImage: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/6-Airbags.jpg",
+    thumb: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/6-Airbags.jpg",
+    description: "The HY life is all about feeling safe in every seat. All thanks to a total of 6 Units airbags including front,passenger, side and curtain airbags.",
   },
   {
-    title: "Self-charging hybrid electric engine*",
-    subtitle: "HY on performance",
-    bigImage: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/HY-on-Power.jpg",
-    thumb: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/HY-on-Power.jpg",
-    description: " Experience the power of hybrid. Experience a new drive.",
+    title: "Front Seat PT/FL",
+    subtitle: "HY on safety",
+    bigImage: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/front-seat-ptfl.jpg",
+    thumb: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/front-seat-ptfl.jpg",
+    description: " All the occupants in the front get the added safety of seat belt pretensioner and force limiter.",
   },
   {
-    title: "5-speed MT | 6-speed AT | e-Drive",
-    subtitle: "HY on performance",
-    bigImage: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/5-speed-MT-6-speed-AT.jpg",
-    thumb: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/5-speed-MT-6-speed-AT.jpg",
-    description: "With the all-new Urban Cruiser Hyryder, you get to choose from three transmission modes.",
+    title: "Advanced Body Structure",
+    subtitle: "HY on safety",
+    bigImage: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/TECT-BODY.jpg",
+    thumb: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/TECT-BODY.jpg",
+    description: " The all-new Urban Cruiser Hyryder is built on a frame capable of dispersing impact energy in the event of collision. All while ensuring a sturdy cabin.",
   },
   {
-    title: "1.5L K series engine with E-CNG technology",
+    title: "Cruise Control",
     subtitle: "HY on performance",
-    bigImage: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/performance-4-big.png",
-    thumb: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/performance/performance-4-big.png",
-    description: " *Fuel efficiency of 26.1km/kg.*Under the process of certification under Rule 115 of CMVR 1989",
+    bigImage: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/cruse-control.jpg",
+    thumb: "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/safety/cruse-control.jpg",
+    description: " Command open roads without having to put your foot down.",
     
   },
   
@@ -439,6 +442,14 @@ export default function hiluxPage() {
 
   return (
     <>
+      <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/aero-edition-uch-1920x807.jpg"
+      alt="Toyota Glanza"
+    />
+    <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/img-virtual-showroom-v2.jpg"
+      alt="Toyota Glanza"
+    />
       <HyTimeBanner {...hyTimeData}/>
       {/* Right Image Layout */}
       {/* 1️⃣ Cards LEFT | Image RIGHT */}
@@ -462,40 +473,60 @@ export default function hiluxPage() {
       />
       {/* LEFT CARDS | RIGHT IMAGE */}
       <PerformanceFeature
-        headingTop="Exterior"
+        headingTop="Smartphone"
         headingBottom="Features"
         items={smartphoneitems}
         layout="image-right"
       />
+      <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/banner-hy-life-new.jpg"
+      alt="Toyota Glanza"
+    />
+    
       <PerformanceFeature
-        headingTop="Exterior"
+        headingTop="Front Interior"
         headingBottom="Features"
         layout="image-left"
         items={frontinterioritems} // ✅ Use the correct variable
       />
       <PerformanceFeature
-        headingTop="Exterior"
+        headingTop="Rear Interior"
         headingBottom="Features"
         items={rearinterioritems}
         layout="image-right"
       />
+      <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/banner-hy-life-hybrid-with-logo-new.jpg"
+      alt="Toyota Glanza"
+    />
+    
       <PerformanceFeature
-        headingTop="Exterior"
+        headingTop="Performance"
         headingBottom="Features"
         layout="image-left"
         items={performanceitems} // ✅ Use the correct variable
       />
       <PerformanceFeature
-        headingTop="Exterior"
+        headingTop="Safety"
         headingBottom="Features"
-        layout="image-left"
+        layout="image-right"
         items={saftyitems} // ✅ Use the correct variable
       />
       <CarCustomizer/>
       <AccessoriesPage/>
+      <GlanzaHero
+      imageUrl="https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/banner-excitement-efficiency-new.jpg"
+      alt="Toyota Glanza"
+    />
+    
       <Technical/>
 
       <HybridPage />
+      {/* <SideHero
+  imageUrl="https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/uch-ebook.jpg"
+  alt="Glanza Ebook"
+/> */}
+<EBookBanner/>
       </>
     
   );

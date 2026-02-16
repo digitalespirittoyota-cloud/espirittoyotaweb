@@ -2,7 +2,7 @@
 // "use client";
 // import React, { useState } from "react";
 
-// const exterior = [
+// const exteriorItems = [
 //   { title: "Body Cladding", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/body-cladding-small.png" },
 //   { title: "Front Bumper Garnish", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/front-bumper-garnish-small.png" },
 //   { title: "Hood Emblem", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/hood-emblem-small.png" },
@@ -13,37 +13,25 @@
 //   { title: "Roof Ornament", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/roof-ornament-small.png" },
 // ];
 
-// const interior = [
+// const interiorItems = [
 //   { title: "Interior Styling Kit (THS)", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/dark-brown-isk-small.png" },
 //   { title: "Sill Guard", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/sill-guard-small.png" },
 //   { title: "Wireless Charger", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/wireless-charger-small.png" },
 //   { title: "TPMS", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/tpms-small.png" },
 // ];
 
-// export default function Accessories() {
-//   const [currentSlide, setCurrentSlide] = useState(0);
-  
-//   const nextSlide = () => {
-//     setCurrentSlide(1);
-//   };
-  
-//   const prevSlide = () => {
-//     setCurrentSlide(0);
-//   };
+// export default function CarAccessories() {
+//   const [slideIndex, setSlideIndex] = useState(0);
 
-//   // Get items for current slide
-//   const getCurrentSlideItems = () => {
-//     if (currentSlide === 0) {
-//       return exterior.slice(0, 6);
-//     } else {
-//       return exterior.slice(6, 8);
-//     }
-//   };
+//   const nextSlide = () => setSlideIndex(1);
+//   const prevSlide = () => setSlideIndex(0);
+
+//   const currentExteriorItems = slideIndex === 0 ? exteriorItems.slice(0, 6) : exteriorItems.slice(6, 8);
 
 //   return (
-//     <section className="acc">
+//     <section className="acc-section">
 //       <style>{`
-//         .acc {
+//         .acc-section {
 //           height: 100vh;
 //           position: relative;
 //           background: #fff;
@@ -52,15 +40,14 @@
 //           font-family: Arial, Helvetica, sans-serif;
 //         }
 
-//         .acc-wrap {
+//         .acc-container {
 //           max-width: 1600px;
 //           margin: auto;
 //           display: flex;
 //           position: relative;
 //         }
 
-//         /* LEFT BLUE TRAPEZIUM */
-//         .left-bg {
+//         .acc-bg-left {
 //           position: absolute;
 //           top: 0;
 //           left: 0;
@@ -71,24 +58,14 @@
 //           z-index: 0;
 //         }
 
-//         /* SOFT FADE EDGE */
-//         .left-bg::after {
-//           content: "";
-//           position: absolute;
-//           right: -80px;
-//           top: 0;
-//           width: 160px;
-//           height: 100%;
-//         }
-
-//         .col {
+//         .acc-col {
 //           width: 50%;
 //           padding: 0 50px;
 //           position: relative;
 //           z-index: 1;
 //         }
 
-//         h2 {
+//         .acc-col h2 {
 //           font-size: 22px;
 //           font-weight: 700;
 //           letter-spacing: 1px;
@@ -96,37 +73,25 @@
 //           color: #000;
 //         }
 
-//         .right h2 {
-//           text-align: right;
-//         }
+//         .acc-col.right h2 { text-align: right; }
 
-//         .grid {
+//         .acc-grid {
 //           display: grid;
 //           grid-template-columns: repeat(3, 1fr);
 //           gap: 26px 25px;
 //           justify-content: center;
 //           align-items: center;
 //         }
-        
-//         .card {
+
+//         .acc-card {
 //           height: 190px;
 //           width: 200px;
 //         }
-        
-//         .card img {
-//           width: 100%;
-//           display: block;
-//         }
-         
-//         .card p {
-//           margin-top: 6px;
-//           font-size: 13px;
-//           color: #000;
-//           background: transparent;
-//         }
 
-//         /* ARROWS */
-//         .arrow {
+//         .acc-card img { width: 100%; display: block; }
+//         .acc-card p { margin-top: 6px; font-size: 13px; color: #000; background: transparent; }
+
+//         .acc-arrow {
 //           position: absolute;
 //           top: 48%;
 //           width: 34px;
@@ -142,31 +107,17 @@
 //           z-index: 2;
 //         }
 
-//         /* LEFT SECTION ARROWS */
-//         /* Left arrow - left side of left section */
-//         .left .left-arrow {
-//           left: -17px;
-//         }
+//         .acc-left-arrow { left: -17px; }
+//         .acc-right-arrow { right: -17px; }
 
-//         /* Right arrow - right side of left section */
-//         .left .right-arrow {
-//           right: -17px;
-//         }
-
-//         /* Right section arrow - unchanged */
-//         .right .arrow {
-//           left: -17px;
-//         }
-
-//         /* BUTTON BAR */
-//         .btns {
+//         .acc-btns {
 //           display: flex;
 //           justify-content: center;
 //           gap: 6px;
 //           margin-top: 45px;
 //         }
 
-//         .btns a {
+//         .acc-btns a {
 //           background: #0099cc;
 //           color: #fff;
 //           padding: 14px 28px;
@@ -175,64 +126,55 @@
 //         }
 
 //         @media (max-width: 1024px) {
-//           .grid { grid-template-columns: repeat(2, 1fr); }
+//           .acc-grid { grid-template-columns: repeat(2, 1fr); }
 //         }
 
 //         @media (max-width: 768px) {
-//           .acc-wrap { flex-direction: column; }
-//           .left-bg { display: none; }
-//           .col { width: 100%; padding: 20px; }
-//           .right h2 { text-align: left; }
+//           .acc-container { flex-direction: column; }
+//           .acc-bg-left { display: none; }
+//           .acc-col { width: 100%; padding: 20px; }
+//           .acc-col.right h2 { text-align: left; }
 //         }
 //       `}</style>
 
-//       <div className="acc-wrap">
-//         <div className="left-bg" />
+//       <div className="acc-container">
+//         <div className="acc-bg-left" />
 
-//         {/* EXTERIOR WITH SLIDER - NOW HAS BOTH ARROWS */}
-//         <div className="col left">
+//         <div className="acc-col left">
 //           <h2>EXTERIOR ACCESSORIES</h2>
-//           {/* LEFT ARROW ADDED HERE */}
-//           <div className="arrow left-arrow" onClick={prevSlide}>‹</div>
-//           {/* RIGHT ARROW */}
-//           <div className="arrow right-arrow" onClick={nextSlide}>›</div>
-          
-//           <div className="grid">
-//             {getCurrentSlideItems().map((x, i) => (
-//               <div className="card" key={i}>
-//                 <img src={x.img} alt={x.title} />
-//                 <p>{x.title}</p>
+//           <div className="acc-arrow acc-left-arrow" onClick={prevSlide}>‹</div>
+//           <div className="acc-arrow acc-right-arrow" onClick={nextSlide}>›</div>
+
+//           <div className="acc-grid">
+//             {currentExteriorItems.map((item, idx) => (
+//               <div className="acc-card" key={idx}>
+//                 <img src={item.img} alt={item.title} />
+//                 <p>{item.title}</p>
 //               </div>
 //             ))}
-//             {/* Add empty cards to maintain grid layout when only 2 items */}
-//             {currentSlide === 1 && (
-//               <>
-//                 <div className="card" style={{ visibility: 'hidden' }}></div>
-//                 <div className="card" style={{ visibility: 'hidden' }}></div>
-//                 <div className="card" style={{ visibility: 'hidden' }}></div>
-//                 <div className="card" style={{ visibility: 'hidden' }}></div>
-//               </>
-//             )}
+
+//             {slideIndex === 1 && Array(4).fill(0).map((_, idx) => (
+//               <div className="acc-card" key={`empty-${idx}`} style={{ visibility: 'hidden' }}></div>
+//             ))}
 //           </div>
 //         </div>
 
-//         {/* INTERIOR - UNCHANGED */}
-//         <div className="col right">
+//         <div className="acc-col right">
 //           <h2>INTERIOR ACCESSORIES</h2>
-//           <div className="arrow">›</div>
-          
-//           <div className="grid">
-//             {interior.map((x, i) => (
-//               <div className="card" key={i}>
-//                 <img src={x.img} alt={x.title} />
-//                 <p>{x.title}</p>
+//           <div className="acc-arrow">›</div>
+
+//           <div className="acc-grid">
+//             {interiorItems.map((item, idx) => (
+//               <div className="acc-card" key={idx}>
+//                 <img src={item.img} alt={item.title} />
+//                 <p>{item.title}</p>
 //               </div>
 //             ))}
 //           </div>
 //         </div>
 //       </div>
 
-//       <div className="btns">
+//       <div className="acc-btns">
 //         <a href="#">DOWNLOAD BROCHURE</a>
 //         <a href="#">Download Accessory Brochure</a>
 //         <a href="#">DOWNLOAD BROCHURE</a>
@@ -240,6 +182,18 @@
 //     </section>
 //   );
 // }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -299,12 +253,16 @@ export default function CarAccessories() {
   return (
     <section className="acc-section">
       <style>{`
+        * {
+          box-sizing: border-box;
+        }
+
         .acc-section {
-          height: 100vh;
+          min-height: 100vh;
           position: relative;
           background: #fff;
           padding: 60px 0 40px;
-          overflow: hidden;
+          overflow-x: hidden;
           font-family: Arial, Helvetica, sans-serif;
         }
 
@@ -313,6 +271,7 @@ export default function CarAccessories() {
           margin: auto;
           display: flex;
           position: relative;
+          padding: 0 20px;
         }
 
         .acc-bg-left {
@@ -341,7 +300,9 @@ export default function CarAccessories() {
           color: #000;
         }
 
-        .acc-col.right h2 { text-align: right; }
+        .acc-col.right h2 { 
+          text-align: right; 
+        }
 
         .acc-grid {
           display: grid;
@@ -353,11 +314,24 @@ export default function CarAccessories() {
 
         .acc-card {
           height: 190px;
-          width: 200px;
+          width: 100%;
+          max-width: 200px;
+          margin: 0 auto;
         }
 
-        .acc-card img { width: 100%; display: block; }
-        .acc-card p { margin-top: 6px; font-size: 13px; color: #000; background: transparent; }
+        .acc-card img { 
+          width: 100%; 
+          height: auto;
+          display: block; 
+        }
+        
+        .acc-card p { 
+          margin-top: 6px; 
+          font-size: 13px; 
+          color: #000; 
+          background: transparent;
+          text-align: center;
+        }
 
         .acc-arrow {
           position: absolute;
@@ -373,6 +347,11 @@ export default function CarAccessories() {
           font-size: 18px;
           cursor: pointer;
           z-index: 2;
+          transition: all 0.3s ease;
+        }
+
+        .acc-arrow:hover {
+          box-shadow: 0 0 0 2px #0099cc;
         }
 
         .acc-left-arrow { left: -17px; }
@@ -383,6 +362,8 @@ export default function CarAccessories() {
           justify-content: center;
           gap: 6px;
           margin-top: 45px;
+          flex-wrap: wrap;
+          padding: 0 20px;
         }
 
         .acc-btns a {
@@ -391,17 +372,331 @@ export default function CarAccessories() {
           padding: 14px 28px;
           font-size: 14px;
           text-decoration: none;
+          transition: background 0.3s ease;
+          white-space: nowrap;
         }
 
-        @media (max-width: 1024px) {
-          .acc-grid { grid-template-columns: repeat(2, 1fr); }
+        .acc-btns a:hover {
+          background: #007aa3;
         }
 
-        @media (max-width: 768px) {
-          .acc-container { flex-direction: column; }
-          .acc-bg-left { display: none; }
-          .acc-col { width: 100%; padding: 20px; }
-          .acc-col.right h2 { text-align: left; }
+        /* ================= RESPONSIVE BREAKPOINTS ================= */
+
+        /* Large Tablets (1200px - 1400px) */
+        @media (max-width: 1400px) {
+          .acc-col {
+            padding: 0 30px;
+          }
+
+          .acc-grid {
+            gap: 20px 18px;
+          }
+
+          .acc-card {
+            height: 170px;
+          }
+        }
+
+        /* Tablets (992px - 1199px) */
+        @media (max-width: 1199px) {
+          .acc-section {
+            padding: 50px 0 35px;
+          }
+
+          .acc-col {
+            padding: 0 25px;
+          }
+
+          .acc-col h2 {
+            font-size: 20px;
+            margin-bottom: 22px;
+          }
+
+          .acc-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px 15px;
+          }
+
+          .acc-card {
+            height: 160px;
+            max-width: 180px;
+          }
+
+          .acc-card p {
+            font-size: 12px;
+          }
+
+          .acc-bg-left {
+            height: 450px;
+          }
+        }
+
+        /* Small Tablets & Large Phones (768px - 991px) */
+        @media (max-width: 991px) {
+          .acc-section {
+            min-height: auto;
+            padding: 40px 0 30px;
+          }
+
+          .acc-container {
+            flex-direction: column;
+            padding: 0 15px;
+          }
+
+          .acc-bg-left {
+            display: none;
+          }
+
+          .acc-col {
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 40px;
+          }
+
+          .acc-col.right h2 {
+            text-align: left;
+          }
+
+          .acc-col h2 {
+            font-size: 19px;
+            margin-bottom: 20px;
+          }
+
+          .acc-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px 15px;
+          }
+
+          .acc-card {
+            height: 150px;
+            max-width: 170px;
+          }
+
+          .acc-arrow {
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+          }
+
+          .acc-left-arrow { left: -16px; }
+          .acc-right-arrow { right: -16px; }
+
+          .acc-btns {
+            margin-top: 35px;
+            gap: 8px;
+          }
+
+          .acc-btns a {
+            padding: 12px 24px;
+            font-size: 13px;
+          }
+        }
+
+        /* Mobile Landscape (576px - 767px) */
+        @media (max-width: 767px) {
+          .acc-section {
+            padding: 30px 0 25px;
+          }
+
+          .acc-container {
+            padding: 0 12px;
+          }
+
+          .acc-col {
+            padding: 0 15px;
+            margin-bottom: 35px;
+          }
+
+          .acc-col h2 {
+            font-size: 18px;
+            margin-bottom: 18px;
+          }
+
+          .acc-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px 12px;
+          }
+
+          .acc-card {
+            height: 140px;
+            max-width: 160px;
+          }
+
+          .acc-card p {
+            font-size: 11px;
+          }
+
+          .acc-arrow {
+            width: 30px;
+            height: 30px;
+            font-size: 15px;
+          }
+
+          .acc-left-arrow { left: -15px; }
+          .acc-right-arrow { right: -15px; }
+
+          .acc-btns {
+            margin-top: 30px;
+            gap: 6px;
+          }
+
+          .acc-btns a {
+            padding: 11px 20px;
+            font-size: 12px;
+          }
+        }
+
+        /* Mobile Portrait (320px - 575px) */
+        @media (max-width: 575px) {
+          .acc-section {
+            padding: 25px 0 20px;
+          }
+
+          .acc-container {
+            padding: 0 10px;
+          }
+
+          .acc-col {
+            padding: 0 10px;
+            margin-bottom: 30px;
+          }
+
+          .acc-col h2 {
+            font-size: 17px;
+            margin-bottom: 16px;
+            text-align: center;
+          }
+
+          .acc-col.right h2 {
+            text-align: center;
+          }
+
+          .acc-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px 10px;
+          }
+
+          .acc-card {
+            height: 130px;
+            max-width: 150px;
+          }
+
+          .acc-card p {
+            font-size: 10.5px;
+            margin-top: 4px;
+          }
+
+          .acc-arrow {
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
+            top: 50%;
+          }
+
+          .acc-left-arrow { 
+            left: 50%;
+            transform: translateX(-50%);
+            top: auto;
+            bottom: -45px;
+          }
+          
+          .acc-right-arrow { 
+            right: 50%;
+            transform: translateX(50%);
+            top: auto;
+            bottom: -45px;
+          }
+
+          .acc-btns {
+            margin-top: 60px;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+          }
+
+          .acc-btns a {
+            padding: 10px 18px;
+            font-size: 11px;
+            width: 100%;
+            max-width: 280px;
+            text-align: center;
+          }
+        }
+
+        /* Extra Small Mobile (< 400px) */
+        @media (max-width: 400px) {
+          .acc-section {
+            padding: 20px 0 18px;
+          }
+
+          .acc-col h2 {
+            font-size: 16px;
+            margin-bottom: 14px;
+          }
+
+          .acc-grid {
+            gap: 12px 8px;
+          }
+
+          .acc-card {
+            height: 120px;
+            max-width: 140px;
+          }
+
+          .acc-card p {
+            font-size: 10px;
+          }
+
+          .acc-btns a {
+            padding: 10px 16px;
+            font-size: 10.5px;
+            max-width: 260px;
+          }
+        }
+
+        /* Extra Extra Small Mobile (< 360px) */
+        @media (max-width: 360px) {
+          .acc-col h2 {
+            font-size: 15px;
+          }
+
+          .acc-grid {
+            gap: 10px 6px;
+          }
+
+          .acc-card {
+            height: 110px;
+            max-width: 130px;
+          }
+
+          .acc-card p {
+            font-size: 9.5px;
+          }
+
+          .acc-btns a {
+            font-size: 10px;
+            padding: 9px 14px;
+          }
+        }
+
+        /* Landscape orientation adjustments for mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+          .acc-section {
+            min-height: auto;
+            padding: 20px 0;
+          }
+
+          .acc-col {
+            margin-bottom: 20px;
+          }
+
+          .acc-col h2 {
+            margin-bottom: 12px;
+          }
+
+          .acc-btns {
+            margin-top: 20px;
+          }
         }
       `}</style>
 
@@ -429,7 +724,6 @@ export default function CarAccessories() {
 
         <div className="acc-col right">
           <h2>INTERIOR ACCESSORIES</h2>
-          <div className="acc-arrow">›</div>
 
           <div className="acc-grid">
             {interiorItems.map((item, idx) => (

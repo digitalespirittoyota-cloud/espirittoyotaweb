@@ -17,7 +17,7 @@ const CamrySafetyConnected: React.FC = () => {
           style={styles.image}
         />
 
-        <div style={styles.topLabel}>SAFETY</div>
+        {/* <div style={styles.topLabel}>SAFETY</div> */}
 
         <div style={styles.bottomBar}>
           <span style={styles.bottomText}>LANE DEPARTURE ALERT</span>
@@ -38,7 +38,7 @@ const CamrySafetyConnected: React.FC = () => {
           style={styles.image}
         />
 
-        <div style={styles.topLabel}>CONNECTED TECH</div>
+        {/* <div style={styles.topLabel}>CONNECTED TECH</div> */}
 
         <div style={styles.bottomBar}>
           <span style={styles.bottomText}>CONNECTED SERVICES</span>

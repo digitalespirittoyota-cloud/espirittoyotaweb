@@ -81,6 +81,11 @@ const models = [
     image: "/models/land-cruiser.png",
     link: "/lc300",
   },
+  {
+    name: "Urban Cruiser Ebella",
+    image: "/models/Urban Crusier Ebella.png",
+    link: "/urbancruiserebella",
+  },
 ];
 
 const address = {

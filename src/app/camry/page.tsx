@@ -1,3 +1,5 @@
+import SideHero from "../glanza/SideHero";
+import CamryBookNowBanner from "./CamryBooknowbanner";
 import CamryColors from "./CamryColors";
 import CamryElegance from "./CamryElegance";
 import CamryEnginePerformance from "./CamryEnginePerformance";
@@ -76,6 +78,12 @@ export default function HomePage() {
       <CamrySafetyConnected/>
       <CamryColors/>
       <TNGASection/>
+      <SideHero
+  imageUrl="https://static.toyotabharat.com/images/showroom/new-camry/blueskybanner-1366x485.jpg"
+  alt="Camry Ebook"
+/>
+<CamryBookNowBanner/>
+
     </>
   );
 }
