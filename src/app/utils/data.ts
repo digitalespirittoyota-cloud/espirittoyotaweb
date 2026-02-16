@@ -26,7 +26,8 @@ const models = [
   {
     name: "Urban Cruiser Taisor",
     image: "/models/taisor.png",
-    link: "https://espirittoyota.co.in/showroom/urbancruiser-taisor/",
+    // link: "https://espirittoyota.co.in/showroom/urbancruiser-taisor/",
+    link:"/urbancruiser-taisor",
   },
   {
     name: "Rumion",
@@ -51,12 +52,13 @@ const models = [
   {
     name: "Hilux",
     image: "/models/hilux.png",
-    link: "https://espirittoyota.co.in/showroom/hilux",
+    // link: "https://espirittoyota.co.in/showroom/hilux",
+    link:"/hilux"
   },
   {
     name: "Fortuner",
     image: "/models/fortuner.png",
-    link: "https://espirittoyota.co.in/showroom/fortuner/index-fortuner.html",
+    link: "/fortuner",
   },
   {
     name: "Legender",
@@ -72,12 +74,12 @@ const models = [
   {
     name: "Vellfire",
     image: "/models/vellfire.png",
-    link: "https://espirittoyota.co.in/showroom/vellfire",
+    link: "/vellfire",
   },
   {
     name: "Land Cruiser 300",
     image: "/models/land-cruiser.png",
-    link: "https://espirittoyota.co.in/showroom/lc300",
+    link: "/lc300",
   },
 ];
 

@@ -1,0 +1,173 @@
+/* Section background
+.interior-section {
+  background: #d9d9d9;
+  padding: 80px 0 120px;
+  position: relative;
+}
+
+
+.interior-top {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.interior-top .line {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #fff;
+  margin: 0 auto 10px;
+}
+
+.interior-top p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #222;
+}
+
+
+.interior-panel {
+  width: 72%;
+  margin: 0 auto;
+  background: #000;
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.interior-image img {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.2));
+}
+
+.brochure-wrap {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.brochure-wrap button {
+  padding: 18px 48px;
+  background: #fff;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.brochure-wrap button:hover {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 1024px) {
+  .interior-panel {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .interior-panel {
+    padding: 40px 20px;
+  }
+
+  .brochure-wrap button {
+    width: 80%;
+  }
+} */
+
+
+
+
+
+
+
+/* Section background */
+.interior-section {
+  background: #d6d6d6;
+  padding: 90px 0 150px;
+  position: relative;
+}
+
+/* Top label */
+.interior-top {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.interior-top .line {
+  width: 40px;
+  height: 1px;
+  background: #fff;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.interior-top p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #333;
+}
+
+/* Black panel */
+.interior-panel {
+  width: 72%;
+  margin: 0 auto;
+  background: #000;
+  padding: 60px 60px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Single image styling */
+.interior-panel img {
+  max-height: 320px;        /* 👈 height controlled */
+  width: auto;
+  filter: drop-shadow(0 0 45px rgba(255,255,255,0.18));
+}
+
+/* Button bottom right (outside panel) */
+.brochure-fixed {
+  position: absolute;
+  right: 12%;
+  bottom: 90px;
+}
+
+.brochure-fixed button {
+  padding: 19px 38px;
+  background: #fff;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  /* border-radius: 18px; */
+  border-bottom-left-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.brochure-fixed button:hover {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .interior-panel {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .interior-panel img {
+    max-height: 260px;
+  }
+
+  .brochure-fixed {
+    position: static;
+    margin-top: 40px;
+    text-align: center;
+  }
+}
