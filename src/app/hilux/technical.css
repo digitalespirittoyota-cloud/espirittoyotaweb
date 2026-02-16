@@ -1,0 +1,108 @@
+.tech-section {
+  width: 85%;
+  margin: auto;
+  padding: 60px 0;
+  
+}
+
+.tech-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+/* Accordion */
+.accordion-item {
+  margin-bottom: 15px;
+}
+
+.accordion-header {
+  background: #000;
+  color: #fff;
+  padding: 18px 25px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 22px;
+}
+
+/* Content */
+.accordion-content {
+  background: #e5e5e5;
+  padding: 20px;
+}
+
+.block-wrapper {
+  margin-bottom: 20px;
+}
+
+/* Table */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.spec-table td {
+  border: 1px solid #c5c5c5;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.spec-table .label {
+  width: 30%;
+  font-weight: 600;
+  background: #dcdcdc;
+}
+
+.spec-table .value {
+  width: 70%;
+}
+
+/* Bullet */
+.bullet-list {
+  padding-left: 22px;
+  margin: 0;
+}
+
+.bullet-list li {
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Two Column */
+.two-column .row {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 12px 0;
+}
+
+.two-column .left {
+  width: 40%;
+  font-weight: 600;
+}
+
+.two-column .right {
+  width: 60%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .two-column .row {
+    flex-direction: column;
+  }
+
+  .spec-table td {
+    font-size: 14px;
+  }
+
+  .tech-title {
+    font-size: 26px;
+  }
+}

@@ -10,6 +10,7 @@ import HiluxLegacyMediaSection from "./HiluxLegacyMediaSection";
 import HiluxLegacySection from "./HiluxLegacySection";
 import InteriorSafetySection from "./InteriorSafetySection";
 import PowerfulPerformance from "./PowerfulPerformance";
+import TechnicalSpecifications from "./TechnicalSpecifications";
 import ToyotaServiceSection from "./ToyotaServiceSection";
 import VirtualShowroomImage from "./VirtualShowroomSection";
 
@@ -57,7 +58,9 @@ Live a fuller life with the Toyota Hilux."
             <HiluxLegacySection/>
             <HiluxLegacyMediaSection/>
         <ToyotaServiceSection/>
+       
         <FeatureSectionGallery/>
+         <TechnicalSpecifications/>
          <HiluxEbookSection />
         
         </>
