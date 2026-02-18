@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import React from "react";
+import { Toaster } from "react-hot-toast";
 import { User, Phone, Mail, Car, MapPin, Calendar, Clock, Send } from "lucide-react";
+import { useFormSubmit } from "../hooks/useFormSubmit";
 
 const carModels = [
     "GLANZA",
@@ -19,222 +20,206 @@ const carModels = [
 ];
 
 export default function TestDriveForm() {
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        city: "",
-        model: "",
-        date: "",
-        time: "",
+    const {
+        formData,
+        loading,
+        errors,
+        handleChange,
+        handleSubmit,
+        setInitialData
+    } = useFormSubmit({
+        endpoint: "/api/enquiry",
+        successMessage: "Test Drive Request Sent Successfully!",
     });
 
-    const [errors, setErrors] = useState<{ [key: string]: string }>({});
-    const [loading, setLoading] = useState<boolean>(false);
+    React.useEffect(() => {
+        setInitialData({
+            name: "",
+            phone: "",
+            email: "",
+            city: "",
+            carModel: "",
+            date: "",
+            time: "",
+            formType: "Test Drive",
+        });
+    }, []);
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-    ) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const validate = () => {
+    const validate = (data: any) => {
         const newErrors: { [key: string]: string } = {};
 
-        if (!formData.name.trim()) newErrors.name = "Name is required";
+        if (!data.name?.trim()) newErrors.name = "Name is required";
 
-        if (!formData.phone.trim()) {
+        if (!data.phone?.trim()) {
             newErrors.phone = "Phone is required";
-        } else if (!/^\d{10}$/.test(formData.phone)) {
+        } else if (!/^\d{10}$/.test(data.phone)) {
             newErrors.phone = "Phone must be 10 digits";
         }
 
-        if (!formData.email.trim()) {
+        if (!data.email?.trim()) {
             newErrors.email = "Email is required";
-        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
+        } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email)) {
             newErrors.email = "Invalid email address";
         }
 
-        if (!formData.city.trim()) newErrors.city = "City is required";
-        if (!formData.model.trim()) newErrors.model = "Please select a model";
-        if (!formData.date.trim()) newErrors.date = "Preferred date is required";
-        if (!formData.time.trim()) newErrors.time = "Preferred time is required";
+        if (!data.city?.trim()) newErrors.city = "City is required";
+        if (!data.carModel?.trim()) newErrors.carModel = "Please select a model";
+        if (!data.date?.trim()) newErrors.date = "Preferred date is required";
+        if (!data.time?.trim()) newErrors.time = "Preferred time is required";
 
         return newErrors;
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        const validationErrors = validate();
-        setErrors(validationErrors);
-
-        if (Object.keys(validationErrors).length > 0) {
-            toast.error("Please fill all required fields correctly", {
-                style: {
-                    background: "#1a1a1a",
-                    color: "#fff",
-                    border: "1px solid #f00",
-                },
-            });
-            return;
-        }
-
-        setLoading(true);
-
-        try {
-            const response = await fetch("/api/test-drive", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                toast.success("Test Drive Request Sent Successfully!", {
-                    style: {
-                        background: "#1a1a1a",
-                        color: "#fff",
-                        border: "1px solid #0f0",
-                    },
-                });
-                setFormData({ name: "", phone: "", email: "", city: "", model: "", date: "", time: "" });
-            } else {
-                toast.error("Failed to send request: " + result.message);
-            }
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            toast.error("Something went wrong. Please try again.");
-        } finally {
-            setLoading(false);
-        }
+    const handleFormSubmit = (e: React.FormEvent) => {
+        handleSubmit(e, validate);
     };
 
     return (
-        <div className="w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+        <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl border border-gray-100 max-w-4xl mx-auto">
             <Toaster position="top-right" />
+            <div className="text-center mb-10">
+                <h3 className="text-3xl font-extrabold text-gray-900 mb-2">
+                    Schedule Your Test Drive
+                </h3>
+                <p className="text-gray-500">Pick your favorite model and preferred time</p>
+            </div>
 
-            <h3 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-                Schedule Your Test Drive
-            </h3>
-
-            <form onSubmit={handleSubmit} noValidate className="space-y-4">
+            <form onSubmit={handleFormSubmit} noValidate className="space-y-4">
 
                 {/* Name */}
-                <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                <div className="relative group">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-500 transition-colors" size={20} />
                     <input
                         type="text"
                         name="name"
-                        value={formData.name}
+                        value={formData.name || ""}
                         onChange={handleChange}
-                        placeholder="Full Name *"
-                        className={`w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none transition-all ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-red-600 focus:ring-1 focus:ring-red-600'}`}
+                        placeholder="Full Name"
+                        className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.name ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600"
+                            }`}
                     />
+                    {errors.name && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.name}</p>}
                 </div>
 
-                {/* Phone & Email Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="relative">
-                        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    {/* Phone */}
+                    <div className="relative group">
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-500 transition-colors" size={20} />
                         <input
                             type="tel"
                             name="phone"
-                            maxLength={10}
-                            value={formData.phone}
-                            onChange={(e) => {
-                                const val = e.target.value.replace(/\D/g, "");
-                                if (val.length <= 10) setFormData({ ...formData, phone: val });
-                            }}
-                            placeholder="Mobile Number *"
-                            className={`w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none transition-all ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-red-600'}`}
+                            value={formData.phone || ""}
+                            onChange={handleChange}
+                            placeholder="Phone Number"
+                            className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.phone ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600"
+                                }`}
                         />
+                        {errors.phone && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.phone}</p>}
                     </div>
 
-                    <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    {/* Email */}
+                    <div className="relative group">
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-500 transition-colors" size={20} />
                         <input
                             type="email"
                             name="email"
-                            value={formData.email}
+                            value={formData.email || ""}
                             onChange={handleChange}
-                            placeholder="Email Address *"
-                            className={`w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none transition-all ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-red-600'}`}
+                            placeholder="Email Address"
+                            className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.email ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600"
+                                }`}
                         />
+                        {errors.email && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.email}</p>}
                     </div>
                 </div>
 
-                {/* City & Model Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="relative">
-                        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    {/* City */}
+                    <div className="relative group">
+                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-500 transition-colors" size={20} />
                         <input
                             type="text"
                             name="city"
-                            value={formData.city}
+                            value={formData.city || ""}
                             onChange={handleChange}
-                            placeholder="City *"
-                            className={`w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none transition-all ${errors.city ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-red-600'}`}
+                            placeholder="Your City"
+                            className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.city ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600"
+                                }`}
                         />
+                        {errors.city && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.city}</p>}
                     </div>
 
-                    <div className="relative">
-                        <Car className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    {/* Car Model */}
+                    <div className="relative group">
+                        <Car className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-500 transition-colors" size={20} />
                         <select
-                            name="model"
-                            value={formData.model}
+                            name="carModel"
+                            value={formData.carModel || ""}
                             onChange={handleChange}
-                            className={`w-full pl-10 pr-3 py-3 border rounded-lg bg-white focus:outline-none transition-all appearance-none ${errors.model ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-red-600'}`}
+                            className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.carModel ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600 text-gray-600"
+                                }`}
                         >
-                            <option value="">Select Model *</option>
+                            <option value="">Select Car Model</option>
                             {carModels.map((m) => (
-                                <option key={m} value={m}>{m}</option>
+                                <option key={m} value={m}>
+                                    {m}
+                                </option>
                             ))}
                         </select>
+                        {errors.carModel && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.carModel}</p>}
                     </div>
                 </div>
 
-                {/* Date & Time Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="relative">
-                        <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    {/* Date */}
+                    <div className="relative group">
+                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-500 transition-colors" size={20} />
                         <input
                             type="date"
                             name="date"
-                            value={formData.date}
+                            value={formData.date || ""}
                             onChange={handleChange}
-                            className={`w-full pl-10 pr-3 py-3 border rounded-lg focus:outline-none transition-all ${errors.date ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-red-600'}`}
-                            min={new Date().toISOString().split('T')[0]}
+                            min={new Date().toISOString().split("T")[0]}
+                            className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.date ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600"
+                                }`}
                         />
+                        {errors.date && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.date}</p>}
                     </div>
 
-                    <div className="relative">
-                        <Clock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                    {/* Time */}
+                    <div className="relative group">
+                        <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-500 transition-colors" size={20} />
                         <select
                             name="time"
-                            value={formData.time}
+                            value={formData.time || ""}
                             onChange={handleChange}
-                            className={`w-full pl-10 pr-3 py-3 border rounded-lg bg-white focus:outline-none transition-all appearance-none ${errors.time ? 'border-red-500 bg-red-50' : 'border-gray-200 focus:border-red-600'}`}
+                            className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.time ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600 text-gray-600"
+                                }`}
                         >
-                            <option value="">Preferred Time *</option>
-                            <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
-                            <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
-                            <option value="Evening (4 PM - 7 PM)">Evening (4 PM - 7 PM)</option>
+                            <option value="">Preferred Time Slot</option>
+                            <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+                            <option value="12:00 PM - 02:00 PM">12:00 PM - 02:00 PM</option>
+                            <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM</option>
+                            <option value="04:00 PM - 06:00 PM">04:00 PM - 06:00 PM</option>
                         </select>
+                        {errors.time && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.time}</p>}
                     </div>
                 </div>
 
                 <button
                     type="submit"
                     disabled={loading}
-                    className={`w-full text-white font-bold py-4 rounded-lg shadow-lg transition-transform transform active:scale-95 flex items-center justify-center gap-2 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-red-600 hover:bg-red-700 hover:shadow-xl'}`}
+                    className="w-full bg-[#d71920] hover:bg-black text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-2xl active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 disabled:bg-gray-400 mt-6"
                 >
-                    {loading ? 'Processing...' : <><Send size={20} /> Book Test Drive Now</>}
+                    {loading ? (
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    ) : (
+                        <>
+                            <Send size={18} />
+                            <span>Request Test Drive</span>
+                        </>
+                    )}
                 </button>
-
             </form>
         </div>
     );

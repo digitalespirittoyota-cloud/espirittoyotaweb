@@ -91,24 +91,28 @@ export default function Banner({
     <>
       {/* Desktop */}
       <div className="hidden md:block w-full h-full">
-        <Image
-          src={desktopImg}
-          alt={alt}
-          fill
-          priority
-          className="object-cover"
-        />
+        {desktopImg ? (
+          <Image
+            src={desktopImg}
+            alt={alt}
+            fill
+            priority
+            className="object-cover"
+          />
+        ) : null}
       </div>
 
       {/* Mobile */}
       <div className="block md:hidden w-full h-full">
-        <Image
-          src={mobileImg}
-          alt={alt}
-          fill
-          priority
-          className="object-contain bg-black"
-        />
+        {mobileImg || desktopImg ? (
+          <Image
+            src={mobileImg || desktopImg}
+            alt={alt}
+            fill
+            priority
+            className="object-contain bg-black"
+          />
+        ) : null}
       </div>
     </>
   );
@@ -118,12 +122,13 @@ export default function Banner({
       className="
         relative w-full overflow-hidden
         min-h-[55vh] md:min-h-0
+        md:h-[var(--banner-height)]
       "
-      style={{
-        height: typeof window !== "undefined" && window.innerWidth >= 768
-          ? height
-          : undefined,
-      }}
+      style={
+        {
+          "--banner-height": height,
+        } as React.CSSProperties
+      }
     >
       {link ? (
         <Link href={link} className="block w-full h-full">

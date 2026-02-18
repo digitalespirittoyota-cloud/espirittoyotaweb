@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import React from "react";
+import { Toaster } from "react-hot-toast";
 import { User, Phone, Mail, Car, Send } from "lucide-react";
 import Image from "next/image";
+import { useFormSubmit } from "../hooks/useFormSubmit";
 
 const carModels = [
   "GLANZA",
@@ -24,318 +25,193 @@ interface EnquiryProps {
 }
 
 const Enquiry: React.FC<EnquiryProps> = ({ id }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    model: "",
+  const {
+    formData,
+    loading,
+    errors,
+    handleChange,
+    handleSubmit,
+    setInitialData
+  } = useFormSubmit({
+    endpoint: "/api/enquiry",
+    successMessage: "Enquiry Sent Successfully!",
   });
 
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [loading, setLoading] = useState<boolean>(false);
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  React.useEffect(() => {
+    setInitialData({
+      name: "",
+      phone: "",
+      email: "",
+      carModel: "",
+      formType: "General Enquiry",
+    });
+  }, []);
 
-  const validate = () => {
+  const validate = (data: any) => {
     const newErrors: { [key: string]: string } = {};
 
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!data.name?.trim()) newErrors.name = "Name is required";
 
-    if (!formData.phone.trim()) {
+    if (!data.phone?.trim()) {
       newErrors.phone = "Phone is required";
-    } else if (!/^\d{10}$/.test(formData.phone)) {
+    } else if (!/^\d{10}$/.test(data.phone)) {
       newErrors.phone = "Phone must be 10 digits";
     }
 
-    if (!formData.email.trim()) {
+    if (!data.email?.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
+    } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email)) {
       newErrors.email = "Invalid email address";
     }
 
-    if (!formData.model.trim()) newErrors.model = "Please select a model";
+    if (!data.carModel?.trim()) newErrors.carModel = "Please select a model";
 
     return newErrors;
   };
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // ✅ Step 1: Validate form
-    const validationErrors = validate();
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length > 0) {
-      // अगर empty fields हैं
-      const emptyFields = Object.keys(validationErrors).filter(
-        (key) => formData[key as keyof typeof formData].trim() === ""
-      );
-
-      if (emptyFields.length > 0) {
-        toast.error("Please fill all required fields", {
-          style: {
-            background: "#1a1a1a",
-            color: "#fff",
-            border: "1px solid #f00",
-          },
-        });
-      } else {
-        // Specific validation errors
-        toast.error(Object.values(validationErrors).join(", "), {
-          style: {
-            background: "#1a1a1a",
-            color: "#fff",
-            border: "1px solid #f00",
-          },
-        });
-      }
-      return;
-    }
-
-    setErrors({});
-    setLoading(true);
-
-    try {
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        toast.success("Enquiry submitted successfully!", {
-          style: {
-            background: "#1a1a1a",
-            color: "#fff",
-            border: "1px solid #0f0",
-          },
-        });
-
-        // Reset form
-        setFormData({ name: "", phone: "", email: "", model: "" });
-      } else {
-        toast.error("Failed to send email: " + result.message, {
-          style: {
-            background: "#1a1a1a",
-            color: "#fff",
-            border: "1px solid #f00",
-          },
-        });
-      }
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error("Error sending form:", error.message);
-      } else {
-        console.error("Unexpected error:", error);
-      }
-
-      toast.error("Something went wrong while sending email", {
-        style: {
-          background: "#1a1a1a",
-          color: "#fff",
-          border: "1px solid #f00",
-        },
-      });
-    } finally {
-      setLoading(false);
-    }
+  const handleFormSubmit = (e: React.FormEvent) => {
+    handleSubmit(e, validate);
   };
 
-
   return (
-    <section
-      id={id}
-      className="w-full bg-gray-100 flex flex-col md:flex-row"
-    >
-      {/* Left Side Image */}
-      <div className="w-full md:w-1/2 h-64 md:h-auto relative">
+    <section id={id} className="relative w-full min-h-[600px] md:h-[100vh] flex items-center justify-center bg-gray-50 overflow-hidden">
+      <Toaster position="top-right" />
+
+      {/* Background with optimized Image */}
+      <div className="absolute inset-0 z-0">
         <Image
-          src="/banner/showroom.jpg"
-          alt="Car Banner"
+          src="/enq.jpg" // 👉 Public folder me enq.jpg rakho
+          alt="Enquiry Background"
           fill
-          className="object-contain"
+          priority
+          className="object-cover brightness-50"
         />
       </div>
 
-      {/* Right Side Form */}
-      <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
-        <Toaster position="top-right" />
+      {/* Glassmorphism Container */}
+      <div className="relative z-10 w-[92%] max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden rounded-3xl shadow-2xl border border-white/20 backdrop-blur-md">
 
-        <h3 className="text-3xl font-bold mb-6 text-gray-800">
-          Enquiry Form
-        </h3>
+        {/* Left Side: Dynamic Text Content */}
+        <div className="hidden md:flex flex-col justify-center p-12 bg-black/40 text-white">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
+            Ready to drive <br />
+            <span className="text-[#d71920]">Your Toyota?</span>
+          </h2>
+          <p className="text-lg text-gray-200 mb-8 max-w-sm">
+            Experience the perfect blend of luxury, power, and commitment. Get in touch with us for exclusive offers and test drive bookings.
+          </p>
+          <div className="space-y-4">
+            <div className="flex items-center gap-4 group">
+              <div className="p-3 bg-red-600 rounded-full group-hover:scale-110 transition-transform">
+                <Car size={24} />
+              </div>
+              <span className="text-lg font-medium">Wide selection of models</span>
+            </div>
+            <div className="flex items-center gap-4 group">
+              <div className="p-3 bg-red-600 rounded-full group-hover:scale-110 transition-transform">
+                <Send size={24} />
+              </div>
+              <span className="text-lg font-medium">Instant Callback</span>
+            </div>
+          </div>
+        </div>
 
-        <form onSubmit={handleSubmit} noValidate className="space-y-5">
-          {/* Name (Full Width) */}
-          <div className="relative">
-            <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-            <input
-              title="Name"
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder=" "
-              className={`peer w-full pl-10 pr-3 pt-5 pb-2 border rounded-lg focus:outline-none transition-all
-                ${errors.name
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-gray-300 focus:border-black"
-                }`}
-            />
-            <label
-              className="absolute left-10 top-1 text-gray-500 text-sm transition-all 
-                peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 
-                peer-placeholder-shown:text-base peer-focus:top-1 
-                peer-focus:text-sm peer-focus:text-red-600"
-            >
-              Name <span className="text-red-500">*</span>
-            </label>
+        {/* Right Side: Form Content */}
+        <div className="p-8 md:p-12 bg-white flex flex-col justify-center">
+          <div className="mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Enquire Now</h3>
+            <p className="text-sm text-gray-500 italic">* All fields are mandatory</p>
           </div>
 
-          {/* Email (Full Width) */}
-          <div className="relative">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-            <input
-              title="Email"
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder=" "
-              className={`peer w-full pl-10 pr-3 pt-5 pb-2 border rounded-lg focus:outline-none transition-all
-      ${errors.email
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-gray-300 focus:border-black"
-                }`}
-              pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-              required
-            />
-            <label
-              className="absolute left-10 top-1 text-gray-500 text-sm transition-all 
-                peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 
-                peer-placeholder-shown:text-base peer-focus:top-1 
-                peer-focus:text-sm peer-focus:text-red-600"
-            >
-              Email <span className="text-red-500">*</span>
-            </label>
-          </div>
-
-          {/* Phone + Model (2 Columns) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {/* Phone */}
-            <div className="relative">
-              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+          <form onSubmit={handleFormSubmit} className="space-y-5">
+            {/* Full Name */}
+            <div className="relative group">
+              <User className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-600 transition-colors" size={20} />
               <input
-                title="Phone"
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, "");
-                  if (value.length <= 10) {
-                    setFormData({ ...formData, phone: value });
-                  }
-                }}
-                maxLength={10}
-                placeholder=" "
-                className={`peer w-full pl-10 pr-3 pt-5 pb-2 border rounded-lg focus:outline-none transition-all
-      ${errors.phone
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-gray-300 focus:border-black"
+                type="text"
+                name="name"
+                value={formData.name || ""}
+                onChange={handleChange}
+                placeholder="Full Name"
+                className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.name ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600"
                   }`}
-                pattern="^[0-9]{10}$"
-                required
               />
-              <label
-                className="absolute left-10 top-1 text-gray-500 text-sm transition-all 
-                  peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 
-                  peer-placeholder-shown:text-base peer-focus:top-1 
-                  peer-focus:text-sm peer-focus:text-red-600"
-              >
-                Phone <span className="text-red-500">*</span>
-              </label>
+              {errors.name && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.name}</p>}
             </div>
 
-            {/* Model */}
-            <div className="relative">
-              <Car className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-              <select
-                title="Model of Car"
-                name="model"
-                value={formData.model}
+            {/* Phone */}
+            <div className="relative group">
+              <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-600 transition-colors" size={20} />
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone || ""}
                 onChange={handleChange}
-                className={`peer w-full pl-10 pr-3 pt-5 pb-2 border rounded-lg bg-white focus:outline-none transition-all
-                  ${errors.model
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-gray-300 focus:border-black"
+                placeholder="Phone Number"
+                className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.phone ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600"
+                  }`}
+              />
+              {errors.phone && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.phone}</p>}
+            </div>
+
+            {/* Email */}
+            <div className="relative group">
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-600 transition-colors" size={20} />
+              <input
+                type="email"
+                name="email"
+                value={formData.email || ""}
+                onChange={handleChange}
+                placeholder="Email ID"
+                className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.email ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600"
+                  }`}
+              />
+              {errors.email && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.email}</p>}
+            </div>
+
+            {/* Car Models Dropdown */}
+            <div className="relative group">
+              <Car className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-600 transition-colors font-extrabold" size={20} />
+              <select
+                name="carModel"
+                value={formData.carModel || ""}
+                onChange={handleChange}
+                className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.carModel ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600 text-gray-600"
                   }`}
               >
-                <option value="">Select a model</option>
-                {carModels.map((model, index) => (
-                  <option key={index} value={model}>
-                    {model}
+                <option value="">Select Model</option>
+                {carModels.map((m) => (
+                  <option key={m} value={m}>
+                    {m}
                   </option>
                 ))}
               </select>
-              <label
-                className="absolute left-10 top-1 text-gray-500 text-sm transition-all peer-focus:text-red-600"
-              >
-                Model of Car <span className="text-red-500">*</span>
-              </label>
-            </div>
-          </div>
-
-          {/* Submit */}
-          {/* Submit */}
-          <button
-            type="submit"
-            disabled={loading} // ✅ Disable while sending
-            className={`w-full text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-all duration-200 flex items-center justify-center gap-2
-    ${loading
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-red-600 hover:bg-red-700"
-              }`}
-          >
-            {loading ? (
-              <>
-                <svg
-                  className="animate-spin h-5 w-5 text-white"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8v8H4z"
-                  ></path>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M2 4L6 8L10 4" />
                 </svg>
-                Please wait…
-              </>
-            ) : (
-              <>
-                <Send size={18} /> Submit Enquiry
-              </>
-            )}
-          </button>
+              </div>
+              {errors.carModel && <p className="text-red-500 text-[10px] mt-1 ml-2 font-medium">{errors.carModel}</p>}
+            </div>
 
-        </form>
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#d71920] hover:bg-black text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-2xl active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 disabled:bg-gray-400"
+            >
+              {loading ? (
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              ) : (
+                <>
+                  <Send size={18} />
+                  <span>Submit Application</span>
+                </>
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );

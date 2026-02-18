@@ -27,7 +27,19 @@ export default function ToyotaStyleScrollImage() {
 
   /* 🔑 ONLY WIDTH CHANGES */
   const minWidth = 200;
-  const maxWidth = window.innerWidth;
+  const [maxWidth, setMaxWidth] = useState(0);
+
+  useEffect(() => {
+    // Set initial width
+    setMaxWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setMaxWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const width = minWidth + (maxWidth - minWidth) * progress;
 
