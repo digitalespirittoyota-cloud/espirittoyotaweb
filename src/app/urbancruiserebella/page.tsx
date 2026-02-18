@@ -42,7 +42,7 @@ export default function HomePage() {
                 { label: "Name*" },
                 { label: "Mobile Number*" },
                 { label: "Email*" },
-                { label: "Select City*", options: [""] },
+                { label: "Select City*", options: ["Bhubaneswar"] },
                 { label: "Select Dealer*", options: [] },
               ]}
               
