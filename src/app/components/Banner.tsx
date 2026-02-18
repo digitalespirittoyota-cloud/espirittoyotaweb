@@ -25,7 +25,7 @@ export default function Banner() {
 
   return (
     <div className="relative w-full h-52 sm:h-60 md:h-[500px] lg:h-[600px] overflow-hidden">
-      {/* Slide wrapper */}
+      {/*------------------------- Slide wrapper-------------------------- */}
       <div
         className="flex h-full transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${current * 100}%)` }}
