@@ -85,14 +85,14 @@ export default function GlanzaPage() {
           { label: "Name*" },
           { label: "Mobile Number*" },
           { label: "Email*" },
-          { label: "Select City*", options: ["Agartala","Agra","Ahmedabad","Ahmednagar","Aizawal","Ajmer","Alappuzha"] },
+          { label: "Select City*", options: ["Bhubaneswar"] },
           { label: "Select Dealer*", options: [] },
         ]}
         emiFields={[
           { label: "Select Fuel Type*", options: ["Petrol-Manual","Petrol-Automatic", "CNG-Manual"] },
           { label: "Select Variant*" },
-          { label: "Select State*", options: ["Andhra Pradesh","Assam","Bihar"] },
-          { label: "Select City*", options: ["New Delhi", "Mumbai", "Bhubaneswar"] },
+          { label: "Select State*", options: ["Odisha",] },
+          { label: "Select City*", options: [ "Bhubaneswar"] },
         ]}
       />
 
