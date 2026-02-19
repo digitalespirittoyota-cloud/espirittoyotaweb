@@ -37,14 +37,14 @@ export default function HomePage() {
       <Testdrive
               
               
-              testDriveFields={[
-                { label: "SELECT SALUTATION*", options: ["Mr","Mrs", "Ms","Dr"] },
-                { label: "Name*" },
-                { label: "Mobile Number*" },
-                { label: "Email*" },
-                { label: "Select City*", options: ["Bhubaneswar"] },
-                { label: "Select Dealer*", options: [] },
-              ]}
+              // testDriveFields={[
+              //   { label: "SELECT SALUTATION*", options: ["Mr","Mrs", "Ms","Dr"] },
+              //   { label: "Name*" },
+              //   { label: "Mobile Number*" },
+              //   { label: "Email*" },
+              //   { label: "Select City*", options: ["Bhubaneswar"] },
+              //   { label: "Select Dealer*", options: [] },
+              // ]}
               
               />
     </>
