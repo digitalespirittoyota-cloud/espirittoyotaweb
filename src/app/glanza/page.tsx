@@ -76,7 +76,7 @@ export default function GlanzaPage() {
       <CarColorSelector />
       <GlanzaAccessories />
       <TechnicalSpecifications />
-      <ZoomImageFormSection
+      {/* <ZoomImageFormSection
         testDriveImage="https://static.toyotabharat.com/images/showroom/glanza/new/img-test-drive.png"
         emiImage="https://static.toyotabharat.com/images/showroom/glanza/new/img-emi-calculator-new.jpg"
         emiTitle="EMI CALCULATOR"
@@ -94,7 +94,7 @@ export default function GlanzaPage() {
           { label: "Select State*", options: ["Odisha",] },
           { label: "Select City*", options: ["Bhubaneswar"] },
         ]}
-      />
+      /> */}
 
       <GlanzaInstantLoan />
       <SideHero
