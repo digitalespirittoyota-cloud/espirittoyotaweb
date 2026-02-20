@@ -19,34 +19,34 @@ export default function HomePage() {
   return (
     <>
       <GlanzaHero
-      imageUrl="https://static3.toyotabharat.com/images/showroom/a32/a32-banner-4000x2250.jpg"
-      alt="Toyota A32"
-    />
-      <EVHighlightsSection/>
-      <ExteriorSection/>
-      <ToyotaInterior/>
-      <SmartwatchConnectivity/>
-      <PerformanceSection/>
-      <Comfort/>
-      <SafetyExact/>
-      <ColorSelectionPage/>
-      <AwesomeAccessories/>
-      <OwnershipExperience/>
-      <SpecsFeatures/>
-      <FAQ/>
+        imageUrl="https://static3.toyotabharat.com/images/showroom/a32/a32-banner-4000x2250.jpg"
+        alt="Toyota A32"
+      />
+      <EVHighlightsSection />
+      <ExteriorSection />
+      <ToyotaInterior />
+      <SmartwatchConnectivity />
+      <PerformanceSection />
+      <Comfort />
+      <SafetyExact />
+      <ColorSelectionPage />
+      <AwesomeAccessories />
+      <OwnershipExperience />
+      <SpecsFeatures />
+      <FAQ />
       <Testdrive
-              
-              
-              testDriveFields={[
-                { label: "SELECT SALUTATION*", options: ["Mr","Mrs", "Ms","Dr"] },
-                { label: "Name*" },
-                { label: "Mobile Number*" },
-                { label: "Email*" },
-                { label: "Select City*", options: ["Bhubaneswar"] },
-                { label: "Select Dealer*", options: [] },
-              ]}
-              
-              />
+
+
+        testDriveFields={[
+          { label: "SELECT SALUTATION*", options: ["Mr", "Mrs", "Ms", "Dr"] },
+          { label: "Name*" },
+          { label: "Mobile Number*" },
+          { label: "Email*" },
+          { label: "Select City*", options: ["Bhubaneswar"] },
+          { label: "Select Dealer*", options: [] },
+        ]}
+
+      />
     </>
   );
 }
