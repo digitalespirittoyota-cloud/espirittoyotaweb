@@ -9,11 +9,17 @@ const inter = Inter({
   weight: ["200", "300", "400"],
 });
 
+interface ModelHighlightSectionProps {
+  title?: string;
+  desktopImage?: string;
+  mobileImage?: string;
+}
+
 export default function ModelHighlightSection({
   title = "ZX",
   desktopImage = "",
   mobileImage = "",
-}) {
+}: ModelHighlightSectionProps) {
   return (
     <>
       <section className="w-full">

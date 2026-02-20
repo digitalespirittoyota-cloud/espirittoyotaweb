@@ -30,11 +30,17 @@
 
 "use client";
 
+interface BrochureSectionProps {
+  label?: string;
+  fileUrl?: string;
+  height?: string;
+}
+
 export default function BrochureSection({
   label = "DOWNLOAD BROCHURE",
-  fileUrl="",
+  fileUrl = "",
   height = "h-[10vh]",
-}) {
+}: BrochureSectionProps) {
   return (
     <div className={`w-full ${height} flex items-center justify-center`}>
       <a

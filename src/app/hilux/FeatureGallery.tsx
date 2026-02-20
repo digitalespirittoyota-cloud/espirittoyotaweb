@@ -152,7 +152,14 @@ export default function FeatureGallery() {
   );
 }
 
-function AnimatedGalleryItem({ img, label, labelBg, direction }) {
+interface AnimatedGalleryItemProps {
+  img: string;
+  label: string;
+  labelBg: string;
+  direction: "left" | "right" | "up";
+}
+
+function AnimatedGalleryItem({ img, label, labelBg, direction }: AnimatedGalleryItemProps) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 

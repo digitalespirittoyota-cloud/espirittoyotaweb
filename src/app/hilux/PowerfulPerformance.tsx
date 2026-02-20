@@ -43,7 +43,16 @@
 
 
 "use client";
+import React from "react";
 import "./PowerfulPerformance.css";
+
+interface PowerfulPerformanceProps {
+  leftTitleLine1: string;
+  leftTitleLine2: string;
+  centerTopText: React.ReactNode;
+  centerHighlightText: React.ReactNode;
+  description: string;
+}
 
 export default function PowerfulPerformance({
   leftTitleLine1,
@@ -51,7 +60,7 @@ export default function PowerfulPerformance({
   centerTopText,
   centerHighlightText,
   description,
-}) {
+}: PowerfulPerformanceProps) {
   return (
     <section className="pp-section">
       <div className="pp-row">

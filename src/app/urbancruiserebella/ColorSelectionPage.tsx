@@ -81,80 +81,80 @@ const ColorSelectionPage: React.FC = () => {
         </div>
       </div>
 
-      
+
       {/* Car + Colors Section */}
       <div style={styles.carSection}>
 
-  {/* LEFT – CAR IMAGE */}
-  <div style={styles.carWrapper}>
-    <img
-      src={selectedColor.img}
-      alt={selectedColor.name}
-      style={styles.carImage}
-    />
-    <img
-      src="https://static3.toyotabharat.com/images/showroom/a32/colors/img-bottom-line-circle-1016x328.svg"
-      alt="background circles"
-      style={styles.backgroundCircles}
-    />
-  </div>
-
-  {/* RIGHT PANEL – TABS + COLORS */}
-  <div style={styles.rightPanel}>
-
-    {/* TABS */}
-    <div style={styles.tabsWrapper}>
-      {tabs.map((tab) => (
-        <div
-          key={tab}
-          style={{
-            ...styles.tab,
-            ...(activeTab === tab
-              ? styles.tabActive
-              : styles.tabInactive),
-          }}
-          onClick={() => handleTabChange(tab)}
-        >
-          {tab.replace("-", " ")}
-        </div>
-      ))}
-    </div>
-
-    {/* COLOR LIST */}
-    <div style={styles.colorPanel}>
-      {currentColors.map((color) => (
-        <div
-          key={color.name}
-          style={{
-            ...styles.colorItem,
-            background:
-              selectedColor.name === color.name
-                ? "#111"
-                : "#e0e0e0",
-            color:
-              selectedColor.name === color.name
-                ? "#fff"
-                : "#000",
-          }}
-          onClick={() => setSelectedColor(color)}
-        >
-          <div
-            style={{
-              ...styles.colorBox,
-              backgroundColor: color.colorCode,
-              border:
-                selectedColor.name === color.name
-                  ? "2px solid #fff"
-                  : "1px solid #bbb",
-            }}
+        {/* LEFT – CAR IMAGE */}
+        <div style={styles.carWrapper}>
+          <img
+            src={selectedColor.img}
+            alt={selectedColor.name}
+            style={styles.carImage}
           />
-          <span style={styles.colorName}>{color.name}</span>
+          <img
+            src="https://static3.toyotabharat.com/images/showroom/a32/colors/img-bottom-line-circle-1016x328.svg"
+            alt="background circles"
+            style={styles.backgroundCircles}
+          />
         </div>
-      ))}
-    </div>
 
-  </div>
-</div>
+        {/* RIGHT PANEL – TABS + COLORS */}
+        <div style={styles.rightPanel}>
+
+          {/* TABS */}
+          <div style={styles.tabsWrapper}>
+            {tabs.map((tab) => (
+              <div
+                key={tab}
+                style={{
+                  ...styles.tab,
+                  ...(activeTab === tab
+                    ? styles.tabActive
+                    : styles.tabInactive),
+                }}
+                onClick={() => handleTabChange(tab)}
+              >
+                {tab.replace("-", " ")}
+              </div>
+            ))}
+          </div>
+
+          {/* COLOR LIST */}
+          <div style={styles.colorPanel}>
+            {currentColors.map((color) => (
+              <div
+                key={color.name}
+                style={{
+                  ...styles.colorItem,
+                  background:
+                    selectedColor.name === color.name
+                      ? "#111"
+                      : "#e0e0e0",
+                  color:
+                    selectedColor.name === color.name
+                      ? "#fff"
+                      : "#000",
+                }}
+                onClick={() => setSelectedColor(color)}
+              >
+                <div
+                  style={{
+                    ...styles.colorBox,
+                    backgroundColor: color.colorCode,
+                    border:
+                      selectedColor.name === color.name
+                        ? "2px solid #fff"
+                        : "1px solid #bbb",
+                  }}
+                />
+                <span style={styles.colorName}>{color.name}</span>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </div>
 
     </div>
   );
@@ -177,7 +177,7 @@ function getContrastYIQ(hexcolor: string) {
 }
 
 // CSS styles
-const styles: { [key: string]: React.CSSProperties } = {
+const styles: any = {
   container: {
     fontFamily: "Arial, sans-serif",
     padding: "40px 20px",
@@ -217,41 +217,41 @@ const styles: { [key: string]: React.CSSProperties } = {
     transformOrigin: "left",
   },
   rightPanel: {
-  width: "260px",
-  display: "flex",
-  flexDirection: "column",
-  gap: "18px",
-},
+    width: "260px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "18px",
+  },
 
-tabsWrapper: {
-  display: "flex",
-  background: "#f2f2f2",
-  padding: "6px",
-  borderRadius: "8px",
-  gap: "6px",
-},
+  tabsWrapper: {
+    display: "flex",
+    background: "#f2f2f2",
+    padding: "6px",
+    borderRadius: "8px",
+    gap: "6px",
+  },
 
-tab: {
-  flex: 1,
-  textAlign: "center",
-  padding: "10px 0",
-  fontSize: "0.9rem",
-  fontWeight: 600,
-  borderRadius: "6px",
-  cursor: "pointer",
-  transition: "all 0.3s ease",
-},
+  tab: {
+    flex: 1,
+    textAlign: "center",
+    padding: "10px 0",
+    fontSize: "0.9rem",
+    fontWeight: 600,
+    borderRadius: "6px",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+  },
 
-tabActive: {
-  background: "linear-gradient(135deg, #2b0f0f, #5a1a1a)",
-  color: "#fff",
-},
+  tabActive: {
+    background: "linear-gradient(135deg, #2b0f0f, #5a1a1a)",
+    color: "#fff",
+  },
 
-tabInactive: {
-  background: "#fff",
-  color: "#000",
-  border: "1px solid #ddd",
-},
+  tabInactive: {
+    background: "#fff",
+    color: "#000",
+    border: "1px solid #ddd",
+  },
 
   carSection: {
     display: "flex",
@@ -283,32 +283,32 @@ tabInactive: {
     pointerEvents: "none",
   },
   colorPanel: {
-  display: "flex",
-  flexDirection: "column",
-  gap: "12px",
-},
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+  },
 
-colorItem: {
-  display: "flex",
-  alignItems: "center",
-  gap: "12px",
-  padding: "10px 12px",
-  borderRadius: "8px",
-  cursor: "pointer",
-  transition: "all 0.3s ease",
-},
+  colorItem: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    padding: "10px 12px",
+    borderRadius: "8px",
+    cursor: "pointer",
+    transition: "all 0.3s ease",
+  },
 
-colorBox: {
-  width: "46px",
-  height: "46px",
-  borderRadius: "6px",
-  flexShrink: 0,
-},
+  colorBox: {
+    width: "46px",
+    height: "46px",
+    borderRadius: "6px",
+    flexShrink: 0,
+  },
 
-colorName: {
-  fontSize: "0.9rem",
-  fontWeight: 500,
-},
+  colorName: {
+    fontSize: "0.9rem",
+    fontWeight: 500,
+  },
 
   // colorBox: {
   //   width: "55px",
@@ -318,7 +318,7 @@ colorName: {
   //   transition: "all 0.3s ease",
   //   flexShrink: 0,
   // },
-  
+
 
   // Responsive
   "@media (max-width: 768px)": {
