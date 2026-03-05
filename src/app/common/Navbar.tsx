@@ -70,7 +70,7 @@ export default function Navbar() {
                 <div className="bg-gray-100 p-2 rounded-full group-hover:bg-red-50 transition-colors">
                   <Phone size={18} />
                 </div>
-                <span className="font-bold text-sm tracking-wide">79354 28989</span>
+                <span className="font-bold text-sm tracking-wide">07935428989</span>
               </a>
 
               {/* Test Drive Button */}
