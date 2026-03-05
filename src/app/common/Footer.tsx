@@ -263,7 +263,7 @@ const Footer = () => {
               <span>{address.copyright}</span>
             </div>
             <div>
-              Powered by{" "}
+              Developed by{" "}
               <a
                 href="https://jnine.in"
                 target="_blank"
