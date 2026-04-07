@@ -1,4 +1,5 @@
-
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import CarColorSelector from "./CarColorSelector";
 import Ecng from "./Ecng";
 import GlanzaAccessories from "./GlanzaAccessories";
@@ -9,6 +10,14 @@ import TechnicalSpecifications from "./TechnicalSpecifications";
 import ToyotaGlanza from "./ToyotaGlanza";
 import ZoomImageFormSection from "./ZoomImageFormSection";
 import { glanzaSections } from "./data/glanzaData";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Glanza Price, Features & Mileage | Espirit Toyota",
+  "The cool and advanced Toyota Glanza. Check features, mileage, variants, and price at Espirit Toyota Bhubaneswar. Experience premium hatchback quality with Toyota.",
+  "/glanza",
+  ["Toyota Glanza", "Glanza Price", "Glanza Mileage", "Glanza Hatchback Bhubaneswar", "Glanza Features"],
+  "https://static3.toyotabharat.com/images/showroom/glanza/glanza-product-page-banner-1920x807.jpg"
+);
 
 export default function GlanzaPage() {
   const lastIndex = glanzaSections.length - 1;

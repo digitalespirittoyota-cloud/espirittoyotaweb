@@ -1,4 +1,5 @@
-"use client";
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import React from "react";
 import CarShowcase from "./InnovaCrysta";
 import InnovaCrystaDesign from "./InnovaCrystaDesign";
@@ -6,6 +7,14 @@ import Specifications from "./Specifications";
 import InnovaColors from "./InnovaColors";
 import Gallery from "./Gallery";
 import GlanzaHero from "../glanza/GlanzaHero";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Innova Crysta Price, Features & Specs | Espirit Toyota",
+  "The legendary Toyota Innova Crysta. Explore its unmatched design, unrivaled performance, and premium comfort at Espirit Toyota Bhubaneswar. Book your test drive today.",
+  "/innovacrysta",
+  ["Toyota Innova Crysta", "Innova Crysta Price", "Innova Diesel", "MPV Bhubaneswar", "Innova Crysta Features"],
+  "https://static.toyotabharat.com/images/showroom/innova-mmc/unmatched-unrivaled-banner1600x850.jpg"
+);
 
 
 const Page: React.FC = () => {

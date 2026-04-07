@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import SideHero from "../glanza/SideHero";
 import CamryBookNowBanner from "./CamryBooknowbanner";
 import CamryColors from "./CamryColors";
@@ -6,6 +8,14 @@ import CamryEnginePerformance from "./CamryEnginePerformance";
 import CamryExteriorInterior from "./CamryExteriorInterior";
 import CamrySafetyConnected from "./CamrySafetyConnected";
 import TNGASection from "./TNGASection";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Camry Hybrid Price, luxury & Performance | Espirit Toyota",
+  "Experience the luxury of the Toyota Camry Hybrid at Espirit Toyota Bhubaneswar. Discover its self-charging hybrid technology, elegant design, and premium features.",
+  "/camry",
+  ["Toyota Camry", "Camry Hybrid", "Camry Price", "Luxury Sedan Bhubaneswar", "Camry Features"],
+  "https://static3.toyotabharat.com/images/showroom/new-camry/exterior_img1-1199-x478.png"
+);
 
 export const camryExteriorInteriorData = {
   exterior: {

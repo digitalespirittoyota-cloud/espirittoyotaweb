@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import Banner from "../commonbanner/Banner";
 import ChiefEngineerSection from "./ChiefEngineerSection";
 import EngineerMessageSection from "./EngineerMessageSection";
@@ -13,6 +15,14 @@ import PowerfulPerformance from "./PowerfulPerformance";
 import TechnicalSpecifications from "./TechnicalSpecifications";
 import ToyotaServiceSection from "./ToyotaServiceSection";
 import VirtualShowroomImage from "./VirtualShowroomSection";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Hilux Price, 4x4 Features & Performance | Espirit Toyota",
+  "The legendary Toyota Hilux is here. Explore its powerful 4x4 performance, rugged design, and utility features at Espirit Toyota Bhubaneswar. Built for every adventure.",
+  "/hilux",
+  ["Toyota Hilux", "Hilux 4x4", "Hilux Price", "Pickup Truck Bhubaneswar", "Hilux Off-road"],
+  "/hilux/hilux-black (1).webp"
+);
 
 
 

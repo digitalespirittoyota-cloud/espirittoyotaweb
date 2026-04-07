@@ -1,5 +1,5 @@
-
-
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import GlanzaHero from "../glanza/GlanzaHero";
 import SideHero from "../glanza/SideHero";
 import AccessoriesSlider from "./AccessoriesSlider";
@@ -7,6 +7,14 @@ import Gallery from "./Gallery";
 import RumionColors from "./RumionColors";
 import TechnicalSpecifications from "./TechnicalSpecifications";
 import TechExactSlider from "./TechSection";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Rumion Price, Mileage & 7-Seater Comfort | Espirit Toyota",
+  "Experience the Good Wala Vibe with the Toyota Rumion. A spacious 7-seater MPV with premium style and advanced tech. Check price, mileage, and features at Espirit Toyota Bhubaneswar.",
+  "/rumino",
+  ["Toyota Rumion", "Rumion Price", "Rumion Mileage", "7 Seater Car Bhubaneswar", "Toyota MPV"],
+  "https://static.toyotabharat.com/images/showroom/rumion/home-banner-1920x807.jpg"
+);
 
 export default function RuminoPage() {
   return (

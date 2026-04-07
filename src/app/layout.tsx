@@ -50,6 +50,13 @@ export const metadata: Metadata = {
     ],
   },
 
+  twitter: {
+    card: "summary_large_image",
+    title: "Espirit Toyota – Authorized Toyota Showroom in Bhubaneswar",
+    description: "Espirit Toyota – Explore new Toyota cars, hybrid models, and premium service in Bhubaneswar, Odisha.",
+    images: ["/seo/og-banner.jpg"],
+  },
+
   robots: {
     index: true,
     follow: true,

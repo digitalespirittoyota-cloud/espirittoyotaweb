@@ -1,25 +1,27 @@
 import { Metadata } from 'next';
+import { getBaseMetadata } from "../utils/seo";
 import Image from 'next/image';
 import TestDriveForm from '../components/TestDriveForm';
 import { CheckCircle, MapPin, ShieldCheck, Clock, UserCheck, Car } from 'lucide-react';
 
-export const metadata: Metadata = {
-    title: 'Book Toyota Test Drive | Espirit Toyota Authorized Dealer',
-    description:
-        'Book your Toyota test drive with Espirit Toyota. Experience comfort, safety and performance at our showroom or opt for a doorstep test drive in Bhubaneswar.',
-    keywords: [
-        'toyota test drive',
-        'book toyota test drive',
-        'book test drive toyota',
-        'toyota test drive booking',
-        'toyota showroom test drive',
-        'toyota doorstep test drive',
-        'toyota test drive bhubaneswar',
-        'espirit toyota test drive',
-        'authorized toyota dealer',
-        'toyota showroom bhubaneswar',
-    ],
-};
+export const metadata: Metadata = getBaseMetadata(
+  "Book Toyota Test Drive | Espirit Toyota Authorized Dealer Bhubaneswar",
+  "Book your Toyota test drive with Espirit Toyota. Experience comfort, safety and performance at our showroom or opt for a doorstep test drive in Bhubaneswar. Choose from Fortuner, Innova, Hyryder and more.",
+  "/test-drive",
+  [
+    'toyota test drive',
+    'book toyota test drive',
+    'book test drive toyota',
+    'toyota test drive booking',
+    'toyota showroom test drive',
+    'toyota doorstep test drive',
+    'toyota test drive bhubaneswar',
+    'espirit toyota test drive',
+    'authorized toyota dealer',
+    'toyota showroom bhubaneswar',
+  ],
+  "/banner/banner5.jpg"
+);
 
 
 export default function TestDrivePage() {

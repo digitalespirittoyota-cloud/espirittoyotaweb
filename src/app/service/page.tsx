@@ -1,30 +1,29 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
+import { getBaseMetadata } from "../utils/seo";
 import React from 'react';
-
 import { Settings, Wrench, ShieldCheck, Car, Clock, DollarSign, Headset } from 'lucide-react';
 import ServiceForm from '../components/ServiceForm';
 
-export const metadata: Metadata = {
-    title:
-        'Espirit Toyota Service Center | Authorized Toyota Car Service & Repair',
-    description:
-        'Authorized Espirit Toyota Service Center for car maintenance, repair, body & paint, and roadside assistance. Book your Toyota service today.',
-    keywords: [
-        'toyota service center',
-        'toyota service',
-        'toyota car service',
-        'authorized toyota service center',
-        'toyota service booking',
-        'toyota car maintenance',
-        'toyota repair service',
-        'toyota body and paint service',
-        'toyota roadside assistance',
-        'toyota service center near me',
-        'espirit toyota service',
-        'espirit toyota service center',
-        'toyota service bhubaneswar',
-    ],
-};
+export const metadata: Metadata = getBaseMetadata(
+  "Espirit Toyota Service Center | Authorized Toyota Car Service & Repair",
+  "Authorized Espirit Toyota Service Center for car maintenance, repair, body & paint, and roadside assistance. Book your Toyota service today with certified technicians.",
+  "/service",
+  [
+    'toyota service center',
+    'toyota service',
+    'toyota car service',
+    'authorized toyota service center',
+    'toyota service booking',
+    'toyota car maintenance',
+    'toyota repair service',
+    'toyota body and paint service',
+    'toyota roadside assistance',
+    'toyota service center near me',
+    'espirit toyota service',
+    'espirit toyota service center',
+    'toyota service bhubaneswar',
+  ]
+);
 
 
 const services = [

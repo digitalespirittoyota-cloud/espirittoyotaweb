@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import Banner from "../commonbanner/Banner";
 import { styledSlides, styledSlides2, styledSlides3 } from "./data";
 import EbookSection from "./EbookSection";
@@ -7,6 +9,14 @@ import PowerToCommand from "./PowerToCommand";
 import SlideCarSection from "./SlideCarSection";
 import StyledToInspireCarousel from "./StyledToInspireCarousel";
 import VideoShowcase from "./VideoShowcase";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Fortuner Legender Price, Interior & Style | Espirit Toyota",
+  "Styled to inspire awe. Explore the Toyota Fortuner Legender at Espirit Toyota Bhubaneswar. Check its premium interior, performance features, and book a test drive today.",
+  "/legender",
+  ["Toyota Legender", "Fortuner Legender Price", "Legender SUV", "Legender Interior", "Premium SUV Bhubaneswar"],
+  "/legender/legender-awesome-ban1.webp"
+);
 
 export default function Page() {
     return (

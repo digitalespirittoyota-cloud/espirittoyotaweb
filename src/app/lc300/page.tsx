@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import { Inter } from "next/font/google";
 import CarCarousel from "./CarCarousel";
 import CarConfigurator from "./CarConfigurator";
@@ -16,6 +18,14 @@ import SafetyTechSection from "./SafetyTechSection";
 import ToyotaHeroStorySection2 from "./ToyotaHeroStorySection2";
 import SpecificationsPage from "./SpecificationsPage";
 import GallerySection from "./GallerySection";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Land Cruiser 300 Price, Specs & luxury | Espirit Toyota",
+  "The masterpiece redefined. Explore the luxury and power of the Toyota Land Cruiser 300 at Espirit Toyota Bhubaneswar. Check its 4x4 capabilities, features, and booking details.",
+  "/lc300",
+  ["Toyota Land Cruiser 300", "LC300 Price", "Toyota Land Cruiser Bhubaneswar", "Luxury SUV", "LC300 Specs"],
+  "/lc300/lc300-hero-section-image.webp"
+);
 
 
 

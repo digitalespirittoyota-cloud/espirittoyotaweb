@@ -1,7 +1,13 @@
-export default function JsonLd() {
-  const data = {
+// src/app/components/seo/JsonLd.tsx
+interface JsonLdProps {
+  type?: "AutoDealer" | "Product" | "BreadcrumbList" | "WebSite";
+  data?: any;
+}
+
+export default function JsonLd({ type = "AutoDealer", data }: JsonLdProps) {
+  const defaultData = {
     "@context": "https://schema.org",
-    "@type": "AutoDealer",
+    "@type": type,
     name: "Espirit Toyota",
     url: "https://www.toyota-espirit.in",
     image: "https://www.toyota-espirit.in/seo/og-banner.jpg",
@@ -22,10 +28,12 @@ export default function JsonLd() {
     },
   };
 
+  const finalData = data ? { "@context": "https://schema.org", ...data } : defaultData;
+
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(finalData) }}
     />
   );
 }

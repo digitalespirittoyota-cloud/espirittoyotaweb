@@ -1,7 +1,5 @@
-
-
-"use client";
-
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import GlanzaHero from "../glanza/GlanzaHero";
 import HyTimeBanner from "../urbancruiserhyryder/HyTimeBanner";
 import ArticlesSection from "./ArticlesSection";
@@ -12,6 +10,32 @@ import HyPerformance from "./HyPerformance";
 import InnovaHeroImage from "./InnovaHeroImage";
 import InnovaVideoHero from "./InnovaVideoHero";
 import SafetyFeatures from "./SafetyFeatures";
+import JsonLd from "../components/seo/JsonLd";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Innova HyCross Price, Hybrid Features & Variants | Espirit Toyota",
+  "Experience the all-new Toyota Innova HyCross at Espirit Toyota Bhubaneswar. Discover its powerful hybrid engine, SUV styling, premium comfort, and latest price.",
+  "/innova",
+  ["Toyota Innova HyCross", "Innova HyCross Price", "Innova Hybrid", "MPV Bhubaneswar", "Innova HyCross Features"],
+  "https://static3.toyotabharat.com/images/showroom/innova-hycross/innova-hycross-banner-1600x850.jpg"
+);
+
+const innovaSchema = {
+  "@type": "Product",
+  name: "Toyota Innova HyCross",
+  description: "The all-new Toyota Innova HyCross with powerful hybrid engine and SUV styling.",
+  brand: {
+    "@type": "Brand",
+    name: "Toyota"
+  },
+  image: "https://static3.toyotabharat.com/images/showroom/innova-hycross/innova-hycross-banner-1600x850.jpg",
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceCurrency: "INR",
+    url: "https://www.toyota-espirit.in/innova"
+  }
+};
 export const hyBannerData = {
   leftImage:
     "https://static.toyotabharat.com/images/showroom/innova-hycross/hy-concept-img.webp",
@@ -46,6 +70,7 @@ const innovaArticles = [
 export default function Page() {
   return (
     <>
+      <JsonLd type="Product" data={innovaSchema} />
       <GlanzaHero
       imageUrl="https://static3.toyotabharat.com/images/showroom/innova-hycross/innova-hycross-banner-1600x850.jpg"
       alt="Toyota Glanza"

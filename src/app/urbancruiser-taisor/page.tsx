@@ -1,9 +1,9 @@
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import Banner from "../commonbanner/Banner";
 import AccessoriesCarousel from "./AccessoriesCarousel";
 import ColorShowcase from "./ColorShowcase";
 import Connection from "./Connection";
-
-
 import { connectionSectionData, exteriorAccessoriesData, InteriorAccessoriesData, items, styleSectionData, taisorData, taisorData2, taisorData3, thrillsSectionData } from "./data";
 import DownloadAccessoryBrochure from "./DownloadAccessoryBrochure";
 import DownloadBrochureSection from "./DownloadBrochureSection";
@@ -14,6 +14,14 @@ import ScrollGrowImage from "./ScrollGrowImage";
 import StyleSection from "./StyleSection";
 import StyleSectionReverse from "./StyleSectionReverse";
 import TaisorStyleCarousel from "./TaisorStyleCarousel";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Urban Cruiser Taisor Price, Features & Compact SUV Style | Espirit Toyota",
+  "Make your way with the Toyota Urban Cruiser Taisor. Discover its bold compact SUV design, advanced features, and performance at Espirit Toyota Bhubaneswar. Check price and book today.",
+  "/urbancruiser-taisor",
+  ["Toyota Taisor", "Urban Cruiser Taisor Price", "Toyota Compact SUV", "Taisor Features", "Toyota Dealer Bhubaneswar"],
+  "/urbancruiser-taisor/urbancruiser-taisor-banner.webp"
+);
 
 
 

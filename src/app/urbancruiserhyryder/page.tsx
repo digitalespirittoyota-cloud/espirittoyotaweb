@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import GlanzaHero from "../glanza/GlanzaHero";
 import SideHero from "../glanza/SideHero";
 import AccessoriesPage from "./AccessoriesPage";
@@ -6,9 +8,16 @@ import EBookBanner from "./EBookbanner";
 import HybridPage from "./HybridPage";
 import HyMilesWinners from "./HyMilesWinners";
 import HyTimeBanner from "./HyTimeBanner";
-// import ExteriorFeatures from "./PerformanceFeature";
 import PerformanceFeature, { FeatureItem } from "./PerformanceFeature";
 import Technical from "./Technical";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Urban Cruiser Hyryder Price, Mileage & Features | Espirit Toyota",
+  "Explore the Toyota Urban Cruiser Hyryder at Espirit Toyota Bhubaneswar. Check price, self-charging hybrid features, mileage, and book a test drive today.",
+  "/urbancruiserhyryder",
+  ["Toyota Hyryder", "Hyryder Hybrid", "Toyota SUV Bhubaneswar", "Hyryder Mileage", "Hyryder Price"],
+  "https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/img-uch.png"
+);
 
 
 export interface Winner {

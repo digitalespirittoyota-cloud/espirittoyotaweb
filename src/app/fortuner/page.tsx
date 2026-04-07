@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+import { getBaseMetadata } from "../utils/seo";
 import Banner from "../commonbanner/Banner";
 import EbookSection from "../legender/EbookSection";
 import FeatureImageSection from "../legender/FeatureImageSection";
@@ -7,11 +9,16 @@ import SlideCarSection from "../legender/SlideCarSection";
 import StyledToInspireCarousel from "../legender/StyledToInspireCarousel";
 import VideoShowcase from "../legender/VideoShowcase";
 import BrochureSection from "./BrochureSection";
-// import BrochureButton from "./BrochureSection";
-
-
 import { allnewfortuner, conquredata, leaddata, overcomedata } from "./data";
 import TintedSection from "./TintedSection";
+
+export const metadata: Metadata = getBaseMetadata(
+  "Toyota Fortuner Price, Features & Specifications | Espirit Toyota",
+  "The Toyota Fortuner is built to lead. Explore its performance, 4x4 capabilities, safety features, and price at Espirit Toyota Bhubaneswar. Book your test drive now.",
+  "/fortuner",
+  ["Toyota Fortuner", "Fortuner Price", "Fortuner 4x4", "Fortuner SUV Bhubaneswar", "Toyota Dealer Odisha"],
+  "/fortuner/le-fortuner-banner-1920x807 (1).jpg"
+);
 
 
 export default function Page() {
