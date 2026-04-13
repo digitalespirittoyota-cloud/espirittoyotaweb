@@ -19,7 +19,7 @@ const petrolCars: CarSpec[] = [
       "Dual LED Headlamps",
     ],
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/car-color-g-slf.webp",
+      "/models/innovahycross/hycross16.webp",
   },
   {
     title: "PETROL (GX)",
@@ -31,7 +31,7 @@ const petrolCars: CarSpec[] = [
       "Smart entry system",
     ],
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/car-color-gx.webp",
+      "/models/innovahycross/hycross17.webp",
   },
   {
     title: "PETROL GX(O)",
@@ -44,7 +44,7 @@ const petrolCars: CarSpec[] = [
       "Rear Retractable Sunshade",
     ],
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/car-color-gx-o.webp",
+      "/models/innovahycross/hycross18.webp",
   },
 ];
 
@@ -60,7 +60,7 @@ const hybridCars: CarSpec[] = [
       "17” (43.18 cm) Alloy wheel",
     ],
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/car-color-vx-o.webp",
+      "/models/innovahycross/hycross19.webp",
   },
   {
     title: "HYBRID VX(O)",
@@ -73,7 +73,7 @@ const hybridCars: CarSpec[] = [
       "6 SRS Airbags",
     ],
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/car-color-vx-o.webp",
+      "/models/innovahycross/hycross20.webp",
   },
   {
     title: "HYBRID (ZX)",
@@ -88,7 +88,7 @@ const hybridCars: CarSpec[] = [
       "8-Way Power Adjustable Driver Seat with Memory + Slide Return & Away Function",
     ],
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/car-color-zx.webp",
+      "/models/innovahycross/hycross21.webp",
   },
   {
     title: "HYBRID ZX(O)",
@@ -103,7 +103,7 @@ const hybridCars: CarSpec[] = [
       "Auto High Beam",
     ],
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/car-color-zx.webp",
+      "/models/innovahycross/hycross22.webp",
   },
 ];
 

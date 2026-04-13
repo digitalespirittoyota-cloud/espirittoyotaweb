@@ -12,7 +12,7 @@ const CamrySafetyConnected: React.FC = () => {
       <div style={styles.originaldiv} >
         <div style={styles.card}>
         <img
-          src="https://static3.toyotabharat.com/images/showroom/new-camry/safety-thumb-580x567.jpg"
+          src="/models/camry/camry18.webp"
           alt="Safety"
           style={styles.image}
         />
@@ -33,7 +33,7 @@ const CamrySafetyConnected: React.FC = () => {
       {/* RIGHT CARD */}
       <div style={styles.card}>
         <img
-          src="https://static3.toyotabharat.com/images/showroom/new-camry/connected-services-580x567.jpg"
+          src="/models/camry/camry19.webp"
           alt="Connected Tech"
           style={styles.image}
         />

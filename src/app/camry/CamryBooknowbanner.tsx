@@ -12,7 +12,7 @@ export default function CamryBookNowBanner() {
         {/* Background Image */}
         <div className="banner-bg">
           <img
-            src="https://static3.toyotabharat.com/images/showroom/new-camry/lastbanner-1366x485.jpg"
+            src="/models/camry/lastbanner.webp"
             alt="Toyota Camry"
             className="bg-image"
           />
@@ -101,13 +101,15 @@ export default function CamryBookNowBanner() {
           left: 0;
           width: 100%;
           height: 100%;
+           overflow: hidden; 
+          
         }
 
         .bg-image {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center;
+         object-position: center;
         }
 
         .overlay {

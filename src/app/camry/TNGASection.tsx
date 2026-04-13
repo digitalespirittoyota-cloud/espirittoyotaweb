@@ -36,7 +36,7 @@ const TNGASection: React.FC = () => {
         {/* Left Logo */}
         <div style={styles.logoWrapper}>
           <img
-            src="https://static3.toyotabharat.com/images/showroom/new-camry/tnga-logo-544x140.png"
+            src="/models/camry/camry26.webp"
             alt="TNGA Logo"
             style={{
               width: logoSize,

@@ -6,20 +6,20 @@ const safetyFeatures = [
     title: "Lane Trace Assist",
     description:
       "Activates a host of sensors and cameras to keep your car centred in your lane.",
-    image: "https://static.toyotabharat.com/images/showroom/innova-hycross/safety-feature-img03.webp",
+    image: "/models/innovahycross/hycross12.webp",
   },
   {
     title: "Dynamic Radar Cruise Control",
     description:
       "Cruise to every destination you want to go and enjoy the journey to the fullest.",
-    image: "https://static.toyotabharat.com/images/showroom/innova-hycross/safety-feature-img02.webp",
+    image: "/models/innovahycross/hycross13.webp",
   },
   {
     title: "First-in-Segment Rear Cross Traffic Alert (RCTA)",
     description:
       "Alerts you if a vehicle is approaching from the left or right when you are reversing the car.",
     note: "*The driver is always responsible for paying attention to the vehicle surroundings & driving safely as there are limitations to degree of recognition & controlling performance that this system can provide.",
-    image: "https://static.toyotabharat.com/images/showroom/innova-hycross/safety-feature-img04.webp",
+    image: "/models/innovahycross/hycross14.webp",
   },
 ];
 

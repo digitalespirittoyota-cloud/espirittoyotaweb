@@ -14,7 +14,7 @@ import InnovaVideoHero from "./InnovaVideoHero";
 import SafetyFeatures from "./SafetyFeatures";
 export const hyBannerData = {
   leftImage:
-    "https://static.toyotabharat.com/images/showroom/innova-hycross/hy-concept-img.webp",
+    "/models/innovahycross/hycross2.webp",
 
   stats: [
     "The beginning",
@@ -29,25 +29,25 @@ export const hyBannerData = {
   introText: "Toyota Urban Cruiser Hyryder.",
 
   carImage:
-    "https://static.toyotabharat.com/images/showroom/innova-hycross/hycross-logo.webp",
+    "/models/innovahycross/hycross3.webp",
 };
 const hycrossArticles = [
-  { title: "HyCross first drive review", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/article-hycross-autox.jpg" },
-  { title: "HyCross detailed review", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/article-hycross-evo.jpg" },
-  { title: "Another HyCross article", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/article-hycross-overdrive.jpg" },
+  { title: "HyCross first drive review", img: "/models/innovahycross/hycross29.webp" },
+  { title: "HyCross detailed review", img: "/models/innovahycross/hycross30.webp" },
+  { title: "Another HyCross article", img: "/models/innovahycross/hycross31.webp" },
 ];
 
 const innovaArticles = [
-  { title: "Toyota Innova HyCross Hybrid First Drive | Safe Cover Drive or Over The Stadium?", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/review-hycross-power-drift.jpg" },
-  { title: "Toyota Innova HyCross | First Drive Review | We Talk Style, Features, Driving, Hybrid | PowerDrift", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/review-hycross-zigwheels.jpg" },
-  { title: "Toyota Innova Hycross review - India's favourite MPV reborn | First Drive | Autocar India", img: "https://static.toyotabharat.com/images/showroom/innova-hycross/review-hycross-autocar.jpg" },
+  { title: "Toyota Innova HyCross Hybrid First Drive | Safe Cover Drive or Over The Stadium?", img: "/models/innovahycross/hycross32.webp" },
+  { title: "Toyota Innova HyCross | First Drive Review | We Talk Style, Features, Driving, Hybrid | PowerDrift", img: "/models/innovahycross/hycross32.webp" },
+  { title: "Toyota Innova Hycross review - India's favourite MPV reborn | First Drive | Autocar India", img: "/models/innovahycross/hycross33.webp" },
 ];
 
 export default function Page() {
   return (
     <>
       <GlanzaHero
-      imageUrl="https://static3.toyotabharat.com/images/showroom/innova-hycross/innova-hycross-banner-1600x850.jpg"
+      imageUrl="/models/innovahycross/hycross1.webp"
       alt="Toyota Glanza"
     />
       <HyTimeBanner {...hyBannerData}/>
@@ -55,8 +55,8 @@ export default function Page() {
       <ExteriorOverview
         headingTop="MY NEW HY"
         headingBottom="of SUV styling"
-        primaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/exterior-overview01.webp"
-        secondaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/exterior-overview02.webp"
+        primaryImage="/models/innovahycross/hycross4.webp"
+        secondaryImage="/models/innovahycross/hycross5.webp"
         buttonText="Explore Styling"
         buttonLink="https://www.toyotabharat.com/showroom/innova/features-exterior.html"
         description="The new Innova HyCross has elevated its design to a new HY. The muscular SUV stance and stature of the new Innova HyCross is accentuated by its glamorous yet tough Front Grille and a raised Bonnet Line heralding a new era. Not only the frontage, the new Innova HyCross is crafted with strong character lines & fender flares to amplify the SUV presence from any angle."
@@ -65,8 +65,8 @@ export default function Page() {
       <ExteriorOverview
         headingTop="MY NEW HY"
         headingBottom="of Plush Comfort"
-        primaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/comfort-img1.webp"
-        secondaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/comfort-img2.webp"
+        primaryImage="/models/innovahycross/hycross8.webp"
+        secondaryImage="/models/innovahycross/hycross9.webp"
         buttonText="Explore Comfort Features"
         buttonLink="https://www.toyotabharat.com/showroom/innova/features-comfort.html"
         description="The new Innova HyCross attains a new HY when it comes to comfort. The first-in-segment, Powered Ottoman Seats with Long Slide and Panoramic Sunroof with Mood Lighting and Roof Mounted A/C Vents takes comfort notches higher."
@@ -75,17 +75,17 @@ export default function Page() {
       <ExteriorOverview
         headingTop="MY NEW HY"
         headingBottom="of Enhanced Convenience"
-        primaryImage="https://static.toyotabharat.com/images/showroom/innova-hycross/hy-connected-img.jpg"
+        primaryImage="/models/innovahycross/hycross10.webp"
         buttonText="Explore Connected Features"
         buttonLink="https://www.toyotabharat.com/showroom/innova/features-connected-services.html"
         description="Take convenience to a new HY with advanced connected features like Remote Vehicle Ignition, Smartwatch Connectivity, Stolen Vehicle Tracker, Find My Car, Remote Windows, Trunk Close and the like. Empower yourself to control almost every aspect of the car."
       />
       <InnovaHeroImage 
-      imageUrl="https://static3.toyotabharat.com/images/showroom/innova-hycross/kv-banner02.jpg"
+      imageUrl="/models/innovahycross/hycross11.webp"
       alt="Toyota Innova HyCross"/>
       <SafetyFeatures/>
       <InnovaHeroImage 
-      imageUrl="https://static3.toyotabharat.com/images/showroom/innova-hycross/kv-banner.jpg"
+      imageUrl="/models/innovahycross/hycross15.webp"
       alt="Toyota Innova HyCross"/>
       <CarSpecs/>
       <HyColors/>
