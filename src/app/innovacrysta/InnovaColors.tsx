@@ -15,35 +15,35 @@ const COLORS: Color[] = [
     id: "white",
     title: "SUPER WHITE",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/super-white-color-1600x600.png",
+      "/models/innovacrysta/crysta39.webp",
     colorClass: "white",
   },
   {
     id: "black",
     title: "ATTITUDE BLACK MICA",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/attitude-black-color-1600x600.png",
+      "/models/innovacrysta/crysta37.webp",
     colorClass: "black",
   },
   {
     id: "bronze",
     title: "AVANT-GARDE BRONZE METALLIC",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/avant-garde-bronze-1600x600.png",
+      "/models/innovacrysta/crysta36.webp",
     colorClass: "bronze",
   },
   {
     id: "whitePearl",
     title: "PLATINUM WHITE PEARL",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/white-pearl-crystal-color-1600x600.png",
+      "/models/innovacrysta/crysta40.webp",
     colorClass: "whitePearl",
   },
   {
     id: "silver",
     title: "SILVER METALLIC",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/silver-color-1600x600.png",
+      "/models/innovacrysta/crysta38.webp",
     colorClass: "silver",
   },
 ];
@@ -99,14 +99,14 @@ const InnovaColors: React.FC = () => {
         .image-section {
           position: relative;
           padding: 90px 20px;
-          background: url("https://static.toyotabharat.com/images/showroom/innova-mmc/design-bg.jpg")
+          background: url("/models/innovacrysta/car-bg.webp")
             no-repeat center / cover;
         }
 
         .overlay {
           position: absolute;
           inset: 0;
-          background: rgba(255, 255, 255, 0.85);
+         background: rgba(255, 255, 255, 0.2);
           z-index: 1;
         }
 

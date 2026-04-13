@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 
 const images = [
-  "https://static.toyotabharat.com/images/showroom/innova-mmc/gallery03-646x405.jpg", // 1
-  "https://static.toyotabharat.com/images/showroom/innova-mmc/gallery04-646x405.jpg", // 2
-  "https://static.toyotabharat.com/images/showroom/innova-mmc/gallery02-646x405.jpg", // 3
-  "https://static.toyotabharat.com/images/showroom/innova-mmc/gallery01-646x405.jpg", // 4
+  "/models/innovacrysta/crysta41.webp", // 1
+  "/models/innovacrysta/crysta42.webp", // 2
+  "/models/innovacrysta/crysta43.webp", // 3
+  "/models/innovacrysta/crysta44.webp", // 4
 ];
 
 const Gallery = () => {
@@ -66,6 +66,7 @@ const Gallery = () => {
           font-weight: 700;
           letter-spacing: 4px;
           margin-bottom: 40px;
+          color:#000;
         }
 
         .gallery-bg {
