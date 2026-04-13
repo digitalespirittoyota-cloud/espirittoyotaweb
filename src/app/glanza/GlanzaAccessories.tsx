@@ -5,15 +5,15 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./GlanzaAccessories.module.css";
 
 const images = [
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/01.jpg",
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/02.jpg",
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/03.jpg",
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/04.jpg",
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/05.jpg",
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/06.jpg",
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/07.jpg",
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/08.jpg",
-  "https://static.toyotabharat.com/images/showroom/glanza/new/acessories/09.jpg",
+  "/models/glanza/acc-01.webp",
+  "/models/glanza/acc-02.webp",
+  "/models/glanza/acc-03.webp",
+  "/models/glanza/acc-04.webp",
+  "/models/glanza/acc-05.webp",
+  "/models/glanza/acc-06.webp",
+  "/models/glanza/acc-07.webp",
+  "/models/glanza/acc-08.webp",
+  "/models/glanza/acc-09.webp",
 ];
 
 export default function GlanzaAccessories() {
@@ -57,7 +57,7 @@ export default function GlanzaAccessories() {
         <div className={styles.right}>
           <div className={`${styles.animate} ${show ? styles.show : ""}`}>
             <img
-              src="https://static.toyotabharat.com/images/showroom/glanza/new/img-awesome-acessories.png"
+              src="/models/glanza/acc-10.webp"
               className={styles.titleImage}
               alt=""
             />

@@ -12,11 +12,11 @@ export default function RuminoPage() {
   return (
     <>
     <GlanzaHero
-      imageUrl="https://static.toyotabharat.com/images/showroom/rumion/home-banner-1920x807.jpg"
+      imageUrl="/models/rumino/rumino1.webp"
       alt="Toyota Rumion"
     />
     <GlanzaHero
-      imageUrl="https://static.toyotabharat.com/images/showroom/rumion/good-wala-vibe.jpg"
+      imageUrl="/models/rumino/rumino2.webp"
       alt="Toyota Rumion"
     />
     {/* ================= TECH (SLIDER MODE) ================= */}
@@ -29,11 +29,16 @@ export default function RuminoPage() {
         slides={[
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/style-img02.jpg",
+              "/models/rumino/rumino3.webp",
             title: "PREMIUM GRILLE WITH CHROME FINISH ON THE FRONT BUMPER",
             subtitle: "",
           },
-        
+          {
+            image:
+              "/models/rumino/rumino4.webp",
+            title: "STUNNING TWO TONE MACHINED ALLOY WHEELS",
+            subtitle: "",
+          },
           
         ]}
       />
@@ -46,26 +51,26 @@ export default function RuminoPage() {
         slides={[
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/tech-img04-small.jpg",
+              "/models/rumino/sl1.webp",
             title: "AUTO HEAD LAMP",
             subtitle: "Featuring follow me home function",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/tech-img01-small.jpg",
+              "/models/rumino/sl2.webp",
             title: "SMARTPHONE CONNECTIVITY*",
             subtitle:
               "Remote immobilisation | Tow alert | Remote start/Stop",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/tech-img02-small.jpg",
+              "/models/rumino/sl3.webp",
             title: "SMARTWATCH CONNECTIVITY*",
             subtitle: "Climate control | Lock unlock | Find my car",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/tech-img03-small.jpg",
+              "/models/rumino/sl4.webp",
             title: "17.78 cm SMARTPLAYCAST AUDIO",
             subtitle:
               "Display audio with wireless Android Auto and Apple CarPlay",
@@ -82,25 +87,25 @@ export default function RuminoPage() {
         slides={[
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/performance-img01.jpg",
+              "/models/rumino/performance-img01.webp",
             title: "POWERFUL 1.5L K SERIES ENGINE",
             subtitle: "ISG technology for NeoDrive grades Fuel efficiency of 20.11 km/l* for Neo Drive AT grade and 20.51 km/l* for Neo Drive MT grade",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/performance-img02.jpg",
+              "/models/rumino/performance-img02.webp",
             title: "POWERFUL 1.5L K SERIES ENGINE",
             subtitle: "E-CNG technology for CNG grade Fuel efficiency of 26.11 km/kg* for CNG grade",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/performance-img03.jpg",
+              "/models/rumino/performance-img03.webp",
             title: "6-SPEED AUTOMATIC TRANSMISSION",
             subtitle: "",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/performance-img04.jpg",
+              "/models/rumino/performance-img04.webp",
             title: "PADDLE SHIFTERS FOR BETTER PERFORMANCE",
             subtitle: "Perfect balance of power and convenience &nbsp;",
           },
@@ -114,26 +119,26 @@ export default function RuminoPage() {
         slides={[
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/space-img01-small.jpg",
+              "/models/rumino/space-img01.webp",
             title: "7 SEATER WITH PLUSH DUAL TONE SEAT FABRIC",
             subtitle: "",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/space-img02-small.jpg",
+              "/models/rumino/space-img02.webp",
             title: "AMPLE LUGGAGE SPACE",
             subtitle:
               "",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/space-img03-small.jpg",
+              "/models/rumino/space-img03.webp",
             title: "2nd ROW CONSOLE AC VENTS",
             subtitle: "",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/space-img04-small.jpg",
+              "/models/rumino/space-img04.webp",
             title: "TYRE PRESSURE MONITORING SYSTEM",
             subtitle:
               "",
@@ -142,7 +147,7 @@ export default function RuminoPage() {
       />
       
     <GlanzaHero
-      imageUrl="https://static.toyotabharat.com/images/showroom/rumion/good-wala-vibe02.jpg"
+      imageUrl="/models/rumino/good-wala-vibe02.webp"
       alt="Toyota Rumion"
     />
       <TechExactSlider
@@ -153,31 +158,31 @@ export default function RuminoPage() {
         slides={[
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/safety-img01.jpg",
+              "/models/rumino/safety-img01.webp",
             title: "6 AIRBAGS AS STANDARD",
             subtitle: "",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/safety-img02.jpg",
+              "/models/rumino/safety-img02.webp",
             title: "HILL HOLD ASSIST",
             subtitle: "",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/safety-img03.jpg",
+              "/models/rumino/safety-img03.webp",
             title: "ABS WITH EBD &amp; BRAKE ASSIST",
             subtitle: "",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/safety-img04.jpg",
+              "/models/rumino/safety-img04.webp",
             title: "HEARTECT PLATFORM",
             subtitle: "",
           },
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/safety-img05.jpg",
+              "/models/rumino/safety-img05.webp",
             title: "FRONT SEAT PRETENSIONER/ FORCE LIMITER",
             subtitle: "",
           },
@@ -195,7 +200,7 @@ export default function RuminoPage() {
         slides={[
           {
             image:
-              "https://static.toyotabharat.com/images/showroom/rumion/download-brochure.jpg",
+              "/models/rumino/download-brochure.webp",
             title: "",
             subtitle:
               "",
@@ -208,7 +213,7 @@ export default function RuminoPage() {
       <Gallery/>
       <AccessoriesSlider/>
       <SideHero
-  imageUrl="https://static.toyotabharat.com/images/showroom/rumion/rumion-e-booking-1366x320.jpg"
+  imageUrl="/models/rumino/rumion-e-booking.webp"
   alt="Rumion E-Booking"
 />
     </>

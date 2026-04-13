@@ -12,7 +12,7 @@ export default function EBookBanner() {
         {/* Main Banner Image */}
         <div className="banner-image-wrapper" onClick={handleBookNow}>
           <img
-            src="https://static.toyotabharat.com/images/showroom/urbancruiser-hyryder/uch-ebook.jpg"
+            src="/models/urbancruiserhyryder/uch-ebook.webp"
             alt="Toyota Urban Cruiser Hyryder - E-Book Now"
             className="banner-image"
           />

@@ -225,21 +225,21 @@
 import React, { useState } from "react";
 
 const exteriorItems = [
-  { title: "Body Cladding", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/body-cladding-small.png" },
-  { title: "Front Bumper Garnish", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/front-bumper-garnish-small.png" },
-  { title: "Hood Emblem", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/hood-emblem-small.png" },
-  { title: "Door Visor", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/door-visor-small.png" },
-  { title: "Head Lamp Garnish", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/headlamp-garnish-small.png" },
-  { title: "Rear Bumper Garnish", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/rear-bumper-garnish-small.png" },
-  { title: "Rear Door Lid Garnish", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/reardoor-lid-garnish-small.png" },
-  { title: "Roof Ornament", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/roof-ornament-small.png" },
+  { title: "Body Cladding", img: "/models/urbancruiserhyryder/acc1.webp" },
+  { title: "Front Bumper Garnish", img: "/models/urbancruiserhyryder/acc2.webp" },
+  { title: "Hood Emblem", img: "/models/urbancruiserhyryder/acc3.webp" },
+  { title: "Door Visor", img: "/models/urbancruiserhyryder/acc4.webp" },
+  { title: "Head Lamp Garnish", img: "/models/urbancruiserhyryder/acc5.webp" },
+  { title: "Rear Bumper Garnish", img: "/models/urbancruiserhyryder/acc6.webp" },
+  { title: "Rear Door Lid Garnish", img: "/models/urbancruiserhyryder/acc7.webp" },
+  { title: "Roof Ornament", img: "/models/urbancruiserhyryder/acc8.webp" },
 ];
 
 const interiorItems = [
-  { title: "Interior Styling Kit (THS)", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/dark-brown-isk-small.png" },
-  { title: "Sill Guard", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/sill-guard-small.png" },
-  { title: "Wireless Charger", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/wireless-charger-small.png" },
-  { title: "TPMS", img: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/acessories/small/tpms-small.png" },
+  { title: "Interior Styling Kit (THS)", img: "/models/urbancruiserhyryder/acc9.webp" },
+  { title: "Sill Guard", img: "/models/urbancruiserhyryder/acc10.webp" },
+  { title: "Wireless Charger", img: "/models/urbancruiserhyryder/acc11.webp" },
+  
 ];
 
 export default function CarAccessories() {

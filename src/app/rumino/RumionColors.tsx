@@ -11,31 +11,31 @@ const carColors: CarColor[] = [
   {
     name: "Spunky Blue",
     image:
-      "https://static.toyotabharat.com/images/showroom/rumion/car-color/monotone/spunky-blue.png",
+      "/models/rumino/spunky-blue.webp",
     colorCode: "#1f4fa3",
   },
   {
     name: "Rustic Brown",
     image:
-      "https://static.toyotabharat.com/images/showroom/rumion/car-color/monotone/rustic-brown.png",
+      "/models/rumino/rustic-brown.webp",
     colorCode: "#6b2e2e",
   },
   {
     name: "Iconic Grey",
     image:
-      "https://static.toyotabharat.com/images/showroom/rumion/car-color/monotone/iconic-grey.png",
+      "/models/rumino/iconic-grey.webp",
     colorCode: "#4b4b4b",
   },
   {
     name: "Cafe White",
     image:
-      "https://static.toyotabharat.com/images/showroom/rumion/car-color/monotone/cafe-white.png",
+      "/models/rumino/cafe-white.webp",
     colorCode: "#e8e5dc",
   },
   {
     name: "Enticing Silver",
     image:
-      "https://static.toyotabharat.com/images/showroom/rumion/car-color/monotone/enticing-silver.png",
+      "/models/rumino/enticing-silver.webp",
     colorCode: "#b5b5b5",
   },
 ];

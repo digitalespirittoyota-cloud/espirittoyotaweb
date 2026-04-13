@@ -10,6 +10,7 @@ import ToyotaGlanza from "./ToyotaGlanza";
 import ZoomImageFormSection from "./ZoomImageFormSection";
 import { glanzaSections } from "./data/glanzaData";
 
+
 export default function GlanzaPage() {
   const lastIndex = glanzaSections.length - 1;
 
@@ -25,11 +26,11 @@ export default function GlanzaPage() {
 `}</style>
       {/* All sections except last */}
       <GlanzaHero
-        imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/glanza-product-page-banner-1920x807.jpg"
+        imageUrl="/models/glanza/glanza1.webp"
         alt="Toyota Glanza"
       />
       <GlanzaHero
-        imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/img-where-ever-you-are-new.jpg"
+        imageUrl="/models/glanza/glanza2.webp"
         alt="Toyota Glanza"
       />
       <GlanzaHero
@@ -37,11 +38,11 @@ export default function GlanzaPage() {
         alt="Toyota Glanza"
       />
       <GlanzaHero
-        imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/c-goawesome/01-new.jpg"
+        imageUrl="/models/glanza/glanza3.webp"
         alt="Toyota Glanza"
       />
       <SideHero
-        imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/img-style-statement-new.jpg"
+       imageUrl="/models/glanza/glanza4.webp"
         alt="Glanza Ebook"
       />
       {glanzaSections.slice(0, lastIndex).map((section, index) => (
@@ -98,7 +99,7 @@ export default function GlanzaPage() {
 
       <GlanzaInstantLoan />
       <SideHero
-        imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/img-ebook-now-new.jpg"
+        imageUrl="/models/glanza/img-ebook.webp"
         alt="Glanza Ebook"
       />
     </>

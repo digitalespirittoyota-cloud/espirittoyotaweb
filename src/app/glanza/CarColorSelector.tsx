@@ -8,11 +8,11 @@ interface CarColor {
 }
 
 const carColors: CarColor[] = [
-  { name: "Insta Blue", image: "https://static.toyotabharat.com/images/showroom/glanza/new/colors/car-blue.png", colorCode: "#0047AB" },
-  { name: "Gaming Grey", image: "https://static.toyotabharat.com/images/showroom/glanza/new/colors/car-dark-grey.png", colorCode: "#333333" },
-  { name: "Enticing Silver", image: "https://static.toyotabharat.com/images/showroom/glanza/new/colors/car-light-grey.png", colorCode: "#D3D3D3" },
-  { name: "Sportin Red", image: "https://static.toyotabharat.com/images/showroom/glanza/new/colors/car-maroon.png", colorCode: "#800000" },
-  { name: "Cafe White", image: "https://static.toyotabharat.com/images/showroom/glanza/new/colors/car-white.png", colorCode: "#FFFFFF" },
+  { name: "Insta Blue", image: "/models/glanza/car-blue.webp", colorCode: "#2e1ea4" },
+  { name: "Gaming Grey", image: "/models/glanza/car-dark-grey.webp", colorCode: "#333333" },
+  { name: "Enticing Silver", image: "/models/glanza/car-light-grey.webp", colorCode: "#D3D3D3" },
+  { name: "Sportin Red", image: "/models/glanza/car-maroon.webp", colorCode: "#800000" },
+  { name: "Cafe White", image: "/models/glanza/car-white.webp", colorCode: "#FFFFFF" },
 ];
 
 export default function CarColorSelector() {
