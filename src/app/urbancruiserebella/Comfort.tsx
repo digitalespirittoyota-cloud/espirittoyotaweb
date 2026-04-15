@@ -4,27 +4,27 @@ import React, { useState } from "react";
 
 const comfortData = [
   {
-    img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort6_800x510.jpg",
+    img: "/models/ebella/ebella20.webp",
     text: "10-WAY ADJUSTABLE DRIVER SEAT",
   },
   {
-    img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort5_800x510.jpg",
+    img: "/models/ebella/ebella21.webp",
     text: "10-WAY ADJUSTABLE DRIVER SEAT",
   },
   {
-    img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort4_800x510.jpg",
+    img: "/models/ebella/ebella22.webp",
     text: "FRONT SEAT ARM REST",
   },
   {
-    img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort3_800x510.jpg",
+    img: "/models/ebella/ebella23.webp",
     text: "ELECTRONIC PARKING BRAKE",
   },
   {
-    img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort2_800x510.jpg",
+    img: "/models/ebella/ebella24.webp",
     text: "AIR VENTS",
   },
   {
-    img: "https://static3.toyotabharat.com/images/showroom/a32/comfort/comfort1_800x510.jpg",
+    img: "/models/ebella/ebella25.webp",
     text: "",
   },
 ];
