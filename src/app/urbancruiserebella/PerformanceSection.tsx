@@ -27,9 +27,9 @@ const TOTAL = slides.length;
 
 export default function PerformanceSection() {
   const [active, setActive] = useState(1); // start at index 1 (real first slide)
-  const trackRef = useRef(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const isTransitioning = useRef(false);
-  const jumpTo = useRef(null); // holds the silent jump target index
+  const jumpTo = useRef<number | null>(null); // holds the silent jump target index
 
   const enableTransition = () => {
     if (trackRef.current)
@@ -41,7 +41,7 @@ export default function PerformanceSection() {
     if (trackRef.current) trackRef.current.style.transition = "none";
   };
 
-  const goTo = useCallback((idx) => {
+  const goTo = useCallback((idx: number) => {
     if (isTransitioning.current) return;
     isTransitioning.current = true;
     enableTransition();
@@ -140,7 +140,7 @@ export default function PerformanceSection() {
           </button>
         </div>
 
-        
+
       </div>
 
       <style jsx>{`
