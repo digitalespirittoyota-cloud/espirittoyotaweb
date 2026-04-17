@@ -5,33 +5,33 @@ import React, { useState, useEffect } from "react";
 const exteriorData = [
   {
     title: "PREMIUM LED HEADLAMPS",
-    thumb: "https://static3.toyotabharat.com/images/showroom/a32/exterior/04-thumb.jpg",
-    image: "https://static3.toyotabharat.com/images/showroom/a32/exterior/04.jpg",
+    thumb: "/models/ebella/ebella2.webp",
+    image: "/models/ebella/ebella2.webp",
   },
   {
     title: "PREMIUM LED HEADLAMPS",
-    thumb: "https://static3.toyotabharat.com/images/showroom/a32/exterior/05-thumb.jpg",
-    image: "https://static3.toyotabharat.com/images/showroom/a32/exterior/05.jpg",
+    thumb: "/models/ebella/ebella3.webp",
+    image: "/models/ebella/ebella3.webp",
   },
   {
     title: "TOYOTA’S SIGNATURE HAMMERHEAD STYLING",
-    thumb: "https://static3.toyotabharat.com/images/showroom/a32/exterior/06-thumb.jpg",
-    image: "https://static3.toyotabharat.com/images/showroom/a32/exterior/06.jpg",
+    thumb: "/models/ebella/ebella4.webp",
+    image: "/models/ebella/ebella4.webp",
   },
   {
     title: "",
-    thumb: "https://static3.toyotabharat.com/images/showroom/a32/exterior/01-thumb.jpg",
-    image: "https://static3.toyotabharat.com/images/showroom/a32/exterior/01.jpg",
+    thumb: "/models/ebella/ebella5.webp",
+    image: "/models/ebella/ebella5.webp",
   },
   {
     title: "UNDERBODY PROTECTION",
-    thumb: "https://static3.toyotabharat.com/images/showroom/a32/exterior/02-thumb.jpg",
-    image: "https://static3.toyotabharat.com/images/showroom/a32/exterior/02.jpg",
+    thumb: "/models/ebella/ebella6.webp",
+    image: "/models/ebella/ebella6.webp",
   },
   {
     title: "18” ALLOY WHEELS",
-    thumb: "https://static3.toyotabharat.com/images/showroom/a32/exterior/03-thumb.jpg",
-    image: "https://static3.toyotabharat.com/images/showroom/a32/exterior/03.jpg",
+    thumb: "/models/ebella/ebella7.webp",
+    image: "/models/ebella/ebella7.webp",
   },
 ];
 
@@ -86,7 +86,7 @@ const ExteriorSection = () => {
           {/* THUMBNAILS */}
           <div className="scroll">
             <button className="arrow thumb-prev" onClick={handlePrev}>
-              <img src="https://static3.toyotabharat.com/images/showroom/a32/arrow-prev.png" />
+              <img src="/models/ebella/arrow-prev.webp" />
             </button>
 
             <div className="thumb-wrapper">
@@ -107,7 +107,7 @@ const ExteriorSection = () => {
             </div>
 
             <button className="arrow next" onClick={handleNext}>
-            <img src="https://static3.toyotabharat.com/images/showroom/a32/arrow-next.png" />
+            <img src="/models/ebella/arrow-next.webp" />
           </button>
           </div>
         </div>

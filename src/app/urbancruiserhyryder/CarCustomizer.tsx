@@ -3,20 +3,20 @@ import React, { useState } from "react";
 
 /* ===================== IMAGES ===================== */
 const MONOTONE_COLORS = [
-  { name: "Cafe White", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/cafe-white.png" },
-  { name: "Enticing Silver", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/enticing-silver.png" },
-  { name: "Gaming Grey", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/gaming-grey.png" },
-  { name: "Sportin Red", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/sporting-red.png" },
-  { name: "Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/midnight-black.png" },
-  { name: "Cave Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/cave-black.png" },
-  { name: "Speedy Blue", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/speedy-blue.png" },
+  { name: "Cafe White", url: "/models/urbancruiserhyryder/cafe-white.webp" },
+  { name: "Enticing Silver", url: "/models/urbancruiserhyryder/enticing-silver.webp" },
+  { name: "Gaming Grey", url: "/models/urbancruiserhyryder/gaming-grey.webp" },
+  { name: "Sportin Red", url: "/models/urbancruiserhyryder/sporting-red.webp" },
+  { name: "Midnight Black", url: "/models/urbancruiserhyryder/midnight-black.webp" },
+  { name: "Cave Black", url: "/models/urbancruiserhyryder/cave-black.webp" },
+  { name: "Speedy Blue", url: "/models/urbancruiserhyryder/speedy-blue.webp" },
 ];
 
 const DUALTONE_COLORS = [
-  { name: "Dualtone Cafe White X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/cafe-white.png" },
-  { name: "Dualtone Sportin Red X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/sporting-red.png" },
-  { name: "Dualtone Enticing Silver X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/enticing-silver.png" },
-  { name: "Dualtone Speedy Blue X Midnight Black", url: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/colors/speedy-blue.png" },
+  { name: "Dualtone Cafe White X Midnight Black", url: "/models/urbancruiserhyryder/cafe-white-midnight-black.webp" },
+  { name: "Dualtone Sportin Red X Midnight Black", url: "/models/urbancruiserhyryder/sporting-red-midnight-black.webp" },
+  { name: "Dualtone Enticing Silver X Midnight Black", url: "/models/urbancruiserhyryder/enticing-silver-midnight.webp" },
+  { name: "Dualtone Speedy Blue X Midnight Black", url: "/models/urbancruiserhyryder/speedy-blue-midnight-black.webp" },
 ];
 
 /* ===================== COMPONENT ===================== */

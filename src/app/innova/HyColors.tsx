@@ -11,37 +11,37 @@ const colors: ColorOption[] = [
   {
     name: "Blackish Ageha Glass Flake",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/ageha-blackish.png",
+      "/models/innovahycross/hycross23.webp",
     swatch: "#1c1c1c",
   },
   {
     name: "Super White",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/super-white.png",
+      "/models/innovahycross/hycross24.webp",
     swatch: "#eeeeee",
   },
   {
     name: "Platinum White Pearl",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/platinum-white-pearl.png",
+      "/models/innovahycross/hycross25.webp",
     swatch: "#e6e3df",
   },
   {
     name: "Silver Metallic",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/metallic-silver.png",
+      "/models/innovahycross/hycross26.webp",
     swatch: "#d9dee7",
   },
   {
     name: "Attitude Black Mica",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/attitude-black.png",
+      "/models/innovahycross/hycross27.webp",
     swatch: "#111111",
   },
   {
     name: "Avant Garde Bronze Metallic",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/avant-garde-bronze.png",
+      "/models/innovahycross/hycross28.webp",
     swatch: "#c1b4a6",
   },
 ];

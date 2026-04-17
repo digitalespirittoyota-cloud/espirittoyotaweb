@@ -22,10 +22,11 @@ const Page: React.FC = () => {
 
   const cars = [
     {
-      description: `The Innova’s legendary capabilities have been enhanced beyond compare
-      with the new Innova Crysta.`,
+      description: `The Innova’s legendary capabilities have been enhanced beyond compare with the new Innova Crysta. Be it the new bold front grille and bumper or the stunning diamond-cut alloy wheels, the new Innova Crysta is in a league of its own.
+
+If the exterior design spells dominance, the well-appointed interior is steeped in luxury and elegance. Unequalled space and plushness welcome you inside to the camel tanned seats of the new Innova Crysta. Replete with unsurpassed connectivity, safety and a linear power delivery, it gives you a truly unmatched and unrivalled travelling experience.`,
       imageUrl:
-        "https://static.toyotabharat.com/images/showroom/innova-mmc/unmatched-unrivaled-banner1600x850.jpg",
+        "/models/innovacrysta/crysta2.webp",
       heading: "UNMATCHED UNRIVALED",
     },
   ];
@@ -34,12 +35,12 @@ const Page: React.FC = () => {
   const designSectionData = {
     title: "UNMATCHED DESIGN",
     description:
-      "The new Innova Crysta's design is matchless. Thanks to its bold front grille and bumper, it exudes unmistakable road presence.",
+      "The new Innova Crysta’s design is matchless. Thanks to its distinctly styled, bold front grille and bumper, it exudes unmistakable road presence that takes it miles ahead of the rest.",
     heroImage:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/unmatched-design1600x1000.jpg",
+      "/models/innovacrysta/crysta3.webp",
     cards: [
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-thumb1-new-440x417.jpg",
+        img: "/models/innovacrysta/crysta4.webp",
         title: "IMPOSING CHROME SURROUND PIANO BLACK GRILLE",
         modalContent: {
           image:
@@ -49,38 +50,38 @@ const Page: React.FC = () => {
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-thumb2-440x440.jpg",
+        img: "/models/innovacrysta/crysta5.webp",
         title: "PIERCING LED HEADLAMPS",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large02.jpg",
+            "/models/innovacrysta/crysta5.webp",
           description: "Improves visibility and enhances the confident stance",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-thumb5-440x440.jpg",
+        img: "/models/innovacrysta/crysta6.webp",
         title: "FRONT CLEARANCE SONAR WITH MID INDICATION",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta6.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-thumb3-440x440.jpg",
+        img: "/models/innovacrysta/crysta7.webp",
         title: "ENTICING DIAMOND-CUT ALLOYS",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large04.jpg",
+            "/models/innovacrysta/crysta7.webp",
           description: "Gives more style & presence to your drive",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-thumb4-440x440.jpg",
+        img: "/models/innovacrysta/crysta8.webp",
         title: "WELCOME LAMPS",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large05.jpg",
+            "/models/innovacrysta/crysta8.webp",
           description:
             "Provides a warm welcome everytime you approach the new Innova Crysta",
         },
@@ -92,33 +93,33 @@ const Page: React.FC = () => {
     description:
       "The elegant driver dashboard is the control centre of the new Innova Crysta. It features 20.32cm display with Android Auto and Apple CarPlay Connectivity*, using your smartphone you can also access advanced connectivity* features like Walk to Car, Geo Fencing & Real Time Vehicle Tracking.",
     heroImage:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/unrivaled-connectivity-banner1600x1000-new.jpg",
+      "/models/innovacrysta/crysta9.webp",
     cards: [
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/connectivity-thumb02-440x440.jpg",
+        img: "/models/innovacrysta/crysta10.webp",
         title: "Apple CarPlay &amp; Android Auto",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large01.jpg",
+            "/models/innovacrysta/crysta10.webp",
           description:
             "New bold front grille with chrome surround and stylish CRYSTA embossed bumper",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/connectivity-thumb01-880x440.jpg",
+        img: "/models/innovacrysta/crysta11.webp",
         title: "Blue illumination, 3-dimensional combination meter with Large TFT MID",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large02.jpg",
+            "/models/innovacrysta/crysta11.webp",
           description: "Improves visibility and enhances the confident stance",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/connectivity-thumb03-440x440.jpg",
+        img: "/models/innovacrysta/crysta12.webp",
         title: "Start/ stop button",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta12.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
@@ -130,76 +131,76 @@ const unmatchedData = {
     description:
       "Like every other Innova, luxury and comfort is at the core of the new Innova Crysta. Be it the plush, camel tan seats, enhanced legroom or soft-touch materials, the new Innova spells unparalleled refinement and class.",
     heroImage:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/unmatched-comfort-banner1600x1000.jpg",
+      "/models/innovacrysta/crysta14.webp",
     cards: [
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large01.jpg",
+        img: "/models/innovacrysta/crysta16.webp",
         title: "AMBIENT ILLUMINATION",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large01.jpg",
+            "/models/innovacrysta/crysta16.webp",
           description:
             "New bold front grille with chrome surround and stylish CRYSTA embossed bumper",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large02.jpg",
+        img: "/models/innovacrysta/crysta17.webp",
         title: "Foldable seatback table with cup holder",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large02.jpg",
+            "/models/innovacrysta/crysta17.webp",
           description: "Improves visibility and enhances the confident stance",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large03.jpg",
+        img: "/models/innovacrysta/crysta18.webp",
         title: "Wood finish interior panels",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta18.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large04.jpg",
+        img: "/models/innovacrysta/crysta19.webp",
         title: "Easy slide side passenger seat",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta19.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },{
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large05.jpg",
+        img: "/models/innovacrysta/crysta20.webp",
         title: "Smartphone holder with USB port",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large06.jpg",
+            "/models/innovacrysta/crysta20.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },{
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large06.jpg",
+        img: "/models/innovacrysta/crysta.webp",
         title: "Plush Leather Seats",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large08.jpg",
+            "/models/innovacrysta/crysta.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large08.jpg",
+        img: "/models/innovacrysta/crysta20.webp",
         title: "Plush Leather Seats",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large08.jpg",
+            "/models/innovacrysta/crysta20.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large08.jpg",
+        img: "/models/innovacrysta/crysta21.webp",
         title: "Upper glove box with cooling",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large08.jpg",
+            "/models/innovacrysta/crysta21.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
@@ -210,33 +211,33 @@ const unmatchedData = {
     description:
       "The new Innova Crysta has oodles of power under its hood. Yet it is unwaveringly efficient as it returns more miles for the gallon. And that’s not all. It also offers refined driving dynamics for a smoother, more surefooted ride thanks to its robust chassis, sturdy suspension and slick transmission.",
     heroImage:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/unrivaled-performance-banner1600x1000.jpg",
+      "/models/innovacrysta/crysta22.webp",
     cards: [
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/performance-thumb01-440x440.jpg",
+        img: "/models/innovacrysta/crysta23.webp",
         title: "Powerful GD diesel engine",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large01.jpg",
+            "/models/innovacrysta/crysta23.webp",
           description:
             "New bold front grille with chrome surround and stylish CRYSTA embossed bumper",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/performance-thumb03-880x440-new.jpg",
+        img: "/models/innovacrysta/crysta24.webp",
         title: "Eco &amp; Power drive modes",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large02.jpg",
+            "/models/innovacrysta/crysta24.webp",
           description: "Improves visibility and enhances the confident stance",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/performance-thumb05-880x440.jpg",
+        img: "/models/innovacrysta/crysta25.webp",
         title: "Improved suspension with pitch &amp; bounce control",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta25.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
@@ -249,50 +250,50 @@ const unmatchedData = {
     description:
       "The new Innova Crysta is not only powerful and comfortable, it’s safe too. The new Innova Crysta protects you and your family with 7 SRS Airbags during any eventuality. Anti-lock braking, electronic brake force distribution, brake assist and the like ensure safety and stability on every journey.",
     heroImage:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/unmatched-safety-banner1600x1000.jpg",
+      "/models/innovacrysta/crysta26.webp",
     cards: [
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/safety-feature-large01.jpg",
+        img: "/models/innovacrysta/crysta27.webp",
         title: "Anti-lock Braking System",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large01.jpg",
+            "/models/innovacrysta/crysta27.webp",
           description:
             "New bold front grille with chrome surround and stylish CRYSTA embossed bumper",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/safety-feature-large02.jpg",
+        img: "/models/innovacrysta/crysta28.webp",
         title: "Vehicle stability control",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large02.jpg",
+            "/models/innovacrysta/crysta28.webp",
           description: "Improves visibility and enhances the confident stance",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/safety-feature-large03.jpg",
+        img: "/models/innovacrysta/crysta29.webp",
         title: "GOA body",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta29.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/safety-feature-large04.jpg",
+        img: "/models/innovacrysta/crysta30.webp",
         title: "Hill-start assist control",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta30.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },{
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large05.jpg",
+        img: "/models/innovacrysta/crysta31.webp",
         title: "Smartphone holder with USB port",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/comfort-feature-large06.jpg",
+            "/models/innovacrysta/crysta31.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
@@ -304,42 +305,42 @@ const unmatchedData = {
     description:
       "The new Innova Crysta is decked with all the features you expect. But we always leave scope for enhancements. You can enhance the appeal, convenience and comfort of your new Innova Crysta with these amazing accessories.",
     heroImage:
-      "https://static.toyotabharat.com/images/showroom/innova-mmc/unrivaled-upgrades-banner1600x1000.jpg",
+      "/models/innovacrysta/crysta42.webp",
     cards: [
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/updrade-deatures04-880x440.jpg",
+        img: "/models/innovacrysta/crysta33.webp",
         title: "Welcome door lamp",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large01.jpg",
+            "/models/innovacrysta/crysta33.webp",
           description:
             "New bold front grille with chrome surround and stylish CRYSTA embossed bumper",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/updrade-deatures06-440x440.jpg",
+        img: "/models/innovacrysta/crysta34.webp",
         title: "Roof Spoiler Garnish",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large02.jpg",
+            "/models/innovacrysta/crysta34.webp",
           description: "Improves visibility and enhances the confident stance",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/upgrades-feature-large02.jpg",
+        img: "/models/innovacrysta/crysta35.webp",
         title: "Tire pressure monitoring system",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta35.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
       {
-        img: "https://static.toyotabharat.com/images/showroom/innova-mmc/upgrades-feature-large03.jpg",
+        img: "/models/innovacrysta/crysta32.webp",
         title: "Wireless charger",
         modalContent: {
           image:
-            "https://static.toyotabharat.com/images/showroom/innova-mmc/design-feature-large03.jpg",
+            "/models/innovacrysta/crysta32.webp",
           description: "Ensures safe parking in tight spaces",
         },
       },
@@ -353,7 +354,7 @@ const unmatchedData = {
   return (
     <div style={{ backgroundColor: "#fff" }}>
       <GlanzaHero
-      imageUrl="https://static.toyotabharat.com/images/showroom/innova-mmc/20-years-ruling-1600x850.jpg"
+      imageUrl="/models/innovacrysta/crysta1.webp"
       alt="Toyota Glanza"
     />
       {cars.map((car, index) => (

@@ -8,28 +8,28 @@ const performanceData = [
     description:
       "The new Innova HyCross is propelled by the latest 2.0L TNGA petrol engine and the most advanced 5th Generation Self-charging Hybrid Electric Technology. This refined engine takes performance and fuel-efficiency to a new HY.",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/performance-img05.webp",
+      "/models/innovahycross/hycross7.webp",
   },
   {
     title: "Drive Mode Switch",
     description:
       "Enjoy the pure, refined performance at a whole new HY.",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/performance-img02.webp",
+      "/models/innovahycross/hycross7.0.webp",
   },
   {
     title: "First-in-Segment Paddle Shifters",
     description:
       "Go through the gear range manually for max driving pleasure.",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/performance-img03.webp",
+      "/models/innovahycross/hycross7.1.webp",
   },
   {
     title: "First-in-Segment TNGA Hybrid Petrol Engine with E-drive Transmission",
     description:
       "Experience an exhilarating output of power for HY-end performance.",
     image:
-      "https://static.toyotabharat.com/images/showroom/innova-hycross/performance-img01.webp",
+      "/models/innovahycross/hycross7.2.webp",
   },
   {
     title: "TNGA Petrol Engine with Direct Shift CVT",

@@ -5,13 +5,14 @@ import { useState } from "react";
 type TabType = "ALL" | "EXTERIOR" | "INTERIOR";
 
 const exteriorImages = [
-  "https://static.toyotabharat.com/images/showroom/rumion/gallery-img02.jpg",
-  "https://static.toyotabharat.com/images/showroom/rumion/gallery-img01.jpg",
+  "/models/rumino/gallery-img02.webp",
+  "/models/rumino/gallery-img01.webp",
 ];
 
 const interiorImages = [
-  "https://static.toyotabharat.com/images/showroom/rumion/gallery-img04.jpg",
-  "https://static.toyotabharat.com/images/showroom/rumion/gallery-img03.jpg",
+  "/models/rumino/gallery-img03.webp",
+  "/models/rumino/gallery-img04.webp",
+  
 ];
 
 const allImages = [...exteriorImages, ...interiorImages];

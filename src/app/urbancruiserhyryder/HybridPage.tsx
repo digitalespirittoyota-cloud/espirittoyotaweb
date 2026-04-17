@@ -381,19 +381,19 @@ const CarMediaPage: React.FC = () => {
     {
       id: 1,
       title: "Toyota Urban Cruiser Hyryder review- Creta rivaling strong hybrid | First Drive | Autocar India",
-      thumbnail: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/hyryder-autocar.jpg",
+      thumbnail: "/models/urbancruiserhyryder/hyryder-autocar.webp",
       videoUrl: "https://www.youtube.com/embed/06jm5DLsUqM"
     },
     {
       id: 2,
       title: "Toyota Urban Cruiser Hyryder Hybrid Review | A Different Drive Experience",
-      thumbnail: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/hyryder-zigwheels.jpg",
+      thumbnail: "/models/urbancruiserhyryder/hyryder-zigwheels.webp",
       videoUrl: "https://www.youtube.com/embed/DlPSrYTf_TY"
     },
     {
       id: 3,
       title: "Toyota Hyryder Hybrid review – So, what’s the catch? |OVERDRIVE",
-      thumbnail: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/hyryder-overdrive.jpg",
+      thumbnail: "/models/urbancruiserhyryder/hyryder-overdrive.webp",
       videoUrl: "https://www.youtube.com/embed/Qv94AiQI9lQ"
     }
   ];
@@ -403,19 +403,19 @@ const CarMediaPage: React.FC = () => {
     {
       id: 1,
       title: "Toyota Urban Cruiser Hyryder First Drive Review: Redefining the hybrid life",
-      image: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/hyryder-express.jpg",
+      image: "/models/urbancruiserhyryder/hyryder-express.webp",
       link: "#"
     },
     {
       id: 2,
       title: "Toyota Urban Cruiser Hyryder: First Drive Review",
-      image: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/hyryder-turbocharged.jpg",
+      image: "/models/urbancruiserhyryder/hyryder-turbocharged.webp",
       link: "#"
     },
     {
       id: 3,
       title: "Toyota Urban Cruiser Hyryder: Hybrid SUV first drivereview",
-      image: "https://static3.toyotabharat.com/images/showroom/urbancruiser-hyryder/hyryder-evo.jpg",
+      image: "/models/urbancruiserhyryder/hyryder-evo.webp",
       link: "#"
     }
   ];

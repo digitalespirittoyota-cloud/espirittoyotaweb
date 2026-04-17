@@ -5,32 +5,32 @@ const slides = [
   {
     title: "SMOOTH DIAL SHIFT",
     image:
-      "https://static.toyotabharat.com/images/showroom/a32/interior/Interior5_1400x790.jpg",
+      "/models/ebella/ebella8.webp",
   },
   {
     title: "TWO SPOKE SQUIRCLE STEERING WHEEL",
     image:
-      "https://static.toyotabharat.com/images/showroom/a32/interior/Interior6_1400x790.jpg",
+      "/models/ebella/ebella9.webp",
   },
   {
     title: "10.1’’ INTEGRATED AUDIO DISPLAY UNIT",
     image:
-      "https://static.toyotabharat.com/images/showroom/a32/interior/Interior1_1400x790.jpg",
+      "/models/ebella/ebella10.webp",
   },
   {
     title: "PREMIUM JBL SOUND SYSTEM",
     image:
-      "https://static.toyotabharat.com/images/showroom/a32/interior/Interior2_1400x790.jpg",
+      "/models/ebella/ebella11.webp",
   },
   {
     title: "LUGGAGE SPACE",
     image:
-      "https://static.toyotabharat.com/images/showroom/a32/interior/Interior3_1400x790.jpg",
+      "/models/ebella/ebella12.webp",
   },
   {
     title: "PANORAMIC ROOF",
     image:
-      "https://static.toyotabharat.com/images/showroom/a32/interior/Interior4_1400x790.jpg",
+      "/models/ebella/ebella13.webp",
   },
 ];
 
@@ -87,11 +87,11 @@ export default function ToyotaInteriorSlider() {
         {/* ARROWS */}
         <div className="arrows">
           <img
-            src="https://static.toyotabharat.com/images/showroom/a32/arrow-prev.png"
+            src="/models/ebella/arrow-prev.webp"
             onClick={prev}
           />
           <img
-            src="https://static.toyotabharat.com/images/showroom/a32/arrow-next.png"
+            src="/models/ebella/arrow-next.webp"
             onClick={next}
           />
         </div>

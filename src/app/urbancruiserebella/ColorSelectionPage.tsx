@@ -6,22 +6,22 @@ import React, { useState } from "react";
 const dualToneColors = [
   {
     name: "Caffe White Dual Tone",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Artic-White%20DT-1050x350.png",
+    img: "/models/ebella/ebella30.webp",
     colorCode: "#d9d9d9",
   },
   {
     name: "Sportin Red Dual Tone",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Opulent-Red-DT-1050x350.png",
+    img: "/models/ebella/ebella31.webp",
     colorCode: "#991b2f",
   },
   {
     name: "Land Breeze Green Dual Tone",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Landbreeze-Green-DT-1050x350.png",
+    img: "/models/ebella/ebella32.webp",
     colorCode: "#7a7c6b",
   },
   {
     name: "Enticing Silver Dual Tone",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Splendid-Silver-DT-1050x350.png",
+    img: "/models/ebella/ebella33.webp",
     colorCode: "#9b9b9b",
   },
 ];
@@ -30,27 +30,27 @@ const dualToneColors = [
 const monoToneColors = [
   {
     name: "Caffe White",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Artic-White-MT-1050x350.png",
+    img: "/models/ebella/ebella34.webp",
     colorCode: "#d9d9d9",
   },
   {
     name: "Bluish Black",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Bluish-Black-MT-1050x350.png",
+    img: "/models/ebella/ebella35.webp",
     colorCode: "#000000",
   },
   {
     name: "Gaming Gray",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Grandeur-Grey-MT-1050x350.png",
+    img: "/models/ebella/ebella36.webp",
     colorCode: "#3f403eeb",
   },
   {
     name: "Enticing Silver",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Splendid-Silver-MT-1050x350.png",
+    img: "/models/ebella/ebella37.webp",
     colorCode: "#c0c0c0",
   },
   {
     name: "Sportin Red",
-    img: "https://static3.toyotabharat.com/images/showroom/a32/colors/Opulent-Red-MT-1050x350.png",
+    img: "/models/ebella/ebella38.webp",
     colorCode: "#991b2f",
   },
 ];

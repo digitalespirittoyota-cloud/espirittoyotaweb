@@ -240,7 +240,7 @@ export default function ToyotaEBellaPage() {
         <div className="left-side">
           <img
             className="car-img"
-            src="https://static.toyotabharat.com/images/showroom/a32/popup-form-img.png"
+            src="/models/ebella/ebella16.webp"
             alt="Toyota Urban Cruiser eBella"
           />
         </div>

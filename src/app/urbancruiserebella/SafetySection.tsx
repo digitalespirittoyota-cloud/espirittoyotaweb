@@ -4,16 +4,21 @@ import React, { useState } from "react";
 
 const slides = [
   {
-    img: "https://static3.toyotabharat.com/images/showroom/a32/safety/Safety1-710x460.jpg",
+    img: "/models/ebella/ebella26.webp",
     text: "",
   },
+  
   {
-    img: "https://static.toyotabharat.com/images/showroom/a32/safety/Safety2-710x460.jpg",
-    text: "7 SRS AIRBAGS* (STANDARD ACROSS ALL VARIANTS)",
+    img: "/models/ebella/ebella27.webp",
+    text: "ADAPTIVE CRUISE CONTROL",
   },
   {
-    img: "https://static3.toyotabharat.com/images/showroom/a32/safety/Safety3-710x460.jpg",
+    img: "/models/ebella/ebella28.webp",
     text: "360° CAMERA",
+  },
+  {
+    img: "/models/ebella/ebella29.webp",
+    text: "7 SRS AIRBAGS* (STANDARD ACROSS ALL VARIANTS)",
   },
 ];
 

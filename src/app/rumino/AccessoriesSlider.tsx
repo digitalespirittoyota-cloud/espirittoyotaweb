@@ -3,39 +3,39 @@ import { useState } from "react";
 
 const accessories = [
   {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img08-large.jpg",
-    title: "INTERIOR STYLING KIT (ARMREST & DASHBOARD)",
-  },
-  {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img09-large.jpg",
-    title: "ILLUMINATED DOOR SILL GUARD",
-  },
-  {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img01-large.jpg",
+    img: "/models/rumino/accessories-img01-large.webp",
     title: "REAR BUMPER GARNISH",
   },
   {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img02-large.jpg",
+    img: "/models/rumino/accessories-img02-large.webp",
     title: "NUMBER PLATE GARNISH",
   },
   {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img03-large.jpg",
+    img: "/models/rumino/accessories-img03-large.webp",
     title: "BACK DOOR GARNISH",
   },
   {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img04-large.jpg",
+    img: "/models/rumino/accessories-img04-large.webp",
+    title: "HEAD LAMP GARNISH<",
+  },
+  {
+    img: "/models/rumino/accessories-img05-large.webp",
+    title: "BACK DOOR GARNISH",
+  },
+  {
+    img: "/models/rumino/accessories-img06-large.webp",
     title: "HEAD LAMP GARNISH",
   },
   {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img05-large.jpg",
+    img: "/models/rumino/accessories-img07-large.webp",
     title: "ROOF EDGE SPOILER",
   },
   {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img06-large.jpg",
+    img: "/models/rumino/accessories-img08-large.webp",
     title: "BODY SIDE MOULDING GARNISH FINISH",
   },
   {
-    img: "https://static.toyotabharat.com/images/showroom/rumion/accessories-img07-large.jpg",
+    img: "/models/rumino/accessories-img09-small.webp",
     title: "FLOOR MAT",
   },
 ];

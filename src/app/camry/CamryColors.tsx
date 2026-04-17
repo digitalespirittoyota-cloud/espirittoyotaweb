@@ -12,37 +12,37 @@ const colors: ColorOption[] = [
   {
     name: "Attitude Black",
     image:
-      "https://static3.toyotabharat.com/images/showroom/new-camry/attitude-black-1920x850.jpg",
+      "/models/camry/camry20.webp",
     swatch: "#000000",
   },
   {
     name: "Cement Grey",
     image:
-      "https://static3.toyotabharat.com/images/showroom/new-camry/cement-grey-1920x850.jpg",
+      "/models/camry/camry21.webp",
     swatch: "#8f9396",
   },
   {
     name: "Dark Blue",
     image:
-      "https://static3.toyotabharat.com/images/showroom/new-camry/dark-blue-1920x850.jpg",
+      "/models/camry/camry22.webp",
     swatch: "#1f2a33",
   },
   {
     name: "Emotional Red",
     image:
-      "https://static3.toyotabharat.com/images/showroom/new-camry/emotional-red-1920x850.jpg",
+      "/models/camry/camry23.webp",
     swatch: "#7c1f25",
   },
   {
     name: "Platinum White ",
     image:
-      "https://static3.toyotabharat.com/images/showroom/new-camry/platinum-white-1920x850.jpg",
+      "/models/camry/camry24.webp",
     swatch: "#f2f2f0",
   },
   {
     name: "Precious Metal",
     image:
-      "https://static3.toyotabharat.com/images/showroom/new-camry/precious-metal-1920x850.jpg",
+      "/models/camry/camry25.webp",
     swatch: "#6d6f73",
   },
 ];

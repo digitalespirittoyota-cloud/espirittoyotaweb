@@ -14,7 +14,7 @@ const OwnershipExperience = () => {
 
           <div className="map-section">
             <img
-              src="https://static.toyotabharat.com/images/showroom/a32/service/india.png"
+              src="/models/ebella/india.webp"
               alt="India Map"
               className="india-map"
             />
@@ -245,3 +245,34 @@ const OwnershipExperience = () => {
 };
 
 export default OwnershipExperience;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

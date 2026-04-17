@@ -24,11 +24,13 @@ const CamryElegance: React.FC = () => {
 
   return (
     <section style={styles.wrapper}>
+      
       {/* TEXT SECTION */}
+      
       <div style={styles.textContainer}>
         <div style={styles.headingWrapper}>
           <img
-            src="https://static.toyotabharat.com/images/showroom/new-camry/qoate-1.png"
+            src="/models/camry/qoate-1.webp"
             alt="quote-left"
             style={styles.quoteLeft}
           />
@@ -39,7 +41,7 @@ const CamryElegance: React.FC = () => {
           </div>
 
           <img
-            src="https://static.toyotabharat.com/images/showroom/new-camry/qoate-2.png"
+            src="/models/camry/qoate-2.webp"
             alt="quote-right"
             style={styles.quoteRight}
           />
@@ -59,7 +61,7 @@ const CamryElegance: React.FC = () => {
       {/* IMAGE */}
       <div style={styles.imageWrapper}>
         <img
-          src="https://static.toyotabharat.com/images/showroom/new-camry/elegance-1000x313.png"
+          src="/models/camry/camry3.webp"
           alt="Camry Hybrid"
           style={styles.image}
         />

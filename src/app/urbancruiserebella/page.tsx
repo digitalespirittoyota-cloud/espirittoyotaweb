@@ -27,7 +27,7 @@ export default function HomePage() {
   return (
     <>
       <GlanzaHero
-        imageUrl="https://static3.toyotabharat.com/images/showroom/a32/a32-banner-4000x2250.jpg"
+        imageUrl="/models/ebella/ebella1.webp"
         alt="Toyota A32"
       />
       <EVHighlightsSection />

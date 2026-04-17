@@ -10,7 +10,7 @@ const CamryEnginePerformance = () => {
       {/* Heading */}
       <div style={styles.headingWrapper}>
   <img
-    src="https://static.toyotabharat.com/images/showroom/new-camry/qoate-1.png"
+    src="/models/camry/qoate-1.webp"
     alt="quote-left"
     style={styles.quoteLeft}
   />
@@ -21,7 +21,7 @@ const CamryEnginePerformance = () => {
   </div>
 
   <img
-    src="https://static.toyotabharat.com/images/showroom/new-camry/qoate-2.png"
+    src="/models/camry/qoate-2.webp"
     alt="quote-right"
     style={styles.quoteRight}
   />
@@ -76,7 +76,7 @@ const CamryEnginePerformance = () => {
           {/* Left */}
           <div >
             <img
-              src="https://static3.toyotabharat.com/images/showroom/new-camry/engine-force-516x253.jpg"
+              src="/models/camry/camry4.webp"
               style={styles.engineImage}
               alt="Camry Engine"
             />
@@ -90,7 +90,7 @@ const CamryEnginePerformance = () => {
 
           {/* Right */}
           <img
-            src="https://static3.toyotabharat.com/images/showroom/new-camry/engine-right-757x768.jpg"
+            src="/models/camry/camry5.webp"
             style={styles.engineRightImage}
             alt="Engine Detail"
           />
@@ -98,24 +98,24 @@ const CamryEnginePerformance = () => {
       ) : (
         <div style={styles.performanceSection}>
           <img
-            src="https://static3.toyotabharat.com/images/showroom/new-camry/performance-banner-1199x478.jpg"
+            src="/models/camry/performance-1.webp"
             style={styles.performanceBanner}
             alt="Performance Banner"
           />
 
           <div style={styles.thumbGrid} >
             <img
-              src="https://static3.toyotabharat.com/images/showroom/new-camry/performance-thumb1-389x264.jpg"
+              src="/models/camry/performance-2.webp"
               style={styles.thumb}
               alt=""
             />
             <img
-              src="https://static3.toyotabharat.com/images/showroom/new-camry/performance-thumb2-389x264.jpg"
+              src="/models/camry/performance-3.webp"
               style={styles.thumb}
               alt=""
             />
             <img
-              src="https://static3.toyotabharat.com/images/showroom/new-camry/performance-thumb3-389x264.jpg"
+              src="/models/camry/performance-4.webp"
               style={styles.thumb}
               alt=""
             />
