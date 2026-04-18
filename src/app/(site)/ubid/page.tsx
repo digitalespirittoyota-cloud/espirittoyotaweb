@@ -73,12 +73,12 @@ export default function BiddingPage() {
    const CarImageSlider = ({ car }: { car: any }) => {
       const [currentIndex, setCurrentIndex] = useState(0);
       const hasImages = car.images && car.images.length > 0;
-      
+
       const next = (e: React.MouseEvent) => {
          e.stopPropagation();
          setCurrentIndex((prev) => (prev + 1) % car.images.length);
       };
-      
+
       const prev = (e: React.MouseEvent) => {
          e.stopPropagation();
          setCurrentIndex((prev) => (prev - 1 + car.images.length) % car.images.length);
@@ -101,26 +101,26 @@ export default function BiddingPage() {
                className="w-full h-full object-cover transition-all duration-500"
                alt={`${car.variantName} - View ${currentIndex + 1}`}
             />
-            
+
             {car.images.length > 1 && (
                <>
-                  <button 
+                  <button
                      onClick={prev}
                      className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-gray-900 opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-white shadow-lg"
                   >
                      <ChevronLeft size={16} />
                   </button>
-                  <button 
+                  <button
                      onClick={next}
                      className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-white/80 backdrop-blur-sm rounded-full text-gray-900 opacity-0 group-hover/slider:opacity-100 transition-opacity hover:bg-white shadow-lg"
                   >
                      <ChevronRight size={16} />
                   </button>
-                  
+
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-1.5">
                      {car.images.map((_: any, i: number) => (
-                        <div 
-                           key={i} 
+                        <div
+                           key={i}
                            className={`h-1 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-4 bg-red-600' : 'w-1 bg-white/50'}`}
                         />
                      ))}
@@ -158,13 +158,10 @@ export default function BiddingPage() {
 
          if (res.ok) {
             setIsSubmitted(true);
-            // Prepare WhatsApp message
-            const whatsappMsg = `Hello Espirit Toyota! I just submitted a bid for a Toyota Demo Car.\n\n*Name:* ${formData.name}\n*Car:* ${formData.carModel}\n*Bid Price:* ₹${formData.bidPrice}\n*Timeline:* ${formData.purchaseTimeline}\n*Payment:* ${formData.purchaseMode}\n\nPlease review my offer!`;
-            const whatsappUrl = `https://wa.me/919583765431?text=${encodeURIComponent(whatsappMsg)}`; // Replace with real sales number
 
             setTimeout(() => {
-               window.location.href = whatsappUrl;
-            }, 2000);
+               setIsSubmitted(false);
+            }, 5000);
          } else {
             toast.error('Submission failed. Please try again.');
             setIsSubmitting(false);
@@ -382,16 +379,16 @@ export default function BiddingPage() {
                                     </div>
                                  </div>
                                  <div className="flex items-start space-x-3 bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                    <input 
-                                      type="checkbox" 
-                                      id="terms" 
-                                      required
-                                      checked={agreedToTerms}
-                                      onChange={(e) => setAgreedToTerms(e.target.checked)}
-                                      className="mt-1 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded cursor-pointer"
+                                    <input
+                                       type="checkbox"
+                                       id="terms"
+                                       required
+                                       checked={agreedToTerms}
+                                       onChange={(e) => setAgreedToTerms(e.target.checked)}
+                                       className="mt-1 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded cursor-pointer"
                                     />
                                     <label htmlFor="terms" className="text-[10px] text-gray-500 leading-relaxed cursor-pointer select-none">
-                                       I agree to the <Link href="/terms-and-conditions" className="font-bold text-gray-900 border-b border-gray-200 hover:text-red-600 transition-colors">Bidding Terms & Conditions</Link>. I understand that the final price is subject to inspection and management approval. 
+                                       I agree to the <Link href="/terms-and-conditions" className="font-bold text-gray-900 border-b border-gray-200 hover:text-red-600 transition-colors">Bidding Terms & Conditions</Link>. I understand that the final price is subject to inspection and management approval.
                                     </label>
                                  </div>
 

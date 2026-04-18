@@ -97,10 +97,23 @@ export default function CarsPage() {
   const handleStatusToggle = async (car: any) => {
     const newStatus = car.status === 'sold' ? 'available' : 'sold';
     try {
+      const updateData = {
+        modelId: car.modelId?._id || car.modelId,
+        variantName: car.variantName,
+        mileage: car.mileage,
+        ownerType: car.ownerType,
+        manufactureYear: car.manufactureYear,
+        color: car.color,
+        minPrice: car.minPrice,
+        regDate: car.regDate,
+        status: newStatus,
+        images: car.images || [],
+      };
+
       const res = await fetch(`/api/admin/cars/${car._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...car, status: newStatus }),
+        body: JSON.stringify(updateData),
       });
 
       if (res.ok) {
@@ -113,6 +126,7 @@ export default function CarsPage() {
       toast.error('Something went wrong');
     }
   };
+
 
   const columns = [
     { key: 'modelId', label: 'Model', render: (val: any) => val?.modelName || 'N/A' },

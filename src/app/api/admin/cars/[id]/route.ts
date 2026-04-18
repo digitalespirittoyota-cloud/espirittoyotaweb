@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/app/lib/db';
 import Car from '@/models/Car';
-
 import { CarSchema } from '@/app/lib/schemas';
+import { getServerSession } from '@/app/lib/auth';
 
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
@@ -18,6 +18,11 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const session = await getServerSession();
+        if (!session || (session.role !== 'admin' && session.role !== 'bidding')) {
+            return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+        }
+
         await connectDB();
         const { id } = await params;
         const json = await req.json();
@@ -46,6 +51,11 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const session = await getServerSession();
+        if (!session || (session.role !== 'admin' && session.role !== 'bidding')) {
+            return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+        }
+
         await connectDB();
         const { id } = await params;
         await Car.findByIdAndDelete(id);
@@ -54,3 +64,4 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
         return NextResponse.json({ message: 'Failed to delete car' }, { status: 500 });
     }
 }
+
