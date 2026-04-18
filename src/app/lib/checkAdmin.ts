@@ -1,5 +1,5 @@
-import connectDB from './src/app/lib/db';
-import Admin from './src/models/Admin';
+import connectDB from '../lib/db';
+import Admin from '../../models/Admin';
 
 async function checkAdmin() {
     try {
