@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import Banner from "../../commonbanner/Banner";
+import Banner from "../../common/Banner";
 import AccessoriesCarousel from "./AccessoriesCarousel";
 import ColorShowcase from "./ColorShowcase";
 import Connection from "./Connection";

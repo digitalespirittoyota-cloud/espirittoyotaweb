@@ -147,14 +147,12 @@ export default function BiddingPage() {
 
       setIsSubmitting(true);
       try {
-         const res = await fetch('/api/enquiry', {
+         const res = await fetch('/api/bidding', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                ...formData,
                carId: selectedCar._id,
-               formType: 'Bidding',
-               message: `Bid Placement: ₹${formData.bidPrice} for ${formData.carModel}`
             }),
          });
 

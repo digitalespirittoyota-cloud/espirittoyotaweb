@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import GlanzaHero from "../../glanza/GlanzaHero";
+import GlanzaHero from "../glanza/GlanzaHero";
 import AwesomeAccessories from "./AwesomeAccessories";
 import ColorSelectionPage from "./ColorSelectionPage";
 import Comfort from "./Comfort";

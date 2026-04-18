@@ -8,26 +8,23 @@ if (!secret) {
 }
 const JWT_SECRET = new TextEncoder().encode(secret);
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
-    // Only protect /admin routes, but ignore the login page itself
+    // 1. Protect /admin routes (Pages)
     if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
         const token = request.cookies.get('admin_token')?.value;
 
         if (!token) {
-            // No token, redirect to login
             const url = request.nextUrl.clone();
             url.pathname = '/admin/login';
             return NextResponse.redirect(url);
         }
 
         try {
-            // Verify token
             await jwtVerify(token, JWT_SECRET);
             return NextResponse.next();
         } catch (error) {
-            // Invalid token, redirect to login
             console.error('Middleware JWT Error:', error);
             const url = request.nextUrl.clone();
             url.pathname = '/admin/login';
@@ -35,14 +32,14 @@ export async function proxy(request: NextRequest) {
         }
     }
 
-    // Also prevent logged-in users from visiting login page
+    // 2. Prevent logged-in users from visiting login page
     if (pathname === '/admin/login') {
         const token = request.cookies.get('admin_token')?.value;
         if (token) {
             try {
                 await jwtVerify(token, JWT_SECRET);
                 const url = request.nextUrl.clone();
-                url.pathname = '/admin'; // Redirect to dashboard
+                url.pathname = '/admin';
                 return NextResponse.redirect(url);
             } catch (err) {
                 // Token invalid, allow login page
@@ -50,7 +47,7 @@ export async function proxy(request: NextRequest) {
         }
     }
 
-    // Also protect /api/admin routes, except for login and setup
+    // 3. Protect /api/admin routes
     if (pathname.startsWith('/api/admin') && 
         pathname !== '/api/admin/auth/login' && 
         pathname !== '/api/admin/setup') {
@@ -68,6 +65,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
 }
 
+// See "Matching Paths" below to learn more
 export const config = {
     matcher: ['/admin/:path*', '/api/admin/:path*'],
 };

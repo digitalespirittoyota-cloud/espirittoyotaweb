@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Toaster } from "react-hot-toast";
 import { User, Phone, Mail, Car, MapPin, Calendar, Clock, Send } from "lucide-react";
 import { useFormSubmit } from "../hooks/useFormSubmit";
 
@@ -28,7 +27,7 @@ export default function TestDriveForm() {
         handleSubmit,
         setInitialData
     } = useFormSubmit({
-        endpoint: "/api/enquiry",
+        endpoint: "/api/test-drive",
         successMessage: "Test Drive Request Sent Successfully!",
     });
 
@@ -38,7 +37,7 @@ export default function TestDriveForm() {
             phone: "",
             email: "",
             city: "",
-            carModel: "",
+            model: "",
             date: "",
             time: "",
             formType: "Test Drive",
@@ -63,7 +62,7 @@ export default function TestDriveForm() {
         }
 
         if (!data.city?.trim()) newErrors.city = "City is required";
-        if (!data.carModel?.trim()) newErrors.carModel = "Please select a model";
+        if (!data.model?.trim()) newErrors.carModel = "Please select a model";
         if (!data.date?.trim()) newErrors.date = "Preferred date is required";
         if (!data.time?.trim()) newErrors.time = "Preferred time is required";
 
@@ -76,7 +75,6 @@ export default function TestDriveForm() {
 
     return (
         <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl border border-gray-100 max-w-4xl mx-auto">
-            <Toaster position="top-right" />
             <div className="text-center mb-10">
                 <h3 className="text-3xl font-extrabold text-gray-900 mb-2">
                     Schedule Your Test Drive
@@ -153,8 +151,8 @@ export default function TestDriveForm() {
                     <div className="relative group">
                         <Car className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-red-500 transition-colors" size={20} />
                         <select
-                            name="carModel"
-                            value={formData.carModel || ""}
+                            name="model"
+                            value={formData.model || ""}
                             onChange={handleChange}
                             className={`w-full pl-12 pr-4 py-3.5 bg-gray-50 border rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-red-600/20 transition-all ${errors.carModel ? "border-red-500 bg-red-50" : "border-gray-200 focus:border-red-600 text-gray-600"
                                 }`}

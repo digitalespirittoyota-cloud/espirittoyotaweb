@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getBaseMetadata } from "../utils/seo";
+import { getBaseMetadata } from "../../utils/seo";
 import CarColorSelector from "./CarColorSelector";
 import Ecng from "./Ecng";
 import GlanzaAccessories from "./GlanzaAccessories";
@@ -8,7 +8,6 @@ import GlanzaInstantLoan from "./GlanzaInstantLoan";
 import SideHero from "./SideHero";
 import TechnicalSpecifications from "./TechnicalSpecifications";
 import ToyotaGlanza from "./ToyotaGlanza";
-import ZoomImageFormSection from "./ZoomImageFormSection";
 import { glanzaSections } from "./data/glanzaData";
 
 export const metadata: Metadata = getBaseMetadata(

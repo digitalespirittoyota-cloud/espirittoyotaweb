@@ -1,13 +1,10 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import { Inter } from "next/font/google";
 import CarCarousel from "./CarCarousel";
 import CarConfigurator from "./CarConfigurator";
 import { Barreddata, Builtlikeatank, carSliderData, colordata, Dimensionsdata, Fingertipsdata, grInteriorData, legacyData, Slides2, Slides3, Slides4, specificationsData, suspensiondata, toyotaCarouselSlides, variants } from "./data";
 import ToyotaStyleCarousel from "./FeatureCarousel";
-import FeatureCarousel from "./FeatureCarousel";
 import ToyotaGRInteriorSection from "./GRSportFeatureSection";
-import GRSportFeatureSection from "./GRSportFeatureSection";
 import HeroBanner from "./HeroBanner";
 import HeroOverlapSection from "./HeroOverlapSection";
 import ToyotaHeroStorySection from "./HeroStorySection";

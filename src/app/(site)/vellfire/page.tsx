@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import Banner from "../../commonbanner/Banner";
+import Banner from "../../common/Banner";
 import CarColorShowcase from "./CarColorShowcase";
 import { engineeringdata, galleryData, luxuryData, safetydata, stylingdata } from "./data";
 import LuxurySection from "./LuxurySection";

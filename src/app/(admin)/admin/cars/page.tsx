@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from '@/admin/redux/carSlice';
 import { fetchModels } from '@/admin/redux/modelSlice';
 import { fetchCustomers } from '@/admin/redux/customerSlice';
+import { fetchBids } from '@/admin/redux/bidSlice';
 import Table from '@/admin/components/Table';
 import Modal from '@/admin/components/Modal';
 import CarForm from '@/admin/forms/CarForm';
-import { Plus, Filter, Search, Car as CarIcon } from 'lucide-react';
+import { Plus, Filter, Search, Car as CarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler } from 'react-hook-form';
@@ -18,9 +19,9 @@ import { TableSkeleton } from '@/admin/components/Skeleton';
 export default function CarsPage() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { items = [], loading } = useSelector((state: any) => state.cars || {});
+  const { items = [], pagination, loading } = useSelector((state: any) => state.cars || {});
   const { items: models = [] } = useSelector((state: any) => state.models || {});
-  const { items: allEnquiries = [] } = useSelector((state: any) => state.customers || {});
+  const { items: allBids = [] } = useSelector((state: any) => state.bids || {});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -34,10 +35,14 @@ export default function CarsPage() {
   });
 
   useEffect(() => {
-    dispatch(fetchCars() as any);
-    dispatch(fetchModels() as any);
-    dispatch(fetchCustomers() as any);
+    dispatch(fetchCars({ page: 1, limit: 50 }) as any);
+    dispatch(fetchModels({ page: 1, limit: 100 }) as any);
+    dispatch(fetchBids({ page: 1, limit: 1000 }) as any);
   }, [dispatch]);
+
+  const handlePageChange = (newPage: number) => {
+    dispatch(fetchCars({ page: newPage, limit: 50 }) as any);
+  };
 
   const handleAddCar = () => {
     setSelectedCar(null);
@@ -63,7 +68,7 @@ export default function CarsPage() {
       if (res.ok) {
         toast.success(`Car ${selectedCar ? 'updated' : 'added'} successfully`);
         setIsModalOpen(false);
-        dispatch(fetchCars() as any);
+        dispatch(fetchCars({}) as any);
       } else {
         const errData = await res.json();
         toast.error(errData.message || 'Operation failed');
@@ -79,7 +84,7 @@ export default function CarsPage() {
         const res = await fetch(`/api/admin/cars/${car._id}`, { method: 'DELETE' });
         if (res.ok) {
           toast.success('Car removed from inventory');
-          dispatch(fetchCars() as any);
+          dispatch(fetchCars({}) as any);
         } else {
           toast.error('Failed to delete');
         }
@@ -100,7 +105,7 @@ export default function CarsPage() {
 
       if (res.ok) {
         toast.success(`Car marked as ${newStatus}`);
-        dispatch(fetchCars() as any);
+        dispatch(fetchCars({}) as any);
       } else {
         toast.error('Failed to update status');
       }
@@ -116,23 +121,24 @@ export default function CarsPage() {
     { key: 'ownerType', label: 'Owner' },
     { key: 'regDate', label: 'Reg. Date', render: (val: any) => val ? new Date(val).toLocaleDateString() : '-' },
     {
-      key: 'leads', label: 'Leads', render: (_: any, row: any) => {
+      key: 'leads', label: 'Bids', render: (_: any, row: any) => {
         const matchLower = (str1: string, str2: string) =>
           str1 && str2 && (str1.toLowerCase().includes(str2.toLowerCase()) || str2.toLowerCase().includes(str1.toLowerCase()));
 
-        const count = allEnquiries.filter((e: any) =>
-          matchLower(e.carModel || '', row.modelId?.modelName || '') ||
-          matchLower(e.carModel || '', row.variantName || '')
+        const count = allBids.filter((b: any) =>
+          b.carId === row._id ||
+          matchLower(b.carModel || '', row.modelId?.modelName || '') ||
+          matchLower(b.carModel || '', row.variantName || '')
         ).length;
 
         return (
-        <button
-          onClick={() => router.push(`/admin/cars/${row._id}/leads`)}
-          className="flex items-center px-2 py-1 rounded text-[10px] font-bold uppercase transition-all bg-blue-100 text-blue-700 hover:bg-blue-200 cursor-pointer shadow-sm hover:shadow-md"
-        >
-          {count} Leads 
-        </button>
-      );
+          <button
+            onClick={() => router.push(`/admin/cars/${row._id}/leads`)}
+            className="flex items-center px-2 py-1 rounded text-[10px] font-bold uppercase transition-all bg-red-100 text-red-700 hover:bg-red-200 cursor-pointer shadow-sm hover:shadow-md"
+          >
+            {count} Bids
+          </button>
+        );
       }
     },
     {
@@ -180,12 +186,31 @@ export default function CarsPage() {
           <h1 className="text-2xl font-bold text-gray-900">Cars Inventory</h1>
           <p className="text-sm text-gray-500">Manage individual cars and their details</p>
         </div>
-        <button
-          onClick={handleAddCar}
-          className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm font-medium"
-        >
-          <Plus size={20} className="mr-2" /> Add Car
-        </button>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg p-1 shadow-sm">
+             <button 
+               onClick={() => handlePageChange(pagination.page - 1)}
+               disabled={pagination.page <= 1}
+               className="p-1.5 hover:bg-gray-100 rounded disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+             >
+               <ChevronLeft size={16} />
+             </button>
+             <span className="text-xs font-bold px-2 text-gray-600">Page {pagination.page} / {pagination.totalPages}</span>
+             <button 
+               onClick={() => handlePageChange(pagination.page + 1)}
+               disabled={pagination.page >= pagination.totalPages}
+               className="p-1.5 hover:bg-gray-100 rounded disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+             >
+               <ChevronRight size={16} />
+             </button>
+          </div>
+          <button
+            onClick={handleAddCar}
+            className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm font-medium"
+          >
+            <Plus size={20} className="mr-2" /> Add Car
+          </button>
+        </div>
       </div>
 
       {/* Filters & Search */}

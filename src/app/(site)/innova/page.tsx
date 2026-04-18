@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import GlanzaHero from "../../glanza/GlanzaHero";
+import GlanzaHero from "../glanza/GlanzaHero";
 import HyTimeBanner from "../urbancruiserhyryder/HyTimeBanner";
 import ArticlesSection from "./ArticlesSection";
 import CarSpecs from "./CarSpecs";

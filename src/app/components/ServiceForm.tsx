@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Toaster } from "react-hot-toast";
 import { Loader2 } from "lucide-react";
 import { models } from "../utils/data";
 import { useFormSubmit } from "../hooks/useFormSubmit";
@@ -61,7 +60,6 @@ export default function ServiceForm() {
 
     return (
         <form onSubmit={handleFormSubmit} className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-            <Toaster position="top-center" />
             <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Book A Service</h3>
 
             <div className="space-y-4">

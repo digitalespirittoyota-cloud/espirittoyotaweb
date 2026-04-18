@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import connectDB from '@/app/lib/db';
+import TestDrive from '@/models/TestDrive';
 
 export async function POST(req: Request) {
   try {
+    await connectDB();
     const { name, phone, email, city, model, date, time } = await req.json();
 
     // Check for required fields
@@ -12,6 +15,23 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+
+    // Save to database
+    const uniqueId = 'TD' + Math.floor(100000 + Math.random() * 900000);
+    const ip = req.headers.get('x-forwarded-for') || '127.0.0.1';
+
+    await TestDrive.create({
+      name,
+      email,
+      phone,
+      city,
+      carModel: model,
+      date,
+      time,
+      uniqueId,
+      ip,
+      status: 'new'
+    });
 
     // Configure Nodemailer Transporter
     const transporter = nodemailer.createTransport({
@@ -101,7 +121,7 @@ export async function POST(req: Request) {
             
             <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #d71920; margin: 20px 0;">
               <p style="margin: 0; color: #333;"><strong>Your Request Details:</strong></p>
-              <p style="margin: 5px 0 0; color: #555;">Ref Code: #${Math.floor(1000 + Math.random() * 9000)}</p>
+              <p style="margin: 5px 0 0; color: #555;">Ref Code: ${uniqueId}</p>
               <p style="margin: 5px 0 0; color: #555;">Model: <strong>${model}</strong></p>
               <p style="margin: 5px 0 0; color: #555;">Preferred Date: ${date}</p>
               <p style="margin: 5px 0 0; color: #555;">Preferred Time: ${time}</p>

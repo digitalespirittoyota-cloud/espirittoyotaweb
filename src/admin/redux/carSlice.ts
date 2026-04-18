@@ -16,18 +16,31 @@ interface Car {
 
 interface CarState {
   items: Car[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
   loading: boolean;
   error: string | null;
 }
 
 const initialState: CarState = {
   items: [],
+  pagination: {
+    total: 0,
+    page: 1,
+    limit: 50,
+    totalPages: 1
+  },
   loading: false,
   error: null,
 };
 
-export const fetchCars = createAsyncThunk('cars/fetchAll', async () => {
-  const response = await fetch('/api/admin/cars');
+export const fetchCars = createAsyncThunk('cars/fetchAll', async (params: { page?: number; limit?: number } = {}) => {
+  const { page = 1, limit = 50 } = params;
+  const response = await fetch(`/api/admin/cars?page=${page}&limit=${limit}`);
   if (!response.ok) {
     throw new Error('Failed to fetch cars');
   }
@@ -42,10 +55,12 @@ const carSlice = createSlice({
     builder
       .addCase(fetchCars.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
-      .addCase(fetchCars.fulfilled, (state, action: PayloadAction<Car[]>) => {
+      .addCase(fetchCars.fulfilled, (state, action: PayloadAction<{ data: Car[]; pagination: any }>) => {
         state.loading = false;
-        state.items = Array.isArray(action.payload) ? action.payload : [];
+        state.items = action.payload.data || [];
+        state.pagination = action.payload.pagination || initialState.pagination;
       })
       .addCase(fetchCars.rejected, (state, action) => {
         state.loading = false;

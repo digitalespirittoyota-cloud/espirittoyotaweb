@@ -4,14 +4,21 @@ import React from 'react';
 import { Bell, User, Search, LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '@/admin/redux/authSlice';
 
 export default function Navbar() {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state: any) => state.auth || {});
 
   const handleLogout = async () => {
     try {
       const res = await fetch('/api/admin/auth/logout', { method: 'POST' });
       if (res.ok) {
+        dispatch(logout());
+        localStorage.removeItem('admin_token');
+        localStorage.removeItem('admin_user');
         toast.success('Logged out');
         router.push('/admin/login');
       }
@@ -30,11 +37,11 @@ export default function Navbar() {
       <div className="flex items-center space-x-6">
         <div className="flex items-center space-x-3">
           <div className="text-right hidden sm:block">
-            <p className="text-sm font-semibold text-gray-800">Admin User</p>
-            <p className="text-xs text-gray-500">Super Admin</p>
+            <p className="text-sm font-semibold text-gray-800 capitalize">{user?.username || 'Admin User'}</p>
+            <p className="text-xs text-gray-500 capitalize">{user?.role || 'Access Restricted'}</p>
           </div>
-          <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
-            <User size={20} />
+          <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors uppercase font-bold text-sm">
+            {user?.username?.charAt(0) || 'A'}
           </button>
         </div>
 

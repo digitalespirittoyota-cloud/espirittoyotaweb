@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { Lock, User, Loader2, Eye, EyeOff } from 'lucide-react';
+import { useDispatch } from 'react-redux';
+import { setUser } from '@/admin/redux/authSlice';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -11,6 +13,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,8 +27,15 @@ export default function LoginPage() {
       });
 
       if (res.ok) {
+        const data = await res.json();
+        localStorage.setItem('admin_token', data.token);
+        localStorage.setItem('admin_user', JSON.stringify(data.user));
+        
+        // Update Redux state immediately so the app reacts without refresh
+        dispatch(setUser(data.user));
+        
         toast.success('Logged in successfully');
-        router.push('/admin/models');
+        router.push('/admin');
       } else {
         toast.error('Invalid credentials');
       }

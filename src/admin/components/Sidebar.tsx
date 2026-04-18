@@ -12,28 +12,43 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Database
+  Database,
+  Calendar,
+  Clock,
+  MessagesSquare,
+  TrendingUp
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useSelector } from 'react-redux';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 const menuItems = [
-  { name: 'Dashboard', icon: LayoutDashboard, href: '/admin' },
-  { name: 'Models', icon: Database, href: '/admin/models' },
-  { name: 'Cars', icon: Car, href: '/admin/cars' },
+  { name: 'Dashboard', icon: LayoutDashboard, href: '/admin', roles: ['admin', 'bidding', 'marketing'] },
+  { name: 'Models', icon: Database, href: '/admin/models', roles: ['admin', 'bidding'] },
+  { name: 'Cars', icon: Car, href: '/admin/cars', roles: ['admin', 'bidding'] },
+  { name: 'Test Drives', icon: Calendar, href: '/admin/test-drives', roles: ['admin', 'marketing'] },
+  { name: 'Bookings', icon: Clock, href: '/admin/bookings', roles: ['admin', 'marketing'] },
+  { name: 'Enquiries', icon: Users, href: '/admin/enquiries', roles: ['admin', 'marketing'] },
+  { name: 'Bidding', icon: TrendingUp, href: '/admin/bidding', roles: ['admin', 'bidding'] },
+  { name: 'Contacts', icon: MessagesSquare, href: '/admin/contacts', roles: ['admin', 'marketing'] },
 ];
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { user } = useSelector((state: any) => state.auth || {});
 
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
   const toggleMobile = () => setIsMobileOpen(!isMobileOpen);
+  console.log(user);
+  const allowedItems = menuItems.filter(item =>
+    !user || item.roles.includes(user.role)
+  );
 
   return (
     <>
@@ -73,7 +88,7 @@ export default function Sidebar() {
 
           {/* Navigation */}
           <nav className="flex-1 px-4 py-4 space-y-2">
-            {menuItems.map((item) => {
+            {allowedItems.map((item) => {
               const isActive = pathname === item.href;
               return (
                 <Link

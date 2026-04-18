@@ -1,8 +1,11 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import connectDB from '@/app/lib/db';
+import Booking from '@/models/Booking';
 
 export async function POST(req: Request) {
   try {
+    await connectDB();
     const { name, email, phone, model, serviceType, date, message, registrationNumber } = await req.json();
 
     // Check for required fields
@@ -12,6 +15,25 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+
+    // Save to database
+    const uniqueId = 'BK' + Math.floor(100000 + Math.random() * 900000);
+    const ip = req.headers.get('x-forwarded-for') || '127.0.0.1';
+
+    await Booking.create({
+      name,
+      email,
+      phone,
+      carModel: model,
+      serviceType,
+      date,
+      registrationNumber,
+      message,
+      uniqueId,
+      ip,
+      formType: 'Service Booking',
+      status: 'new'
+    });
 
     // Configure Nodemailer Transporter
     const transporter = nodemailer.createTransport({
@@ -102,7 +124,7 @@ export async function POST(req: Request) {
             
             <div style="background-color: #f9f9f9; padding: 15px; border-left: 4px solid #d71920; margin: 20px 0;">
               <p style="margin: 0; color: #333;"><strong>Requested Date:</strong> ${date}</p>
-              <p style="margin: 5px 0 0; color: #555;">Ref Code: #SRV${Math.floor(1000 + Math.random() * 9000)}</p>
+              <p style="margin: 5px 0 0; color: #555;">Ref Code: ${uniqueId}</p>
             </div>
 
             <p style="font-size: 16px; color: #555;">

@@ -1,104 +1,73 @@
-import { Metadata } from "next";
-import { getBaseMetadata } from "../utils/seo";
-import CamryImage from "./camry/camrybanner";
-import SideHero from "../glanza/SideHero";
-import CamryBookNowBanner from "./camry/CamryBooknowbanner";
-import CamryColors from "./camry/CamryColors";
-import CamryElegance from "./camry/CamryElegance";
-import CamryEnginePerformance from "./camry/CamryEnginePerformance";
-import CamryExteriorInterior from "./camry/CamryExteriorInterior";
-import CamrySafetyConnected from "./camry/CamrySafetyConnected";
-import TNGASection from "./camry/TNGASection";
+// app/page.tsx
+import type { Metadata } from 'next';
 
-export const metadata: Metadata = getBaseMetadata(
-  "Toyota Camry Hybrid Price, luxury & Performance | Espirit Toyota",
-  "Experience the luxury of the Toyota Camry Hybrid at Espirit Toyota Bhubaneswar. Discover its self-charging hybrid technology, elegant design, and premium features.",
-  "/camry",
-  ["Toyota Camry", "Camry Hybrid", "Camry Price", "Luxury Sedan Bhubaneswar", "Camry Features"],
-  "https://static3.toyotabharat.com/images/showroom/new-camry/exterior_img1-1199-x478.png"
-);
+import Banner from "../components/Banner";
+import Enquiry from "../components/Enquiry";
+import Range from "../components/Range";
 
-export const camryExteriorInteriorData = {
-  exterior: {
-    label: "EXTERIOR",
-    description:
-      "The redesigned Toyota Camry stands out with bold LED lighting, sleek grille and aerodynamic styling.",
-    banner:
-      "/models/camry/camry6.webp",
-    thumbs: [
-      "/models/camry/camry7.webp",
-      "/models/camry/camry8.webp",
-      "/models/camry/camry9.webp",
-    ],
-  },
+import ExploreToyota from "../components/seo/ExploreToyota";
+import WhyToyota from "../components/seo/WhyToyota";
+import HybridToyota from "../components/seo/HybridToyota";
+import ToyotaService from "../components/seo/ToyotaService";
 
-  interior: {
-    label: "INTERIOR",
-    description:
-      "Premium leather seats, 10-way power adjustment and a 12.3-inch digital display define luxury inside.",
-    banner:
-      "/models/camry/interior_1.webp",
-    thumbs: [
-      "/models/camry/interior_2.webp",
-      "/models/camry/interior_3.webp",
-      "/models/camry/interior_4.webp",
-    ],
-  },
-};
-export const camryConvenienceComfortData = {
-  exterior: {
-    label: "Convenience",
-    description:
-      "Stay connected and in control with the new 12.3-inch Multi-Information Display and multimedia system. Features like wireless smartphone charging and rear armrest touch controls make every drive intuitive and seamless.",
-    banner:
-      "/models/camry/camry10.webp",
-    thumbs: [
-      "/models/camry/camry11.webp",
-      "/models/camry/camry12.webp",
-      "/models/camry/camry13.webp",
-    ],
-  },
+import ToyotaSafety from "../components/seo/ToyotaSafety";
+import BuyingGuide from "../components/seo/BuyingGuide";
+import ShowroomExperience from "../components/seo/ShowroomExperience";
+import Faq from "../components/seo/Faq";
+import AboutEspiritToyota from "../components/seo/AboutEspiritToyota";
+import EspiritToyotaLocations from "../components/seo/EspiritToyotaLocations";
+import EspiritToyotaAwards from "../components/seo/EspiritToyotaAwards";
 
-  interior: {
-    label: "Comfort",
+export const metadata: Metadata = {
+    title:
+        'Toyota Cars in Bhubaneswar | Hybrid Models, Service & Test Drive – Espirit Toyota',
     description:
-      "Step into the Toyota Camry’s spacious cabin, where soft upholstery and thoughtfully designed seating create an oasis of relaxation. With 10-way power-adjustable seats, lumbar support, and rear power-reclining seats, every journey feels effortlessly comfortable.",
-    banner:
-      "/models/camry/camry15.webp",
-    thumbs: [
-      "/models/camry/camry15.webp",
-      "/models/camry/camry16.webp",
-      "/models/camry/camry17.webp",
+        'Espirit Toyota Bhubaneswar is an authorized Toyota dealer offering new cars, hybrid technology, test drive booking, service center, finance and insurance support.',
+    keywords: [
+        'toyota cars',
+        'toyota cars in bhubaneswar',
+        'toyota showroom bhubaneswar',
+        'authorized toyota dealer',
+        'espirit toyota',
+        'toyota hybrid cars',
+        'toyota test drive booking',
+        'toyota service center',
+        'toyota car price bhubaneswar',
     ],
-  },
 };
 
-export default function HomePage() {
-  return (
-    <>
-      <CamryImage
-        imageUrl="/models/camry/camry1.webp"
-        alt="Camry"
-      />
-      <CamryElegance />
-      <CamryEnginePerformance />
-      <CamryExteriorInterior
-        tabs={camryExteriorInteriorData}
-        defaultTab="exterior"
-      />
-      <CamryExteriorInterior
-        tabs={camryConvenienceComfortData}
-        defaultTab="exterior"
-      />
-      <CamrySafetyConnected />
-      <CamryColors />
-      <TNGASection />
-      <SideHero
-        imageUrl="/models/camry/camry27.webp"
-        alt="Camry Ebook"
-      />
-      <CamryBookNowBanner />
+export default function Home() {
+    return (
+        <main className="min-h-screen">
+            <Banner />
+            <Range />
 
-    </>
-  );
+            <ExploreToyota />
+            <WhyToyota />
+            <HybridToyota />
+            <ToyotaService />
+
+            <ToyotaSafety />
+            <BuyingGuide />
+            <ShowroomExperience />
+
+            <AboutEspiritToyota />
+            <EspiritToyotaLocations />
+            <EspiritToyotaAwards />
+            <Faq />
+
+            <Enquiry id="enquiry" />
+
+            {/* SEO-only content (no UI impact) */}
+            <section className="sr-only">
+                <h2>Espirit Toyota Bhubaneswar – Authorized Toyota Dealer</h2>
+                <p>
+                    Espirit Toyota Bhubaneswar is an authorized Toyota showroom offering the
+                    latest Toyota cars, hybrid models, test drive booking, and certified
+                    service center support. Visit our showroom to explore Toyota safety,
+                    performance, and hybrid technology with expert assistance.
+                </p>
+            </section>
+        </main>
+    );
 }

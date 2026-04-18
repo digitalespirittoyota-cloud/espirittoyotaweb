@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import GlanzaHero from "../../glanza/GlanzaHero";
-import SideHero from "../../glanza/SideHero";
+import GlanzaHero from "../glanza/GlanzaHero";
+import SideHero from "../glanza/SideHero";
 import AccessoriesSlider from "./AccessoriesSlider";
 import Gallery from "./Gallery";
 import RumionColors from "./RumionColors";

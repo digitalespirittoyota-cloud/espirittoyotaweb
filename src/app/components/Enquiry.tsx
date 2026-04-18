@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Toaster } from "react-hot-toast";
 import { User, Phone, Mail, Car, Send } from "lucide-react";
 import Image from "next/image";
 import { useFormSubmit } from "../hooks/useFormSubmit";
@@ -76,19 +75,6 @@ const Enquiry: React.FC<EnquiryProps> = ({ id }) => {
 
   return (
     <section id={id} className="relative w-full min-h-[600px] md:h-[100vh] flex items-center justify-center bg-gray-50 overflow-hidden">
-      <Toaster position="top-right" />
-
-      {/* Background with optimized Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/enq.jpg" // 👉 Public folder me enq.jpg rakho
-          alt="Enquiry Background"
-          fill
-          priority
-          className="object-cover brightness-50"
-        />
-      </div>
-
       {/* Glassmorphism Container */}
       <div className="relative z-10 w-[92%] max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-0 overflow-hidden rounded-3xl shadow-2xl border border-white/20 backdrop-blur-md">
 

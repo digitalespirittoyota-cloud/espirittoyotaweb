@@ -6,7 +6,7 @@ import InnovaCrystaDesign from "./InnovaCrystaDesign";
 import Specifications from "./Specifications";
 import InnovaColors from "./InnovaColors";
 import Gallery from "./Gallery";
-import GlanzaHero from "../../glanza/GlanzaHero";
+import GlanzaHero from "../glanza/GlanzaHero";
 
 export const metadata: Metadata = getBaseMetadata(
   "Toyota Innova Crysta Price, Features & Specs | Espirit Toyota",

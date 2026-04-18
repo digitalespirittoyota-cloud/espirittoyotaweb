@@ -4,9 +4,14 @@ import '@/models/CarModel';
 import '@/models/Enquiry';
 
 const MONGODB_URI = process.env.MONGODB_URI;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!MONGODB_URI) {
-    console.warn('WARNING: MONGODB_URI is not defined in .env.local');
+    console.error('❌ CRITICAL: MONGODB_URI is not defined in environment variables');
+}
+
+if (!JWT_SECRET) {
+    console.error('❌ CRITICAL: JWT_SECRET is not defined in environment variables. Authentication will fail.');
 }
 
 interface MongooseCache {

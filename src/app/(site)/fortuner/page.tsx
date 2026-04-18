@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import Banner from "../../commonbanner/Banner";
+import Banner from "../../common/Banner";
 import EbookSection from "../legender/EbookSection";
 import FeatureImageSection from "../legender/FeatureImageSection";
 import GallerySection from "../legender/GallerySection";

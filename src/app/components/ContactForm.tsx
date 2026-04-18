@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Toaster } from "react-hot-toast";
 import { User, Phone, Mail, MessageSquare, Send, BookOpen } from "lucide-react";
 import { useFormSubmit } from "../hooks/useFormSubmit";
 
@@ -14,7 +13,7 @@ export default function ContactForm() {
         handleSubmit,
         setInitialData
     } = useFormSubmit({
-        endpoint: "/api/enquiry",
+        endpoint: "/api/contact",
         successMessage: "Message Sent Successfully!",
     });
 
@@ -58,7 +57,6 @@ export default function ContactForm() {
 
     return (
         <div className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_10px_50px_rgba(0,0,0,0.08)] border border-gray-100">
-            <Toaster position="top-center" />
             <div className="mb-10">
                 <span className="inline-block px-4 py-1.5 bg-red-50 text-red-600 text-sm font-semibold rounded-full mb-4">
                     Get In Touch

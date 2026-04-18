@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import GlanzaHero from "../../glanza/GlanzaHero";
-import SideHero from "../../glanza/SideHero";
 import AccessoriesPage from "./AccessoriesPage";
 import CarCustomizer from "./CarCustomizer";
 import EBookBanner from "./EBookbanner";
+import GlanzaHero from "../glanza/GlanzaHero";
 import HybridPage from "./HybridPage";
 import HyMilesWinners from "./HyMilesWinners";
 import HyTimeBanner from "./HyTimeBanner";

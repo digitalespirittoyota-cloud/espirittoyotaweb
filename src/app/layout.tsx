@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 // import { Inter, Roboto_Mono } from "next/font/google"; // Removed Google Fonts
 import "./globals.css";
+import ToastProvider from "./common/ToastProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.toyota-espirit.in"),
@@ -86,6 +87,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className="antialiased"
       >
+        <ToastProvider />
         {children}
       </body>
     </html>

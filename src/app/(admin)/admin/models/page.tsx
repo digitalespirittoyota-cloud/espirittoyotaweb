@@ -6,20 +6,24 @@ import { fetchModels } from '@/admin/redux/modelSlice';
 import Table from '@/admin/components/Table';
 import Modal from '@/admin/components/Modal';
 import ModelForm from '@/admin/forms/ModelForm';
-import { Plus, LayoutGrid, List } from 'lucide-react';
+import { Plus, LayoutGrid, List, ChevronLeft, ChevronRight, Database } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 export default function ModelsPage() {
   const dispatch = useDispatch();
-  const { items, loading } = useSelector((state: any) => state.models);
+  const { items, pagination, loading } = useSelector((state: any) => state.models);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedModel, setSelectedModel] = useState(null);
   const [viewingModel, setViewingModel] = useState<any>(null);
   const [viewMode, setViewMode] = useState<'table' | 'grid'>('table');
 
   useEffect(() => {
-    dispatch(fetchModels() as any);
+    dispatch(fetchModels({ page: 1, limit: 10 }) as any);
   }, [dispatch]);
+
+  const handlePageChange = (newPage: number) => {
+    dispatch(fetchModels({ page: newPage, limit: 10 }) as any);
+  };
 
   const handleAddModel = () => {
     setSelectedModel(null);
@@ -39,7 +43,7 @@ export default function ModelsPage() {
     try {
       const url = selectedModel ? `/api/admin/models/${(selectedModel as any)._id}` : '/api/admin/models';
       const method = selectedModel ? 'PUT' : 'POST';
-      
+
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
@@ -49,7 +53,7 @@ export default function ModelsPage() {
       if (res.ok) {
         toast.success(`Model ${selectedModel ? 'updated' : 'created'} successfully`);
         setIsModalOpen(false);
-        dispatch(fetchModels() as any);
+        dispatch(fetchModels({}) as any);
       } else {
         toast.error('Operation failed');
       }
@@ -64,7 +68,7 @@ export default function ModelsPage() {
         const res = await fetch(`/api/admin/models/${model._id}`, { method: 'DELETE' });
         if (res.ok) {
           toast.success('Model deleted');
-          dispatch(fetchModels() as any);
+          dispatch(fetchModels({}) as any);
         } else {
           toast.error('Failed to delete');
         }
@@ -88,15 +92,32 @@ export default function ModelsPage() {
           <p className="text-sm text-gray-500">Manage vehicle models and variants</p>
         </div>
         <div className="flex items-center space-x-4">
-          <div className="flex items-center bg-gray-100 p-1 rounded-lg">
-            <button 
+          <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg p-1 shadow-sm h-10 px-2">
+            <button
+              onClick={() => handlePageChange(pagination.page - 1)}
+              disabled={pagination.page <= 1}
+              className="p-1 hover:bg-gray-100 rounded disabled:opacity-30 transition-colors"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <span className="text-[10px] font-black uppercase text-gray-400">Page {pagination.page} / {pagination.totalPages}</span>
+            <button
+              onClick={() => handlePageChange(pagination.page + 1)}
+              disabled={pagination.page >= pagination.totalPages}
+              className="p-1 hover:bg-gray-100 rounded disabled:opacity-30 transition-colors"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+          <div className="flex items-center bg-gray-100 p-1 rounded-lg h-10">
+            <button
               onClick={() => setViewMode('table')}
               className={`p-1.5 rounded-md transition-all ${viewMode === 'table' ? 'bg-white shadow-sm text-red-600' : 'text-gray-500 hover:text-gray-700'}`}
               title="Table View"
             >
               <List size={18} />
             </button>
-            <button 
+            <button
               onClick={() => setViewMode('grid')}
               className={`p-1.5 rounded-md transition-all ${viewMode === 'grid' ? 'bg-white shadow-sm text-red-600' : 'text-gray-500 hover:text-gray-700'}`}
               title="Grid View"
@@ -104,9 +125,9 @@ export default function ModelsPage() {
               <LayoutGrid size={18} />
             </button>
           </div>
-          <button 
+          <button
             onClick={handleAddModel}
-            className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm font-medium"
+            className="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors shadow-sm font-medium h-10"
           >
             <Plus size={20} className="mr-2" /> Add Model
           </button>
@@ -125,7 +146,7 @@ export default function ModelsPage() {
           <Database size={48} className="mx-auto text-gray-300 mb-4" />
           <h3 className="text-lg font-medium text-gray-900">No models yet</h3>
           <p className="text-sm text-gray-500 mb-6">Get started by creating your first car model.</p>
-          <button 
+          <button
             onClick={handleAddModel}
             className="inline-flex items-center px-4 py-2 text-red-600 font-semibold hover:text-red-700"
           >
@@ -133,9 +154,9 @@ export default function ModelsPage() {
           </button>
         </div>
       ) : viewMode === 'table' ? (
-        <Table 
-          columns={columns} 
-          data={items} 
+        <Table
+          columns={columns}
+          data={items}
           onEdit={handleEditModel}
           onDelete={handleDeleteModel}
           onView={handleViewVariants}
@@ -149,45 +170,45 @@ export default function ModelsPage() {
                 <span className="px-2 py-1 bg-gray-100 text-gray-600 text-[10px] font-bold rounded uppercase tracking-wider">{model.brand}</span>
               </div>
               <div className="space-y-3">
-                 <div className="flex flex-wrap gap-2 cursor-pointer" onClick={() => handleViewVariants(model)}>
-                   {model.variants?.slice(0, 3).map((v: any, i: number) => (
-                     <span key={i} className="text-[11px] px-2 py-0.5 bg-red-50 text-red-600 rounded-full border border-red-100">
-                       {v.variantName}
-                     </span>
-                   ))}
-                   {model.variants?.length > 3 && (
-                     <span className="text-[11px] px-2 py-0.5 bg-gray-50 text-gray-500 rounded-full">
-                       +{model.variants.length - 3} more
-                     </span>
-                   )}
-                 </div>
-                 <div className="flex items-center justify-between pt-4 border-t border-gray-50">
-                    <button 
-                     onClick={() => handleViewVariants(model)}
-                     className="text-xs text-gray-400 hover:text-red-600 font-medium transition-colors"
-                    >
-                     View Details
-                    </button>
-                    <button 
-                     onClick={() => handleEditModel(model)}
-                     className="text-sm text-red-600 font-bold hover:text-red-700"
-                    >
-                     Edit
-                    </button>
-                 </div>
+                <div className="flex flex-wrap gap-2 cursor-pointer" onClick={() => handleViewVariants(model)}>
+                  {model.variants?.slice(0, 3).map((v: any, i: number) => (
+                    <span key={i} className="text-[11px] px-2 py-0.5 bg-red-50 text-red-600 rounded-full border border-red-100">
+                      {v.variantName}
+                    </span>
+                  ))}
+                  {model.variants?.length > 3 && (
+                    <span className="text-[11px] px-2 py-0.5 bg-gray-50 text-gray-500 rounded-full">
+                      +{model.variants.length - 3} more
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-center justify-between pt-4 border-t border-gray-50">
+                  <button
+                    onClick={() => handleViewVariants(model)}
+                    className="text-xs text-gray-400 hover:text-red-600 font-medium transition-colors"
+                  >
+                    View Details
+                  </button>
+                  <button
+                    onClick={() => handleEditModel(model)}
+                    className="text-sm text-red-600 font-bold hover:text-red-700"
+                  >
+                    Edit
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
       )}
 
-      <Modal 
-        isOpen={isModalOpen} 
+      <Modal
+        isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title={selectedModel ? 'Edit Model' : 'Add New Car Model'}
       >
-        <ModelForm 
-          initialData={selectedModel} 
+        <ModelForm
+          initialData={selectedModel}
           onSubmit={handleSubmit}
           onCancel={() => setIsModalOpen(false)}
         />
@@ -227,9 +248,9 @@ export default function ModelsPage() {
           )}
         </div>
         <div className="mt-6 flex justify-end">
-          <button 
-             onClick={() => setViewingModel(null)}
-             className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors font-medium"
+          <button
+            onClick={() => setViewingModel(null)}
+            className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors font-medium"
           >
             Close
           </button>
@@ -238,6 +259,3 @@ export default function ModelsPage() {
     </div>
   );
 }
-
-// Extra import for icon used in empty state
-import { Database } from 'lucide-react';

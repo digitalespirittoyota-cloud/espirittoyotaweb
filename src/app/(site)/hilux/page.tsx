@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getBaseMetadata } from "../../utils/seo";
-import Banner from "../../commonbanner/Banner";
+import Banner from "../../common/Banner";
 import ChiefEngineerSection from "./ChiefEngineerSection";
 import EngineerMessageSection from "./EngineerMessageSection";
 import FeatureCarousel from "./FeatureCarousel";
