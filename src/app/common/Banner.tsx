@@ -8,7 +8,7 @@ type BannerProps = {
   desktopImg: string;
   mobileImg: string;
   alt?: string;
-  height?: string; // 👈 SAME AS BEFORE
+  height?: string;
   link?: string;
 };
 
