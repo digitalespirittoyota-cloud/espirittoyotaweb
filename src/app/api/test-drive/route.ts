@@ -2,32 +2,35 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-    try {
-        const { name, phone, email, city, model, date, time } = await req.json();
+  try {
+    const { name, phone, email, city, model, date, time } = await req.json();
 
-        // Check for required fields
-        if (!name || !email || !phone || !model || !city || !date || !time) {
-            return NextResponse.json(
-                { message: 'Missing required fields' },
-                { status: 400 }
-            );
-        }
+    // Check for required fields
+    if (!name || !email || !phone || !model || !city || !date || !time) {
+      return NextResponse.json(
+        { message: 'Missing required fields' },
+        { status: 400 }
+      );
+    }
 
-        // Configure Nodemailer Transporter
-        const transporter = nodemailer.createTransport({
-            service: 'gmail', // You can change this to another service logic if needed
-            auth: {
-                user: process.env.GMAIL_USER,
-                pass: process.env.GMAIL_PASS,
-            },
-        });
-
-        // 1. Admin Email Options
-        const adminMailOptions = {
-            from: process.env.GMAIL_USER,
-            to: "marketing@fieldtoyota.com", // Admin email
-            subject: `New Test Drive Request: ${model} - ${name}`,
-            html: `
+    // Configure Nodemailer Transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail', // You can change this to another service logic if needed
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
+      },
+    });
+    const adminEmail = process.env.ADMIN_USER;
+    if (!adminEmail) {
+      return NextResponse.json({ message: 'Admin email not configured' }, { status: 500 });
+    }
+    // 1. Admin Email Options
+    const adminMailOptions = {
+      from: process.env.GMAIL_USER,
+      to: adminEmail, // Admin email
+      subject: `New Test Drive Request: ${model} - ${name}`,
+      html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #d71920; padding: 20px; text-align: center;">
             <h2 style="color: #ffffff; margin: 0;">New Test Drive Request</h2>
@@ -78,14 +81,14 @@ export async function POST(req: Request) {
           </div>
         </div>
       `,
-        };
+    };
 
-        // 2. User Confirmation Email Options
-        const userMailOptions = {
-            from: process.env.GMAIL_USER,
-            to: email, // Send to Customer
-            subject: `Test Drive Request Confirmation - Espirit Toyota`,
-            html: `
+    // 2. User Confirmation Email Options
+    const userMailOptions = {
+      from: process.env.GMAIL_USER,
+      to: email, // Send to Customer
+      subject: `Test Drive Request Confirmation - Espirit Toyota`,
+      html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #d71920; padding: 20px; text-align: center;">
             <h2 style="color: #ffffff; margin: 0;">Test Drive Requested</h2>
@@ -119,23 +122,23 @@ export async function POST(req: Request) {
           </div>
         </div>
       `,
-        };
+    };
 
-        // Send Both Emails
-        await Promise.all([
-            transporter.sendMail(adminMailOptions),
-            transporter.sendMail(userMailOptions)
-        ]);
+    // Send Both Emails
+    await Promise.all([
+      transporter.sendMail(adminMailOptions),
+      transporter.sendMail(userMailOptions)
+    ]);
 
-        return NextResponse.json(
-            { message: 'Enquiry submitted successfully' },
-            { status: 200 }
-        );
-    } catch (error) {
-        console.error('Error sending email:', error);
-        return NextResponse.json(
-            { message: 'Failed to send email' },
-            { status: 500 }
-        );
-    }
+    return NextResponse.json(
+      { message: 'Enquiry submitted successfully' },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error('Error sending email:', error);
+    return NextResponse.json(
+      { message: 'Failed to send email' },
+      { status: 500 }
+    );
+  }
 }

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/app/lib/db';
-import Booking from '@/app/models/Booking';
+import Booking from '@/models/Booking';
 import { sendEmail, getAdminTemplate, getCustomerTemplate } from '@/app/lib/email';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -9,6 +9,7 @@ const generateId = () => {
 }
 
 export async function POST(req: Request) {
+
     try {
         await connectDB();
 
@@ -64,9 +65,12 @@ export async function POST(req: Request) {
             Message: message,
             ID: uniqueId
         });
-
+        const adminEmail = process.env.ADMIN_USER;
+        if (!adminEmail) {
+            return NextResponse.json({ message: 'Admin email not configured' }, { status: 500 });
+        }
         const adminEmailPromise = sendEmail({
-            to: "marketing@fieldtoyota.com",
+            to: adminEmail,
             subject: `New Service Booking: ${carModel} - ${name}`,
             html: adminHtml
         });

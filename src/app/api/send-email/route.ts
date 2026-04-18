@@ -21,11 +21,15 @@ export async function POST(req: Request) {
         pass: process.env.GMAIL_PASS,
       },
     });
+    const adminEmail = process.env.ADMIN_USER;
+    if (!adminEmail) {
+      return NextResponse.json({ message: 'Admin email not configured' }, { status: 500 });
+    }
 
     // 1. Admin Email Options
     const adminMailOptions = {
       from: process.env.GMAIL_USER,
-      to: "marketing@fieldtoyota.com", // Admin email
+      to: adminEmail, // Admin email
       subject: `New Car Enquiry: ${model} - ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">

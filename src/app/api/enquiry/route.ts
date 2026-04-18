@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/app/lib/db';
-import Enquiry from '@/app/models/Enquiry';
+import Enquiry from '@/models/Enquiry';
 import { sendEmail, getAdminTemplate, getCustomerTemplate } from '@/app/lib/email';
 import { v4 as uuidv4 } from 'uuid'; // You might need to install uuid or just use Math.random
 
@@ -14,18 +14,17 @@ export async function POST(req: Request) {
         await connectDB();
 
         // Parse Body
-        const body = await req.json();
-        const { name, email, phone, formType, ...otherData } = body;
+        const { name, email, phone, carModel, city, carId, bidPrice, purchaseTimeline, purchaseMode, formType, ...otherData } = await req.json();
 
         // 1. Validation
-        if (!name || !email || !phone || !formType) {
+        if (!name || !phone || !formType) {
             return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
         }
 
-        // 2. Prevent Duplicates (Simple Rate Limiting by Email + FormType within last 1 min)
+        // 2. Prevent Duplicates (Simple Rate Limiting by Email/Phone + FormType within last 1 min)
         const oneMinuteAgo = new Date(Date.now() - 60 * 1000);
         const existingEntry = await Enquiry.findOne({
-            email,
+            $or: email ? [{ email }] : [{ phone }],
             formType,
             createdAt: { $gte: oneMinuteAgo }
         });
@@ -47,6 +46,12 @@ export async function POST(req: Request) {
             ip,
             source: 'website',
             status: 'new',
+            carModel,
+            city,
+            carId,
+            bidPrice,
+            purchaseTimeline,
+            purchaseMode,
             ...otherData
         });
 
@@ -61,9 +66,12 @@ export async function POST(req: Request) {
             Vehicle: otherData.carModel || 'N/A',
             ...otherData
         });
-
+        const adminEmail = process.env.ADMIN_USER;
+        if (!adminEmail) {
+            return NextResponse.json({ message: 'Admin email not configured' }, { status: 500 });
+        }
         const adminEmailPromise = sendEmail({
-            to: "marketing@fieldtoyota.com",
+            to: adminEmail,
             subject: `[${formType}] New Submission from ${name}`,
             html: adminHtml
         });
@@ -75,13 +83,16 @@ export async function POST(req: Request) {
             `Thank you for contacting Espirit Toyota. We have received your query regarding <strong>${otherData.carModel || formType}</strong>. <br/><br/> Your Reference ID is <strong>${uniqueId}</strong>. Our team will connect with you shortly.`
         );
 
-        const customerEmailPromise = sendEmail({
-            to: email,
-            subject: `Thank you for contacting Espirit Toyota`,
-            html: customerHtml
-        });
+        let customerEmailPromise = Promise.resolve(true);
+        if (email) {
+            customerEmailPromise = sendEmail({
+                to: email,
+                subject: `Thank you for contacting Espirit Toyota`,
+                html: customerHtml
+            });
+        }
 
-        // Execute email sending in background (don't block response too long, but wait ensures reliability)
+        // Execute email sending in background
         await Promise.allSettled([adminEmailPromise, customerEmailPromise]);
 
         return NextResponse.json({ message: 'Submitted successfully', id: uniqueId }, { status: 201 });
@@ -90,8 +101,7 @@ export async function POST(req: Request) {
         console.error('API Error:', error);
         return NextResponse.json({
             message: 'Internal Server Error',
-            error: error.message,
-            stack: error.stack
+            error: process.env.NODE_ENV === 'development' ? error.message : undefined
         }, { status: 500 });
     }
 }

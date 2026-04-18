@@ -104,15 +104,13 @@ export default function Banner({
 
       {/* Mobile */}
       <div className="block md:hidden w-full h-full">
-        {mobileImg || desktopImg ? (
-          <Image
-            src={mobileImg || desktopImg}
-            alt={alt}
-            fill
-            priority
-            className="object-contain bg-black"
-          />
-        ) : null}
+        <Image
+          src={mobileImg || desktopImg}
+          alt={alt}
+          fill
+          priority
+          className={`object-cover ${!mobileImg ? 'object-center' : ''}`}
+        />
       </div>
     </>
   );

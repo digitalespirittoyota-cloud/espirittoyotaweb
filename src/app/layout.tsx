@@ -2,9 +2,6 @@
 import type { Metadata } from "next";
 // import { Inter, Roboto_Mono } from "next/font/google"; // Removed Google Fonts
 import "./globals.css";
-import Navbar from "./common/Navbar";
-import Footer from "./common/Footer";
-import JsonLd from "./components/seo/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.toyota-espirit.in"),
@@ -89,12 +86,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className="antialiased"
       >
-        {/* ⭐ SEO JSON-LD STRUCTURED DATA */}
-        <JsonLd />
-
-        <Navbar />
-        <main >{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

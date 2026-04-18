@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import '@/models/Car';
+import '@/models/CarModel';
+import '@/models/Enquiry';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -41,8 +44,10 @@ async function connectDB() {
 
     try {
         cached.conn = await cached.promise;
+        console.log('✅ Connected to MongoDB');
     } catch (e) {
         cached.promise = null;
+        console.error('❌ MongoDB Connection Error:', e);
         throw e;
     }
 
