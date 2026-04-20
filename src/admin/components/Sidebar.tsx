@@ -35,6 +35,7 @@ const menuItems = [
   { name: 'Enquiries', icon: Users, href: '/admin/enquiries', roles: ['admin', 'marketing'] },
   { name: 'Bidding', icon: TrendingUp, href: '/admin/bidding', roles: ['admin', 'bidding'] },
   { name: 'Contacts', icon: MessagesSquare, href: '/admin/contacts', roles: ['admin', 'marketing'] },
+  { name: 'Settings', icon: Settings, href: '/admin/settings', roles: ['admin', 'bidding', 'marketing'] },
 ];
 
 export default function Sidebar() {
@@ -45,7 +46,6 @@ export default function Sidebar() {
 
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
   const toggleMobile = () => setIsMobileOpen(!isMobileOpen);
-  console.log(user);
   const allowedItems = menuItems.filter(item =>
     !user || item.roles.includes(user.role)
   );

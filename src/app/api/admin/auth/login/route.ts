@@ -20,9 +20,9 @@ export async function POST(req: Request) {
         // Validate with Zod
         const validation = LoginSchema.safeParse(json);
         if (!validation.success) {
-            return NextResponse.json({ 
-                message: 'Invalid input', 
-                errors: validation.error.format() 
+            return NextResponse.json({
+                message: 'Invalid input',
+                errors: validation.error.format()
             }, { status: 400 });
         }
 
@@ -39,29 +39,29 @@ export async function POST(req: Request) {
         }
 
         // Create JWT
-        const token = await new SignJWT({ 
-            id: admin._id, 
-            username: admin.username, 
-            role: admin.role 
+        const token = await new SignJWT({
+            id: admin._id.toString(),
+            username: admin.username,
+            role: admin.role
         })
-        .setProtectedHeader({ alg: 'HS256' })
-        .setIssuedAt()
-        .setExpirationTime('24h')
-        .sign(JWT_SECRET);
+            .setProtectedHeader({ alg: 'HS256' })
+            .setIssuedAt()
+            .setExpirationTime('24h')
+            .sign(JWT_SECRET);
 
-        const response = NextResponse.json({ 
+        const response = NextResponse.json({
             message: 'Login successful',
             token,
             user: { username: admin.username, role: admin.role }
         }, { status: 200 });
-        
+
         // Set cookie
         response.cookies.set('admin_token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
             path: '/',
-            maxAge: 60 * 60 * 24 
+            maxAge: 60 * 60 * 24
         });
 
         return response;
