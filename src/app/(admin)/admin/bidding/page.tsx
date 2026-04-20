@@ -45,36 +45,43 @@ export default function BiddingLeadsPage() {
 
   const columns = [
     { key: 'uniqueId', label: 'ID', render: (val: string) => <span className="font-mono text-xs font-bold text-gray-500">{val}</span> },
-    { key: 'name', label: 'Customer', render: (val: string, row: any) => (
-      <div>
-        <p className="font-bold text-gray-900">{val}</p>
-        <p className="text-xs text-gray-400">{row.email || 'No email'}</p>
-      </div>
-    )},
-    { key: 'phone', label: 'Phone', render: (val: string) => (
-      <a href={`tel:${val}`} className="flex items-center text-blue-600 hover:underline">
-        <Phone size={12} className="mr-1" /> {val}
-      </a>
-    )},
+    {
+      key: 'name', label: 'Customer', render: (val: string, row: any) => (
+        <div>
+          <p className="font-bold text-gray-900">{val}</p>
+          <p className="text-xs text-gray-400">{row.email || 'No email'}</p>
+        </div>
+      )
+    },
+    {
+      key: 'phone', label: 'Phone', render: (val: string) => (
+        <a href={`tel:${val}`} className="flex items-center text-blue-600 hover:underline">
+          <Phone size={12} className="mr-1" /> {val}
+        </a>
+      )
+    },
     { key: 'carModel', label: 'Model', render: (val: string) => <span className="font-bold text-gray-700">{val || 'N/A'}</span> },
-    { key: 'bidPrice', label: 'Offer', render: (val: number) => (
+    {
+      key: 'bidPrice', label: 'Offer', render: (val: number) => (
         <span className="flex items-center font-black text-red-600">
-            <IndianRupee size={12} className="mr-0.5" /> {val?.toLocaleString() || '0'}
+          <IndianRupee size={12} className="mr-0.5" /> {val?.toLocaleString() || '0'}
         </span>
-    ) },
-    { key: 'status', label: 'Status', render: (val: string) => (
-      <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase ${
-        val === 'new' ? 'bg-blue-100 text-blue-700' : 
-        val === 'contacted' ? 'bg-amber-100 text-amber-700' : 
-        val === 'approved' ? 'bg-green-100 text-green-700' :
-        'bg-gray-100 text-gray-700'
-      }`}>
-        {val}
-      </span>
-    )},
+      )
+    },
+    {
+      key: 'status', label: 'Status', render: (val: string) => (
+        <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase ${val === 'new' ? 'bg-blue-100 text-blue-700' :
+          val === 'contacted' ? 'bg-amber-100 text-amber-700' :
+            val === 'approved' ? 'bg-green-100 text-green-700' :
+              'bg-gray-100 text-gray-700'
+          }`}>
+          {val}
+        </span>
+      )
+    },
   ];
 
-  const filteredData = data.filter((item: any) => 
+  const filteredData = data.filter((item: any) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     (item.carModel || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.uniqueId.toLowerCase().includes(searchQuery.toLowerCase())
@@ -93,21 +100,21 @@ export default function BiddingLeadsPage() {
           <p className="text-sm text-gray-500">Manage demo car bidding offers from customers</p>
         </div>
         <div className="flex items-center gap-2">
-           <button 
-             onClick={() => handlePageChange(pagination.page - 1)}
-             disabled={pagination.page <= 1}
-             className="p-2 border rounded hover:bg-gray-50 disabled:opacity-50"
-           >
-             <ChevronLeft size={16} />
-           </button>
-           <span className="text-sm font-medium">Page {pagination.page} of {pagination.totalPages}</span>
-           <button 
-             onClick={() => handlePageChange(pagination.page + 1)}
-             disabled={pagination.page >= pagination.totalPages}
-             className="p-2 border rounded hover:bg-gray-50 disabled:opacity-50"
-           >
-             <ChevronRight size={16} />
-           </button>
+          <button
+            onClick={() => handlePageChange(pagination.page - 1)}
+            disabled={pagination.page <= 1}
+            className="p-2 border rounded hover:bg-gray-50 disabled:opacity-50"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <span className="text-sm font-medium">Page {pagination.page} of {pagination.totalPages}</span>
+          <button
+            onClick={() => handlePageChange(pagination.page + 1)}
+            disabled={pagination.page >= pagination.totalPages}
+            className="p-2 border rounded hover:bg-gray-50 disabled:opacity-50"
+          >
+            <ChevronRight size={16} />
+          </button>
         </div>
       </div>
 
@@ -133,67 +140,71 @@ export default function BiddingLeadsPage() {
       )}
 
       {/* Detail Modal */}
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
         title="Bidding Offer Details"
       >
         {selectedBid && (
           <div className="space-y-6">
             <div className="flex items-center justify-between p-4 bg-red-50 rounded-xl border border-red-100">
-               <div className="flex items-center gap-3">
-                 <div className="p-2 bg-red-600 text-white rounded-lg shadow-md">
-                   <TrendingUp size={24} />
-                 </div>
-                 <div>
-                   <p className="text-xs text-red-600 font-black uppercase tracking-widest">Customer Offer</p>
-                   <p className="text-3xl font-black text-gray-900 flex items-center">
-                     <IndianRupee size={24} className="mr-1 text-gray-400" />
-                     {selectedBid.bidPrice?.toLocaleString()}
-                   </p>
-                 </div>
-               </div>
-               <div className="text-right">
-                  <p className="text-xs text-gray-400 font-bold uppercase mb-1">Status</p>
-                  <span className={`px-3 py-1 rounded-full text-xs font-black uppercase ${
-                    selectedBid.status === 'new' ? 'bg-blue-100 text-blue-700' : 
-                    selectedBid.status === 'contacted' ? 'bg-amber-100 text-amber-700' : 
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-red-600 text-white rounded-lg shadow-md">
+                  <TrendingUp size={24} />
+                </div>
+                <div>
+                  <p className="text-xs text-red-600 font-black uppercase tracking-widest">Customer Offer</p>
+                  <p className="text-3xl font-black text-gray-900 flex items-center">
+                    <IndianRupee size={24} className="mr-1 text-gray-400" />
+                    {selectedBid.bidPrice?.toLocaleString()}
+                  </p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-gray-400 font-bold uppercase mb-1">Status</p>
+                <span className={`px-3 py-1 rounded-full text-xs font-black uppercase ${selectedBid.status === 'new' ? 'bg-blue-100 text-blue-700' :
+                  selectedBid.status === 'contacted' ? 'bg-amber-100 text-amber-700' :
                     selectedBid.status === 'approved' ? 'bg-green-100 text-green-700' :
-                    'bg-gray-100 text-gray-700'
+                      'bg-gray-100 text-gray-700'
                   }`}>
-                    {selectedBid.status}
-                  </span>
-               </div>
+                  {selectedBid.status}
+                </span>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-               <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
-                  <p className="text-[10px] text-gray-400 font-black uppercase mb-3 flex items-center">
-                    <User size={12} className="mr-1" /> Bidder Information
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-3 flex items-center">
+                  <User size={12} className="mr-1" /> Bidder Information
+                </p>
+                <p className="font-bold text-gray-900">{selectedBid.name}</p>
+                <p className="text-sm text-gray-500 flex items-center gap-1 mt-1"><Mail size={12} /> {selectedBid.email || 'N/A'}</p>
+                <p className="text-sm text-gray-500 flex items-center gap-1 mt-1"><Phone size={12} /> {selectedBid.phone}</p>
+              </div>
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-3 flex items-center">
+                  <Car size={12} className="mr-1" /> Car Details
+                </p>
+                <p className="font-bold text-gray-900 text-lg leading-tight">{selectedBid.carModel || 'Demo Inventory'}</p>
+                <div className="flex items-center gap-2 mt-2">
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${selectedBid.agreedToTerms ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                    {selectedBid.agreedToTerms ? 'Terms Accepted' : 'Terms Not Accepted'}
+                  </span>
+                  <p className="text-xs text-gray-400 flex items-center uppercase font-bold tracking-tighter">
+                    <Clock size={10} className="mr-1" /> {new Date(selectedBid.createdAt).toLocaleDateString()}
                   </p>
-                  <p className="font-bold text-gray-900">{selectedBid.name}</p>
-                  <p className="text-sm text-gray-500 flex items-center gap-1 mt-1"><Mail size={12} /> {selectedBid.email || 'N/A'}</p>
-                  <p className="text-sm text-gray-500 flex items-center gap-1 mt-1"><Phone size={12} /> {selectedBid.phone}</p>
-               </div>
-               <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
-                  <p className="text-[10px] text-gray-400 font-black uppercase mb-3 flex items-center">
-                    <Car size={12} className="mr-1" /> Car Details
-                  </p>
-                  <p className="font-bold text-gray-900 text-lg leading-tight">{selectedBid.carModel || 'Demo Inventory'}</p>
-                  <p className="text-xs text-gray-400 mt-2 flex items-center uppercase font-bold tracking-tighter">
-                    <Clock size={10} className="mr-1" /> Submitted on {new Date(selectedBid.createdAt).toLocaleDateString()}
-                  </p>
-               </div>
+                </div>
+              </div>
             </div>
 
             <div className="flex justify-end pt-4 gap-3 bg-white sticky bottom-0 border-t mt-8 py-4">
-              <button 
+              <button
                 onClick={() => setIsModalOpen(false)}
                 className="px-6 py-2.5 text-sm font-bold text-gray-500 hover:bg-gray-50 rounded-lg transition-all"
               >
                 Close
               </button>
-              <button 
+              <button
                 onClick={() => {
                   toast.success('Interest noted. Sales team will be alerted.');
                   setIsModalOpen(false);
@@ -202,7 +213,7 @@ export default function BiddingLeadsPage() {
               >
                 Forward to Sales
               </button>
-              <button 
+              <button
                 onClick={() => {
                   toast.success('Offer approved successfully!');
                   setIsModalOpen(false);

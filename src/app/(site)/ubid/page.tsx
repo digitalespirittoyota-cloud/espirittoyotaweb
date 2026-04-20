@@ -30,6 +30,7 @@ export default function BiddingPage() {
    const [isSubmitting, setIsSubmitting] = useState(false);
    const [isSubmitted, setIsSubmitted] = useState(false);
    const [agreedToTerms, setAgreedToTerms] = useState(false);
+   const [priceError, setPriceError] = useState("");
    const [formData, setFormData] = useState({
       name: '',
       phone: '',
@@ -130,6 +131,19 @@ export default function BiddingPage() {
          </div>
       );
    };
+   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+
+      setFormData({ ...formData, bidPrice: value });
+
+      if (value && Number(value) < selectedCar.minPrice) {
+         setPriceError(
+            `Minimum bid is ₹${selectedCar.minPrice.toLocaleString("en-IN")}`
+         );
+      } else {
+         setPriceError("");
+      }
+   };
 
    const handleOpenForm = (car: any) => {
       setSelectedCar(car);
@@ -153,15 +167,14 @@ export default function BiddingPage() {
             body: JSON.stringify({
                ...formData,
                carId: selectedCar._id,
+               agreedToTerms,
             }),
          });
 
          if (res.ok) {
             setIsSubmitted(true);
+            setSelectedCar(null)
 
-            setTimeout(() => {
-               setIsSubmitted(false);
-            }, 5000);
          } else {
             toast.error('Submission failed. Please try again.');
             setIsSubmitting(false);
@@ -226,8 +239,12 @@ export default function BiddingPage() {
 
                            <div className="flex items-center justify-between py-4 border-t border-b border-slate-50 mb-6">
                               <div className="flex flex-col">
-                                 <span className="text-[10px] text-gray-400 uppercase font-black tracking-tighter">Market Value approx.</span>
-                                 <span className="text-lg font-black text-gray-900">₹{car.minPrice?.toLocaleString()}</span>
+                                 <span className="text-[10px] text-gray-400 uppercase font-black tracking-tighter">
+                                    Market Value approx.
+                                 </span>
+                                 <span className="text-lg font-black text-gray-900">
+                                    ₹{car.minPrice?.toLocaleString("en-IN")}
+                                 </span>
                               </div>
                            </div>
 
@@ -289,7 +306,7 @@ export default function BiddingPage() {
                                        placeholder="Full Name"
                                        value={formData.name}
                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                       className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-medium"
+                                       className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-medium text-black placeholder-gray-600"
                                     />
                                  </div>
                                  <div className="relative">
@@ -300,7 +317,7 @@ export default function BiddingPage() {
                                        placeholder="Phone Number"
                                        value={formData.phone}
                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                       className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-medium"
+                                       className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-medium text-black placeholder-gray-600"
                                     />
                                  </div>
                                  <div className="relative">
@@ -310,7 +327,7 @@ export default function BiddingPage() {
                                        placeholder="City / Location"
                                        value={formData.city}
                                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                                       className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-medium"
+                                       className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-medium text-black placeholder-gray-600"
                                     />
                                  </div>
                               </div>
@@ -331,12 +348,15 @@ export default function BiddingPage() {
                                        <input
                                           required
                                           type="number"
-                                          placeholder="e.g. 1850000"
+                                          placeholder={`Min ₹${selectedCar.minPrice?.toLocaleString("en-IN")}`}
                                           value={formData.bidPrice}
-                                          onChange={(e) => setFormData({ ...formData, bidPrice: e.target.value })}
-                                          className="w-full pl-10 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-black text-lg"
+                                          onChange={handlePriceChange}
+                                          className={`w-full pl-10 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-black text-lg text-black placeholder-gray-600 ${priceError ? "border-red-500" : "border-gray-200"}`}
                                        />
                                     </div>
+                                    {priceError && (
+                                       <p className="text-red-500 text-sm mt-2 font-medium">{priceError}</p>
+                                    )}
                                     {selectedCar.minBidHint && (
                                        <div className="mt-3 p-3 bg-red-50 text-red-600 rounded-xl text-[10px] font-bold flex items-center">
                                           <Clock className="mr-2" size={14} /> Bids closer to ₹{selectedCar.minBidHint.toLocaleString()} have higher chances of approval

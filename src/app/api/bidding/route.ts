@@ -9,7 +9,7 @@ export async function POST(req: Request) {
         await connectDB();
 
         // Parse Body
-        const { name, email, phone, carModel, city, carId, bidPrice, purchaseTimeline, purchaseMode } = await req.json();
+        const { name, email, phone, carModel, city, carId, bidPrice, purchaseTimeline, purchaseMode, agreedToTerms } = await req.json();
 
         // 1. Validation
         if (!name || !phone || !carId || !bidPrice) {
@@ -45,6 +45,7 @@ export async function POST(req: Request) {
             bidPrice,
             purchaseTimeline,
             purchaseMode,
+            agreedToTerms: agreedToTerms || false,
         });
 
         // 4. Send Emails
@@ -56,10 +57,11 @@ export async function POST(req: Request) {
             'Bid Price': `₹${bidPrice}`,
             Timeline: purchaseTimeline,
             'Payment Mode': purchaseMode,
+            'Agreed to Terms': agreedToTerms ? 'Yes' : 'No',
             ID: uniqueId,
         });
 
-        const adminEmail = process.env.ADMIN_USER;
+        const adminEmail = process.env.BID_USER;
         if (adminEmail) {
             await sendEmail({
                 to: adminEmail,

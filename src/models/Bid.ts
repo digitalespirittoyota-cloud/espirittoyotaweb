@@ -10,6 +10,7 @@ export interface IBid extends Document {
     bidPrice: number;
     purchaseTimeline: string;
     purchaseMode: string;
+    agreedToTerms: boolean;
     message?: string;
     uniqueId: string;
     ip?: string;
@@ -29,6 +30,7 @@ const BidSchema: Schema = new Schema(
         bidPrice: { type: Number, required: true },
         purchaseTimeline: { type: String, default: 'Immediately' },
         purchaseMode: { type: String, default: 'Full Payment' },
+        agreedToTerms: { type: Boolean, default: false },
         message: { type: String },
         uniqueId: { type: String, required: true, unique: true },
         ip: { type: String },
