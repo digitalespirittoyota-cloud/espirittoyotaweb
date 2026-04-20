@@ -173,7 +173,6 @@ export default function BiddingPage() {
 
          if (res.ok) {
             setIsSubmitted(true);
-            setSelectedCar(null)
 
          } else {
             toast.error('Submission failed. Please try again.');
