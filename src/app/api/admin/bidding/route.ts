@@ -16,7 +16,7 @@ export async function GET(req: Request) {
         }
 
         await connectDB();
-        
+
         const { searchParams } = new URL(req.url);
         const page = parseInt(searchParams.get('page') || '1');
         const limit = parseInt(searchParams.get('limit') || '50');
@@ -40,9 +40,9 @@ export async function GET(req: Request) {
         });
     } catch (error: any) {
         console.error('Fetch admin bids error:', error);
-        return NextResponse.json({ 
-            message: 'Failed to fetch bids', 
-            error: process.env.NODE_ENV === 'development' ? error.message : undefined 
+        return NextResponse.json({
+            message: 'Failed to fetch bids',
+            error: process.env.NODE_ENV === 'development' ? error.message : undefined
         }, { status: 500 });
     }
 }

@@ -37,17 +37,17 @@ export default function Navbar() {
       <div className="flex items-center space-x-6">
         <div className="flex items-center space-x-3">
           <div className="text-right hidden sm:block">
-            <p className="text-sm font-semibold text-gray-800 capitalize">{user?.username || 'Admin User'}</p>
+            <p className="text-sm font-semibold text-gray-800 ">{user?.username.toLowerCase() || 'Admin User'}</p>
             <p className="text-xs text-gray-500 capitalize">{user?.role || 'Access Restricted'}</p>
           </div>
           <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors uppercase font-bold text-sm">
-            {user?.username?.charAt(0) || 'A'}
+            {user?.username?.charAt(0).toUpperCase() || 'A'}
           </button>
         </div>
 
-        <button 
+        <button
           onClick={handleLogout}
-          className="p-2 text-gray-500 hover:text-red-600 transition-colors" 
+          className="p-2 text-gray-500 hover:text-red-600 transition-colors"
           title="Logout"
         >
           <LogOut size={20} />

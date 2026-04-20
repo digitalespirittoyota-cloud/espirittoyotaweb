@@ -4,7 +4,7 @@ import Sidebar from "@/admin/components/Sidebar";
 import Navbar from "@/admin/components/Navbar";
 import StoreProvider from "@/admin/redux/StoreProvider";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMe } from "@/admin/redux/authSlice";
 
@@ -13,6 +13,11 @@ function RoleGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const { user, initialized, loading } = useSelector((state: any) => state.auth || {});
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!initialized && !loading) {
@@ -38,7 +43,7 @@ function RoleGuard({ children }: { children: React.ReactNode }) {
     }
   }, [initialized, user, pathname, router]);
 
-  if (!initialized || (loading && !user)) {
+  if (!mounted || !initialized || (loading && !user)) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>

@@ -25,15 +25,15 @@ export async function GET(req: Request) {
         const skip = (page - 1) * limit;
 
         // Fetch enquiries with projection (excluding heavy fields if any)
-        const enquiries = await Enquiry.find({ 
-            formType: { $in: ['General Enquiry', 'Car Enquiry', 'Bidding Enquiry'] } 
+        const enquiries = await Enquiry.find({
+            formType: { $in: ['General Enquiry', 'Car Enquiry', 'Bidding Enquiry'] }
         })
-        .sort({ createdAt: -1 })
-        .skip(skip)
-        .limit(limit);
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit);
 
-        const totalEntries = await Enquiry.countDocuments({ 
-            formType: { $in: ['General Enquiry', 'Car Enquiry', 'Bidding Enquiry'] } 
+        const totalEntries = await Enquiry.countDocuments({
+            formType: { $in: ['General Enquiry', 'Car Enquiry', 'Bidding Enquiry'] }
         });
 
         return NextResponse.json({
@@ -47,9 +47,9 @@ export async function GET(req: Request) {
         });
     } catch (error: any) {
         console.error('Fetch admin enquiries error:', error);
-        return NextResponse.json({ 
-            message: 'Failed to fetch enquiries', 
-            error: process.env.NODE_ENV === 'development' ? error.message : undefined 
+        return NextResponse.json({
+            message: 'Failed to fetch enquiries',
+            error: process.env.NODE_ENV === 'development' ? error.message : undefined
         }, { status: 500 });
     }
 }

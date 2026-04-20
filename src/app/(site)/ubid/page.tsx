@@ -31,6 +31,7 @@ export default function BiddingPage() {
    const [isSubmitted, setIsSubmitted] = useState(false);
    const [agreedToTerms, setAgreedToTerms] = useState(false);
    const [priceError, setPriceError] = useState("");
+   const [phoneError, setPhoneError] = useState("");
    const [formData, setFormData] = useState({
       name: '',
       phone: '',
@@ -145,6 +146,18 @@ export default function BiddingPage() {
       }
    };
 
+   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value.replace(/\D/g, ""); // Allow only digits
+      if (value.length <= 10) {
+         setFormData({ ...formData, phone: value });
+         if (value.length > 0 && value.length < 10) {
+            setPhoneError("Phone number must be 10 digits");
+         } else {
+            setPhoneError("");
+         }
+      }
+   };
+
    const handleOpenForm = (car: any) => {
       setSelectedCar(car);
       setFormData({ ...formData, carModel: `${car.modelId?.modelName} ${car.variantName}` });
@@ -152,7 +165,22 @@ export default function BiddingPage() {
       setIsSubmitted(false);
    };
 
-   const handleNext = () => setStep(step + 1);
+   const handleNext = () => {
+      if (step === 1) {
+         if (formData.phone.length !== 10) {
+            setPhoneError("Please enter a valid 10-digit phone number");
+            return;
+         }
+      }
+      if (step === 2) {
+         if (priceError) return;
+         if (!formData.bidPrice) {
+            setPriceError("Please enter your bid price");
+            return;
+         }
+      }
+      setStep(step + 1);
+   };
    const handleBack = () => setStep(step - 1);
 
    const handleSubmit = async (e: React.FormEvent) => {
@@ -315,10 +343,13 @@ export default function BiddingPage() {
                                        type="tel"
                                        placeholder="Phone Number"
                                        value={formData.phone}
-                                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                       className="w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-medium text-black placeholder-gray-600"
+                                       onChange={handlePhoneChange}
+                                       className={`w-full pl-12 pr-4 py-4 bg-slate-50 border-none rounded-2xl focus:ring-2 focus:ring-red-600 outline-none transition-all font-medium text-black placeholder-gray-600 ${phoneError ? "ring-2 ring-red-500" : ""}`}
                                     />
                                  </div>
+                                 {phoneError && (
+                                    <p className="text-red-500 text-xs mt-1 ml-2 font-medium">{phoneError}</p>
+                                 )}
                                  <div className="relative">
                                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                                     <input
