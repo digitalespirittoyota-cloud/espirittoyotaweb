@@ -9,7 +9,7 @@ import { fetchBids } from '@/admin/redux/bidSlice';
 import Table from '@/admin/components/Table';
 import Modal from '@/admin/components/Modal';
 import CarForm from '@/admin/forms/CarForm';
-import { Plus, Filter, Search, Car as CarIcon, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Plus, Filter, Search, Car as CarIcon, ChevronLeft, ChevronRight, Settings, Tag, Calendar, PaintBucket, Hash, User, ImageIcon } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler } from 'react-hook-form';
@@ -24,6 +24,7 @@ export default function CarsPage() {
   const { items: allBids = [] } = useSelector((state: any) => state.bids || {});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
+  const [viewingCar, setViewingCar] = useState<any>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
@@ -52,6 +53,10 @@ export default function CarsPage() {
   const handleEditCar = (car: any) => {
     setSelectedCar(car);
     setIsModalOpen(true);
+  };
+
+  const handleViewCar = (car: any) => {
+    setViewingCar(car);
   };
 
   const handleSubmit: SubmitHandler<CarInput> = async (data) => {
@@ -334,6 +339,7 @@ export default function CarsPage() {
           data={filteredCars}
           onEdit={handleEditCar}
           onDelete={handleDeleteCar}
+          onView={handleViewCar}
         />
       )}
 
@@ -347,6 +353,115 @@ export default function CarsPage() {
           onSubmit={handleSubmit}
           onCancel={() => setIsModalOpen(false)}
         />
+      </Modal>
+
+      {/* Car Details Modal */}
+      <Modal
+        isOpen={!!viewingCar}
+        onClose={() => setViewingCar(null)}
+        title="Car Details"
+      >
+        {viewingCar && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100">
+              <div className="flex items-center gap-3">
+                <div className="p-3 bg-red-600 text-white rounded-lg shadow-sm">
+                  <CarIcon size={24} />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">{viewingCar.modelId?.brand || 'Toyota'}</p>
+                  <p className="text-2xl font-black text-gray-900 leading-tight">
+                    {viewingCar.modelId?.modelName} <span className="text-red-600">{viewingCar.variantName}</span>
+                  </p>
+                </div>
+              </div>
+              <div className="text-right">
+                <span className={`px-3 py-1 rounded-full text-xs font-black uppercase ${viewingCar.status === 'sold' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+                  {viewingCar.status || 'Available'}
+                </span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-1 flex items-center">
+                  <Tag size={12} className="mr-1" /> Minimum Price
+                </p>
+                <p className="font-bold text-gray-900 text-lg">
+                  {viewingCar.minPrice ? `₹${viewingCar.minPrice.toLocaleString()}` : 'N/A'}
+                </p>
+              </div>
+
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-1 flex items-center">
+                  <Calendar size={12} className="mr-1" /> Manufacture Year
+                </p>
+                <p className="font-bold text-gray-900 text-lg">
+                  {viewingCar.manufactureYear || 'N/A'}
+                </p>
+              </div>
+
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-1 flex items-center">
+                  <User size={12} className="mr-1" /> Ownership
+                </p>
+                <p className="font-bold text-gray-900 text-lg">
+                  {viewingCar.ownerType || 'N/A'}
+                </p>
+              </div>
+
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-1 flex items-center">
+                  <Settings size={12} className="mr-1" /> Mileage
+                </p>
+                <p className="font-bold text-gray-900 text-lg">
+                  {viewingCar.mileage ? `${viewingCar.mileage.toLocaleString()} km` : 'N/A'}
+                </p>
+              </div>
+
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-1 flex items-center">
+                  <PaintBucket size={12} className="mr-1" /> Color
+                </p>
+                <div className="flex items-center space-x-2">
+                  <span className="inline-block w-4 h-4 rounded-full border border-gray-200" style={{ backgroundColor: viewingCar.color?.toLowerCase() }}></span>
+                  <p className="font-bold text-gray-900">{viewingCar.color || 'N/A'}</p>
+                </div>
+              </div>
+
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-1 flex items-center">
+                  <Calendar size={12} className="mr-1" /> Reg. Date
+                </p>
+                <p className="font-bold text-gray-900">
+                  {viewingCar.regDate ? new Date(viewingCar.regDate).toLocaleDateString() : 'N/A'}
+                </p>
+              </div>
+            </div>
+
+            {viewingCar.images && viewingCar.images.length > 0 && (
+              <div className="mt-4">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-3 flex items-center">
+                  <ImageIcon size={12} className="mr-1" /> Images ({viewingCar.images.length})
+                </p>
+                <div className="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
+                  {viewingCar.images.map((img: string, idx: number) => (
+                    <img key={idx} src={img} alt={`Car ${idx}`} className="h-20 w-32 object-cover rounded-lg border border-gray-200 shadow-sm flex-shrink-0" />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="flex justify-end pt-4 border-t mt-6">
+              <button
+                onClick={() => setViewingCar(null)}
+                className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-black transition-colors font-medium"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </Modal>
     </div>
   );

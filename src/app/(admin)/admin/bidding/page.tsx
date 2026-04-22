@@ -6,6 +6,8 @@ import { TableSkeleton } from '@/admin/components/Skeleton';
 import Modal from '@/admin/components/Modal';
 import { Search, Phone, Mail, Car, Tag, Clock, IndianRupee, ChevronLeft, ChevronRight, User, TrendingUp } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { updateBidStatus } from '@/admin/redux/bidSlice';
 
 export default function BiddingLeadsPage() {
   const [data, setData] = useState([]);
@@ -14,6 +16,7 @@ export default function BiddingLeadsPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBid, setSelectedBid] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const fetchData = async (page = 1) => {
     try {
@@ -90,6 +93,21 @@ export default function BiddingLeadsPage() {
   const openDetails = (row: any) => {
     setSelectedBid(row);
     setIsModalOpen(true);
+  };
+
+  const handleStatusUpdate = async (bidId: string, newStatus: string) => {
+    try {
+      const updatedBid = await dispatch(updateBidStatus({ id: bidId, status: newStatus }) as any).unwrap();
+      toast.success(`Bid ${newStatus} successfully!`);
+      // Update local state for modal
+      if (selectedBid && selectedBid._id === bidId) {
+        setSelectedBid(updatedBid);
+      }
+      // Refresh list
+      fetchData(pagination.page);
+    } catch (err) {
+      toast.error('Failed to update status');
+    }
   };
 
   return (
@@ -204,24 +222,53 @@ export default function BiddingLeadsPage() {
               >
                 Close
               </button>
-              <button
-                onClick={() => {
-                  toast.success('Interest noted. Sales team will be alerted.');
-                  setIsModalOpen(false);
-                }}
-                className="px-6 py-2.5 text-sm font-bold text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-all"
-              >
-                Forward to Sales
-              </button>
-              <button
-                onClick={() => {
-                  toast.success('Offer approved successfully!');
-                  setIsModalOpen(false);
-                }}
-                className="px-6 py-2.5 text-sm font-bold text-white bg-black rounded-lg hover:bg-gray-800 shadow-xl transition-all transform hover:-translate-y-0.5 active:scale-95"
-              >
-                Approve Offer
-              </button>
+              {selectedBid.status === 'approved' ? (
+                <>
+                  <button
+                    onClick={() => handleStatusUpdate(selectedBid._id, 'new')}
+                    className="px-6 py-2.5 text-sm font-bold text-amber-600 bg-amber-50 rounded-lg hover:bg-amber-100 transition-all"
+                  >
+                    Undo Approval (New)
+                  </button>
+                  <button
+                    onClick={() => handleStatusUpdate(selectedBid._id, 'rejected')}
+                    className="px-6 py-2.5 text-sm font-bold text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-all"
+                  >
+                    Reject Offer
+                  </button>
+                </>
+              ) : selectedBid.status === 'rejected' ? (
+                <button
+                  onClick={() => handleStatusUpdate(selectedBid._id, 'approved')}
+                  className="px-6 py-2.5 text-sm font-bold text-white bg-black rounded-lg hover:bg-gray-800 shadow-xl transition-all hover:-translate-y-0.5 active:scale-95"
+                >
+                  Restore & Approve
+                </button>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      toast.success('Interest noted. Sales team will be alerted.');
+                      setIsModalOpen(false);
+                    }}
+                    className="px-6 py-2.5 text-sm font-bold text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-all"
+                  >
+                    Forward to Sales
+                  </button>
+                  <button
+                    onClick={() => handleStatusUpdate(selectedBid._id, 'rejected')}
+                    className="px-6 py-2.5 text-sm font-bold text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-all"
+                  >
+                    Reject
+                  </button>
+                  <button
+                    onClick={() => handleStatusUpdate(selectedBid._id, 'approved')}
+                    className="px-6 py-2.5 text-sm font-bold text-white bg-black rounded-lg hover:bg-gray-800 shadow-xl transition-all transform hover:-translate-y-0.5 active:scale-95"
+                  >
+                    Approve Offer
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}

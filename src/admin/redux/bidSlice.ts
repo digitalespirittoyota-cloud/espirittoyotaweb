@@ -52,6 +52,18 @@ export const fetchBids = createAsyncThunk('bids/fetchAll', async (params: { page
   return response.json();
 });
 
+export const updateBidStatus = createAsyncThunk('bids/updateStatus', async ({ id, status }: { id: string, status: string }) => {
+  const response = await fetch(`/api/admin/bidding/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status }),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to update status');
+  }
+  return response.json();
+});
+
 const bidSlice = createSlice({
   name: 'bids',
   initialState,
@@ -70,6 +82,12 @@ const bidSlice = createSlice({
       .addCase(fetchBids.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Something went wrong';
+      })
+      .addCase(updateBidStatus.fulfilled, (state, action) => {
+        const index = state.items.findIndex(item => item._id === action.payload._id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
       });
   },
 });

@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect, use } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBids } from '@/admin/redux/bidSlice';
-import { ChevronLeft, Phone, MessageSquare, User, Calendar, Car as CarIcon, ArrowLeft, IndianRupee, Tag, Search, Filter, ArrowUpDown } from 'lucide-react';
+import { fetchBids, updateBidStatus } from '@/admin/redux/bidSlice';
+import { ChevronLeft, Phone, MessageSquare, User, Calendar, Car as CarIcon, ArrowLeft, IndianRupee, Tag, Search, Filter, ArrowUpDown, Mail, Clock, TrendingUp, Eye } from 'lucide-react';
+import Modal from '@/admin/components/Modal';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 
@@ -19,6 +20,8 @@ export default function CarLeadsPage({ params }: { params: Promise<{ id: string 
   const [searchQuery, setSearchQuery] = useState('');
   const [modeFilter, setModeFilter] = useState('All');
   const [sortOrder, setSortOrder] = useState('date-desc'); // date-desc, date-asc, price-desc, price-asc
+  const [selectedBid, setSelectedBid] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchCarAndLeads = async () => {
@@ -65,6 +68,24 @@ export default function CarLeadsPage({ params }: { params: Promise<{ id: string 
       if (sortOrder === 'price-asc') return a.bidPrice - b.bidPrice;
       return 0;
     });
+
+  const openDetails = (lead: any) => {
+    setSelectedBid(lead);
+    setIsModalOpen(true);
+  };
+
+  const handleStatusUpdate = async (bidId: string, newStatus: string) => {
+    try {
+      const updatedBid = await dispatch(updateBidStatus({ id: bidId, status: newStatus }) as any).unwrap();
+      toast.success(`Bid ${newStatus} successfully!`);
+      // Update local state for modal if it's open
+      if (selectedBid && selectedBid._id === bidId) {
+        setSelectedBid(updatedBid);
+      }
+    } catch (err) {
+      toast.error('Failed to update status');
+    }
+  };
 
   if (loadingCar || loadingBids) {
     return (
@@ -233,6 +254,12 @@ export default function CarLeadsPage({ params }: { params: Promise<{ id: string 
                     </div>
 
                     <div className="flex space-x-3 mt-6">
+                      <button
+                        onClick={() => openDetails(lead)}
+                        className="flex-1 inline-flex justify-center items-center py-2.5 bg-gray-900 text-white rounded-xl text-sm font-bold hover:bg-black transition-all shadow-sm"
+                      >
+                        <Eye size={16} className="mr-2" /> Details
+                      </button>
                       <a
                         href={`tel:${lead.phone}`}
                         className="flex-1 inline-flex justify-center items-center py-2.5 bg-red-600 text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-all shadow-sm"
@@ -255,6 +282,123 @@ export default function CarLeadsPage({ params }: { params: Promise<{ id: string 
           </div>
         )}
       </div>
+
+      {/* Detail Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Bidding Offer Details"
+      >
+        {selectedBid && (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between p-4 bg-red-50 rounded-xl border border-red-100">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-red-600 text-white rounded-lg shadow-md">
+                  <TrendingUp size={24} />
+                </div>
+                <div>
+                  <p className="text-xs text-red-600 font-black uppercase tracking-widest">Customer Offer</p>
+                  <p className="text-3xl font-black text-gray-900 flex items-center">
+                    <IndianRupee size={24} className="mr-1 text-gray-400" />
+                    {selectedBid.bidPrice?.toLocaleString()}
+                  </p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="text-xs text-gray-400 font-bold uppercase mb-1">Status</p>
+                <span className={`px-3 py-1 rounded-full text-xs font-black uppercase ${selectedBid.status === 'new' ? 'bg-blue-100 text-blue-700' :
+                  selectedBid.status === 'contacted' ? 'bg-amber-100 text-amber-700' :
+                    selectedBid.status === 'approved' ? 'bg-green-100 text-green-700' :
+                      'bg-gray-100 text-gray-700'
+                  }`}>
+                  {selectedBid.status}
+                </span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-3 flex items-center">
+                  <User size={12} className="mr-1" /> Bidder Information
+                </p>
+                <p className="font-bold text-gray-900">{selectedBid.name}</p>
+                <p className="text-sm text-gray-500 flex items-center gap-1 mt-1"><Mail size={12} /> {selectedBid.email || 'N/A'}</p>
+                <p className="text-sm text-gray-500 flex items-center gap-1 mt-1"><Phone size={12} /> {selectedBid.phone}</p>
+              </div>
+              <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <p className="text-[10px] text-gray-400 font-black uppercase mb-3 flex items-center">
+                  <CarIcon size={12} className="mr-1" /> Car Details
+                </p>
+                <p className="font-bold text-gray-900 text-lg leading-tight">{selectedBid.carModel || 'Demo Inventory'}</p>
+                <div className="flex items-center gap-2 mt-2">
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${selectedBid.agreedToTerms ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                    {selectedBid.agreedToTerms ? 'Terms Accepted' : 'Terms Not Accepted'}
+                  </span>
+                  <p className="text-xs text-gray-400 flex items-center uppercase font-bold tracking-tighter">
+                    <Clock size={10} className="mr-1" /> {new Date(selectedBid.createdAt).toLocaleDateString()}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-end pt-4 gap-3 bg-white sticky bottom-0 border-t mt-8 py-4">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="px-6 py-2.5 text-sm font-bold text-gray-500 hover:bg-gray-50 rounded-lg transition-all"
+              >
+                Close
+              </button>
+              {selectedBid.status === 'approved' ? (
+                <>
+                  <button
+                    onClick={() => handleStatusUpdate(selectedBid._id, 'new')}
+                    className="px-6 py-2.5 text-sm font-bold text-amber-600 bg-amber-50 rounded-lg hover:bg-amber-100 transition-all"
+                  >
+                    Undo Approval (New)
+                  </button>
+                  <button
+                    onClick={() => handleStatusUpdate(selectedBid._id, 'rejected')}
+                    className="px-6 py-2.5 text-sm font-bold text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-all"
+                  >
+                    Reject Offer
+                  </button>
+                </>
+              ) : selectedBid.status === 'rejected' ? (
+                <button
+                  onClick={() => handleStatusUpdate(selectedBid._id, 'approved')}
+                  className="px-6 py-2.5 text-sm font-bold text-white bg-black rounded-lg hover:bg-gray-800 shadow-xl transition-all hovrer:-translate-y-0.5 active:scale-95"
+                >
+                  Restore & Approve
+                </button>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      toast.success('Interest noted. Sales team will be alerted.');
+                      setIsModalOpen(false);
+                    }}
+                    className="px-6 py-2.5 text-sm font-bold text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-all"
+                  >
+                    Forward to Sales
+                  </button>
+                  <button
+                    onClick={() => handleStatusUpdate(selectedBid._id, 'rejected')}
+                    className="px-6 py-2.5 text-sm font-bold text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-all"
+                  >
+                    Reject
+                  </button>
+                  <button
+                    onClick={() => handleStatusUpdate(selectedBid._id, 'approved')}
+                    className="px-6 py-2.5 text-sm font-bold text-white bg-black rounded-lg hover:bg-gray-800 shadow-xl transition-all transform hover:-translate-y-0.5 active:scale-95"
+                  >
+                    Approve Offer
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
