@@ -39,9 +39,13 @@ const initialState: BidState = {
   error: null,
 };
 
-export const fetchBids = createAsyncThunk('bids/fetchAll', async (params: { page?: number; limit?: number } = {}) => {
-  const { page = 1, limit = 50 } = params;
-  const response = await fetch(`/api/admin/bidding?page=${page}&limit=${limit}`);
+export const fetchBids = createAsyncThunk('bids/fetchAll', async (params: { page?: number; limit?: number; carId?: string } = {}) => {
+  const { page = 1, limit = 50, carId } = params;
+  let url = `/api/admin/bidding?page=${page}&limit=${limit}`;
+  if (carId) {
+    url += `&carId=${carId}`;
+  }
+  const response = await fetch(url);
   if (!response.ok) {
     throw new Error('Failed to fetch bids');
   }

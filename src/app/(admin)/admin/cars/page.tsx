@@ -37,7 +37,7 @@ export default function CarsPage() {
   useEffect(() => {
     dispatch(fetchCars({ page: 1, limit: 50 }) as any);
     dispatch(fetchModels({ page: 1, limit: 100 }) as any);
-    dispatch(fetchBids({ page: 1, limit: 1000 }) as any);
+
   }, [dispatch]);
 
   const handlePageChange = (newPage: number) => {
@@ -136,14 +136,7 @@ export default function CarsPage() {
     { key: 'regDate', label: 'Reg. Date', render: (val: any) => val ? new Date(val).toLocaleDateString() : '-' },
     {
       key: 'leads', label: 'Bids', render: (_: any, row: any) => {
-        const matchLower = (str1: string, str2: string) =>
-          str1 && str2 && (str1.toLowerCase().includes(str2.toLowerCase()) || str2.toLowerCase().includes(str1.toLowerCase()));
-
-        const count = allBids.filter((b: any) =>
-          b.carId === row._id ||
-          matchLower(b.carModel || '', row.modelId?.modelName || '') ||
-          matchLower(b.carModel || '', row.variantName || '')
-        ).length;
+        const count = row.bids?.length || 0;
 
         return (
           <button
@@ -202,21 +195,21 @@ export default function CarsPage() {
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg p-1 shadow-sm">
-             <button 
-               onClick={() => handlePageChange(pagination.page - 1)}
-               disabled={pagination.page <= 1}
-               className="p-1.5 hover:bg-gray-100 rounded disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
-             >
-               <ChevronLeft size={16} />
-             </button>
-             <span className="text-xs font-bold px-2 text-gray-600">Page {pagination.page} / {pagination.totalPages}</span>
-             <button 
-               onClick={() => handlePageChange(pagination.page + 1)}
-               disabled={pagination.page >= pagination.totalPages}
-               className="p-1.5 hover:bg-gray-100 rounded disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
-             >
-               <ChevronRight size={16} />
-             </button>
+            <button
+              onClick={() => handlePageChange(pagination.page - 1)}
+              disabled={pagination.page <= 1}
+              className="p-1.5 hover:bg-gray-100 rounded disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <span className="text-xs font-bold px-2 text-gray-600">Page {pagination.page} / {pagination.totalPages}</span>
+            <button
+              onClick={() => handlePageChange(pagination.page + 1)}
+              disabled={pagination.page >= pagination.totalPages}
+              className="p-1.5 hover:bg-gray-100 rounded disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+            >
+              <ChevronRight size={16} />
+            </button>
           </div>
           <button
             onClick={handleAddCar}

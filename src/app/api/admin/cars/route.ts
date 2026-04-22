@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/app/lib/db';
 import Car from '@/models/Car';
+import Bid from '@/models/Bid';
 import { CarSchema } from '@/app/lib/schemas';
 import { getServerSession } from '@/app/lib/auth';
 
@@ -33,10 +34,17 @@ export async function GET(req: Request) {
             .skip(skip)
             .limit(limit);
 
+        const carsWithBids = await Promise.all(
+            cars.map(async (car) => {
+                const bids = await Bid.find({ carId: car._id });
+                return { ...car.toObject(), bids };
+            })
+        );
+
         const totalEntries = await Car.countDocuments(filter);
 
         return NextResponse.json({
-            data: cars,
+            data: carsWithBids,
             pagination: {
                 total: totalEntries,
                 page,

@@ -21,13 +21,19 @@ export async function GET(req: Request) {
         const page = parseInt(searchParams.get('page') || '1');
         const limit = parseInt(searchParams.get('limit') || '50');
         const skip = (page - 1) * limit;
+        const carId = searchParams.get('carId');
 
-        const bids = await Bid.find({})
+        const query: any = {};
+        if (carId) {
+            query.carId = carId;
+        }
+
+        const bids = await Bid.find(query)
             .sort({ createdAt: -1 })
             .skip(skip)
             .limit(limit);
 
-        const totalEntries = await Bid.countDocuments({});
+        const totalEntries = await Bid.countDocuments(query);
 
         return NextResponse.json({
             data: bids,

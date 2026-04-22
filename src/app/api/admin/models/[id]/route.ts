@@ -22,7 +22,13 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
         const data = await req.json();
         const updated = await CarModel.findByIdAndUpdate(id, data, { new: true });
         return NextResponse.json(updated);
-    } catch (error) {
+    } catch (error: any) {
+        console.error('UPDATE MODEL ERROR:', error);
+        if (error.code === 11000) {
+            return NextResponse.json({
+                message: 'Another model with this name already exists. Please use a unique name.'
+            }, { status: 400 });
+        }
         return NextResponse.json({ message: 'Failed to update model' }, { status: 500 });
     }
 }

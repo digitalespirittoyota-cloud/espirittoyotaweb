@@ -53,8 +53,19 @@ export async function POST(req: Request) {
         const data = await req.json();
         const newModel = await CarModel.create(data);
         return NextResponse.json(newModel, { status: 201 });
-    } catch (error) {
+    } catch (error: any) {
         console.error('CREATE MODEL ERROR:', error);
-        return NextResponse.json({ message: 'Failed to create model' }, { status: 500 });
+        
+        // Handle MongoDB duplicate key error
+        if (error.code === 11000) {
+            return NextResponse.json({ 
+                message: 'A model with this name already exists. Please use a unique name.' 
+            }, { status: 400 });
+        }
+
+        return NextResponse.json({ 
+            message: 'Failed to create model',
+            error: error.message
+        }, { status: 500 });
     }
 }

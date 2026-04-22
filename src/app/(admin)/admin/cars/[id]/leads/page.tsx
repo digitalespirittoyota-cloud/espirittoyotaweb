@@ -9,11 +9,12 @@ import { toast } from 'react-hot-toast';
 
 export default function CarLeadsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  console.log(id);
   const dispatch = useDispatch();
   const { items: allBids = [], loading: loadingBids } = useSelector((state: any) => state.bids || {});
   const [car, setCar] = useState<any>(null);
   const [loadingCar, setLoadingCar] = useState(true);
-  
+
   // Filtering & Sorting State
   const [searchQuery, setSearchQuery] = useState('');
   const [modeFilter, setModeFilter] = useState('All');
@@ -25,6 +26,7 @@ export default function CarLeadsPage({ params }: { params: Promise<{ id: string 
         const res = await fetch(`/api/admin/cars/${id}`);
         if (res.ok) {
           const data = await res.json();
+          console.log(data);
           setCar(data);
         } else {
           toast.error('Car not found');
@@ -34,45 +36,25 @@ export default function CarLeadsPage({ params }: { params: Promise<{ id: string 
       } finally {
         setLoadingCar(false);
       }
-      dispatch(fetchBids({}) as any);
+      dispatch(fetchBids({ carId: id }) as any);
     };
 
     fetchCarAndLeads();
   }, [id, dispatch]);
 
-  const matchLower = (leadModel: string, carModelName: string, carVariant: string) => {
-    if (!leadModel) return false;
-    const l = leadModel.toLowerCase();
-    const m = (carModelName || '').toLowerCase();
-    const v = (carVariant || '').toLowerCase();
 
-    // Check if the lead model string contains the model name OR the variant
-    // Also check for split keywords (e.g., "Innova" from "Innova Hycross")
-    if (m && l.includes(m)) return true;
-    if (v && l.includes(v)) return true;
-
-    // Check keyword overlap (e.g. "Glanza V-AMT" matches if "Glanza" or "V-AMT" is in there)
-    const leadKeywords = l.split(/[\s-]+/);
-    if (m && leadKeywords.some(kw => kw.length > 2 && m.includes(kw))) return true;
-    if (v && leadKeywords.some(kw => kw.length > 1 && v.includes(kw))) return true;
-
-    return false;
-  };
 
   const processedLeads = allBids
-    .filter((b: any) =>
-      b.carId === id ||
-      matchLower(b.carModel || '', car?.modelId?.modelName || '', car?.variantName || '')
-    )
+    .filter((b: any) => b.carId === id)
     .filter((b: any) => {
       // Search Filter
-      const matchesSearch = 
+      const matchesSearch =
         b.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (b.email || '').toLowerCase().includes(searchQuery.toLowerCase());
-      
+
       // Mode Filter
       const matchesMode = modeFilter === 'All' || b.purchaseMode === modeFilter;
-      
+
       return matchesSearch && matchesMode;
     })
     .sort((a: any, b: any) => {
@@ -181,12 +163,12 @@ export default function CarLeadsPage({ params }: { params: Promise<{ id: string 
               {searchQuery || modeFilter !== 'All' ? 'No matching bids found' : 'No active bids'}
             </h3>
             <p className="text-sm text-gray-500 max-w-xs mx-auto">
-              {searchQuery || modeFilter !== 'All' 
-                ? 'Try adjusting your filters or search terms to find what you are looking for.' 
+              {searchQuery || modeFilter !== 'All'
+                ? 'Try adjusting your filters or search terms to find what you are looking for.'
                 : "We couldn't find any bidding offers for this specific variant yet."}
             </p>
             {(searchQuery || modeFilter !== 'All') && (
-              <button 
+              <button
                 onClick={() => { setSearchQuery(''); setModeFilter('All'); }}
                 className="mt-6 text-red-600 font-bold hover:text-red-700 text-sm underline underline-offset-4"
               >

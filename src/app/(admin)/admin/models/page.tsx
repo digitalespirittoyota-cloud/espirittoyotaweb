@@ -55,9 +55,10 @@ export default function ModelsPage() {
         setIsModalOpen(false);
         dispatch(fetchModels({}) as any);
       } else {
-        toast.error('Operation failed');
+        const errorData = await res.json();
+        toast.error(errorData.message || 'Operation failed');
       }
-    } catch (err) {
+    } catch (err: any) {
       toast.error('Something went wrong');
     }
   };
