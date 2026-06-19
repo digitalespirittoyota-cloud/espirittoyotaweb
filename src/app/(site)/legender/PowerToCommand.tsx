@@ -58,14 +58,9 @@ export default function PowerToCommand({
 
         {/* RIGHT SIDE */}
         <div className="flex flex-col justify-center px-6 sm:px-12 lg:px-24 gap-6 mt-10 lg:mt-0">
-          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-extrabold uppercase leading-tight">
-            {title.split("\n").map((line, i) => (
-              <span key={i}>
-                {line}
-                <br />
-              </span>
-            ))}
-          </h2>
+          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-bold uppercase leading-tight text-black whitespace-nowrap">
+  {title}
+</h2>
 
           <div className="relative w-[200px] sm:w-[260px] md:w-[340px] h-[150px] sm:h-[200px] md:h-[260px]">
             <Image

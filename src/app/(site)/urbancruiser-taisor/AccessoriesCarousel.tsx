@@ -154,7 +154,7 @@ export default function AccessoriesCarousel({
   const next = () => setIndex(p => (p >= maxIndex ? 0 : p + 1));
 
   return (
-    <section className="w-full py-16 bg-white overflow-hidden">
+    <section className="w-full py-16 bg-white overflow-hidden text-black">
       {/* HEADING */}
       <h2 className="text-[20px] sm:text-[32px] font-semibold mb-10 max-w-[1400px] mx-auto px-4">
         {heading}

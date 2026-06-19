@@ -40,7 +40,7 @@ export default function CarColorSelector() {
         <h2 className="title" style={{color:"black"}}>
           PICK YOUR SHADE OF{" "}
           <img
-            src="https://static.toyotabharat.com/images/showroom/glanza/new/txt-awesome.png"
+            src="/models/glanza/awesome.webp"
             alt="Awesome"
             className="titleImage"
           />

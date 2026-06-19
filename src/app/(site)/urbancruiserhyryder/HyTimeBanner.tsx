@@ -58,7 +58,7 @@ const HyTimeBanner: React.FC<HyTimeBannerProps> = ({
         }
 
         .left {
-          height: 70vh;
+          height: 80vh;
           display: flex;
           align-items: center;
           justify-content: center;

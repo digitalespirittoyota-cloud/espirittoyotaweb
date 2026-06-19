@@ -397,7 +397,7 @@ const PerformanceFeature: React.FC<Props> = ({
                     <span className="count">{i + 1}</span>
 
                     <div className="card-text">
-                      <h5>{item.title}</h5>
+                      <h3>{item.title}</h3>
                       <p>{item.subtitle}</p>
                     </div>
 
@@ -579,13 +579,13 @@ const PerformanceFeature: React.FC<Props> = ({
           min-height: 60px;
         }
 
-        .card-text h5 {
-          font-size: 14px;
+        .card-text h3 {
+          font-size: 18px;
           margin: 0;
         }
 
         .card-text p {
-          font-size: 12px;
+          font-size: 14px;
           margin-top: 4px;
         }
 

@@ -32,9 +32,8 @@ export default function Page() {
         <>
 
             <HeroBanner
-                desktopImage="/lc300/lc300-hero-section-image.webp"
-                mobileImage="/lc300/lc300-hero-section-image-mobile.webp"
-                title="Land Cruiser 300"
+                desktopImage="/lc300/kingdon.webp"
+                mobileImage="/lc300/kingdon.webp"
                 buttonText="Download Brochure"
                 buttonLink="https://www.toyotabharat.com/documents/brochures/e-brochure-lc-300.pdf"
                 desktopHeight="870px"

@@ -15,6 +15,7 @@ import PowerfulPerformance from "./PowerfulPerformance";
 import TechnicalSpecifications from "./TechnicalSpecifications";
 import ToyotaServiceSection from "./ToyotaServiceSection";
 import VirtualShowroomImage from "./VirtualShowroomSection";
+import HiluxColors from "./Hiluxcolors";
 
 export const metadata: Metadata = getBaseMetadata(
     "Toyota Hilux Price, 4x4 Features & Performance | Espirit Toyota",
@@ -68,7 +69,7 @@ Live a fuller life with the Toyota Hilux."
             <HiluxLegacySection />
             <HiluxLegacyMediaSection />
             <ToyotaServiceSection />
-
+            <HiluxColors/> 
             <FeatureSectionGallery />
             <TechnicalSpecifications />
             <HiluxEbookSection />

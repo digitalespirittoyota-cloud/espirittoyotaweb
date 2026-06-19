@@ -304,7 +304,7 @@ export default function CarConfigurator() {
       : DATA[model].interior[intIndex].carImg;
 
   return (
-    <section className="w-full bg-white px-4 sm:px-6 lg:px-14 py-8 lg:py-10">
+    <section className="w-full bg-white px-4 sm:px-6 lg:px-14 py-8 lg:py-10 text-black">
       <div className="grid lg:grid-cols-[420px_1fr] gap-8 lg:gap-12 items-start">
         
         {/* ================= LEFT PANEL ================= */}

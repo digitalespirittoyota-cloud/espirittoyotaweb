@@ -9,6 +9,8 @@ import SideHero from "./SideHero";
 import TechnicalSpecifications from "./TechnicalSpecifications";
 import ToyotaGlanza from "./ToyotaGlanza";
 import { glanzaSections } from "./data/glanzaData";
+import ZoomImageFormSection from "./ZoomImageFormSection";
+
 
 export const metadata: Metadata = getBaseMetadata(
   "Toyota Glanza Price, Features & Mileage | Espirit Toyota",
@@ -34,18 +36,29 @@ export default function GlanzaPage() {
       <GlanzaHero
         imageUrl="/models/glanza/glanza1.webp"
         alt="Toyota Glanza"
+        minHeightDesktop="auto"
+  minHeightTablet="auto"
+  minHeightMobile="auto"
       />
       <GlanzaHero
         imageUrl="/models/glanza/glanza2.webp"
         alt="Toyota Glanza"
+        minHeightDesktop="auto"
+  minHeightTablet="auto"
+  minHeightMobile="auto"
       />
       <GlanzaHero
-        imageUrl="https://static3.toyotabharat.com/images/showroom/glanza/new/glanza-your-first-toyota-1920x807.jpg"
-        alt="Toyota Glanza"
-      />
+  imageUrl="/models/glanza/glanzayoutube.webp"
+  alt="Toyota Glanza"
+  youtubeUrl="https://youtu.be/0NpAwX2NIkc?si=-C_Q2AhW8yxAENro"
+/>
+     
       <GlanzaHero
         imageUrl="/models/glanza/glanza3.webp"
         alt="Toyota Glanza"
+        minHeightDesktop="auto"
+  minHeightTablet="auto"
+  minHeightMobile="auto"
       />
       <SideHero
         imageUrl="/models/glanza/glanza4.webp"
@@ -83,9 +96,9 @@ export default function GlanzaPage() {
       <CarColorSelector />
       <GlanzaAccessories />
       <TechnicalSpecifications />
-      {/* <ZoomImageFormSection
-        testDriveImage="https://static.toyotabharat.com/images/showroom/glanza/new/img-test-drive.png"
-        emiImage="https://static.toyotabharat.com/images/showroom/glanza/new/img-emi-calculator-new.jpg"
+      <ZoomImageFormSection
+        testDriveImage="/models/glanza/imgtestdrive.webp"
+        emiImage="/models/glanza/img-emi-calculator-new.webp"
         emiTitle="EMI CALCULATOR"
         testDriveFields={[
           { label: "---*", options: ["Mr", "Mrs", "Ms", "Dr"] },
@@ -101,7 +114,7 @@ export default function GlanzaPage() {
           { label: "Select State*", options: ["Odisha",] },
           { label: "Select City*", options: ["Bhubaneswar"] },
         ]}
-      /> */}
+      />
 
       <GlanzaInstantLoan />
       <SideHero

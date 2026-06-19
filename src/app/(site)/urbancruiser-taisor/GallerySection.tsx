@@ -183,12 +183,12 @@ export default function GallerySection() {
       }}
     >
       {/* TITLE */}
-      <h2 className="text-center text-[28px] sm:text-[34px] md:text-[42px] font-bold tracking-widest mb-8">
+      <h2 className="text-center text-[28px] sm:text-[34px] md:text-[42px] font-bold tracking-widest mb-8 text-black">
         GALLERY
       </h2>
 
       {/* FILTER TABS */}
-      <div className="flex justify-center flex-wrap gap-3 sm:gap-4 mb-10 px-4">
+      <div className="flex justify-center flex-wrap gap-3 sm:gap-4 mb-10 px-4 text-black">
         {["all", "exterior", "interior"].map((t) => (
           <button
             key={t}
@@ -242,7 +242,7 @@ export default function GallerySection() {
           "
         >
           <img
-            src="/icons/arrow-left.svg"
+            src="/urbancruiser-taisor/prev.webp"
             className="w-7 sm:w-9 opacity-70"
             alt="prev"
           />
@@ -257,7 +257,7 @@ export default function GallerySection() {
           "
         >
           <img
-            src="/icons/arrow-right.svg"
+            src="/urbancruiser-taisor/next-dark.webp"
             className="w-7 sm:w-9 opacity-70"
             alt="next"
           />

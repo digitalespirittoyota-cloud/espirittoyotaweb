@@ -72,7 +72,7 @@ export default function ToyotaHeroStorySection2({
             lg:left-16 lg:right-16
           "
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-end ">
             
             {/* TITLE – LEFT */}
             <h1

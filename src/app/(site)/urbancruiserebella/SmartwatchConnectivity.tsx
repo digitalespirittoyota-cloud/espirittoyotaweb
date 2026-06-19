@@ -6,7 +6,7 @@ const SmartwatchConnectivity: React.FC = () => {
     <div className="page">
       <div className="hero">
         <img
-          src="/models/ebella/ebella14.webp"
+          src="/models/ebella/iconnectimg1.webp"
           alt="Smartwatch Connectivity"
           className="bgImage"
         />

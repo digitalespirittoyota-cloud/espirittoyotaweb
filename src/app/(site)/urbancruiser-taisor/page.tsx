@@ -14,6 +14,11 @@ import ScrollGrowImage from "./ScrollGrowImage";
 import StyleSection from "./StyleSection";
 import StyleSectionReverse from "./StyleSectionReverse";
 import TaisorStyleCarousel from "./TaisorStyleCarousel";
+// import TaisorSpecifications from "./Specification";
+
+
+
+
 
 export const metadata: Metadata = getBaseMetadata(
   "Toyota Urban Cruiser Taisor Price, Features & Compact SUV Style | Espirit Toyota",
@@ -31,9 +36,10 @@ export default function Page() {
   return (
     <>
       <Banner
-        desktopImg="/urbancruiser-taisor/urbancruiser-taisor-banner.webp"
-        mobileImg="/urbancruiser-taisor/urbancruiser-taisor-banner.webp"
-        height="90vh"
+        desktopImg="/urbancruiser-taisor/urbancruisertaisorbanner.webp"
+        mobileImg="/urbancruiser-taisor/urbancruisertaisorbanner.webp"
+        height="92vh"
+        
       />
       <StyleSection
         leftImage={styleSectionData.leftImage}
@@ -73,6 +79,7 @@ export default function Page() {
       />
       <ColorShowcase />
       <DownloadBrochureSection />
+      {/* <TaisorSpecifications /> */}
       <GallerySection />
       <AccessoriesCarousel
         heading="EXTERIOR ACCESSORIES"

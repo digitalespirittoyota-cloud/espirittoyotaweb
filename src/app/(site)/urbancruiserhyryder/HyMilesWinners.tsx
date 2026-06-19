@@ -142,13 +142,14 @@ const HyMilesCarousel: React.FC<HyMilesCarouselProps> = ({
         }
 
         .winner-info h4 {
-          font-size: 13px;
-          margin-bottom: 6px;
-          color: #000;
-        }
+  font-size: 13px;
+  font-weight: 700;     /* ✅ bold added */
+  margin-bottom: 6px;
+  color: #000;
+}
 
         .winner-info p {
-          font-size: 12px;
+          font-size: 14px;
           margin: 3px 0;
           color: #000;
         }

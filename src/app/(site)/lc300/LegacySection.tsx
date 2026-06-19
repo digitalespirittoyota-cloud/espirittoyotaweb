@@ -10,7 +10,7 @@ export default function LegacySection({
   paragraphs,
 }: LegacySectionProps) {
   return (
-    <section className="w-full bg-white py-16 sm:py-20">
+    <section className="w-full bg-white py-16 sm:py-20 ">
       <div
         className="
           max-w-[1400px] mx-auto px-6
@@ -26,6 +26,7 @@ export default function LegacySection({
     xl:text-4xl
     font-light leading-tight
     max-w-sm
+    text-black
   "
 >
   {title}

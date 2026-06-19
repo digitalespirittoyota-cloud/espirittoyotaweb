@@ -22,7 +22,7 @@ export default function ModelHighlightSection({
 }: ModelHighlightSectionProps) {
   return (
     <>
-      <section className="w-full">
+      <section className="w-full text-black">
         <div className="w-full flex flex-col md:flex-row md:items-start">
 
           {/* ZX STRIP */}

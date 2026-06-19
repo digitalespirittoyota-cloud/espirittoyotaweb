@@ -18,7 +18,7 @@ const colors: ColorOption[] = [
   {
     name: "Cement Grey",
     image:
-      "/models/camry/camry21.webp",
+      "/models/camry/cement-grey.webp",
     swatch: "#8f9396",
   },
   {

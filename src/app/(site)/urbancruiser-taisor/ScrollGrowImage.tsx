@@ -47,7 +47,7 @@ export default function ToyotaStyleScrollImage() {
     <>
       {/* <div className="h-[10vh]" /> */}
 
-      <section ref={sectionRef} className="relative h-[100vh]">
+      {/* <section ref={sectionRef} className="relative h-[100vh]">
         <div className="sticky top-0 h-[90vh] flex items-center justify-center overflow-hidden">
 
           <img
@@ -61,7 +61,30 @@ export default function ToyotaStyleScrollImage() {
           />
 
         </div>
-      </section>
+      </section> */}
+
+
+
+      <section ref={sectionRef} className="relative h-[100vh]">
+  <div
+    className="sticky top-0 h-[90vh] flex items-center justify-center overflow-hidden bg-white"
+    style={{
+      backgroundImage: "url('/urbancruiser-taisor/comfort.webp')",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    }}
+  >
+    <img
+      src="/urbancruiser-taisor/d-27_interior_Comfort_cross_1920x800px.jpg"
+      alt="Toyota style"
+      style={{
+        width: `${width}px`,
+        height: "auto",
+      }}
+      className="object-cover transition-all duration-75 ease-out"
+    />
+  </div>
+</section>
     </>
   );
 }

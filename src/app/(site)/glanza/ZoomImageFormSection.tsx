@@ -2,8 +2,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-/* ================= TYPES ================= */
-
 interface FormField {
   label: string;
   options?: string[];
@@ -17,8 +15,6 @@ interface Props {
   emiTitle: string;
 }
 
-/* ================= COMPONENT ================= */
-
 export default function ZoomImageFormSection({
   testDriveImage,
   emiImage,
@@ -27,36 +23,37 @@ export default function ZoomImageFormSection({
   emiTitle,
 }: Props) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-
   const [visible, setVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  // ✅ CHECKBOX STATES (INSIDE COMPONENT)
   const [exchangeChecked, setExchangeChecked] = useState(false);
   const [consentChecked, setConsentChecked] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => entry.isIntersecting && setVisible(true),
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
-
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
     <section ref={sectionRef} style={{ width: "100%", color: "#000" }}>
-      {/* ================= TEST DRIVE ================= */}
-      <div style={wrapperStyle}>
-        <div style={imageStyle(visible)}>
-          <img src={testDriveImage} style={imgStyle} />
+
+      {/* ===== TEST DRIVE ===== */}
+      <div style={rowStyle}>
+
+        {/* Image stretches to match form height */}
+        <div style={imagePanelStyle(visible)}>
+          <img src={testDriveImage} style={imgStyle} alt="Test Drive" />
         </div>
 
-        <div style={formStyle(visible)}>
+        {/* Form panel — drives the height */}
+        <div style={formPanelStyle(visible)}>
           <img
-            src="https://static.toyotabharat.com/images/showroom/glanza/new/txt-testdrive.png"
+            src="/models/glanza/txttestdrive.webp"
             style={{ width: 160, marginBottom: 30 }}
+            alt="Test Drive"
           />
 
           <div style={gridStyle}>
@@ -83,18 +80,17 @@ export default function ZoomImageFormSection({
             )}
           </div>
 
-          {/* ===== CHECKBOX SECTION ===== */}
           <div style={{ marginTop: 20 }}>
             <label style={checkboxLabelStyle}>
               <input
                 type="checkbox"
                 checked={exchangeChecked}
                 onChange={(e) => setExchangeChecked(e.target.checked)}
-                style={checkboxStyle}
+                style={{ marginTop: 3 }}
               />
               <span>
-                Would you like to exchange your existing car with
-                <strong> Toyota U Trust</strong>
+                Would you like to exchange your existing car with{" "}
+                <strong>Toyota U Trust</strong>
               </span>
             </label>
 
@@ -103,7 +99,7 @@ export default function ZoomImageFormSection({
                 type="checkbox"
                 checked={consentChecked}
                 onChange={(e) => setConsentChecked(e.target.checked)}
-                style={checkboxStyle}
+                style={{ marginTop: 3 }}
               />
               <span>
                 I hereby agree to receive emails, calls and SMS related to
@@ -126,13 +122,13 @@ export default function ZoomImageFormSection({
         </div>
       </div>
 
-      {/* ================= EMI ================= */}
-      <div style={wrapperStyle}>
-        <div style={imageStyle(visible)}>
-          <img src={emiImage} style={imgStyle} />
+      {/* ===== EMI ===== */}
+      <div style={rowStyle}>
+        <div style={imagePanelStyle(visible)}>
+          <img src={emiImage} style={imgStyle} alt="EMI Calculator" />
         </div>
 
-        <div style={formStyle(visible)}>
+        <div style={formPanelStyle(visible)}>
           <h2 style={emiTitleStyle}>{emiTitle}</h2>
 
           {emiFields.map((f, i) => (
@@ -140,7 +136,7 @@ export default function ZoomImageFormSection({
               key={i}
               onFocus={() => setActiveIndex(i)}
               onBlur={() => setActiveIndex(null)}
-              style={inputStyle(activeIndex === i)}
+              style={{ ...inputStyle(activeIndex === i), display: "block" }}
             >
               <option>{f.label}</option>
               {f.options?.map((o, j) => (
@@ -154,39 +150,47 @@ export default function ZoomImageFormSection({
   );
 }
 
-/* ================= STYLES ================= */
+/* ===== STYLES ===== */
 
-const wrapperStyle: React.CSSProperties = {
+const rowStyle: React.CSSProperties = {
   display: "flex",
   flexWrap: "wrap",
-  minHeight: "720px",
-  justifyContent: "center",
-  alignItems: "stretch",
+  alignItems: "stretch",   // both panels same height
 };
 
-const imageStyle = (v: boolean): React.CSSProperties => ({
-  flex: "1 1 60%",
+// Image panel: fills the height driven by the form
+const imagePanelStyle = (v: boolean): React.CSSProperties => ({
+  flex: "1 1 55%",
   minWidth: 280,
+  overflow: "hidden",
   transform: v ? "scale(1)" : "scale(1.08)",
   transition: "1.2s ease",
+  // Key fix: use a fixed aspect ratio on desktop so image
+  // doesn't go taller than the viewport
+  maxHeight: "80vh",
 });
 
-const formStyle = (v: boolean): React.CSSProperties => ({
-  flex: "1 1 35%",
+const formPanelStyle = (v: boolean): React.CSSProperties => ({
+  flex: "1 1 40%",
   minWidth: 280,
   background: "#fff",
-  padding: "50px 30px",
+  padding: "50px 40px",
   transform: v ? "translateY(0)" : "translateY(80px)",
   opacity: v ? 1 : 0,
   transition: "1s ease",
   color: "#000",
   boxSizing: "border-box",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",   // vertically center form content
 });
 
 const imgStyle: React.CSSProperties = {
   width: "100%",
   height: "100%",
   objectFit: "cover",
+  objectPosition: "center",
+  display: "block",
 };
 
 const gridStyle: React.CSSProperties = {
@@ -203,16 +207,21 @@ const inputStyle = (a: boolean): React.CSSProperties => ({
   color: "#000",
   fontSize: 14,
   boxSizing: "border-box",
+  background: "#fff",
+  outline: "none",
 });
 
 const buttonStyle: React.CSSProperties = {
-  marginTop: 30,
-  padding: "10px 40px",
+  marginTop: 20,
+  padding: "12px 40px",
   background: "#63c018",
   border: "none",
   cursor: "pointer",
   color: "#fff",
-  fontWeight: 400,
+  fontWeight: 500,
+  fontSize: 14,
+  letterSpacing: 1,
+  alignSelf: "flex-start",
 };
 
 const checkboxLabelStyle: React.CSSProperties = {
@@ -221,13 +230,9 @@ const checkboxLabelStyle: React.CSSProperties = {
   gap: 10,
   fontSize: 13,
   color: "#000",
-  lineHeight: 1.4,
+  lineHeight: 1.5,
   marginBottom: 12,
   cursor: "pointer",
-};
-
-const checkboxStyle: React.CSSProperties = {
-  marginTop: 3,
 };
 
 const knowMoreStyle: React.CSSProperties = {

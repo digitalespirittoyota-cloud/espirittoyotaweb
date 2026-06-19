@@ -19,7 +19,7 @@ export default function FeatureImageSection({
     <section className="w-full bg-white py-16">
       {/* Heading + Description */}
       <div className="max-w-4xl mx-auto text-center px-4 mb-10">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-wider">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-wider text-black">
           {heading}
         </h2>
 

@@ -126,7 +126,7 @@ export default function ToyotaStyleCarousel({
 
   return (
     <>
-      <section className="w-full bg-white overflow-hidden">
+      <section className="w-full bg-white overflow-hidden  ">
         <div className="flex flex-col md:flex-row h-auto md:h-[520px] px-4 md:px-10 gap-6 md:gap-8">
 
           {/* LEFT CONTENT */}

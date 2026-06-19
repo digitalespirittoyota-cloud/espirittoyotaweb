@@ -9,6 +9,7 @@ import CamryEnginePerformance from "./CamryEnginePerformance";
 import CamryExteriorInterior from "./CamryExteriorInterior";
 import CamrySafetyConnected from "./CamrySafetyConnected";
 import TNGASection from "./TNGASection";
+import CamryBanner from "./camrybanner";
 
 export const metadata: Metadata = getBaseMetadata(
   "Toyota Camry Hybrid Price, luxury & Performance | Espirit Toyota",
@@ -64,7 +65,7 @@ export const camryConvenienceComfortData = {
     description:
       "Step into the Toyota Camry’s spacious cabin, where soft upholstery and thoughtfully designed seating create an oasis of relaxation. With 10-way power-adjustable seats, lumbar support, and rear power-reclining seats, every journey feels effortlessly comfortable.",
     banner:
-      "/models/camry/camry15.webp",
+      "/models/camry/comfort-banner.webp",
     thumbs: [
       "/models/camry/camry15.webp",
       "/models/camry/camry16.webp",
@@ -72,14 +73,48 @@ export const camryConvenienceComfortData = {
     ],
   },
 };
-
+export const camryExteriorElectricalData = {
+  interior: {
+    label: "Interior",
+    description: "Discover a range of genuine accessories that are thoughtfully crafted for a superior drive.",
+    banner: { src: "/models/camry/int1.webp", caption: "FLOORMAT" },
+    thumbs: [
+      { src: "/models/camry/int2.webp", caption: "SKY BOX (2-BOX SET)" },
+      { src: "/models/camry/int3.webp", caption: "COOL BOX" },
+      { src: "/models/camry/int4.webp", caption: "CARGO NET" },
+    ],
+  },
+  exterior: {
+    label: "Exterior",
+    description: "Discover a range of genuine accessories that are thoughtfully crafted for a superior drive.",
+    banner: { src: "/models/camry/ext1.webp", caption: "SIDE VISOR" },
+    thumbs: [
+      { src: "/models/camry/ext2.webp", caption: "CAR COVER" },
+      { src: "/models/camry/ext3.webp", caption: "BODY SIDE MOLDING" },
+      { src: "/models/camry/ext4.webp", caption: "FRONT GARNISH, CHROME" },
+      { src: "/models/camry/ext5.webp", caption: "DOOR HOUSING HIBOSSCAL" },
+      { src: "/models/camry/ext6.webp", caption: "DOOR EDGE PROTECTOR" },
+      { src: "/models/camry/ext7.webp", caption: "REAR BUMPER GARNISH" },
+    ],
+  },
+  electrical: {
+    label: "Electrical",
+    description: "Discover a range of genuine accessories that are thoughtfully crafted for a superior drive.",
+    banner: { src: "/models/camry/elct1.webp", caption: "WELCOME DOOR LAMP" },
+    thumbs: [],
+  },
+};
 export default function HomePage() {
   return (
     <>
-      <CamryImage
-        imageUrl="/models/camry/camry1.webp"
-        alt="Camry"
-      />
+ 
+      <CamryBanner
+  images={[
+    { src: "/models/camry/camry1.webp",        alt: "Camry" },
+    { src: "/models/camry/camry-banner2.webp",  alt: "Camry" },
+  ]}
+  autoPlayInterval={4000}
+/>
       <CamryElegance />
       <CamryEnginePerformance />
       <CamryExteriorInterior
@@ -92,6 +127,7 @@ export default function HomePage() {
       />
       <CamrySafetyConnected />
       <CamryColors />
+      <CamryExteriorInterior tabs={camryExteriorElectricalData} defaultTab="electrical" />
       <TNGASection />
       <SideHero
         imageUrl="/models/camry/camry27.webp"

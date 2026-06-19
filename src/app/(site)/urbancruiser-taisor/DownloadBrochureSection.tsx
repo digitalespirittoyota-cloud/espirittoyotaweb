@@ -20,7 +20,7 @@ export default function DownloadBrochureSection() {
   };
 
   return (
-    <section className="relative w-full bg-white overflow-hidden">
+    <section className="relative w-full bg-white overflow-hidden text-black">
       <div className="relative flex flex-col lg:flex-row min-h-[420px]">
 
         {/* LEFT IMAGE */}

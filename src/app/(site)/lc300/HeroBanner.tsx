@@ -93,7 +93,7 @@ import { useEffect, useState } from "react";
 interface HeroBannerProps {
   desktopImage: string;
   mobileImage: string;
-  title: string;
+  // title: string;
   buttonText: string;
   buttonLink: string;
 
@@ -104,7 +104,7 @@ interface HeroBannerProps {
 export default function HeroBanner({
   desktopImage,
   mobileImage,
-  title,
+  // title,
   buttonText,
   buttonLink,
   desktopHeight = "90vh", // default
@@ -118,27 +118,27 @@ export default function HeroBanner({
 
   return (
     <section
-      className="relative w-full overflow-hidden"    >
+      className="relative w-full overflow-hidden "    >
       {/* DESKTOP IMAGE (height from props) */}
-      <div
-        className="hidden md:block relative w-full"
-        style={{ height: desktopHeight }}
-      >
-        <img
-          src={desktopImage}
-          alt="banner"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </div>
+     <div
+  className="hidden md:block relative w-full"
+  style={{ height: "70vh" }}
+>
+  <img
+    src={desktopImage}
+    alt="banner"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+</div>
 
       {/* MOBILE IMAGE */}
-      <div className="md:hidden relative w-full h-[90vh] bg-black">
-        <img
-          src={mobileImage}
-          alt="banner mobile"
-          className="absolute inset-0 w-full h-full object-contain"
-        />
-      </div>
+      <div className="md:hidden relative w-full">
+  <img
+    src={mobileImage}
+    alt="banner mobile"
+    className="w-full h-auto block"
+  />
+</div>
 
       {/* OVERLAY */}
       <div className="absolute inset-0 bg-black/45 pointer-events-none" />
@@ -147,7 +147,7 @@ export default function HeroBanner({
       <div className="absolute inset-0 z-10 flex items-end">
         <div className="w-full text-center pb-12 sm:pb-16 md:pb-20 px-4">
           {/* TITLE */}
-          <h1
+          {/* <h1
             className={`
               text-white font-light tracking-wide
               text-[32px] sm:text-[42px] md:text-[56px] lg:text-[64px]
@@ -156,10 +156,10 @@ export default function HeroBanner({
             `}
           >
             {title}
-          </h1>
+          </h1> */}
 
           {/* BUTTON */}
-          <a
+          {/* <a
             href={buttonLink}
             className={`
               inline-block mt-4
@@ -172,7 +172,7 @@ export default function HeroBanner({
             `}
           >
             {buttonText}
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

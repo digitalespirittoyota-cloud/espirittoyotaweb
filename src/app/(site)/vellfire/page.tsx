@@ -21,8 +21,8 @@ export default function Page() {
     return (
         <>
             <Banner
-                desktopImg="/vellfire/loard-of-realms-vellfire-1920x807.jpg"
-                mobileImg="/vellfire/loard-of-realms-vellfire-1920x807.jpg"
+                desktopImg="/vellfire/vellfire.webp"
+                mobileImg="/vellfire/vellfire.webp"
                 height="90vh"
             />
             <Banner

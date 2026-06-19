@@ -57,7 +57,7 @@ export default function EngineCarouselSection() {
     setActive((p) => (p === DATA.length - 1 ? 0 : p + 1));
 
   return (
-    <section className="relative w-full overflow-hidden border border-red-500">
+    <section className="relative w-full overflow-hidden border border-red-500 bg-white text-black">
 
       {/* 🔴 FULL WIDTH CENTER RED LINE */}
       <span className="absolute top-1/2 left-0 w-full h-px bg-red-500 z-0"></span>
@@ -68,7 +68,7 @@ export default function EngineCarouselSection() {
         <div className="flex flex-col justify-between h-full">
 
           {/* TOP QUOTE (CHANGES WITH ACTIVE) */}
-          <p className="text-gray-700 italic text-lg max-w-md">
+          <p className="text-gray-800 italic text-lg max-w-md">
             {DATA[active].quote}
           </p>
 

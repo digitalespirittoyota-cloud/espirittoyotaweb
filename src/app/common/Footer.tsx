@@ -259,7 +259,7 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <div className="flex items-center gap-4 mb-2 md:mb-0">
-              <span className="font-bold text-white text-lg">ESPRITE TOYOTA</span>
+              <span className="font-bold text-white text-lg">ESPIRIT TOYOTA</span>
               <span>{address.copyright}</span>
             </div>
             <div>

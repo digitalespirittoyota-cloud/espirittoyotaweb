@@ -161,9 +161,9 @@ export default function TaisorStyleCarousel({ title, items }: Props) {
 
   return (
     <section
-      className="w-full relative bg-cover bg-center overflow-hidden"
+      className="w-full relative bg-cover bg-center bg-white overflow-hidden"
       style={{
-        backgroundImage: "url('/urban-cruiser-taisor/bgimage.svg')",
+        backgroundImage: "url('/urbancruiser-taisor/topography-bg.webp')",
       }}
     >
       <div className="flex flex-col lg:flex-row w-full min-h-[520px]">

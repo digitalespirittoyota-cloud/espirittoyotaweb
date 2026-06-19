@@ -48,7 +48,7 @@ const SpecificationsPage: React.FC<Props> = ({
     <div className="spec-wrapper">
 
       {/* ===== HEADER ===== */}
-      <div className="spec-header">
+      <div className="spec-header text-black">
         <h1>Specifications</h1>
 
        <button
@@ -70,7 +70,7 @@ const SpecificationsPage: React.FC<Props> = ({
         {variants.map((variant) => (
           <div
             key={variant.id}
-            className={`variant-title ${
+            className={`variant-title text-black ${
               variant.id === "lc" ? "left" : ""
             }`}
           >
@@ -130,6 +130,7 @@ const SpecificationsPage: React.FC<Props> = ({
     padding: 60px 40px;
     background: #fff;
     font-family: Arial, Helvetica, sans-serif;
+     color: #000;
   }
 
   /* ================= HEADER ================= */
@@ -147,6 +148,7 @@ const SpecificationsPage: React.FC<Props> = ({
     font-weight: 300;
     letter-spacing: -1px;
     margin: 0;
+   
   }
 
   /* ================= BROCHURE BUTTON ================= */

@@ -145,7 +145,7 @@ export default function ChiefEngineerSection() {
               ${inView ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
             />
 
-            <h2 className="text-3xl sm:text-4xl font-semibold leading-tight pr-8">
+            <h2 className="text-3xl sm:text-4xl font-semibold leading-tight pr-8 text-black">
               Hear from our <br />
               Global Chief Engineer
             </h2>
@@ -180,7 +180,7 @@ export default function ChiefEngineerSection() {
                 onClick={() => setPlay(true)}
               >
                 <img
-                  src="https://img.youtube.com/vi/tfD2X2EZtl4/maxresdefault.jpg"
+                  src="/hilux/Chief-Engineer.webp"
                   alt="Chief Engineer Video"
                   className="w-full h-full object-cover"
                 />
@@ -195,7 +195,7 @@ export default function ChiefEngineerSection() {
             ) : (
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/tfD2X2EZtl4?autoplay=1"
+                src="https://www.youtube.com/embed/b3M-ZtGYWTA?si=joIZ21qq5Tw4O008"
                 allow="autoplay; fullscreen"
                 allowFullScreen
               />

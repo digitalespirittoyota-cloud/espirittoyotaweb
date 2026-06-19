@@ -13,9 +13,7 @@ interface SpecRow {
 
 /* ================= GRADE ================= */
 const gradeSpecs: SpecRow[] = [
-  
   { label: "Manual", G: "Manual", GX: "Manual", GXPlus: "Manual", VX: "Manual", ZX: "Manual" },
-
 ];
 
 /* ================= ENGINE TYPE ================= */
@@ -80,7 +78,7 @@ const Specifications: React.FC = () => {
   const renderTable = (data: SpecRow[]) => (
     <div style={{ overflowX: "auto" }}>
       <table style={{ width: "100%", borderCollapse: "collapse", minWidth: "800px" }}>
-        <thead style={{  color: "#000" }}>
+        <thead style={{ color: "#000" }}>
           <tr>
             <th style={th}>GRADE</th>
             <th style={th}>G</th>
@@ -92,7 +90,7 @@ const Specifications: React.FC = () => {
         </thead>
         <tbody>
           {data.map((r, i) => (
-            <tr key={i} style={{ textAlign: "center", borderBottom: "1px solid #ccc",color:"black" }}>
+            <tr key={i} style={{ textAlign: "center", borderBottom: "1px solid #ccc", color: "black" }}>
               <td style={td}>{r.label}</td>
               <td style={td}>{r.G}</td>
               <td style={td}>{r.GX}</td>
@@ -118,15 +116,34 @@ const Specifications: React.FC = () => {
 
   return (
     <div style={{ maxWidth: 1200, margin: "auto", padding: 20 }}>
-      <h2 style={{ textAlign: "center",color:"black",fontWeight:"bolder",fontSize:"50px" }}>SPECIFICATIONS</h2>
+      <h2 style={{ textAlign: "center", color: "black", fontWeight: "bolder", fontSize: "50px" }}>
+        SPECIFICATIONS
+      </h2>
+
+      {/* DIESEL Button */}
+      <div style={{ marginBottom: 16 }}>
+        <button style={dieselBtn}>DIESEL</button>
+      </div>
 
       <Section id="grade" title="GRADE" data={gradeSpecs} />
       <Section id="engineType" title="ENGINE TYPE" data={engineTypeSpecs} />
       <Section id="engine" title="ENGINE, TRANSMISSION & CHASSIS" data={engineSpecs} />
-      <Section id="interior" title="INTERIOR" data={interiorSpecs} />
       <Section id="exterior" title="EXTERIOR" data={exteriorSpecs} />
+      <Section id="interior" title="INTERIOR" data={interiorSpecs} />
       <Section id="seats" title="SEATS, COMFORT & CONVENIENCE" data={seatsSpecs} />
       <Section id="safety" title="SAFETY & SECURITY" data={safetySpecs} />
+
+      {/* Footnotes */}
+      <div style={footnoteStyle}>
+        <p style={{ margin: "4px 0" }}>
+          <sup>#</sup>Mix of Genuine and Synthetic Leather.{" "}
+          <sup>##</sup>For more details on the functioning of Airbags please refer to the owner's manual.
+        </p>
+        <p style={{ margin: "4px 0" }}>
+          <sup>###</sup>Spare wheel material is Steel &amp; Spare Tyre size is 205/65 R16.{" "}
+          <sup>^</sup>BS6 Phase 2 Compliant.
+        </p>
+      </div>
     </div>
   );
 };
@@ -146,5 +163,22 @@ const section: React.CSSProperties = {
 const th: React.CSSProperties = { padding: 10, border: "1px solid #ccc" };
 const td: React.CSSProperties = { padding: 10, border: "1px solid #ddd", textAlign: "center" };
 
-export default Specifications;
+const dieselBtn: React.CSSProperties = {
+  backgroundColor: "#34344a",
+  color: "#fff",
+  border: "none",
+  padding: "10px 28px",
+  fontWeight: 700,
+  fontSize: "14px",
+  letterSpacing: "1px",
+  cursor: "pointer",
+};
 
+const footnoteStyle: React.CSSProperties = {
+  marginTop: 24,
+  fontSize: "13px",
+  color: "#333",
+  lineHeight: "1.7",
+};
+
+export default Specifications;

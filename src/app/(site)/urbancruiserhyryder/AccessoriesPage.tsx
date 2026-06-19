@@ -337,17 +337,18 @@ export default function CarAccessories() {
           position: absolute;
           top: 48%;
           width: 34px;
-          height: 34px;
+          height: 36px;
           border-radius: 50%;
           background: #fff;
           box-shadow: 0 0 0 1px #ddd;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 18px;
+          font-size: 25px;
           cursor: pointer;
           z-index: 2;
           transition: all 0.3s ease;
+          color:gray;
         }
 
         .acc-arrow:hover {

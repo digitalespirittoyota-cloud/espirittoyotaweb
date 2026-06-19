@@ -37,13 +37,13 @@ export const hyTimeData = {
 
   description: [
     "Now, it's HY time you experienced this legacy in an advanced self-charging hybrid electric SUV.",
-    "The reliability of a petrol engine meets the performance of an electric motor.",
+    "The reliability of a petrol engine meets the performance of an electric motor. For a smoother, more efficient and silent drive. For twice the performance with lesser emissions. For an awesome driving experience at every step.",
   ],
 
   introText: "Toyota Urban Cruiser Hyryder.",
 
   carImage:
-    "/models/urbancruiserhyryder/urbancruiserhyryder2.webp",
+    "/models/urbancruiserhyryder/img-uch.webp",
 };
 
 const winners: Winner[] = [
