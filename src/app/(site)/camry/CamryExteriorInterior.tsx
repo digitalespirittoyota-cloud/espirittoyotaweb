@@ -244,7 +244,7 @@ import React, { useState, useEffect } from "react";
 
 type TabKey = string;
 
-type ThumbItem = { src: string; caption: string };
+type ThumbItem = string | { src: string; caption: string };
 type BannerItem = string | { src: string; caption: string };
 
 interface TabData {
@@ -261,6 +261,8 @@ interface Props {
 
 const getBannerSrc = (b: BannerItem) => (typeof b === "string" ? b : b.src);
 const getBannerCaption = (b: BannerItem) => (typeof b === "string" ? null : b.caption);
+const getThumbSrc = (t: ThumbItem) => (typeof t === "string" ? t : t.src);
+const getThumbCaption = (t: ThumbItem) => (typeof t === "string" ? null : t.caption);
 
 const CamryImageTabs = ({ tabs, defaultTab }: Props) => {
   const [activeTab, setActiveTab] = useState<TabKey>(
@@ -348,16 +350,22 @@ const CamryImageTabs = ({ tabs, defaultTab }: Props) => {
               width: contentWidth,
             }}
           >
-            {current.thumbs.map((thumb, i) => (
-              <div key={i} style={styles.thumbItem}>
-                <img src={thumb.src} alt={thumb.caption} style={styles.thumbImg} />
-                <div style={styles.captionBar}>
-                  <span style={{ ...styles.captionText, fontSize: isMobile ? "11px" : "13px" }}>
-                    / {thumb.caption}
-                  </span>
+            {current.thumbs.map((thumb, i) => {
+              const thumbSrc = getThumbSrc(thumb);
+              const thumbCaption = getThumbCaption(thumb);
+              return (
+                <div key={i} style={styles.thumbItem}>
+                  <img src={thumbSrc} alt={thumbCaption ?? ""} style={styles.thumbImg} />
+                  {thumbCaption && (
+                    <div style={styles.captionBar}>
+                      <span style={{ ...styles.captionText, fontSize: isMobile ? "11px" : "13px" }}>
+                        / {thumbCaption}
+                      </span>
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
