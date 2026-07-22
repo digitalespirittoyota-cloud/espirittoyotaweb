@@ -21,7 +21,7 @@ const Footer = () => {
     setMounted(true);
   }, []);
 
-  // Auto-play carousel
+  // Auto-play carousele
   useEffect(() => {
     if (!mounted || !isAutoPlaying) return;
     const interval = setInterval(() => {
